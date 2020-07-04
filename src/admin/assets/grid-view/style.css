@@ -1,0 +1,53 @@
+/*
+ * @copyright 2019-2020 Dicr http://dicr.org
+ * @author Igor A Tarasov <develop@dicr.org>
+ * @license proprietary
+ * @version 04.07.20 13:51:39
+ */
+
+.dicr-admin-grid-view .table-responsive {
+    margin-bottom: 0.5rem
+}
+
+.dicr-admin-grid-view .table {
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    margin-bottom: 0
+}
+
+.dicr-admin-grid-view .table thead {
+    background: #1d62c9;
+    color: #fff
+}
+
+.dicr-admin-grid-view .table thead a {
+    color: #fff
+}
+
+.dicr-admin-grid-view .table thead a.asc:after, .dicr-admin-grid-view .table thead a.desc:after {
+    display: inline;
+    position: relative;
+    top: 1px;
+    font-style: normal;
+    line-height: 1;
+    padding-left: 1px
+}
+
+.dicr-admin-grid-view .table thead a.asc:after {
+    content: "\21D1"
+}
+
+.dicr-admin-grid-view .table thead a.desc:after {
+    content: "\21D3"
+}
+
+.dicr-admin-grid-view .table thead a:hover {
+    color: #fff
+}
+
+.dicr-admin-grid-view .table tfoot {
+    background-color: #fcfcfc;
+    font-weight: bold
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,49 @@
+{
+    "name": "dicr/yii2-site",
+    "type": "yii2-extension",
+    "license": "Apache-2.0",
+    "description": "Site modules for Yii2",
+    "homepage": "https://gitlab.com/dicr/yii2-site",
+    "keywords": ["dicr", "php", "yii2", "site"],
+    "support": {
+        "source": "https://gitlab.com/dicr/yii2-site.git"
+    },
+    "authors": [
+        {
+            "name": "Igor Tarasov",
+            "email": "develop@dicr.org",
+            "homepage": "http://dicr.org",
+            "role": "developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "dicr\\site\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "~7.2",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "yiisoft/yii2": "2.*",
+        "yiisoft/yii2-bootstrap4": "~2.0",
+        "dicr/yii2-asset": "~1.5",
+        "dicr/yii2-cache": "~2.0",
+        "dicr/yii2-file": "~4.0",
+        "dicr/yii2-helper": "~3.0",
+        "dicr/yii2-validate": "~2.0",
+        "dicr/yii2-widgets": "~1.6"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "repositories": [
+        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-asset.git"},
+        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-cache.git"},
+        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-file.git"},
+        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-widgets.git"},
+        {"type": "composer", "url": "https://asset-packagist.org"}
+    ]
+}

@@ -1,0 +1,24 @@
+/*
+ * @copyright 2019-2020 Dicr http://dicr.org
+ * @author Igor A Tarasov <develop@dicr.org>
+ * @license proprietary
+ * @version 04.07.20 13:51:39
+ */
+
+.dicr-admin-control-panel {
+    margin-left: auto
+}
+
+@media (min-width: 991px) {
+    .dicr-admin-control-panel > *:after {
+        display: inline;
+        content: attr(title);
+        margin-left: 0.5rem
+    }
+}
+
+.dicr-admin-control-panel > *:not(:last-child) {
+    margin-right: 0.5rem
+}
+
+/*# sourceMappingURL=style.css.map */
