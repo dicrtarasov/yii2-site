@@ -2,23 +2,9 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:51:39
+ * @version 06.07.20 02:42:54
  */
 
-.dicr-admin-edit-form a.form-control-plaintext {
-    color: #1d62c9
-}
-
-.dicr-admin-edit-form .form-group.form-group-static .col-form-label {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    line-height: 1.35
-}
-
-.dicr-admin-edit-form .form-group.form-group-static .form-control-plaintext {
-    padding-top: 0;
-    padding-bottom: 0;
-    line-height: 1.35
-}
+.dicr-admin-edit-form a.form-control-plaintext{color:#1d62c9}.dicr-admin-edit-form .form-group.form-group-static .col-form-label{padding-top:1px;padding-bottom:1px;line-height:1.35}.dicr-admin-edit-form .form-group.form-group-static .form-control-plaintext{padding-top:0;padding-bottom:0;line-height:1.35}
 
 /*# sourceMappingURL=style.css.map */

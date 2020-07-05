@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:30:46
+ * @version 06.07.20 02:37:35
  */
 
 declare(strict_types = 1);
@@ -102,7 +102,7 @@ abstract class AbstractForm extends Model
             'data' => $data
         ]);
 
-        return Yii::$app->view->render('@app/mail/admin', [
+        return Yii::$app->view->render('@app/mail/manager', [
             'content' => $text
         ]);
     }

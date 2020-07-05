@@ -422,16 +422,16 @@
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "53065736e8b8321c6de69f6acf1e9ac815c669d6"
+                "reference": "27a26ba12fb84a17347108b6de72566bc2ca3390"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=53065736e8b8321c6de69f6acf1e9ac815c669d6",
-                "reference": "53065736e8b8321c6de69f6acf1e9ac815c669d6",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=27a26ba12fb84a17347108b6de72566bc2ca3390",
+                "reference": "27a26ba12fb84a17347108b6de72566bc2ca3390",
                 "shasum": ""
             },
             "require": {
@@ -441,7 +441,6 @@
                 "yiisoft/yii2-bootstrap4": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~8.5",
                 "roave/security-advisories": "dev-master"
             },
             "type": "yii2-extension",
@@ -473,7 +472,7 @@
                 "source": "https://gitlab.com/dicr/yii2-widgets.git",
                 "issues": "https://gitlab.com/api/v4/projects/12653694/issues"
             },
-            "time": "2020-07-04T12:56:32+05:00"
+            "time": "2020-07-04T22:39:35+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",
