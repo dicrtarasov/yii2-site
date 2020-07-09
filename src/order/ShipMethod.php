@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 06:35:07
+ * @version 09.07.20 07:54:17
  */
 
 declare(strict_types = 1);
@@ -15,9 +15,12 @@ namespace dicr\site\order;
 abstract class ShipMethod extends AbstractMethod
 {
     /**
-     * Метод доставляет товары (не самовывоз)
+     * Метод доставляет товары (не самовывоз).
      *
      * @return bool
      */
-    abstract public static function isDelivery();
+    public static function isDelivery()
+    {
+        return true;
+    }
 }
