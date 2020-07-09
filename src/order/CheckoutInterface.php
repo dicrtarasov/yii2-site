@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 06:33:45
+ * @version 09.07.20 06:43:59
  */
 
 declare(strict_types = 1);
@@ -35,7 +35,7 @@ interface CheckoutInterface
      *
      * @return Model
      */
-    public function getOrderMethod();
+    public function getOrderContacts();
 
     /**
      * Метод оплаты.
