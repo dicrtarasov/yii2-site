@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:51:48
+ * @version 09.07.20 14:26:54
  */
 
 declare(strict_types = 1);
@@ -33,7 +33,6 @@ class Pagination extends \yii\data\Pagination
      * Является ли текущая страница страницей по-умолчанию.
      *
      * @return bool
-     * @noinspection PhpUnused
      */
     public function getIsPageDefault()
     {
@@ -44,7 +43,6 @@ class Pagination extends \yii\data\Pagination
      * Проверяет является ли текущий размер страницы размером по-умолчанию.
      *
      * @return bool
-     * @noinspection PhpUnused
      */
     public function getIsPageSizeDefault()
     {
@@ -55,7 +53,6 @@ class Pagination extends \yii\data\Pagination
      * Является ли страница и размер страницы по-умолчанию.
      *
      * @return bool
-     * @noinspection PhpUnused
      */
     public function getIsDefault()
     {

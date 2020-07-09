@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:24:18
+ * @version 09.07.20 14:26:12
  */
 
 declare(strict_types = 1);
@@ -17,8 +17,6 @@ use yii\helpers\Html;
 
 /**
  * Форма фильтра данных.
- *
- * @noinspection PhpUnused
  */
 class FilterForm extends ActiveForm
 {
@@ -99,7 +97,6 @@ class FilterForm extends ActiveForm
      * @param Model $model
      * @param array $options
      * @return ActiveField
-     * @noinspection PhpUnused
      */
     public function fieldEnabled(Model $model, array $options = [])
     {
@@ -112,7 +109,6 @@ class FilterForm extends ActiveForm
      * @param Model $model
      * @param array $options
      * @return ActiveField
-     * @noinspection PhpUnused
      */
     public function fieldDisabled(Model $model, array $options = [])
     {

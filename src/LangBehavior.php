@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:51:39
+ * @version 09.07.20 14:26:40
  */
 
 declare(strict_types = 1);
@@ -66,7 +66,6 @@ use function is_string;
  * @property ActiveRecord $lang языковая модель для текущего языка
  * @property ActiveRecord[] $langs все языковые модели
  * @property-read ActiveRecord $owner
- * @noinspection PhpUnused
  */
 class LangBehavior extends Behavior
 {
@@ -148,7 +147,6 @@ class LangBehavior extends Behavior
      * Возвращает связь с языковыми описаниями.
      *
      * @return ActiveQuery
-     * @noinspection PhpUnused
      */
     public function getLangs()
     {
@@ -234,7 +232,6 @@ class LangBehavior extends Behavior
      *
      * @param string|null $lang код языка, если не задан, то берется текущий из $app->language
      * @return ActiveQuery
-     * @noinspection PhpUnused
      */
     public function getLang(string $lang = null)
     {
@@ -259,7 +256,6 @@ class LangBehavior extends Behavior
      * @return bool
      * @throws Throwable
      * @throws StaleObjectException
-     * @noinspection PhpUnused
      */
     public function setLang(ActiveRecord $lang)
     {

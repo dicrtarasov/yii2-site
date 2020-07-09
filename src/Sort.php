@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:27:25
+ * @version 09.07.20 14:26:59
  */
 
 declare(strict_types = 1);
@@ -31,7 +31,6 @@ class Sort extends \yii\data\Sort
      *
      * @param bool $emptyIfDefault возвратить пустую строку если сортировка по-умолчанию
      * @return string текущую сортировку 'attr' или '-attr'
-     * @noinspection PhpUnused
      */
     public function getSort(bool $emptyIfDefault = false)
     {
@@ -65,7 +64,6 @@ class Sort extends \yii\data\Sort
      * Является ли текущая сортировка сортировкой по-умолчанию.
      *
      * @return bool
-     * @noinspection PhpUnused
      */
     public function getIsDefault()
     {

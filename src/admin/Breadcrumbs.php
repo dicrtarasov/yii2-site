@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:22:02
+ * @version 09.07.20 14:25:13
  */
 
 declare(strict_types = 1);
@@ -13,8 +13,6 @@ use yii\helpers\Html;
 
 /**
  * Хлебные крошки.
- *
- * @noinspection PhpUnused
  */
 class Breadcrumbs extends \yii\bootstrap4\Breadcrumbs
 {

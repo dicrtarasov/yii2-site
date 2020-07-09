@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:23:57
+ * @version 09.07.20 14:26:03
  */
 
 declare(strict_types = 1);
@@ -40,8 +40,6 @@ use function ob_implicit_flush;
  *
  * EditTabs::end(); // конец виджета
  * ```
- *
- * @noinspection PhpUnused
  */
 class EditTabs extends Nav
 {
@@ -163,7 +161,6 @@ class EditTabs extends Nav
      * @param string $id
      * @param bool $active
      * @param array $options
-     * @noinspection PhpUnused
      */
     public static function beginTab(string $id, bool $active = false, array $options = [])
     {
@@ -180,8 +177,6 @@ class EditTabs extends Nav
 
     /**
      * Закрывающий тег tab-pane
-     *
-     * @noinspection PhpUnused
      */
     public static function endTab()
     {

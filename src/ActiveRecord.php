@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:31:24
+ * @version 09.07.20 14:24:57
  */
 
 declare(strict_types = 1);
@@ -104,7 +104,6 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
      * @param string $formName
      * @return static[]
      * @throws InvalidConfigException
-     * @noinspection PhpUnused
      */
     public static function loadAll(array $currentModels, array $data, string $formName = null)
     {

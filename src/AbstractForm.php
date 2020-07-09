@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.07.20 02:37:35
+ * @version 09.07.20 14:24:49
  */
 
 declare(strict_types = 1);
@@ -35,8 +35,6 @@ use yii\web\UploadedFile;
  * @property null|MessageInterface $userMessage
  * @property null|string $userText
  * @property StoreFile[]|null|UploadedFile[] $userFiles
- *
- * @noinspection PhpUnused
  */
 abstract class AbstractForm extends Model
 {

@@ -43,6 +43,8 @@
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-asset.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-cache.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-file.git"},
+        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-helper.git"},
+        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-validate.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-widgets.git"},
         {"type": "composer", "url": "https://asset-packagist.org"}
     ]

@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:16:50
+ * @version 09.07.20 14:25:01
  */
 
 declare(strict_types = 1);
@@ -17,8 +17,6 @@ use yii\web\JqueryAsset;
 
 /**
  * Ресурсы админки.
- *
- * @noinspection PhpUnused
  */
 class AdminAsset extends AssetBundle
 {

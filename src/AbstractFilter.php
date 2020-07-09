@@ -3,12 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:29:26
- */
-
-/**
- * @author Igor A Tarasov <develop@dicr.org>
- * @version 05.04.20 15:43:50
+ * @version 09.07.20 14:24:49
  */
 
 declare(strict_types = 1);
@@ -29,7 +24,6 @@ use function is_array;
  * @property Sort $sort
  * @property Pagination $pagination
  * @property ActiveDataProvider $provider
- * @noinspection PhpUnused
  */
 abstract class AbstractFilter extends Model
 {
@@ -66,7 +60,6 @@ abstract class AbstractFilter extends Model
      * Устанавливает запрос.
      *
      * @param ActiveQuery $query
-     * @noinspection PhpUnused
      */
     public function setQuery(ActiveQuery $query)
     {
@@ -106,7 +99,6 @@ abstract class AbstractFilter extends Model
      *
      * @param Sort|array|false $sort
      * @throws InvalidConfigException
-     * @noinspection PhpUnused
      */
     public function setSort($sort)
     {
@@ -159,7 +151,6 @@ abstract class AbstractFilter extends Model
      *
      * @param Pagination|array|false $pagination
      * @throws InvalidConfigException
-     * @noinspection PhpUnused
      */
     public function setPagination($pagination)
     {
@@ -219,7 +210,6 @@ abstract class AbstractFilter extends Model
      *
      * @param ActiveDataProvider|array|false $provider
      * @throws InvalidConfigException
-     * @noinspection PhpUnused
      */
     public function setProvider($provider)
     {

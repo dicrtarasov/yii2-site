@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:41:21
+ * @version 09.07.20 14:26:45
  */
 
 declare(strict_types = 1);
@@ -18,8 +18,6 @@ use yii\bootstrap4\Nav;
 
 /**
  * Навигационная панель.
- *
- * @noinspection PhpUnused
  */
 class NavBar extends Widget
 {

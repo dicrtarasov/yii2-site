@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:23:17
+ * @version 09.07.20 14:25:51
  */
 
 declare(strict_types = 1);
@@ -24,8 +24,6 @@ use yii\helpers\Url;
 
 /**
  * Форма редактирования.
- *
- * @noinspection PhpUnused
  */
 class EditForm extends ActiveForm
 {
@@ -109,7 +107,6 @@ class EditForm extends ActiveForm
      * @param array $options
      * - string|bool $url - добавить URL к ID
      * @return string|ActiveField
-     * @noinspection PhpUnused
      */
     public function fieldId(ActiveRecord $model, array $options = [])
     {
@@ -142,7 +139,6 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return string|ActiveField
      * @throws InvalidConfigException
-     * @noinspection PhpUnused
      */
     public function fieldCreated(ActiveRecord $model, array $options = [])
     {
@@ -165,7 +161,6 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return string|ActiveField
      * @throws InvalidConfigException
-     * @noinspection PhpUnused
      */
     public function fieldUpdated(ActiveRecord $model, array $options = [])
     {
@@ -187,7 +182,6 @@ class EditForm extends ActiveForm
      * @param Model $model
      * @param array $options
      * @return string|ActiveField
-     * @noinspection PhpUnused
      */
     public function fieldDisabled(Model $model, array $options = [])
     {
@@ -203,7 +197,6 @@ class EditForm extends ActiveForm
      * @param Model $model
      * @param array $options
      * @return ActiveField
-     * @noinspection PhpUnused
      */
     public function fieldEnabled(Model $model, array $options = [])
     {
@@ -238,7 +231,6 @@ class EditForm extends ActiveForm
      * @param ActiveRecord $model
      * @param array $options
      * @return string|ActiveField
-     * @noinspection PhpUnused
      */
     public function fieldUrl(ActiveRecord $model, array $options = [])
     {
@@ -269,7 +261,6 @@ class EditForm extends ActiveForm
      * @param array $options field options
      * @return ActiveField
      * @throws Exception
-     * @noinspection PhpUnused
      */
     public function fieldText(Model $model, string $attribute, array $options = [])
     {
@@ -286,7 +277,6 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      * @throws Exception
-     * @noinspection PhpUnused
      */
     public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = [])
     {
@@ -308,7 +298,6 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      * @throws Exception
-     * @noinspection PhpUnused
      */
     public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = [])
     {
