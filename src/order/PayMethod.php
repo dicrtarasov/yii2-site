@@ -3,16 +3,11 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 06:23:31
- */
-
-/**
- * @author Igor A Tarasov <develop@dicr.org>
- * @version 06.07.20 12:02:35
+ * @version 09.07.20 06:34:20
  */
 
 declare(strict_types = 1);
-namespace dicr\site;
+namespace dicr\site\order;
 
 use Yii;
 use function array_merge;

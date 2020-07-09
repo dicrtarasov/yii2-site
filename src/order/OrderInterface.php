@@ -3,12 +3,11 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 06:31:26
+ * @version 09.07.20 06:35:14
  */
 
 declare(strict_types = 1);
-
-namespace dicr\site;
+namespace dicr\site\order;
 
 use yii\base\Model;
 
