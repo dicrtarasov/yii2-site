@@ -1,7 +1,7 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 04.07.20 13:51:48
+// @version 10.07.20 20:39:01
 
 html {
     @media (max-width: 319px) {
@@ -50,11 +50,13 @@ body {
 
 h1, .h1 {
     font-size: 2rem;
+    font-weight: bold;
     margin: 1rem 0;
 }
 
 h2, .h2 {
     font-size: 1.5rem;
+    font-weight: bold;
     margin: 0.5rem 0;
 }
 
