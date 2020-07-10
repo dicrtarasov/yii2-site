@@ -3,15 +3,15 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:25:51
+ * @version 10.07.20 19:10:57
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
+use dicr\helper\Html;
 use yii\base\Model;
 use yii\grid\DataColumn;
-use yii\helpers\Html;
 
 /**
  * Колонка-ссылка на редактирование объекта.

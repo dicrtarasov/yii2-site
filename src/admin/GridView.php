@@ -3,30 +3,30 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:26:27
+ * @version 10.07.20 19:02:55
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
-use Closure;
+use dicr\helper\Html;
 use yii\base\Arrayable;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
-use yii\helpers\Html;
 use function array_key_exists;
+use function is_callable;
 
 /**
  * GridView.
  */
 class GridView extends \yii\grid\GridView
 {
-    /** @var array */
+    /** @inheritDoc */
     public $tableOptions = [
         'class' => 'table table-sm table-striped'
     ];
 
-    /** @var string */
+    /** @inheritDoc */
     public $layout = '{summary}<div class="table-responsive">{items}</div>{pager}';
 
     /** @var string аттрибут обозначающий отключенную запись */
@@ -87,7 +87,7 @@ class GridView extends \yii\grid\GridView
         $options = $this->_origRowOptions;
 
         // если опции в виде Closure, то получаем значение
-        if ($options instanceof Closure) {
+        if (is_callable($options)) {
             $options = $options($model, $key, $index, $grid);
         }
 

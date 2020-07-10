@@ -3,9 +3,8 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:18:07
+ * @version 10.07.20 19:00:56
  */
-
 declare(strict_types = 1);
 namespace dicr\site\admin;
 

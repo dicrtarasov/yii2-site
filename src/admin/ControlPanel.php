@@ -3,16 +3,16 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:25:21
+ * @version 10.07.20 19:00:34
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
+use dicr\helper\ArrayHelper;
+use dicr\helper\Html;
 use dicr\widgets\Widget;
 use yii\base\InvalidConfigException;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 
 /**
  * Панель управления для панели навигации.

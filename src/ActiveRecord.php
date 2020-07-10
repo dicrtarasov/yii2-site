@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:24:57
+ * @version 10.07.20 19:06:16
  */
 
 declare(strict_types = 1);
@@ -25,25 +25,18 @@ use function call_user_func;
 abstract class ActiveRecord extends \yii\db\ActiveRecord
 {
     /**
-     * {@inheritDoc}
-     * @see \yii\base\Component::behaviors()
+     * @inheritDoc
      */
     public function behaviors()
     {
         return array_merge(parent::behaviors(), [
-            'cache' => [
-                'class' => CacheBehavior::class,
-            ],
-
-            'upsert' => [
-                'class' => UpsertBehavior::class
-            ]
+            'cache' => CacheBehavior::class,
+            'upsert' => UpsertBehavior::class
         ]);
     }
 
     /**
-     * {@inheritDoc}
-     * @see \yii\db\ActiveRecord::updateAll($attributes, $condition, $params)
+     * @inheritDoc
      */
     public static function updateAll($attributes, $condition = '', $params = [])
     {
@@ -52,8 +45,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
-     * @see \yii\db\ActiveRecord::updateAllCounters($counters, $condition, $params)
+     * @inheritdoc
      */
     public static function updateAllCounters($counters, $condition = '', $params = [])
     {
@@ -62,8 +54,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
-     * @see \yii\db\ActiveRecord::deleteAll($condition, $params)
+     * @inheritdoc
      */
     public static function deleteAll($condition = null, $params = [])
     {

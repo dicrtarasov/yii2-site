@@ -3,11 +3,10 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:26:40
+ * @version 10.07.20 19:07:34
  */
 
 declare(strict_types = 1);
-
 namespace dicr\site;
 
 use dicr\helper\ArrayHelper;
@@ -89,9 +88,8 @@ class LangBehavior extends Behavior
     public $inverseOf;
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      * @throws InvalidConfigException
-     * @see \yii\base\BaseObject::init()
      */
     public function init()
     {
@@ -111,8 +109,7 @@ class LangBehavior extends Behavior
     }
 
     /**
-     * {@inheritDoc}
-     * @see \yii\base\Behavior::attach()
+     * @inheritDoc
      */
     public function attach($owner)
     {

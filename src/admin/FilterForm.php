@@ -3,17 +3,17 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:26:12
+ * @version 10.07.20 19:10:57
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
+use dicr\helper\Html;
 use Yii;
 use yii\base\Model;
 use yii\bootstrap4\ActiveField;
 use yii\bootstrap4\ActiveForm;
-use yii\helpers\Html;
 
 /**
  * Форма фильтра данных.

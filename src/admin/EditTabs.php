@@ -3,14 +3,14 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:26:03
+ * @version 10.07.20 19:10:57
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
+use dicr\helper\Html;
 use yii\bootstrap4\Nav;
-use yii\helpers\Html;
 use function is_string;
 use function ob_get_clean;
 use function ob_implicit_flush;

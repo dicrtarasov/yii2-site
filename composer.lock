@@ -32,7 +32,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -373,16 +373,16 @@
         },
         {
             "name": "dicr/yii2-validate",
-            "version": "2.0.9",
+            "version": "2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-validate.git",
-                "reference": "2e578103b6ca1d8b5f83d695654012e8a4351b83"
+                "reference": "003b142a8a881ab26faa36c5450c785e77db1aa1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=2e578103b6ca1d8b5f83d695654012e8a4351b83",
-                "reference": "2e578103b6ca1d8b5f83d695654012e8a4351b83",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=003b142a8a881ab26faa36c5450c785e77db1aa1",
+                "reference": "003b142a8a881ab26faa36c5450c785e77db1aa1",
                 "shasum": ""
             },
             "require": {
@@ -426,7 +426,7 @@
                 "source": "https://gitlab.com/dicr/yii2-validate.git",
                 "issues": "https://gitlab.com/api/v4/projects/9711109/issues"
             },
-            "time": "2020-07-09T14:20:07+05:00"
+            "time": "2020-07-09T14:30:19+05:00"
         },
         {
             "name": "dicr/yii2-widgets",

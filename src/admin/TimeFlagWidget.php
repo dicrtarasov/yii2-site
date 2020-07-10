@@ -3,16 +3,16 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:03:14
+ * @version 10.07.20 19:04:38
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
+use dicr\helper\Html;
 use dicr\widgets\InputWidget;
 use Yii;
 use yii\base\InvalidConfigException;
-use yii\helpers\Html;
 use function date;
 
 /**

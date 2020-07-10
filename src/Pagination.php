@@ -3,11 +3,10 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:26:54
+ * @version 10.07.20 18:55:17
  */
 
 declare(strict_types = 1);
-
 namespace dicr\site;
 
 /**
@@ -22,11 +21,13 @@ class Pagination extends \yii\data\Pagination
     /** @inheritDoc */
     public $pageSizeParam = 'limit';
 
-    /** @var int[] */
+    /** @inheritDoc */
     public $pageSizeLimit = [1, 100];
 
+    /** @inheritDoc */
     public $validatePage = false;
 
+    /** @inheritDoc */
     public $forcePageParam = false;
 
     /**

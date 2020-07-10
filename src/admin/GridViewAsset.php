@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:20:05
+ * @version 10.07.20 19:03:52
  */
 
 declare(strict_types = 1);
@@ -16,15 +16,15 @@ use yii\web\AssetBundle;
  */
 class GridViewAsset extends AssetBundle
 {
-    /** @var string */
+    /** @inheritDoc */
     public $sourcePath = __DIR__ . '/assets/grid-view';
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $css = [
         'style.css'
     ];
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $depends = [
         AdminAsset::class,
         \yii\grid\GridViewAsset::class,

@@ -3,29 +3,29 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:37:50
+ * @version 10.07.20 18:59:14
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
-use yii\helpers\Html;
+use dicr\helper\Html;
 
 /**
- * LinkPager.
+ * LinkPager
  */
 class LinkPager extends \yii\bootstrap4\LinkPager
 {
-    /** @var bool|string */
+    /** @inheritDoc */
     public $firstPageLabel = '<i class="fas fa-angle-double-left"></i>';
 
-    /** @var string|bool */
+    /** @inheritDoc */
     public $prevPageLabel = '<i class="fas fa-angle-left"></i>';
 
-    /** @var string|bool */
+    /** @inheritDoc */
     public $nextPageLabel = '<i class="fas fa-angle-right"></i>';
 
-    /** @var bool|string */
+    /** @inheritDoc */
     public $lastPageLabel = '<i class="fas fa-angle-double-right"></i>';
 
     /**
@@ -45,6 +45,6 @@ class LinkPager extends \yii\bootstrap4\LinkPager
     {
         LinkPagerAsset::register($this->view);
 
-        parent::run();
+        return parent::run();
     }
 }

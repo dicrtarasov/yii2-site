@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:26:45
+ * @version 10.07.20 19:01:37
  */
 
 declare(strict_types = 1);
@@ -35,7 +35,7 @@ class NavBar extends Widget
      *
      * - tag: string, defaults to "div", the name of the container tag.
      *
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $collapseOptions = [];
 
@@ -55,7 +55,7 @@ class NavBar extends Widget
 
     /**
      * @var array|string|bool $url the URL for the brand's hyperlink tag. This parameter will be processed by
-     *     [[\yii\helpers\Url::to()]] and will be used for the "href" attribute of the brand link. Default value is
+     *     [[\dicr\helper\Url::to()]] and will be used for the "href" attribute of the brand link. Default value is
      *     false that means
      * [[\yii\web\Application::homeUrl]] will be used.
      * You may set it to `null` if you want to have no link at all.
@@ -64,7 +64,7 @@ class NavBar extends Widget
 
     /**
      * @var array the HTML attributes of the brand link.
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $brandOptions = [];
 
@@ -76,7 +76,7 @@ class NavBar extends Widget
 
     /**
      * @var array the HTML attributes of the navbar toggler button.
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $togglerOptions = [];
 
@@ -88,7 +88,7 @@ class NavBar extends Widget
 
     /**
      * @var array the HTML attributes of the inner container.
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $innerContainerOptions = [];
 

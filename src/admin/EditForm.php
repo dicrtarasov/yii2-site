@@ -3,13 +3,16 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:25:51
+ * @version 10.07.20 19:01:37
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
 use dicr\file\FileInputWidget;
+use dicr\helper\ArrayHelper;
+use dicr\helper\Html;
+use dicr\helper\Url;
 use dicr\widgets\RedactorWidget;
 use Exception;
 use Yii;
@@ -18,9 +21,6 @@ use yii\base\Model;
 use yii\bootstrap4\ActiveField;
 use yii\bootstrap4\ActiveForm;
 use yii\db\ActiveRecord;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
-use yii\helpers\Url;
 
 /**
  * Форма редактирования.

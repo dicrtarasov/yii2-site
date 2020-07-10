@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:28:02
+ * @version 10.07.20 19:08:15
  */
 
 declare(strict_types = 1);
@@ -29,8 +29,7 @@ use function call_user_func;
 class UpsertBehavior extends Behavior
 {
     /**
-     * {@inheritDoc}
-     * @see \yii\base\Behavior::attach()
+     * @inheritDoc
      */
     public function attach($owner)
     {
