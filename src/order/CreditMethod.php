@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:56:43
+ * @version 11.07.20 10:25:03
  */
 
 declare(strict_types = 1);
@@ -80,6 +80,14 @@ abstract class CreditMethod extends PayMethod
             parent::extraFields(),
             array_combine($extraFields, $extraFields)
         );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function isCredit()
+    {
+        return true;
     }
 
     /**

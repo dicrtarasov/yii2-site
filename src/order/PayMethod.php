@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:56:56
+ * @version 11.07.20 10:26:44
  */
 
 declare(strict_types = 1);
@@ -11,7 +11,6 @@ namespace dicr\site\order;
 
 use Yii;
 use function array_merge;
-use function is_a;
 
 /**
  * Метод оплаты.
@@ -47,7 +46,7 @@ abstract class PayMethod extends AbstractMethod
      */
     public static function isCredit()
     {
-        return is_a(static::class, CreditMethod::class, true);
+        return false;
     }
 
     /**
