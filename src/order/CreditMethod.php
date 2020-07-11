@@ -3,12 +3,14 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 12:58:36
+ * @version 11.07.20 15:26:47
  */
 
 declare(strict_types = 1);
 namespace dicr\site\order;
 
+use dicr\helper\Html;
+use dicr\helper\Inflector;
 use Yii;
 use yii\base\InvalidArgumentException;
 use function array_combine;
@@ -273,6 +275,22 @@ abstract class CreditMethod extends PayMethod
     public static function cleanCredit()
     {
         Yii::$app->session->remove(__CLASS__);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function toText()
+    {
+        $data = parent::toText();
+
+        if ($this->term > 0) {
+            $data[Yii::t('app', 'Срок рассрочки')] = Html::esc(
+                $this->term . ' ' . Inflector::numMonthes($this->term)
+            );
+        }
+
+        return $data;
     }
 
     /**
