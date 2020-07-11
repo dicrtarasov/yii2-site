@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:56:35
+ * @version 11.07.20 15:00:17
  */
 
 declare(strict_types = 1);
@@ -329,7 +329,12 @@ abstract class AbstractMethod extends Model
     {
         $data = [];
 
-        foreach ($this->attributes as $name => $val) {
+        $attributes = $this->attributes;
+        if (empty($this->tax)) {
+            $attributes['tax'] = '';
+        }
+
+        foreach ($attributes as $name => $val) {
             $data[Html::esc($this->getAttributeLabel($name))] = Html::esc((string)$val);
         }
 
