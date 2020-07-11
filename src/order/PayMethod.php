@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 06:34:20
+ * @version 11.07.20 09:56:56
  */
 
 declare(strict_types = 1);
@@ -27,7 +27,7 @@ abstract class PayMethod extends AbstractMethod
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
-            'payDate' => 'Дата оплаты'
+            'payDate' => Yii::t('dicr/site', 'Дата оплаты')
         ]);
     }
 
@@ -56,7 +56,7 @@ abstract class PayMethod extends AbstractMethod
     public function toText()
     {
         return array_merge([
-            Yii::t('app', 'Способ оплаты') => static::name()
+            Yii::t('dicr/site', 'Способ оплаты') => static::name()
         ], parent::toText());
     }
 }

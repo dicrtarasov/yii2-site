@@ -21,6 +21,9 @@
             "dicr\\site\\": "src/"
         }
     },
+    "extra": {
+        "bootstrap": "dicr\\site\\Bootstrap"
+    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {

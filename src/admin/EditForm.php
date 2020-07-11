@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:01:37
+ * @version 11.07.20 09:53:54
  */
 
 declare(strict_types = 1);
@@ -27,13 +27,13 @@ use yii\db\ActiveRecord;
  */
 class EditForm extends ActiveForm
 {
-    /** @var string */
+    /** @inheritDoc */
     public $layout = 'horizontal';
 
-    /** @var bool */
+    /** @inheritDoc */
     public $enableAjaxValidation = true;
 
-    /** @var array */
+    /** @inheritDoc */
     public $fieldConfig = [
         'horizontalCssClasses' => [
             'label' => ['col-sm-3', 'col-xl-2'],

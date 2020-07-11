@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:19:20
+ * @version 11.07.20 09:54:25
  */
 
 declare(strict_types = 1);
@@ -16,20 +16,20 @@ use yii\web\AssetBundle;
  */
 class EditTabsAsset extends AssetBundle
 {
-    /** @var string */
+    /** @inheritDoc */
     public $sourcePath = __DIR__ . '/assets/edit-tabs';
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $css = [
         'style.css'
     ];
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $js = [
         'script.js'
     ];
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $depends = [
         AdminAsset::class
     ];

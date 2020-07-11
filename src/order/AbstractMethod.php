@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 06:33:45
+ * @version 11.07.20 09:56:35
  */
 
 declare(strict_types = 1);
@@ -67,7 +67,7 @@ abstract class AbstractMethod extends Model
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
-            'tax' => Yii::t('app', 'Комиссия')
+            'tax' => Yii::t('dicr/site', 'Комиссия')
         ]);
     }
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a29da6470831623eaee1fa40861d1c4",
+    "content-hash": "b49288f747344a08db3fd557845f7827",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -246,16 +246,16 @@
         },
         {
             "name": "dicr/yii2-file",
-            "version": "4.0.13",
+            "version": "4.0.14",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-file.git",
-                "reference": "0c51cf822b55753dd6a504172a5ba5e2c3e04db8"
+                "reference": "e8ddade56415e0b7af62d1fa546acd7f961a25e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=0c51cf822b55753dd6a504172a5ba5e2c3e04db8",
-                "reference": "0c51cf822b55753dd6a504172a5ba5e2c3e04db8",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=e8ddade56415e0b7af62d1fa546acd7f961a25e3",
+                "reference": "e8ddade56415e0b7af62d1fa546acd7f961a25e3",
                 "shasum": ""
             },
             "require": {
@@ -282,6 +282,9 @@
                 "league/flysystem": "for FlysystemFileStore"
             },
             "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "dicr\\file\\Bootstrap"
+            },
             "autoload": {
                 "psr-4": {
                     "dicr\\file\\": "src/",
@@ -316,7 +319,7 @@
                 "source": "https://gitlab.com/dicr/yii2-file.git",
                 "issues": "https://gitlab.com/api/v4/projects/9710563/issues"
             },
-            "time": "2020-07-04T13:14:55+05:00"
+            "time": "2020-07-11T09:42:25+05:00"
         },
         {
             "name": "dicr/yii2-helper",
@@ -804,12 +807,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "239e50ae0e1906d32b32ed58bc7d15c81bfc06f0"
+                "reference": "f4600041afebb27f696b9e9cb84904d2028a556d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/239e50ae0e1906d32b32ed58bc7d15c81bfc06f0",
-                "reference": "239e50ae0e1906d32b32ed58bc7d15c81bfc06f0",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/f4600041afebb27f696b9e9cb84904d2028a556d",
+                "reference": "f4600041afebb27f696b9e9cb84904d2028a556d",
                 "shasum": ""
             },
             "conflict": {
@@ -1083,7 +1086,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-06T15:00:46+00:00"
+            "time": "2020-07-10T19:06:45+00:00"
         }
     ],
     "aliases": [],

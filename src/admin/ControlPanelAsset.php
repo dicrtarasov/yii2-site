@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:00:56
+ * @version 11.07.20 09:53:44
  */
 declare(strict_types = 1);
 namespace dicr\site\admin;
@@ -15,15 +15,15 @@ use yii\web\AssetBundle;
  */
 class ControlPanelAsset extends AssetBundle
 {
-    /** @var string */
+    /** @inheritDoc */
     public $sourcePath = __DIR__ . '/assets/control-panel';
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $css = [
         'style.css'
     ];
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $depends = [
         AdminAsset::class
     ];

@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:10:57
+ * @version 11.07.20 09:54:50
  */
 
 declare(strict_types = 1);
@@ -17,12 +17,12 @@ use yii\grid\DataColumn;
  */
 class FlagColumn extends DataColumn
 {
-    /** @var array */
+    /** @inheritDoc */
     public $headerOptions = [
         'class' => 'text-center'
     ];
 
-    /** @var array */
+    /** @inheritDoc */
     public $contentOptions = [
         'class' => 'text-center'
     ];

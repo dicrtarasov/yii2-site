@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 18:58:13
+ * @version 11.07.20 09:53:19
  */
 
 declare(strict_types = 1);
@@ -16,7 +16,7 @@ use dicr\helper\Html;
  */
 class Breadcrumbs extends \yii\bootstrap4\Breadcrumbs
 {
-    /** @var array */
+    /** @inheritDoc */
     public $homeLink = [
         'label' => 'Главная',
         'url' => ['default/index'],

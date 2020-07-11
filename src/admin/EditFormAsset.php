@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.07.20 13:18:34
+ * @version 11.07.20 09:54:13
  */
 
 declare(strict_types = 1);
@@ -18,15 +18,15 @@ use yii\widgets\ActiveFormAsset;
  */
 class EditFormAsset extends AssetBundle
 {
-    /** @var string */
+    /** @inheritDoc */
     public $sourcePath = __DIR__ . '/assets/edit-form';
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $css = [
         'style.css'
     ];
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $depends = [
         AdminAsset::class,
         ToastsAsset::class,

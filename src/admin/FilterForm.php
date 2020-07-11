@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:10:57
+ * @version 11.07.20 09:54:35
  */
 
 declare(strict_types = 1);
@@ -20,7 +20,7 @@ use yii\bootstrap4\ActiveForm;
  */
 class FilterForm extends ActiveForm
 {
-    /** @var string */
+    /** @inheritDoc */
     public $method = 'get';
 
     /**

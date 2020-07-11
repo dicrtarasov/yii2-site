@@ -3,11 +3,14 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 07:54:17
+ * @version 11.07.20 09:57:01
  */
 
 declare(strict_types = 1);
 namespace dicr\site\order;
+
+use Yii;
+use function array_merge;
 
 /**
  * Метод доставки.
@@ -22,5 +25,15 @@ abstract class ShipMethod extends AbstractMethod
     public static function isDelivery()
     {
         return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function toText()
+    {
+        return array_merge([
+            Yii::t('dicr/site', 'Способ доставки') => static::name()
+        ], parent::toText());
     }
 }

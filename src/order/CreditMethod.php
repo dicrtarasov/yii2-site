@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 07:41:18
+ * @version 11.07.20 09:56:43
  */
 
 declare(strict_types = 1);
@@ -46,7 +46,7 @@ abstract class CreditMethod extends PayMethod
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
-            'term' => Yii::t('app', 'Срок рассрочки')
+            'term' => Yii::t('dicr/site', 'Срок рассрочки')
         ]);
     }
 

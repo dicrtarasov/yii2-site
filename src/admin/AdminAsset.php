@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:25:01
+ * @version 11.07.20 09:52:55
  */
 
 declare(strict_types = 1);
@@ -20,15 +20,15 @@ use yii\web\JqueryAsset;
  */
 class AdminAsset extends AssetBundle
 {
-    /** @var string */
+    /** @inheritDoc */
     public $sourcePath = __DIR__ . '/assets/admin';
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $css = [
         'style.css'
     ];
 
-    /** @var string[] */
+    /** @inheritDoc */
     public $depends = [
         JqueryAsset::class,
         BootstrapAsset::class,
