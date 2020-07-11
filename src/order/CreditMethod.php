@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 15:26:47
+ * @version 11.07.20 15:33:35
  */
 
 declare(strict_types = 1);
@@ -283,6 +283,7 @@ abstract class CreditMethod extends PayMethod
     public function toText()
     {
         $data = parent::toText();
+        unset($data[$this->getAttributeLabel('term')]);
 
         if ($this->term > 0) {
             $data[Yii::t('app', 'Срок рассрочки')] = Html::esc(
