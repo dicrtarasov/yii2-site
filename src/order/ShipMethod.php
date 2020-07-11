@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:57:01
+ * @version 11.07.20 13:25:58
  */
 
 declare(strict_types = 1);
@@ -17,6 +17,14 @@ use function array_merge;
  */
 abstract class ShipMethod extends AbstractMethod
 {
+    /**
+     * @inheritDoc
+     */
+    public static function classes()
+    {
+        return (array)(Yii::$app->params['order']['ship']['classes'] ?? []);
+    }
+
     /**
      * Метод доставляет товары (не самовывоз).
      *

@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 10:26:44
+ * @version 11.07.20 13:25:38
  */
 
 declare(strict_types = 1);
@@ -39,6 +39,14 @@ abstract class PayMethod extends AbstractMethod
             ['payDate', 'default'],
             ['payDate', 'date', 'format' => 'php:Y-m-d H:i:s']
         ]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function classes()
+    {
+        return (array)(Yii::$app->params['order']['pay']['classes'] ?? []);
     }
 
     /**
