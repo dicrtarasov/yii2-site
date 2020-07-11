@@ -3,13 +3,14 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 10:25:03
+ * @version 11.07.20 12:58:36
  */
 
 declare(strict_types = 1);
 namespace dicr\site\order;
 
 use Yii;
+use yii\base\InvalidArgumentException;
 use function array_combine;
 use function array_filter;
 use function array_merge;
@@ -17,8 +18,9 @@ use function array_merge;
 /**
  * Модель кредитования.
  *
- * @property-read int $minTerm минимальный срок, мес
- * @property-read int $maxTerm максимальный срок, мес (-1 - без ограничений, 0 - способ не применим)
+ * @property-read int $minTerm минимальный срок банка, мес
+ * @property-read int $maxTerm максимальный срок банка, мес (-1 - без ограничений, 0 - способ не применим)
+ * @property int $termLimit ограничение срока рассрочки (по бренду товара или другим условиям сайта)
  * @property-read int $gracePeriod льготный период, мес
  * @property-read int $downPayment первый взнос, грн
  * @property-read int $monthlyCharge ежемесячный платеж, грн
@@ -80,6 +82,37 @@ abstract class CreditMethod extends PayMethod
             parent::extraFields(),
             array_combine($extraFields, $extraFields)
         );
+    }
+
+    /** @var int */
+    private $_termLimit;
+
+    /**
+     * Ограничение лимита брендами товаров.
+     *
+     * @return int
+     */
+    public function getTermLimit()
+    {
+        if (! isset($this->_termLimit)) {
+            $this->_termLimit = - 1;
+        }
+
+        return $this->_termLimit;
+    }
+
+    /**
+     * Устанавливает ограничение
+     *
+     * @param int $limit
+     */
+    public function setTermLimit(int $limit)
+    {
+        if ($limit < 0) {
+            throw new InvalidArgumentException('limit');
+        }
+
+        $this->_termLimit = $limit;
     }
 
     /**
