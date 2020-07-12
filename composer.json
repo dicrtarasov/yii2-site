@@ -30,7 +30,7 @@
         "php": "~7.2",
         "ext-intl": "*",
         "ext-mbstring": "*",
-        "yiisoft/yii2": "2.*",
+        "yiisoft/yii2": "~2.0",
         "yiisoft/yii2-bootstrap4": "~2.0",
         "dicr/yii2-asset": "~1.5",
         "dicr/yii2-cache": "~2.0",
