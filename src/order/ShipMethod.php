@@ -3,12 +3,13 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 13:25:58
+ * @version 13.07.20 02:12:14
  */
 
 declare(strict_types = 1);
 namespace dicr\site\order;
 
+use dicr\helper\Html;
 use Yii;
 use function array_merge;
 
@@ -41,7 +42,7 @@ abstract class ShipMethod extends AbstractMethod
     public function toText()
     {
         return array_merge([
-            Yii::t('dicr/site', 'Способ доставки') => static::name()
+            Html::esc(Yii::t('dicr/site', 'Способ доставки')) => static::name()
         ], parent::toText());
     }
 }

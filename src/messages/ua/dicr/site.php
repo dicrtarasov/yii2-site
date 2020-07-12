@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:59:25
+ * @version 13.07.20 02:09:26
  */
 
 /** @noinspection SpellCheckingInspection */
@@ -13,6 +13,6 @@ return [
     'Комиссия' => 'Комісія',
     'Способ оплаты' => 'Спосіб оплати',
     'Дата оплаты' => 'Дата оплати',
-    'Срок рассрочки' => 'Термін розстрочки',
+    'Срок рассрочки, мес' => 'Термін розстрочки, міс',
     'Способ доставки' => 'Спосіб доставки'
 ];

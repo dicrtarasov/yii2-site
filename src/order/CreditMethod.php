@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 15:33:35
+ * @version 13.07.20 02:14:55
  */
 
 declare(strict_types = 1);
@@ -50,7 +50,7 @@ abstract class CreditMethod extends PayMethod
     public function attributeLabels()
     {
         return array_merge(parent::attributeLabels(), [
-            'term' => Yii::t('dicr/site', 'Срок рассрочки')
+            'term' => Yii::t('dicr/site', 'Срок рассрочки, мес')
         ]);
     }
 
@@ -282,16 +282,10 @@ abstract class CreditMethod extends PayMethod
      */
     public function toText()
     {
-        $data = parent::toText();
-        unset($data[$this->getAttributeLabel('term')]);
-
-        if ($this->term > 0) {
-            $data[Yii::t('app', 'Срок рассрочки')] = Html::esc(
-                $this->term . ' ' . Inflector::numMonthes($this->term)
-            );
-        }
-
-        return $data;
+        return array_merge(parent::toText(), [
+            Html::esc($this->getAttributeLabel('term')) => $this->term < 1 ? null :
+                Html::esc($this->term . ' ' . Inflector::numMonthes($this->term))
+        ]);
     }
 
     /**
