@@ -130,7 +130,7 @@ abstract class CreditMethod extends PayMethod
      */
     public static function classes()
     {
-        return array_filter(static::classes(), static function(string $class) {
+        return array_filter(parent::classes(), static function(string $class) {
             /** @var PayMethod $class */
             return $class::isCredit();
         });
