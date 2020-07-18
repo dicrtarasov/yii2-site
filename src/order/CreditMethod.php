@@ -184,7 +184,7 @@ abstract class CreditMethod extends PayMethod
      */
     public function getMinTerm()
     {
-        return 0;
+        return 1;
     }
 
     /**
