@@ -26,7 +26,7 @@ use function strtolower;
  *
  * @property CheckoutInterface|null $checkout форма оформления заказа
  * @property OrderInterface|null $order оформленный заказ
- * @property-read float $sum сумма товаров
+ * @property float $sum сумма товаров
  * @property-read float $minSum минимальная приемлемая сумма товаров
  * @property-read float $maxSum максимально приемлемая для метода сумма товаров (-1 - нет ограничений, 0 - метод не
  *     приемлем)
@@ -94,6 +94,9 @@ abstract class AbstractMethod extends Model
         return strtolower(str_replace('\\', '-', static::class));
     }
 
+    /** @var float */
+    private $_sum;
+
     /**
      * Сумма товаров.
      *
@@ -101,15 +104,29 @@ abstract class AbstractMethod extends Model
      */
     public function getSum()
     {
-        if (! empty($this->checkout)) {
-            return $this->checkout->getSum();
+        if (! isset($this->_sum)) {
+            if (! empty($this->checkout)) {
+                $this->_sum = $this->checkout->getSum();
+            } elseif (! empty($this->order)) {
+                $this->_sum = $this->order->getSum();
+            }
         }
 
-        if (! empty($this->order)) {
-            return $this->order->getSum();
+        return $this->_sum ?: 0;
+    }
+
+    /**
+     * Установить сумму.
+     *
+     * @param float $sum
+     */
+    public function setSum(float $sum)
+    {
+        if ($sum < 0) {
+            throw new InvalidArgumentException('sum');
         }
 
-        return 0;
+        $this->_sum = $sum;
     }
 
     /**
