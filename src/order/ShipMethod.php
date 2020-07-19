@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 13.07.20 02:12:14
+ * @version 20.07.20 02:43:19
  */
 
 declare(strict_types = 1);
@@ -15,6 +15,8 @@ use function array_merge;
 
 /**
  * Метод доставки.
+ *
+ * @property-read string $address адрес доставки
  */
 abstract class ShipMethod extends AbstractMethod
 {
@@ -34,6 +36,17 @@ abstract class ShipMethod extends AbstractMethod
     public static function isDelivery()
     {
         return true;
+    }
+
+    /**
+     * Адрес доставки в читабельной форме.
+     *
+     * @return string
+     * @noinspection PhpMethodMayBeStaticInspection
+     */
+    public function getAddress()
+    {
+        return '';
     }
 
     /**
