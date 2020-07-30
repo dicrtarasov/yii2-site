@@ -32,12 +32,12 @@
         "ext-mbstring": "*",
         "yiisoft/yii2": "~2.0",
         "yiisoft/yii2-bootstrap4": "~2.0",
-        "dicr/yii2-asset": "~1.5",
+        "dicr/yii2-asset": "~1.6",
         "dicr/yii2-cache": "~2.0",
         "dicr/yii2-file": "~4.0",
-        "dicr/yii2-helper": "~3.0",
+        "dicr/yii2-helper": "~3.3",
         "dicr/yii2-validate": "~2.0",
-        "dicr/yii2-widgets": "~1.6"
+        "dicr/yii2-widgets": "~1.7"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"
