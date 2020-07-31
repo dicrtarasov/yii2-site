@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 30.07.20 20:44:31
+ * @version 31.07.20 18:40:33
  */
 
 declare(strict_types = 1);
@@ -114,7 +114,7 @@ class EditForm extends ActiveForm
             return '';
         }
 
-        $url = ArrayHelper::remove($options, 'url', true);
+        $url = ArrayHelper::remove($options, 'url', false);
         if (! empty($url)) {
             if ($url === true) {
                 $url = $model->{'url'};
