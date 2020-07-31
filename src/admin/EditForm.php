@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 31.07.20 18:47:27
+ * @version 31.07.20 18:59:19
  */
 
 declare(strict_types = 1);
@@ -21,6 +21,8 @@ use yii\base\Model;
 use yii\bootstrap4\ActiveField;
 use yii\bootstrap4\ActiveForm;
 use yii\db\ActiveRecord;
+use function array_merge;
+use function date;
 
 /**
  * Форма редактирования.
@@ -117,18 +119,18 @@ class EditForm extends ActiveForm
         $url = ArrayHelper::remove($options, 'url', true);
         if ($url === true) {
             $url = $model->{'href'} ?? ($model->{'url'} ?? null);
+            if (! empty($url)) {
+                $url = Url::to($url, true);
+            }
         }
 
         if (! empty($url)) {
             $options['inputOptions'] = array_merge([
                 'target' => '_blank',
-                'title' => 'Адрес страницы'
+                'title' => 'Страница: ' . $url
             ], $options['inputOptions'] ?? []);
 
-            $html = Html::a(
-                Html::encode($model->{'id'} . ' : ' . $url),
-                $url, $options['inputOptions']
-            );
+            $html = Html::a(Html::encode($model->{'id'}), $url, $options['inputOptions']);
 
             return $this->fieldHtml($model, 'id', $html, $options);
         }
