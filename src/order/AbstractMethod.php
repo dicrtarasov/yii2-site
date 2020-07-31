@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 15:00:17
+ * @version 31.07.20 08:16:57
  */
 
 declare(strict_types = 1);
@@ -33,6 +33,7 @@ use function strtolower;
  * @property-read bool $isAvailable метод приемлем для заданной суммы и товаров
  * @property float $tax комиссия метода оплаты или доставки
  * @property-read array $config конфиг объекта для сохранения в JSON
+ * @property-read string $class класс метода
  */
 abstract class AbstractMethod extends Model
 {
@@ -92,6 +93,17 @@ abstract class AbstractMethod extends Model
     public static function id()
     {
         return strtolower(str_replace('\\', '-', static::class));
+    }
+
+    /**
+     * Класс метода.
+     *
+     * @return string
+     * @noinspection PhpMethodMayBeStaticInspection
+     */
+    public function getClass()
+    {
+        return static::class;
     }
 
     /** @var float */
