@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 31.07.20 18:40:33
+ * @version 31.07.20 18:47:27
  */
 
 declare(strict_types = 1);
@@ -114,17 +114,21 @@ class EditForm extends ActiveForm
             return '';
         }
 
-        $url = ArrayHelper::remove($options, 'url', false);
-        if (! empty($url)) {
-            if ($url === true) {
-                $url = $model->{'url'};
-            }
+        $url = ArrayHelper::remove($options, 'url', true);
+        if ($url === true) {
+            $url = $model->{'href'} ?? ($model->{'url'} ?? null);
+        }
 
+        if (! empty($url)) {
             $options['inputOptions'] = array_merge([
-                'target' => '_blank'
+                'target' => '_blank',
+                'title' => 'Адрес страницы'
             ], $options['inputOptions'] ?? []);
 
-            $html = Html::a(Html::encode($model->{'id'}), $url, $options['inputOptions']);
+            $html = Html::a(
+                Html::encode($model->{'id'} . ' : ' . $url),
+                $url, $options['inputOptions']
+            );
 
             return $this->fieldHtml($model, 'id', $html, $options);
         }
