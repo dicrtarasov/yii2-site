@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:08:15
+ * @version 01.08.20 13:50:50
  */
 
 declare(strict_types = 1);
@@ -56,8 +56,7 @@ class UpsertBehavior extends Behavior
             $this->owner->setIsNewRecord(false);
 
             if (! $this->owner->validate($attributes)) {
-                Yii::info('Model not inserted due to validation error.', __METHOD__);
-
+                Yii::warning('Model not inserted due to validation error.', __METHOD__);
                 return false;
             }
         }

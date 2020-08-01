@@ -33,7 +33,6 @@
       <path value="$PROJECT_DIR$/vendor/bower-asset/inputmask" />
       <path value="$PROJECT_DIR$/vendor/dicr/yii2-helper" />
       <path value="$PROJECT_DIR$/vendor/dicr/yii2-widgets" />
-      <path value="$PROJECT_DIR$/vendor/dicr/yii2-cache" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

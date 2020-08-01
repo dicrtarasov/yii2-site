@@ -12,7 +12,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/cebe/markdown" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dicr/yii2-asset" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/dicr/yii2-cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dicr/yii2-file" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dicr/yii2-helper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dicr/yii2-validate" />
