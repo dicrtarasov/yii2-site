@@ -3,12 +3,13 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 00:24:32
+ * @version 07.08.20 00:30:26
  */
 
 declare(strict_types = 1);
 namespace dicr\site;
 
+use dicr\helper\Url;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
@@ -245,8 +246,6 @@ abstract class AbstractFilter extends Model
      */
     public function params() : array
     {
-        return array_filter($this->attributes, function($val) {
-            return $val !== null && $val !== '' && $val !== [];
-        });
+        return Url::filterQuery($this->attributes);
     }
 }
