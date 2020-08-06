@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 00:30:26
+ * @version 07.08.20 02:01:37
  */
 
 declare(strict_types = 1);
@@ -80,21 +80,21 @@ abstract class AbstractFilter extends Model
         return new Sort($config);
     }
 
-    /** @var Sort */
+    /** @var Sort|false */
     protected $_sort;
 
     /**
      * Сортировка.
      *
-     * @return Sort
+     * @return ?Sort
      */
-    public function getSort() : Sort
+    public function getSort() : ?Sort
     {
         if (! isset($this->_sort)) {
             $this->_sort = $this->createSort();
         }
 
-        return $this->_sort;
+        return $this->_sort ?: null;
     }
 
     /**
@@ -131,21 +131,21 @@ abstract class AbstractFilter extends Model
         return new Pagination($config);
     }
 
-    /** @var Pagination */
+    /** @var Pagination|false */
     protected $_pagination;
 
     /**
      * Пагинация.
      *
-     * @return Pagination
+     * @return ?Pagination
      */
-    public function getPagination() : Pagination
+    public function getPagination() : ?Pagination
     {
         if (! isset($this->_pagination)) {
             $this->_pagination = $this->createPagination();
         }
 
-        return $this->_pagination;
+        return $this->_pagination ?: null;
     }
 
     /**
