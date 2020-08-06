@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 02:01:37
+ * @version 07.08.20 02:22:18
  */
 
 declare(strict_types = 1);
@@ -22,8 +22,8 @@ use function is_array;
  * Базовый фильтр.
  *
  * @property ActiveQuery $query SQL-запрос
- * @property Sort $sort
- * @property Pagination $pagination
+ * @property ?Sort $sort
+ * @property ?Pagination $pagination
  * @property ActiveDataProvider $provider
  */
 abstract class AbstractFilter extends Model
@@ -180,8 +180,8 @@ abstract class AbstractFilter extends Model
     {
         return new ActiveDataProvider([
                 'query' => $this->query,
-                'sort' => $this->sort,
-                'pagination' => $this->pagination
+                'sort' => $this->sort ?: false,
+                'pagination' => $this->pagination ?: false
             ] + $config);
     }
 
@@ -216,8 +216,8 @@ abstract class AbstractFilter extends Model
             $provider = Yii::createObject([
                     'class' => ActiveDataProvider::class,
                     'query' => $this->query,
-                    'sort' => $this->sort,
-                    'pagination' => $this->pagination
+                    'sort' => $this->sort ?: false,
+                    'pagination' => $this->pagination ?: false
                 ] + $provider);
         } elseif ($provider !== false && (! $provider instanceof ActiveDataProvider)) {
             throw new InvalidConfigException('provider');
