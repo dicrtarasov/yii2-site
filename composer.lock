@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7896a7b4010ce1cbb7d4c1d8352ad65",
+    "content-hash": "7244f4e552a534fb1042c4e6f0c7bd35",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -32,7 +32,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -194,16 +194,16 @@
         },
         {
             "name": "dicr/yii2-file",
-            "version": "4.0.18",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-file.git",
-                "reference": "7ad4ad8fac0a09b886676b33158e191fcc89db89"
+                "reference": "fd7f9b92e998345260f6ea6aace3659738a2bc4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=7ad4ad8fac0a09b886676b33158e191fcc89db89",
-                "reference": "7ad4ad8fac0a09b886676b33158e191fcc89db89",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=fd7f9b92e998345260f6ea6aace3659738a2bc4d",
+                "reference": "fd7f9b92e998345260f6ea6aace3659738a2bc4d",
                 "shasum": ""
             },
             "require": {
@@ -267,26 +267,26 @@
                 "source": "https://gitlab.com/dicr/yii2-file.git",
                 "issues": "https://gitlab.com/api/v4/projects/9710563/issues"
             },
-            "time": "2020-07-29T08:31:44+05:00"
+            "time": "2020-08-05T23:19:49+05:00"
         },
         {
             "name": "dicr/yii2-helper",
-            "version": "3.3.1",
+            "version": "3.3.5",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-helper.git",
-                "reference": "d9188f6e85f36c674090a4fb12820cf65cd28aa4"
+                "reference": "bba26f2426a626c3486edbf3c113dd78abd45126"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=d9188f6e85f36c674090a4fb12820cf65cd28aa4",
-                "reference": "d9188f6e85f36c674090a4fb12820cf65cd28aa4",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=bba26f2426a626c3486edbf3c113dd78abd45126",
+                "reference": "bba26f2426a626c3486edbf3c113dd78abd45126",
                 "shasum": ""
             },
             "require": {
                 "ext-intl": "*",
                 "ext-mbstring": "*",
-                "php": "~7.2",
+                "php": "~7.4",
                 "yiisoft/yii2": "~2.0",
                 "yiisoft/yii2-bootstrap4": "~2.0"
             },
@@ -332,20 +332,20 @@
                 "source": "https://gitlab.com/dicr/yii2-helper.git",
                 "issues": "https://gitlab.com/api/v4/projects/9713190/issues"
             },
-            "time": "2020-08-01T01:40:38+05:00"
+            "time": "2020-08-06T04:42:24+05:00"
         },
         {
             "name": "dicr/yii2-validate",
-            "version": "2.0.14",
+            "version": "2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-validate.git",
-                "reference": "ed78b0b4dcb2fb8ad92024b41d8dbfef0a8f33cf"
+                "reference": "7c6bf5c932c7a656d4d7cfeb555bc60e5b8f73f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=ed78b0b4dcb2fb8ad92024b41d8dbfef0a8f33cf",
-                "reference": "ed78b0b4dcb2fb8ad92024b41d8dbfef0a8f33cf",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=7c6bf5c932c7a656d4d7cfeb555bc60e5b8f73f1",
+                "reference": "7c6bf5c932c7a656d4d7cfeb555bc60e5b8f73f1",
                 "shasum": ""
             },
             "require": {
@@ -389,25 +389,25 @@
                 "source": "https://gitlab.com/dicr/yii2-validate.git",
                 "issues": "https://gitlab.com/api/v4/projects/9711109/issues"
             },
-            "time": "2020-07-20T03:50:26+05:00"
+            "time": "2020-08-02T21:53:22+05:00"
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "1.7.3",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "4b1a193622cf94134a5c2b5a8299dadebc594018"
+                "reference": "e7e4adc8eac387eda0220432d4f44ebe55a76a0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=4b1a193622cf94134a5c2b5a8299dadebc594018",
-                "reference": "4b1a193622cf94134a5c2b5a8299dadebc594018",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=e7e4adc8eac387eda0220432d4f44ebe55a76a0d",
+                "reference": "e7e4adc8eac387eda0220432d4f44ebe55a76a0d",
                 "shasum": ""
             },
             "require": {
                 "dicr/yii2-asset": "~1.5",
-                "php": "~7.2",
+                "php": "~7.4",
                 "yiisoft/yii2": "~2.0",
                 "yiisoft/yii2-bootstrap4": "~2.0"
             },
@@ -443,7 +443,7 @@
                 "source": "https://gitlab.com/dicr/yii2-widgets.git",
                 "issues": "https://gitlab.com/api/v4/projects/12653694/issues"
             },
-            "time": "2020-07-27T03:47:08+05:00"
+            "time": "2020-08-02T03:01:04+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -497,10 +497,10 @@
         },
         {
             "name": "npm-asset/bootstrap",
-            "version": "4.5.0",
+            "version": "4.5.1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.5.0.tgz"
+                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.5.1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -767,12 +767,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "38ea77863c1b13199948363e9cf7f7dd35a06e37"
+                "reference": "2ef1995958f6434d5d408d7baa6612c7d239cc54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/38ea77863c1b13199948363e9cf7f7dd35a06e37",
-                "reference": "38ea77863c1b13199948363e9cf7f7dd35a06e37",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/2ef1995958f6434d5d408d7baa6612c7d239cc54",
+                "reference": "2ef1995958f6434d5d408d7baa6612c7d239cc54",
                 "shasum": ""
             },
             "conflict": {
@@ -876,6 +876,7 @@
                 "october/backend": ">=1.0.319,<1.0.467",
                 "october/cms": ">=1.0.319,<1.0.466",
                 "october/october": ">=1.0.319,<1.0.466",
+                "october/rain": ">=1.0.319,<1.0.468",
                 "onelogin/php-saml": "<2.10.4",
                 "oneup/uploader-bundle": "<1.9.3|>=2,<2.1.5",
                 "openid/php-openid": "<2.3",
@@ -935,6 +936,7 @@
                 "ssddanbrown/bookstack": "<0.29.2",
                 "stormpath/sdk": ">=0,<9.9.99",
                 "studio-42/elfinder": "<2.1.49",
+                "sulu/sulu": "<1.6.34|>=2,<2.0.10|>=2.1,<2.1.1",
                 "swiftmailer/swiftmailer": ">=4,<5.4.5",
                 "sylius/admin-bundle": ">=1,<1.0.17|>=1.1,<1.1.9|>=1.2,<1.2.2",
                 "sylius/grid": ">=1,<1.1.19|>=1.2,<1.2.18|>=1.3,<1.3.13|>=1.4,<1.4.5|>=1.5,<1.5.1",
@@ -1052,7 +1054,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-31T18:02:22+00:00"
+            "time": "2020-08-05T22:02:01+00:00"
         }
     ],
     "aliases": [],
@@ -1063,7 +1065,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.2",
+        "php": "~7.4",
         "ext-intl": "*",
         "ext-mbstring": "*"
     },

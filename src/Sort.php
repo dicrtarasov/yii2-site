@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:26:59
+ * @version 07.08.20 00:08:42
  */
 
 declare(strict_types = 1);
@@ -32,7 +32,7 @@ class Sort extends \yii\data\Sort
      * @param bool $emptyIfDefault возвратить пустую строку если сортировка по-умолчанию
      * @return string текущую сортировку 'attr' или '-attr'
      */
-    public function getSort(bool $emptyIfDefault = false)
+    public function getSort(bool $emptyIfDefault = false) : string
     {
         $params = $this->params ?? Yii::$app->request->queryParams;
         $sort = $params[$this->sortParam] ?? '';
@@ -65,7 +65,7 @@ class Sort extends \yii\data\Sort
      *
      * @return bool
      */
-    public function getIsDefault()
+    public function getIsDefault() : bool
     {
         $sort = $this->sort;
 
@@ -90,5 +90,17 @@ class Sort extends \yii\data\Sort
 
         // сортировка по-умолчанию совпадает с текущей
         return ($this->defaultOrder[$attr] ?? null) === $order;
+    }
+
+    /**
+     * Параметры для запроса.
+     *
+     * @return array
+     */
+    public function params() : array
+    {
+        return $this->isDefault ? [] : [
+            $this->sortParam => $this->sort
+        ];
     }
 }

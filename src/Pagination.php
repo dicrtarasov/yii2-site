@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 18:55:17
+ * @version 07.08.20 00:09:04
  */
 
 declare(strict_types = 1);
@@ -35,7 +35,7 @@ class Pagination extends \yii\data\Pagination
      *
      * @return bool
      */
-    public function getIsPageDefault()
+    public function getIsPageDefault() : bool
     {
         return empty($this->page);
     }
@@ -45,7 +45,7 @@ class Pagination extends \yii\data\Pagination
      *
      * @return bool
      */
-    public function getIsPageSizeDefault()
+    public function getIsPageSizeDefault() : bool
     {
         return empty($this->pageSize) || (int)$this->pageSize === (int)$this->defaultPageSize;
     }
@@ -55,8 +55,23 @@ class Pagination extends \yii\data\Pagination
      *
      * @return bool
      */
-    public function getIsDefault()
+    public function getIsDefault() : bool
     {
         return $this->isPageDefault && $this->isPageSizeDefault;
+    }
+
+    /**
+     * Возвращает параметры запроса.
+     *
+     * @return array
+     */
+    public function params() : array
+    {
+        return array_filter([
+            $this->pageParam => $this->isPageDefault ? null : $this->page + 1,
+            $this->pageSizeParam => $this->isPageSizeDefault ? null : $this->pageSize
+        ], static function($val) {
+            return $val !== null && $val !== '';
+        });
     }
 }

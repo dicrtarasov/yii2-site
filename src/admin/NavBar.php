@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:01:37
+ * @version 06.08.20 23:54:38
  */
 
 declare(strict_types = 1);
@@ -137,7 +137,7 @@ class NavBar extends Widget
      *
      * @return string
      */
-    protected function renderBrand()
+    protected function renderBrand() : string
     {
         $brand = '';
 
@@ -159,7 +159,7 @@ class NavBar extends Widget
      *
      * @return string the rendering toggle button.
      */
-    protected function renderToggleButton()
+    protected function renderToggleButton() : string
     {
         return Html::button($this->togglerContent, ArrayHelper::merge($this->togglerOptions, [
             'type' => 'button',

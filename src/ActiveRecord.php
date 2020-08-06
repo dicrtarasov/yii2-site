@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 01.08.20 13:59:15
+ * @version 07.08.20 00:00:51
  */
 
 declare(strict_types = 1);
@@ -90,7 +90,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
      *
      * Использует invalidateModelCache
      */
-    public static function invalidateClassCache()
+    public static function invalidateClassCache() : void
     {
         if (! empty(Yii::$app->cache)) {
             TagDependency::invalidate(Yii::$app->cache, [static::class]);
@@ -115,11 +115,11 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
      *
      * @param array $currentModels
      * @param array $data табулярные данные, например из $_POST
-     * @param string $formName
+     * @param ?string $formName
      * @return static[]
      * @throws InvalidConfigException
      */
-    public static function loadAll(array $currentModels, array $data, string $formName = null)
+    public static function loadAll(array $currentModels, array $data, ?string $formName = null)
     {
         if (empty($currentModels)) {
             $currentModels = [];

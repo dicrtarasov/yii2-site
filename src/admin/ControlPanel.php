@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:00:34
+ * @version 06.08.20 23:32:34
  */
 
 declare(strict_types = 1);
@@ -49,7 +49,7 @@ class ControlPanel extends Widget
      *
      * @return string[]
      */
-    protected function createButtons()
+    protected function createButtons() : array
     {
         $buttons = [];
 

@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:54:35
+ * @version 06.08.20 23:54:06
  */
 
 declare(strict_types = 1);
@@ -61,7 +61,7 @@ class FilterForm extends ActiveForm
      * @inheritDoc
      * @return ActiveField
      */
-    public function field($model, $attribute, $options = [])
+    public function field($model, $attribute, $options = []) : ActiveField
     {
         $attrName = Html::getAttributeName($attribute);
         $prompt = '- ' . mb_strtolower($model->getAttributeLabel($attrName)) . ' -';
@@ -83,7 +83,7 @@ class FilterForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldBoolean(Model $model, string $attribute, array $options = [])
+    public function fieldBoolean(Model $model, string $attribute, array $options = []) : ActiveField
     {
         return $this->field($model, $attribute)->dropdownList([
             0 => 'нет',
@@ -98,7 +98,7 @@ class FilterForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldEnabled(Model $model, array $options = [])
+    public function fieldEnabled(Model $model, array $options = []) : ActiveField
     {
         return $this->fieldBoolean($model, 'enabled', $options);
     }
@@ -110,7 +110,7 @@ class FilterForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldDisabled(Model $model, array $options = [])
+    public function fieldDisabled(Model $model, array $options = []) : ActiveField
     {
         return $this->field($model, 'disabled')->dropdownList([
             0 => 'включено',

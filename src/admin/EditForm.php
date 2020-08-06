@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 31.07.20 18:59:19
+ * @version 06.08.20 23:52:27
  */
 
 declare(strict_types = 1);
@@ -18,6 +18,7 @@ use Exception;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
+use yii\base\UnknownPropertyException;
 use yii\bootstrap4\ActiveField;
 use yii\bootstrap4\ActiveForm;
 use yii\db\ActiveRecord;
@@ -90,7 +91,7 @@ class EditForm extends ActiveForm
      * @param array $options для form-group (для самого input использовать inputOptions)
      * @return ActiveField
      */
-    public function fieldStatic(Model $model, string $attribute, array $options = [])
+    public function fieldStatic(Model $model, string $attribute, array $options = []) : ActiveField
     {
         $options['options'] = $options['options'] ?? [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
@@ -108,27 +109,37 @@ class EditForm extends ActiveForm
      * @param ActiveRecord $model
      * @param array $options
      * - string|bool $url - добавить URL к ID
-     * @return string|ActiveField
+     * @return ?ActiveField
+     * @throws UnknownPropertyException
      */
-    public function fieldId(ActiveRecord $model, array $options = [])
+    public function fieldId(ActiveRecord $model, array $options = []) : ?ActiveField
     {
         if ($model->isNewRecord) {
-            return '';
+            return null;
         }
 
         $url = ArrayHelper::remove($options, 'url', true);
         if ($url === true) {
-            $url = $model->{'href'} ?? ($model->{'url'} ?? null);
-            if (! empty($url)) {
-                $url = Url::to($url, true);
+            if ($model->canGetProperty('href')) {
+                $url = $model->{'href'};
+            } elseif ($model->canGetProperty('url')) {
+                $url = $model->{'url'};
+            } else {
+                $url = null;
             }
         }
 
         if (! empty($url)) {
+            $url = Url::to($url, true);
+
             $options['inputOptions'] = array_merge([
                 'target' => '_blank',
                 'title' => 'Страница: ' . $url
             ], $options['inputOptions'] ?? []);
+
+            if (! $model->canGetProperty('id')) {
+                throw new UnknownPropertyException('id');
+            }
 
             $html = Html::a(Html::encode($model->{'id'}), $url, $options['inputOptions']);
 
@@ -143,18 +154,23 @@ class EditForm extends ActiveForm
      *
      * @param ActiveRecord $model
      * @param array $options
-     * @return string|ActiveField
+     * @return ?ActiveField
+     * @throws UnknownPropertyException
      * @throws InvalidConfigException
      */
-    public function fieldCreated(ActiveRecord $model, array $options = [])
+    public function fieldCreated(ActiveRecord $model, array $options = []) : ?ActiveField
     {
         if ($model->isNewRecord) {
-            return '';
+            return null;
         }
 
         if (! isset($options['inputOptions']['value'])) {
-            $options['inputOptions']['value'] =
-                ! empty($model->created) ? Yii::$app->formatter->asDate($model->created, 'php:d.m.Y H:i:s') : null;
+            if (! $model->canGetProperty('created')) {
+                throw new UnknownPropertyException('created');
+            }
+
+            $options['inputOptions']['value'] = ! empty($model->{'created'}) ?
+                Yii::$app->formatter->asDate($model->{'created'}, 'php:d.m.Y H:i:s') : null;
         }
 
         return $this->fieldStatic($model, 'created', $options);
@@ -165,36 +181,26 @@ class EditForm extends ActiveForm
      *
      * @param ActiveRecord $model
      * @param array $options
-     * @return string|ActiveField
+     * @return ?ActiveField
      * @throws InvalidConfigException
+     * @throws UnknownPropertyException
      */
-    public function fieldUpdated(ActiveRecord $model, array $options = [])
+    public function fieldUpdated(ActiveRecord $model, array $options = []) : ?ActiveField
     {
         if ($model->isNewRecord) {
-            return '';
+            return null;
         }
 
         if (! isset($options['inputOptions']['value'])) {
-            $options['inputOptions']['value'] =
-                ! empty($model->updated) ? Yii::$app->formatter->asDate($model->updated, 'php:d.m.Y H:i:s') : null;
+            if (! $model->canGetProperty('updated')) {
+                throw new UnknownPropertyException('updated');
+            }
+
+            $options['inputOptions']['value'] = ! empty($model->{'updated'}) ?
+                Yii::$app->formatter->asDate($model->{'updated'}, 'php:d.m.Y H:i:s') : null;
         }
 
         return $this->fieldStatic($model, 'updated', $options);
-    }
-
-    /**
-     * Поле Disabled
-     *
-     * @param Model $model
-     * @param array $options
-     * @return string|ActiveField
-     */
-    public function fieldDisabled(Model $model, array $options = [])
-    {
-        /** @noinspection PhpUndefinedFieldInspection */
-        return $this->field($model, 'disabled', $options)->checkbox([
-            'value' => $model->disabled ?: date('Y-m-d H:i:s')
-        ]);
     }
 
     /**
@@ -204,10 +210,25 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldEnabled(Model $model, array $options = [])
+    public function fieldEnabled(Model $model, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, 'enabled', $options)->checkbox();
+    }
+
+    /**
+     * Поле Disabled
+     *
+     * @param Model $model
+     * @param array $options
+     * @return ActiveField
+     */
+    public function fieldDisabled(Model $model, array $options = []) : ActiveField
+    {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return $this->field($model, 'disabled', $options)->checkbox([
+            'value' => $model->{'disabled'} ?: date('Y-m-d H:i:s')
+        ]);
     }
 
     /**
@@ -217,9 +238,9 @@ class EditForm extends ActiveForm
      * @param string $attribute
      * @param string $html
      * @param array $options
-     * @return string|ActiveField
+     * @return ActiveField
      */
-    public function fieldHtml(Model $model, string $attribute, string $html, array $options = [])
+    public function fieldHtml(Model $model, string $attribute, string $html, array $options = []) : ActiveField
     {
         if (! isset($options['parts']['{input}'])) {
             $options['parts']['{input}'] = $html;
@@ -228,6 +249,7 @@ class EditForm extends ActiveForm
         $options['options'] = $options['options'] ?? [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
 
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options);
     }
 
@@ -236,12 +258,12 @@ class EditForm extends ActiveForm
      *
      * @param ActiveRecord $model
      * @param array $options
-     * @return string|ActiveField
+     * @return ?ActiveField
      */
-    public function fieldUrl(ActiveRecord $model, array $options = [])
+    public function fieldUrl(ActiveRecord $model, array $options = []) : ?ActiveField
     {
         if ($model->isNewRecord) {
-            return '';
+            return null;
         }
 
         $options['inputOptions'] = $options['inputOptions'] ?? [];
@@ -268,7 +290,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldText(Model $model, string $attribute, array $options = [])
+    public function fieldText(Model $model, string $attribute, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)->widget(RedactorWidget::class);
@@ -284,7 +306,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = [])
+    public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)->widget(FileInputWidget::class, [
@@ -305,7 +327,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = [])
+    public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)->widget(FileInputWidget::class, [

@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 01.08.20 13:50:50
+ * @version 06.08.20 23:31:37
  */
 
 declare(strict_types = 1);
@@ -44,12 +44,12 @@ class UpsertBehavior extends Behavior
      * Upsert (INSERT on duplicate keys UPDATE)
      *
      * @param bool $runValidation
-     * @param array $attributes
+     * @param ?array $attributes
      * @return bool
      * @throws Throwable
      * @noinspection ParameterDefaultValueIsNotNullInspection
      */
-    public function upsert($runValidation = true, $attributes = null)
+    public function upsert($runValidation = true, $attributes = null) : bool
     {
         if ($runValidation) {
             // reset isNewRecord to pass "unique" attribute validator because of upsert
@@ -85,10 +85,10 @@ class UpsertBehavior extends Behavior
     /**
      * Insert or update record.
      *
-     * @param array $attributes
+     * @param ?array $attributes
      * @return bool
      */
-    protected function upsertInternal($attributes = null)
+    protected function upsertInternal($attributes = null) : bool
     {
         if (! $this->owner->beforeSave(true)) {
             return false;

@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:10:57
+ * @version 06.08.20 23:53:27
  */
 
 declare(strict_types = 1);
@@ -94,7 +94,7 @@ class EditTabs extends Nav
      * Просматривает элементы и конвертирует короткий формат:
      * tab_id => label в формат Nav
      */
-    protected function adjustItems()
+    protected function adjustItems() : void
     {
         if (empty($this->items)) {
             return;
@@ -139,7 +139,7 @@ class EditTabs extends Nav
      *
      * @param array $options
      */
-    public static function beginTabContent(array $options = [])
+    public static function beginTabContent(array $options = []) : void
     {
         Html::addCssClass($options, 'tab-content');
         ob_start();
@@ -150,7 +150,7 @@ class EditTabs extends Nav
     /**
      * Закрывающий тег tab-content
      */
-    public static function endTabContent()
+    public static function endTabContent() : void
     {
         echo ob_get_clean() . Html::endTag('div');
     }
@@ -162,7 +162,7 @@ class EditTabs extends Nav
      * @param bool $active
      * @param array $options
      */
-    public static function beginTab(string $id, bool $active = false, array $options = [])
+    public static function beginTab(string $id, bool $active = false, array $options = []) : void
     {
         $options['id'] = $id;
         Html::addCssClass($options, 'tab-pane');
@@ -178,7 +178,7 @@ class EditTabs extends Nav
     /**
      * Закрывающий тег tab-pane
      */
-    public static function endTab()
+    public static function endTab() : void
     {
         echo ob_get_clean() . Html::endTag('div');
     }

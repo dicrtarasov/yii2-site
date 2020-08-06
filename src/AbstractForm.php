@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 14:24:49
+ * @version 07.08.20 00:00:18
  */
 
 declare(strict_types = 1);
@@ -61,9 +61,9 @@ abstract class AbstractForm extends Model
     /**
      * Тема сообщения менеджеру.
      *
-     * @return string|null
+     * @return ?string
      */
-    protected function getManagerSubject()
+    protected function getManagerSubject() : ?string
     {
         return null;
     }
@@ -71,9 +71,9 @@ abstract class AbstractForm extends Model
     /**
      * Данные сообщения менеджеру.
      *
-     * @return string[]
+     * @return ?string[]
      */
-    protected function getManagerData()
+    protected function getManagerData() : ?array
     {
         $data = [];
 
@@ -87,9 +87,9 @@ abstract class AbstractForm extends Model
     /**
      * Возвращает текст сообщения менеджеру
      *
-     * @return string|null
+     * @return ?string
      */
-    protected function getManagerText()
+    protected function getManagerText() : ?string
     {
         $data = $this->getManagerData();
         if (empty($data)) {
@@ -118,10 +118,10 @@ abstract class AbstractForm extends Model
     /**
      * Сообщение менеджеру.
      *
-     * @return MessageInterface|null
+     * @return ?MessageInterface
      * @noinspection DuplicatedCode
      */
-    protected function getManagerMessage()
+    protected function getManagerMessage() : ?MessageInterface
     {
         $to = $this->getManagerEmail();
         if (empty($to)) {
@@ -183,9 +183,9 @@ abstract class AbstractForm extends Model
     /**
      * Заголовок сообщения пользователю.
      *
-     * @return string|null
+     * @return ?string
      */
-    protected function getUserSubject()
+    protected function getUserSubject() : ?string
     {
         return null;
     }
@@ -193,9 +193,9 @@ abstract class AbstractForm extends Model
     /**
      * Текст сообщения пользователю.
      *
-     * @return string|null
+     * @return ?string
      */
-    protected function getUserText()
+    protected function getUserText() : ?string
     {
         return null;
     }
@@ -213,10 +213,10 @@ abstract class AbstractForm extends Model
     /**
      * Сообщение пользователю.
      *
-     * @return MessageInterface|null
+     * @return ?MessageInterface
      * @noinspection DuplicatedCode
      */
-    protected function getUserMessage()
+    protected function getUserMessage() : ?MessageInterface
     {
         $to = $this->getUserEmail();
         if (empty($to)) {
@@ -272,7 +272,7 @@ abstract class AbstractForm extends Model
      * @throws ValidateException
      * @throws ServerErrorHttpException
      */
-    public function process()
+    public function process() : bool
     {
         if (! $this->validate()) {
             throw new ValidateException($this);
