@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.20 15:21:10
+ * @version 12.08.20 17:26:01
  */
 
 declare(strict_types = 1);
@@ -16,15 +16,14 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveQuery;
 
-use function array_merge;
 use function is_array;
 
 /**
  * Базовый фильтр.
  *
  * @property ActiveQuery $query SQL-запрос
- * @property Sort $sort
- * @property Pagination $pagination
+ * @property ?Sort $sort
+ * @property ?Pagination $pagination
  * @property ActiveDataProvider $provider
  */
 abstract class AbstractFilter extends Model
@@ -74,10 +73,10 @@ abstract class AbstractFilter extends Model
      * Создает сортировку.
      *
      * @param array $config
-     * @return Sort
+     * @return ?Sort
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function createSort(array $config = []): Sort
+    public function createSort(array $config = []): ?Sort
     {
         return new Sort($config);
     }
@@ -93,7 +92,7 @@ abstract class AbstractFilter extends Model
     public function getSort(): ?Sort
     {
         if (! isset($this->_sort)) {
-            $this->_sort = $this->createSort();
+            $this->_sort = $this->createSort() ?: false;
         }
 
         return $this->_sort ?: null;
@@ -110,9 +109,7 @@ abstract class AbstractFilter extends Model
     {
         if (is_array($sort)) {
             /** @noinspection CallableParameterUseCaseInTypeContextInspection */
-            $sort = Yii::createObject(array_merge([
-                'class' => Sort::class
-            ], $sort));
+            $sort = Yii::createObject($sort + ['class' => Sort::class]);
         } elseif (! ($sort instanceof Sort) && $sort !== false) {
             throw new InvalidConfigException('sort');
         }
@@ -126,10 +123,10 @@ abstract class AbstractFilter extends Model
      * Создает пагинацию.
      *
      * @param array $config
-     * @return Pagination
+     * @return ?Pagination
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function createPagination(array $config = []): Pagination
+    public function createPagination(array $config = []): ?Pagination
     {
         return new Pagination($config);
     }
@@ -145,7 +142,7 @@ abstract class AbstractFilter extends Model
     public function getPagination(): ?Pagination
     {
         if (! isset($this->_pagination)) {
-            $this->_pagination = $this->createPagination();
+            $this->_pagination = $this->createPagination() ?: false;
         }
 
         return $this->_pagination ?: null;
@@ -162,9 +159,7 @@ abstract class AbstractFilter extends Model
     {
         if (is_array($pagination)) {
             /** @noinspection CallableParameterUseCaseInTypeContextInspection */
-            $pagination = Yii::createObject([
-                    'class' => Pagination::class
-                ] + $pagination);
+            $pagination = Yii::createObject($pagination + ['class' => Pagination::class]);
         } elseif ((! $pagination instanceof Pagination) && $pagination !== false) {
             throw new InvalidConfigException('pagination');
         }
@@ -182,11 +177,11 @@ abstract class AbstractFilter extends Model
      */
     public function createProvider(array $config = []): ActiveDataProvider
     {
-        return new ActiveDataProvider([
+        return new ActiveDataProvider($config + [
                 'query' => $this->query,
-                'sort' => $this->sort,
-                'pagination' => $this->pagination
-            ] + $config);
+                'sort' => $this->sort ?: false,
+                'pagination' => $this->pagination ?: false
+            ]);
     }
 
     /** @var ActiveDataProvider */
@@ -217,12 +212,12 @@ abstract class AbstractFilter extends Model
     {
         if (is_array($provider)) {
             /** @noinspection CallableParameterUseCaseInTypeContextInspection */
-            $provider = Yii::createObject([
+            $provider = Yii::createObject($provider + [
                     'class' => ActiveDataProvider::class,
                     'query' => $this->query,
-                    'sort' => $this->sort,
-                    'pagination' => $this->pagination
-                ] + $provider);
+                    'sort' => $this->sort ?: false,
+                    'pagination' => $this->pagination ?: false
+                ]);
         } elseif (! $provider instanceof ActiveDataProvider) {
             throw new InvalidConfigException('provider');
         }
