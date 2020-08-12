@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 00:03:13
+ * @version 12.08.20 15:24:54
  */
 
 declare(strict_types = 1);
@@ -14,11 +14,11 @@ use Locale;
 use Throwable;
 use Yii;
 use yii\base\Behavior;
-use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\caching\TagDependency;
 use yii\db\ActiveQuery;
 use yii\db\StaleObjectException;
+
 use function call_user_func;
 use function is_array;
 use function is_string;
@@ -110,11 +110,12 @@ class LangBehavior extends Behavior
 
     /**
      * @inheritDoc
+     * @throws InvalidConfigException
      */
     public function attach($owner)
     {
         if (! is_a($owner, ActiveRecord::class)) {
-            throw new InvalidArgumentException('owner должен быть типа ActiveRecord');
+            throw new InvalidConfigException('owner должен быть типа ActiveRecord');
         }
 
         parent::attach($owner);
@@ -126,7 +127,7 @@ class LangBehavior extends Behavior
      * @param ?string $lang
      * @return string
      */
-    public static function currentLanguage(?string $lang = null) : string
+    public static function currentLanguage(?string $lang = null): string
     {
         if (! isset($lang)) {
             $lang = Locale::getPrimaryLanguage(Yii::$app->language);
@@ -145,7 +146,7 @@ class LangBehavior extends Behavior
      *
      * @return ActiveQuery
      */
-    public function getLangs() : ActiveQuery
+    public function getLangs(): ActiveQuery
     {
         $link = $this->owner->hasMany($this->relationClass, $this->relationLink)
             ->indexBy($this->langAttribute);
@@ -165,7 +166,7 @@ class LangBehavior extends Behavior
      * @throws Throwable
      * @throws StaleObjectException
      */
-    public function setLangs(array $langs) : array
+    public function setLangs(array $langs): array
     {
         /** @var ActiveRecord[] $langs */
         $langs = ArrayHelper::index($langs, $this->langAttribute);
@@ -228,7 +229,7 @@ class LangBehavior extends Behavior
      * @param ?string $lang код языка, если не задан, то берется текущий из $app->language
      * @return ActiveQuery
      */
-    public function getLang(?string $lang = null) : ActiveQuery
+    public function getLang(?string $lang = null): ActiveQuery
     {
         // баг в yii - не добавляется имя таблицы или алиас к полю onCondition,
         $fullName = sprintf('%s.[[%s]]', call_user_func([$this->relationClass, 'tableName']), $this->langAttribute);
@@ -252,7 +253,7 @@ class LangBehavior extends Behavior
      * @throws Throwable
      * @throws StaleObjectException
      */
-    public function setLang(ActiveRecord $lang) : bool
+    public function setLang(ActiveRecord $lang): bool
     {
         // код текущего языка
         $langCode = static::currentLanguage();

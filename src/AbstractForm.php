@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 00:00:18
+ * @version 12.08.20 15:19:19
  */
 
 declare(strict_types = 1);
@@ -23,18 +23,19 @@ use yii\web\UploadedFile;
  *
  * @property-read array|string|null $fromEmail адрес отправителя
  *
- * @property null|string|array $managerEmail
- * @property null|string $managerSubject
- * @property string[] $managerData
- * @property null|string $managerText
- * @property StoreFile[]|null|UploadedFile[] $managerFiles
- * @property null|MessageInterface $managerMessage
+ * @property-read array|string|null $managerEmail
+ * @property-read ?string $managerSubject
+ * @property-read ?string[] $managerData
+ * @property-read ?string $managerText
+ * @property-read UploadedFile[]|StoreFile[]|null $managerFiles
+ * @property-read ?MessageInterface $managerMessage
  *
- * @property null|string|array $userEmail
- * @property null|string $userSubject
- * @property null|MessageInterface $userMessage
- * @property null|string $userText
- * @property StoreFile[]|null|UploadedFile[] $userFiles
+ * @property-read array|string|null $userEmail
+ * @property-read ?string $userSubject
+ * @property-read ?string[] $userData
+ * @property-read ?string $userText
+ * @property-read UploadedFile[]|StoreFile[]|null $userFiles
+ * @property-read ?MessageInterface $userMessage
  */
 abstract class AbstractForm extends Model
 {
@@ -63,7 +64,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getManagerSubject() : ?string
+    protected function getManagerSubject(): ?string
     {
         return null;
     }
@@ -73,7 +74,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string[]
      */
-    protected function getManagerData() : ?array
+    protected function getManagerData(): ?array
     {
         $data = [];
 
@@ -89,7 +90,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getManagerText() : ?string
+    protected function getManagerText(): ?string
     {
         $data = $this->getManagerData();
         if (empty($data)) {
@@ -110,7 +111,7 @@ abstract class AbstractForm extends Model
      *
      * @return UploadedFile[]|StoreFile[]|null
      */
-    protected function getManagerFiles()
+    protected function getManagerFiles(): ?array
     {
         return null;
     }
@@ -121,7 +122,7 @@ abstract class AbstractForm extends Model
      * @return ?MessageInterface
      * @noinspection DuplicatedCode
      */
-    protected function getManagerMessage() : ?MessageInterface
+    protected function getManagerMessage(): ?MessageInterface
     {
         $to = $this->getManagerEmail();
         if (empty($to)) {
@@ -185,7 +186,17 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getUserSubject() : ?string
+    protected function getUserSubject(): ?string
+    {
+        return null;
+    }
+
+    /**
+     * Данные для сообщения пользователю.
+     *
+     * @return ?array
+     */
+    protected function getUserData(): ?array
     {
         return null;
     }
@@ -195,9 +206,20 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getUserText() : ?string
+    protected function getUserText(): ?string
     {
-        return null;
+        $data = $this->getUserData();
+        if (empty($data)) {
+            return null;
+        }
+
+        $text = Yii::$app->view->render('@app/mail/table', [
+            'data' => $data
+        ]);
+
+        return Yii::$app->view->render('@app/mail/user', [
+            'content' => $text
+        ]);
     }
 
     /**
@@ -205,7 +227,7 @@ abstract class AbstractForm extends Model
      *
      * @return UploadedFile[]|StoreFile[]|null
      */
-    protected function getUserFiles()
+    protected function getUserFiles(): ?array
     {
         return null;
     }
@@ -216,7 +238,7 @@ abstract class AbstractForm extends Model
      * @return ?MessageInterface
      * @noinspection DuplicatedCode
      */
-    protected function getUserMessage() : ?MessageInterface
+    protected function getUserMessage(): ?MessageInterface
     {
         $to = $this->getUserEmail();
         if (empty($to)) {
@@ -272,7 +294,7 @@ abstract class AbstractForm extends Model
      * @throws ValidateException
      * @throws ServerErrorHttpException
      */
-    public function process() : bool
+    public function process(): bool
     {
         if (! $this->validate()) {
             throw new ValidateException($this);

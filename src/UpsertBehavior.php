@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.08.20 23:31:37
+ * @version 12.08.20 15:25:50
  */
 
 declare(strict_types = 1);
@@ -12,9 +12,10 @@ namespace dicr\site;
 use Throwable;
 use Yii;
 use yii\base\Behavior;
-use yii\base\InvalidArgumentException;
+use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 use yii\db\Transaction;
+
 use function array_slice;
 use function call_user_func;
 
@@ -30,11 +31,12 @@ class UpsertBehavior extends Behavior
 {
     /**
      * @inheritDoc
+     * @throws InvalidConfigException
      */
     public function attach($owner)
     {
         if (! is_a($owner, ActiveRecord::class)) {
-            throw new InvalidArgumentException('owner должен быть типа ActiveRecord');
+            throw new InvalidConfigException('owner должен быть типа ActiveRecord');
         }
 
         parent::attach($owner);
@@ -49,7 +51,7 @@ class UpsertBehavior extends Behavior
      * @throws Throwable
      * @noinspection ParameterDefaultValueIsNotNullInspection
      */
-    public function upsert($runValidation = true, $attributes = null) : bool
+    public function upsert($runValidation = true, $attributes = null): bool
     {
         if ($runValidation) {
             // reset isNewRecord to pass "unique" attribute validator because of upsert
@@ -57,6 +59,7 @@ class UpsertBehavior extends Behavior
 
             if (! $this->owner->validate($attributes)) {
                 Yii::warning('Model not inserted due to validation error.', __METHOD__);
+
                 return false;
             }
         }
@@ -88,7 +91,7 @@ class UpsertBehavior extends Behavior
      * @param ?array $attributes
      * @return bool
      */
-    protected function upsertInternal($attributes = null) : bool
+    protected function upsertInternal($attributes = null): bool
     {
         if (! $this->owner->beforeSave(true)) {
             return false;
