@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.08.20 23:52:27
+ * @version 16.08.20 03:17:21
  */
 
 declare(strict_types = 1);
@@ -22,6 +22,7 @@ use yii\base\UnknownPropertyException;
 use yii\bootstrap4\ActiveField;
 use yii\bootstrap4\ActiveForm;
 use yii\db\ActiveRecord;
+
 use function array_merge;
 use function date;
 
@@ -52,13 +53,13 @@ class EditForm extends ActiveForm
      */
     public function init()
     {
-        Html::addCssClass($this->options, 'dicr-admin-edit-form');
+        parent::init();
 
         if (! isset($this->options['enctype'])) {
             $this->options['enctype'] = 'multipart/form-data';
         }
 
-        parent::init();
+        Html::addCssClass($this->options, 'dicr-site-admin-edit-form');
     }
 
     /**

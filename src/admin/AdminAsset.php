@@ -1,19 +1,16 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:52:55
+ * @version 16.08.20 03:05:18
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
-use dicr\asset\FontAwesomeAsset;
-use yii\bootstrap4\BootstrapAsset;
-use yii\bootstrap4\BootstrapPluginAsset;
+use dicr\site\SiteAsset;
 use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
 
 /**
  * Ресурсы админки.
@@ -25,14 +22,11 @@ class AdminAsset extends AssetBundle
 
     /** @inheritDoc */
     public $css = [
-        'style.css'
+        'style.scss'
     ];
 
     /** @inheritDoc */
     public $depends = [
-        JqueryAsset::class,
-        BootstrapAsset::class,
-        BootstrapPluginAsset::class,
-        FontAwesomeAsset::class
+        SiteAsset::class
     ];
 }

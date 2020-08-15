@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:54:25
+ * @version 16.08.20 03:11:30
  */
 
 declare(strict_types = 1);
@@ -21,7 +21,7 @@ class EditTabsAsset extends AssetBundle
 
     /** @inheritDoc */
     public $css = [
-        'style.css'
+        'style.scss'
     ];
 
     /** @inheritDoc */

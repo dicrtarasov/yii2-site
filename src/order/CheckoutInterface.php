@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 06:43:59
+ * @version 16.08.20 02:05:58
  */
 
 declare(strict_types = 1);
@@ -21,33 +21,34 @@ interface CheckoutInterface
      *
      * @return array товары
      */
-    public function getProds();
+    public function getProds(): array;
 
     /**
      * Возвращает сумму заказа.
      *
-     * @return mixed
+     * @return float
      */
-    public function getSum();
+    public function getSum(): float;
 
     /**
      * Форма контактов покупателя
      *
      * @return Model
+     * Конкретный тип return переопределяется в реализации
      */
     public function getOrderContacts();
 
     /**
-     * Метод оплаты.
+     * Выбранный метод оплаты.
      *
-     * @return PayMethod
+     * @return ?PayMethod
      */
-    public function getPayMethod();
+    public function getPayMethod(): ?PayMethod;
 
     /**
-     * Метод доставки.
+     * Выбранный метод доставки.
      *
-     * @return ShipMethod
+     * @return ?ShipMethod
      */
-    public function getShipMethod();
+    public function getShipMethod(): ?ShipMethod;
 }

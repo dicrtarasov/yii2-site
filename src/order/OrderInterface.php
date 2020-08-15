@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.07.20 06:35:14
+ * @version 16.08.20 02:07:08
  */
 
 declare(strict_types = 1);
@@ -21,33 +21,34 @@ interface OrderInterface
      *
      * @return array
      */
-    public function getProds();
+    public function getProds(): array;
 
     /**
      * Сумма товаров.
      *
      * @return float
      */
-    public function getSum();
+    public function getSum(): float;
 
     /**
      * Модель контактов.
      *
      * @return Model
+     * Конкретный тип return переопределяется в реализации.
      */
     public function getOrderContacts();
 
     /**
      * Способ оплаты.
      *
-     * @return PayMethod
+     * @return ?PayMethod
      */
-    public function getPayMethod();
+    public function getPayMethod(): ?PayMethod;
 
     /**
      * Способ доставки.
      *
-     * @return ShipMethod
+     * @return ?ShipMethod
      */
-    public function getShipMethod();
+    public function getShipMethod(): ?ShipMethod;
 }

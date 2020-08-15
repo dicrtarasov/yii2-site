@@ -3,16 +3,14 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.08.20 23:32:34
+ * @version 16.08.20 03:09:29
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
-use dicr\helper\ArrayHelper;
 use dicr\helper\Html;
 use dicr\widgets\Widget;
-use yii\base\InvalidConfigException;
 
 /**
  * Панель управления для панели навигации.
@@ -41,7 +39,7 @@ class ControlPanel extends Widget
     {
         parent::init();
 
-        Html::addCssClass($this->options, 'dicr-admin-control-panel');
+        Html::addCssClass($this->options, 'dicr-site-admin-control-panel');
     }
 
     /**
@@ -49,12 +47,12 @@ class ControlPanel extends Widget
      *
      * @return string[]
      */
-    protected function createButtons() : array
+    protected function createButtons(): array
     {
         $buttons = [];
 
         if (! empty($this->create)) {
-            $buttons['create'] = Html::a('<i class="fas fa-plus-square"></i>', $this->create, [
+            $buttons['create'] = Html::a(Html::fas('plus-square'), $this->create, [
                 'class' => 'btn btn-sm btn-success',
                 'encode' => false,
                 'title' => 'Создать'
@@ -62,7 +60,7 @@ class ControlPanel extends Widget
         }
 
         if (! empty($this->remove)) {
-            $buttons['remove'] = Html::a('<i class="fas fa-trash-alt"></i>', $this->remove, [
+            $buttons['remove'] = Html::a(Html::fas('trash-alt'), $this->remove, [
                 'class' => 'btn btn-sm btn-danger',
                 'encode' => false,
                 'title' => 'Удалить',
@@ -71,13 +69,13 @@ class ControlPanel extends Widget
         }
 
         if (! empty($this->submit)) {
-            $options = ArrayHelper::merge(['title' => 'Сохранить'], $this->submit);
+            $options = $this->submit + ['title' => 'Сохранить'];
             Html::addCssClass($options, ['btn btn-sm btn-primary']);
-            $buttons['submit'] = Html::submitButton('<i class="fas fa-save"></i>', $options);
+            $buttons['submit'] = Html::submitButton(Html::fas('save'), $options);
         }
 
         if (! empty($this->download)) {
-            $buttons['download'] = Html::a('<i class="fas fa-download"></i>', $this->download, [
+            $buttons['download'] = Html::a(Html::fas('download'), $this->download, [
                 'class' => 'btn btn-sm btn-secondary',
                 'encode' => false,
                 'title' => 'Скачать'
@@ -93,7 +91,6 @@ class ControlPanel extends Widget
 
     /**
      * @inheritDoc
-     * @throws InvalidConfigException
      */
     public function run()
     {
@@ -102,7 +99,7 @@ class ControlPanel extends Widget
             return '';
         }
 
-        $this->view->registerAssetBundle(ControlPanelAsset::class);
+        ControlPanelAsset::register($this->view);
 
         ob_start();
         echo Html::beginTag('section', $this->options);
@@ -112,6 +109,7 @@ class ControlPanel extends Widget
         }
 
         echo Html::endTag('section');
+
         return ob_get_clean();
     }
 }

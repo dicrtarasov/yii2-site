@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:02:55
+ * @version 16.08.20 03:17:21
  */
 
 declare(strict_types = 1);
@@ -13,6 +13,7 @@ use dicr\helper\Html;
 use yii\base\Arrayable;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
+
 use function array_key_exists;
 use function is_callable;
 
@@ -59,7 +60,7 @@ class GridView extends \yii\grid\GridView
 
         parent::init();
 
-        Html::addCssClass($this->options, 'dicr-admin-grid-view');
+        Html::addCssClass($this->options, 'dicr-site-admin-grid-view');
     }
 
     /**

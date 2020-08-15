@@ -1,16 +1,16 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 20.07.20 02:43:19
+ * @version 16.08.20 03:17:21
  */
 
 declare(strict_types = 1);
 namespace dicr\site\order;
 
-use dicr\helper\Html;
 use Yii;
+
 use function array_merge;
 
 /**
@@ -23,7 +23,7 @@ abstract class ShipMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public static function classes()
+    public static function classes(): array
     {
         return (array)(Yii::$app->params['order']['ship']['classes'] ?? []);
     }
@@ -33,7 +33,7 @@ abstract class ShipMethod extends AbstractMethod
      *
      * @return bool
      */
-    public static function isDelivery()
+    public static function isDelivery(): bool
     {
         return true;
     }
@@ -44,7 +44,7 @@ abstract class ShipMethod extends AbstractMethod
      * @return string
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getAddress()
+    public function getAddress(): string
     {
         return '';
     }
@@ -52,10 +52,10 @@ abstract class ShipMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public function toText()
+    public function toText(): array
     {
         return array_merge([
-            Html::esc(Yii::t('dicr/site', 'Способ доставки')) => static::name()
+            Yii::t('dicr/site', 'Способ доставки') => static::name()
         ], parent::toText());
     }
 }

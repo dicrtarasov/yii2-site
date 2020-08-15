@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 13.07.20 02:14:55
+ * @version 16.08.20 02:28:28
  */
 
 declare(strict_types = 1);
@@ -13,6 +13,7 @@ use dicr\helper\Html;
 use dicr\helper\Inflector;
 use Yii;
 use yii\base\InvalidArgumentException;
+
 use function array_combine;
 use function array_filter;
 use function array_merge;
@@ -21,11 +22,11 @@ use function array_merge;
  * Модель кредитования.
  *
  * @property-read int $minTerm минимальный срок банка, мес
- * @property-read int $maxTerm максимальный срок банка, мес (-1 - без ограничений, 0 - способ не применим)
- * @property int $termLimit ограничение срока рассрочки (по бренду товара или другим условиям сайта)
+ * @property-read ?int $maxTerm максимальный срок банка, мес (null - без ограничений, 0 - метод не приемлем)
+ * @property ?int $termLimit ограничение срока рассрочки (по бренду товара или другим условиям сайта)
  * @property-read int $gracePeriod льготный период, мес
- * @property-read int $downPayment первый взнос, грн
- * @property-read int $monthlyCharge ежемесячный платеж, грн
+ * @property-read float $downPayment первый взнос, руб
+ * @property-read float $monthlyCharge ежемесячный платеж, руб
  */
 abstract class CreditMethod extends PayMethod
 {
@@ -59,16 +60,9 @@ abstract class CreditMethod extends PayMethod
      */
     public function rules()
     {
-        $minTerm = $this->minTerm;
-
-        $maxTerm = $this->maxTerm;
-        if ($maxTerm === - 1) {
-            $maxTerm = 127;
-        }
-
         return array_merge(parent::rules(), [
             ['term', 'required'],
-            ['term', 'integer', 'min' => $minTerm, 'max' => $maxTerm],
+            ['term', 'integer', 'min' => $this->minTerm, 'max' => $this->maxTerm ?? 127],
             ['term', 'filter', 'filter' => 'intval'],
         ]);
     }
@@ -86,41 +80,10 @@ abstract class CreditMethod extends PayMethod
         );
     }
 
-    /** @var int */
-    private $_termLimit;
-
-    /**
-     * Ограничение лимита брендами товаров.
-     *
-     * @return int
-     */
-    public function getTermLimit()
-    {
-        if (! isset($this->_termLimit)) {
-            $this->_termLimit = - 1;
-        }
-
-        return $this->_termLimit;
-    }
-
-    /**
-     * Устанавливает ограничение
-     *
-     * @param int $limit
-     */
-    public function setTermLimit(int $limit)
-    {
-        if ($limit < 0) {
-            throw new InvalidArgumentException('limit');
-        }
-
-        $this->_termLimit = $limit;
-    }
-
     /**
      * @inheritDoc
      */
-    public static function isCredit()
+    public static function isCredit(): bool
     {
         return true;
     }
@@ -128,9 +91,9 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public static function classes()
+    public static function classes(): array
     {
-        return array_filter(parent::classes(), static function(string $class) {
+        return array_filter(parent::classes(), static function (string $class) {
             /** @var PayMethod $class */
             return $class::isCredit();
         });
@@ -141,7 +104,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return string
      */
-    public static function bank()
+    public static function bank(): string
     {
         return '';
     }
@@ -151,7 +114,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return string
      */
-    public static function image()
+    public static function image(): string
     {
         return static::icon();
     }
@@ -161,7 +124,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return string html
      */
-    public static function conditions()
+    public static function conditions(): string
     {
         return '';
     }
@@ -171,9 +134,36 @@ abstract class CreditMethod extends PayMethod
      *
      * @return string html
      */
-    public static function desc()
+    public static function desc(): string
     {
         return '';
+    }
+
+    /** @var ?int */
+    private $_termLimit;
+
+    /**
+     * Ограничение срока рассрочки (например брендом товара).
+     *
+     * @return ?int
+     */
+    public function getTermLimit(): ?int
+    {
+        return $this->_termLimit;
+    }
+
+    /**
+     * Устанавливает ограничение
+     *
+     * @param ?int $limit
+     */
+    public function setTermLimit(?int $limit)
+    {
+        if ($limit !== null && $limit < 0) {
+            throw new InvalidArgumentException('limit');
+        }
+
+        $this->_termLimit = $limit;
     }
 
     /**
@@ -182,7 +172,7 @@ abstract class CreditMethod extends PayMethod
      * @return int
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getMinTerm()
+    public function getMinTerm(): int
     {
         return 1;
     }
@@ -190,12 +180,11 @@ abstract class CreditMethod extends PayMethod
     /**
      * Максимальный срок кредита, мес
      *
-     * @return int (0 - кредит не приемлем)
-     * @noinspection PhpMethodMayBeStaticInspection
+     * @return ?int (null - не задан)
      */
-    public function getMaxTerm()
+    public function getMaxTerm(): ?int
     {
-        return - 1;
+        return $this->termLimit;
     }
 
     /**
@@ -203,7 +192,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return int
      */
-    public static function termStep()
+    public static function termStep(): int
     {
         return 1;
     }
@@ -214,7 +203,7 @@ abstract class CreditMethod extends PayMethod
      * @return float
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getDownPayment()
+    public function getDownPayment(): float
     {
         return 0;
     }
@@ -225,7 +214,7 @@ abstract class CreditMethod extends PayMethod
      * @return int
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getGracePeriod()
+    public function getGracePeriod(): int
     {
         return 0;
     }
@@ -236,7 +225,7 @@ abstract class CreditMethod extends PayMethod
      * @return float
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getMonthlyCharge()
+    public function getMonthlyCharge(): ?float
     {
         return 0;
     }
@@ -244,35 +233,42 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public function getIsAvailable()
+    public function getIsAvailable(): bool
     {
+        $maxTerm = $this->maxTerm;
+
         // добавляем проверку по сроку
-        return parent::getIsAvailable() && ($this->maxTerm > 0);
+        return parent::getIsAvailable() && ($maxTerm === null || $maxTerm > 0);
     }
 
     /**
      * Сохраняет кредит в сессии.
+     *
+     * @return $this
      */
-    public function saveCredit()
+    public function saveCredit(): self
     {
         Yii::$app->session->set(__CLASS__, $this->config);
+
+        return $this;
     }
 
     /**
      * Возвращает сохраненные параметры кредита.
      *
-     * @return self|null
+     * @return ?static
      */
-    public static function loadCredit()
+    public static function loadCredit(): ?self
     {
         $config = Yii::$app->session->get(__CLASS__);
+
         return ! empty($config) ? static::create($config) : null;
     }
 
     /**
      * Удаляет сохраненный кредит.
      */
-    public static function cleanCredit()
+    public static function cleanCredit(): void
     {
         Yii::$app->session->remove(__CLASS__);
     }
@@ -280,19 +276,25 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public function toText()
+    public function toText(): array
     {
-        return array_merge(parent::toText(), [
-            Html::esc($this->getAttributeLabel('term')) => $this->term < 1 ? null :
-                Html::esc($this->term . ' ' . Inflector::numMonthes($this->term))
-        ]);
+        $text = parent::toText();
+
+        if ($this->term > 0) {
+            $text[$this->getAttributeLabel('term')] = Html::esc(
+                $this->term . ' ' . Inflector::numMonthes($this->term)
+            );
+        }
+
+        return $text;
     }
 
     /**
+     * @inheritDoc
      * @return string
      */
     public function __toString()
     {
-        return static::name() . ', ' . $this->term . ' мес.';
+        return static::name() . ', ' . $this->term . ' ' . Yii::t('dicr/site', 'мес') . '.';
     }
 }
