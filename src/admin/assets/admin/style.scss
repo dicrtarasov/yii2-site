@@ -1,12 +1,22 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 16.08.20 06:42:22
+// @version 16.08.20 08:38:23
+
+@import "../mix";
 
 body {
-    color: #333;
+    color: $color-default;
     font-family: sans-serif;
-    background: linear-gradient(to top, hsl(0, 0%, 95%), hsl(0, 0%, 100%)) no-repeat;
+    @include gradient(bottom);
+}
+
+header {
+    @media (min-width: 768px) {
+        position: sticky;
+        top: 0;
+        z-index: 101;
+    }
 }
 
 h1 {
@@ -30,7 +40,7 @@ h3 {
 /** Таблицы *******************************************/
 .table {
     thead {
-        background: hsl(216, 75%, 45%);
+        background: $color-blue;
         color: #fff;
 
         a {
@@ -63,13 +73,13 @@ a.desc:after {
 
 /*** Элементы формы *************************************************/
 .form-control {
-    color: hsl(0, 0%, 15%);
+    color: $color-default;
 
     &:focus {
-        color: hsl(0, 0%, 0%);
+        color: #000;
     }
 
     &::placeholder {
-        color: hsl(0, 0%, 65%);
+        color: $color-muted;
     }
 }

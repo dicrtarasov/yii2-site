@@ -1,62 +1,78 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 16.08.20 03:15:36
+// @version 16.08.20 08:26:18
+
+@import "../mix";
 
 .dicr-site-admin-navbar {
-    background: hsl(0, 0%, 97%) linear-gradient(to bottom, hsl(0, 0%, 100%) 0, hsl(0, 0%, 97%) 100%);
-    border-color: hsl(0, 0%, 91%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 5px rgba(0, 0, 0, .075);
-
-    @media (min-width: 768px) {
-        position: sticky;
-        top: 0;
-        z-index: 101;
-    }
+    border-color: $color-border;
+    @include gradient(bottom);
+    margin-bottom: 1rem;
+    @include shadow;
 
     > .container {
         justify-content: flex-start;
-    }
 
-    .navbar-toggler {
-        margin-right: 1rem;
-    }
-
-    .navbar-brand {
-        img {
-            display: block;
-            max-height: 100%;
+        .navbar-toggler {
+            margin-right: 1rem;
+            order: 0;
         }
-    }
 
-    .navbar-collapse {
-        @media (max-width: 767px) {
-            padding-top: 1rem;
+        .navbar-brand {
+            padding: 0;
+            order: 1;
         }
-    }
 
-    .navbar-nav {
-        .dropdown {
-            .dropdown-toggle {
-                @media (min-width: 768px) {
-                    color: hsl(0, 0%, 47%);
-                    text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
+        .navbar-collapse {
+            order: 2;
+
+            @media (max-width: 767px) {
+                padding-top: 1rem;
+                order: 3;
+            }
+
+            .navbar-nav {
+                .dropdown {
+                    .dropdown-toggle {
+                        color: $color-dark;
+
+                        @media (max-width: 767px) {
+                            padding-top: 0.7rem;
+                            padding-bottom: 0.7rem;
+                        }
+                    }
+
+                    &.show {
+                        .dropdown-toggle {
+                            @media (min-width: 768px) {
+                                background: $color-shadow;
+                                box-shadow: inset 0 3px 9px $color-shadow;
+                            }
+                        }
+                    }
+
+                    .dropdown-menu {
+                        @include shadow;
+
+                        .dropdown-item {
+                            @media (max-width: 767px) {
+                                padding-top: 0.5rem;
+                                padding-bottom: 0.5rem;
+                            }
+
+                        }
+                    }
                 }
             }
         }
-    }
 
-    .nav {
-        .dropdown {
-            &.show {
-                .dropdown-toggle {
-                    @media (min-width: 768px) {
-                        color: hsl(0, 0%, 33%);
-                        background: hsl(0, 0%, 91%) linear-gradient(to bottom, hsl(0, 0%, 86%) 0, hsl(0, 0%, 89%) 100%);
-                        box-shadow: inset 0 3px 9px rgba(0, 0, 0, .075);
-                        border-color: hsl(208, 56%, 46%);
-                    }
-                }
+        .dicr-site-admin-control-panel {
+            order: 3;
+            margin-left: auto;
+
+            @media (max-width: 767px) {
+                order: 2;
             }
         }
     }

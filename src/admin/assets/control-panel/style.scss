@@ -1,13 +1,23 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 16.08.20 03:07:06
+// @version 16.08.20 08:33:22
 
 .dicr-site-admin-control-panel {
-    margin-left: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
 
     > * {
+        flex: 1 1 auto;
+
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+
         &:after {
+            vertical-align: middle;
+
             @media (min-width: 991px) {
                 display: inline;
                 content: attr(title);
@@ -15,9 +25,8 @@
             }
         }
 
-        &:not(:last-child) {
-            margin-right: 0.5rem;
+        i {
+            vertical-align: middle;
         }
     }
 }
-

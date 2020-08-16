@@ -1,7 +1,10 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 16.08.20 03:13:20
+// @version 16.08.20 08:33:22
+
+@import "../mix";
+
 .dicr-site-admin-grid-view {
     .table-responsive {
         margin-bottom: 0.5rem;
@@ -9,44 +12,21 @@
 
     .table {
         background-color: #fff;
-        border: 1px solid hsl(0, 0%, 90%);
+        border: 1px solid $color-border;
         margin-bottom: 0;
 
         thead {
-            background: hsl(216, 75%, 45%);
             color: #fff;
+            background: $color-blue;
 
             a {
-                color: #fff;
-
-                /* add sorting icons to gridview sort links */
-                &.asc:after,
-                &.desc:after {
-                    display: inline;
-                    position: relative;
-                    top: 1px;
-                    font-style: normal;
-                    line-height: 1;
-                    padding-left: 1px;
-                }
-
-                &.asc:after {
-                    content: "\21D1";
-                }
-
-                &.desc:after {
-                    content: "\21D3";
-                }
-
-                &:hover {
-                    color: #fff;
-                }
+                color: inherit;
             }
         }
 
         tfoot {
-            background-color: hsl(0, 0%, 99%);
             font-weight: bold;
+            background-color: $color-light;
         }
     }
 }
