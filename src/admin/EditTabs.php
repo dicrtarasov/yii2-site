@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 03:17:21
+ * @version 16.08.20 08:58:19
  */
 
 declare(strict_types = 1);
@@ -67,8 +67,7 @@ class EditTabs extends Nav
     {
         $content = trim(ob_get_clean());
 
-        EditTabsAsset::register($this->view);
-        $this->registerPlugin('dicrAdminEditTabs');
+        $this->registerPlugin('dicrSiteAdminEditTabs');
 
         // вкладки навигации
         ob_start();

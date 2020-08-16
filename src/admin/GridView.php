@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 03:17:21
+ * @version 16.08.20 08:56:44
  */
 
 declare(strict_types = 1);
@@ -61,16 +61,6 @@ class GridView extends \yii\grid\GridView
         parent::init();
 
         Html::addCssClass($this->options, 'dicr-site-admin-grid-view');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function run()
-    {
-        GridViewAsset::register($this->view);
-
-        parent::run();
     }
 
     /**

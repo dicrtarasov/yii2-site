@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 06:43:01
+ * @version 16.08.20 08:59:25
  */
 
 declare(strict_types = 1);
@@ -21,7 +21,7 @@ use yii\web\JqueryAsset;
 class SiteAsset extends AssetBundle
 {
     /** @inheritDoc */
-    public $sourcePath = __DIR__ . '/assets/site';
+    public $sourcePath = __DIR__ . '/assets';
 
     /** @inheritDoc */
     public $css = [

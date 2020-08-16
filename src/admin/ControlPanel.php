@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 03:09:29
+ * @version 16.08.20 08:55:46
  */
 
 declare(strict_types = 1);
@@ -98,8 +98,6 @@ class ControlPanel extends Widget
         if (empty($buttons)) {
             return '';
         }
-
-        ControlPanelAsset::register($this->view);
 
         ob_start();
         echo Html::beginTag('section', $this->options);
