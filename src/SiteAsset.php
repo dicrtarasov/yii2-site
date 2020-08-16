@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 03:00:48
+ * @version 16.08.20 06:43:01
  */
 
 declare(strict_types = 1);
@@ -22,6 +22,11 @@ class SiteAsset extends AssetBundle
 {
     /** @inheritDoc */
     public $sourcePath = __DIR__ . '/assets/site';
+
+    /** @inheritDoc */
+    public $css = [
+        'style.scss'
+    ];
 
     /** @inheritDoc */
     public $depends = [
