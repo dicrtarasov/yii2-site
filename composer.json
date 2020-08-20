@@ -1,9 +1,9 @@
 {
     "name": "dicr/yii2-site",
     "type": "yii2-extension",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "homepage": "https://gitlab.com/dicr/yii2-site",
-    "description": "Site modules for Yii2",
+    "description": "Компоненты сайта для Yii2",
     "keywords": ["dicr", "yii2", "site"],
     "support": {
         "source": "https://gitlab.com/dicr/yii2-site.git"
