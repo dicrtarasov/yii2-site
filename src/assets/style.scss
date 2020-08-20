@@ -1,7 +1,7 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 16.08.20 09:01:37
+// @version 21.08.20 04:11:40
 
 html {
     @media (max-width: 319px) {
@@ -56,20 +56,20 @@ body {
     font-size: 1rem;
     line-height: 1.4;
     color: #333;
+}
 
-    header {
-        flex: 0 0 auto;
-    }
+header {
+    flex: 0 0 auto;
+}
 
-    main {
-        flex: 1 1 auto;
-        margin-bottom: 3rem;
-    }
+main {
+    flex: 1 1 auto;
+    margin-bottom: 3rem;
+}
 
-    footer {
-        flex: 0 0 auto;
-        margin-top: auto;
-    }
+footer {
+    flex: 0 0 auto;
+    margin-top: auto;
 }
 
 
