@@ -1,9 +1,9 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 16.08.20 08:38:40
+// @version 21.08.20 04:23:22
 
-$color-shadow: hsla(0, 0%, 0, 0.1);
+$color-shadow: hsla(0, 0%, 0%, 0.1);
 $color-gradient-from: hsl(0, 0%, 100%);
 $color-gradient-to: hsl(0, 0%, 97%);
 $color-border: hsl(0, 0%, 90%);
@@ -20,6 +20,6 @@ $color-blue: hsl(211, 100%, 50%);
 }
 
 @mixin shadow {
-    box-shadow: 0 0.25rem 0.2rem $color-shadow;
+    box-shadow: 0 0.1rem 0.3rem $color-shadow;
 }
 
