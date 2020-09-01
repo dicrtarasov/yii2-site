@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.20 15:19:19
+ * @version 02.09.20 00:50:11
  */
 
 declare(strict_types = 1);
@@ -12,11 +12,14 @@ namespace dicr\site;
 use dicr\file\StoreFile;
 use dicr\helper\Html;
 use dicr\validate\ValidateException;
+use RuntimeException;
 use Yii;
 use yii\base\Model;
 use yii\mail\MessageInterface;
 use yii\web\ServerErrorHttpException;
 use yii\web\UploadedFile;
+
+use function gettype;
 
 /**
  * Базовая абстрактная форма.
@@ -64,7 +67,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getManagerSubject(): ?string
+    protected function getManagerSubject() : ?string
     {
         return null;
     }
@@ -74,7 +77,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string[]
      */
-    protected function getManagerData(): ?array
+    protected function getManagerData() : ?array
     {
         $data = [];
 
@@ -90,7 +93,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getManagerText(): ?string
+    protected function getManagerText() : ?string
     {
         $data = $this->getManagerData();
         if (empty($data)) {
@@ -111,7 +114,7 @@ abstract class AbstractForm extends Model
      *
      * @return UploadedFile[]|StoreFile[]|null
      */
-    protected function getManagerFiles(): ?array
+    protected function getManagerFiles() : ?array
     {
         return null;
     }
@@ -122,7 +125,7 @@ abstract class AbstractForm extends Model
      * @return ?MessageInterface
      * @noinspection DuplicatedCode
      */
-    protected function getManagerMessage(): ?MessageInterface
+    protected function getManagerMessage() : ?MessageInterface
     {
         $to = $this->getManagerEmail();
         if (empty($to)) {
@@ -164,6 +167,8 @@ abstract class AbstractForm extends Model
                     $message->attach($file->absolutePath, [
                         'fileName' => $file->name
                     ]);
+                } else {
+                    throw new RuntimeException('Неизвестный тип файла: ' . gettype($file));
                 }
             }
         }
@@ -186,7 +191,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getUserSubject(): ?string
+    protected function getUserSubject() : ?string
     {
         return null;
     }
@@ -196,7 +201,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?array
      */
-    protected function getUserData(): ?array
+    protected function getUserData() : ?array
     {
         return null;
     }
@@ -206,7 +211,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getUserText(): ?string
+    protected function getUserText() : ?string
     {
         $data = $this->getUserData();
         if (empty($data)) {
@@ -227,7 +232,7 @@ abstract class AbstractForm extends Model
      *
      * @return UploadedFile[]|StoreFile[]|null
      */
-    protected function getUserFiles(): ?array
+    protected function getUserFiles() : ?array
     {
         return null;
     }
@@ -238,7 +243,7 @@ abstract class AbstractForm extends Model
      * @return ?MessageInterface
      * @noinspection DuplicatedCode
      */
-    protected function getUserMessage(): ?MessageInterface
+    protected function getUserMessage() : ?MessageInterface
     {
         $to = $this->getUserEmail();
         if (empty($to)) {
@@ -294,7 +299,7 @@ abstract class AbstractForm extends Model
      * @throws ValidateException
      * @throws ServerErrorHttpException
      */
-    public function process(): bool
+    public function process() : bool
     {
         if (! $this->validate()) {
             throw new ValidateException($this);

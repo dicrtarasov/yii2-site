@@ -34,8 +34,8 @@
         "yiisoft/yii2-bootstrap4": "~2.0",
         "dicr/yii2-asset": "~1.7",
         "dicr/yii2-file": "~4.2",
-        "dicr/yii2-helper": "~3.4",
-        "dicr/yii2-validate": "~2.0",
+        "dicr/yii2-helper": "~3.5",
+        "dicr/yii2-validate": "~2.1",
         "dicr/yii2-widgets": "~1.8"
     },
     "require-dev": {
