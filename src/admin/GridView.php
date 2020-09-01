@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 08:56:44
+ * @version 02.09.20 00:53:17
  */
 
 declare(strict_types = 1);
@@ -54,7 +54,7 @@ class GridView extends \yii\grid\GridView
 
         $this->_origRowOptions = $this->rowOptions ?: [];
 
-        $this->rowOptions = function($model, $key, $index, $grid) {
+        $this->rowOptions = function ($model, $key, $index, $grid) {
             return $this->getRowOptions($model, $key, $index, $grid);
         };
 
@@ -68,11 +68,11 @@ class GridView extends \yii\grid\GridView
      *
      * @param Model|array $model
      * @param string $key
-     * @param int $index
-     * @param GridView $grid
+     * @param string|int $index
+     * @param self $grid
      * @return array
      */
-    protected function getRowOptions($model, $key, $index, $grid)
+    protected function getRowOptions($model, string $key, $index, self $grid)
     {
         // оригинальные опции
         $options = $this->_origRowOptions;

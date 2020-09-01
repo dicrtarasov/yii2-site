@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.09.20 00:50:11
+ * @version 02.09.20 00:54:12
  */
 
 declare(strict_types = 1);
@@ -123,7 +123,6 @@ abstract class AbstractForm extends Model
      * Сообщение менеджеру.
      *
      * @return ?MessageInterface
-     * @noinspection DuplicatedCode
      */
     protected function getManagerMessage() : ?MessageInterface
     {
@@ -241,7 +240,6 @@ abstract class AbstractForm extends Model
      * Сообщение пользователю.
      *
      * @return ?MessageInterface
-     * @noinspection DuplicatedCode
      */
     protected function getUserMessage() : ?MessageInterface
     {
