@@ -1,10 +1,10 @@
 {
     "name": "dicr/yii2-site",
     "type": "yii2-extension",
-    "license": "Apache-2.0",
-    "description": "Site modules for Yii2",
+    "license": "MIT",
     "homepage": "https://gitlab.com/dicr/yii2-site",
-    "keywords": ["dicr", "php", "yii2", "site"],
+    "description": "Компоненты сайта для Yii2",
+    "keywords": ["dicr", "yii2", "site"],
     "support": {
         "source": "https://gitlab.com/dicr/yii2-site.git"
     },
@@ -27,16 +27,16 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": "~7.4",
+        "php": "~7.2",
         "ext-intl": "*",
         "ext-mbstring": "*",
         "yiisoft/yii2": "~2.0",
         "yiisoft/yii2-bootstrap4": "~2.0",
-        "dicr/yii2-asset": "~1.6",
-        "dicr/yii2-file": "~4.1",
-        "dicr/yii2-helper": "~3.3",
-        "dicr/yii2-validate": "~2.0",
-        "dicr/yii2-widgets": "~1.7"
+        "dicr/yii2-asset": "~1.7",
+        "dicr/yii2-file": "~4.2",
+        "dicr/yii2-helper": "~3.5",
+        "dicr/yii2-validate": "~2.1",
+        "dicr/yii2-widgets": "~1.8"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"

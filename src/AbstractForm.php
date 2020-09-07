@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 00:00:18
+ * @version 02.09.20 00:54:12
  */
 
 declare(strict_types = 1);
@@ -12,29 +12,33 @@ namespace dicr\site;
 use dicr\file\StoreFile;
 use dicr\helper\Html;
 use dicr\validate\ValidateException;
+use RuntimeException;
 use Yii;
 use yii\base\Model;
 use yii\mail\MessageInterface;
 use yii\web\ServerErrorHttpException;
 use yii\web\UploadedFile;
 
+use function gettype;
+
 /**
  * Базовая абстрактная форма.
  *
  * @property-read array|string|null $fromEmail адрес отправителя
  *
- * @property null|string|array $managerEmail
- * @property null|string $managerSubject
- * @property string[] $managerData
- * @property null|string $managerText
- * @property StoreFile[]|null|UploadedFile[] $managerFiles
- * @property null|MessageInterface $managerMessage
+ * @property-read array|string|null $managerEmail
+ * @property-read ?string $managerSubject
+ * @property-read ?string[] $managerData
+ * @property-read ?string $managerText
+ * @property-read UploadedFile[]|StoreFile[]|null $managerFiles
+ * @property-read ?MessageInterface $managerMessage
  *
- * @property null|string|array $userEmail
- * @property null|string $userSubject
- * @property null|MessageInterface $userMessage
- * @property null|string $userText
- * @property StoreFile[]|null|UploadedFile[] $userFiles
+ * @property-read array|string|null $userEmail
+ * @property-read ?string $userSubject
+ * @property-read ?string[] $userData
+ * @property-read ?string $userText
+ * @property-read UploadedFile[]|StoreFile[]|null $userFiles
+ * @property-read ?MessageInterface $userMessage
  */
 abstract class AbstractForm extends Model
 {
@@ -110,7 +114,7 @@ abstract class AbstractForm extends Model
      *
      * @return UploadedFile[]|StoreFile[]|null
      */
-    protected function getManagerFiles()
+    protected function getManagerFiles() : ?array
     {
         return null;
     }
@@ -119,7 +123,6 @@ abstract class AbstractForm extends Model
      * Сообщение менеджеру.
      *
      * @return ?MessageInterface
-     * @noinspection DuplicatedCode
      */
     protected function getManagerMessage() : ?MessageInterface
     {
@@ -163,6 +166,8 @@ abstract class AbstractForm extends Model
                     $message->attach($file->absolutePath, [
                         'fileName' => $file->name
                     ]);
+                } else {
+                    throw new RuntimeException('Неизвестный тип файла: ' . gettype($file));
                 }
             }
         }
@@ -191,13 +196,34 @@ abstract class AbstractForm extends Model
     }
 
     /**
+     * Данные для сообщения пользователю.
+     *
+     * @return ?array
+     */
+    protected function getUserData() : ?array
+    {
+        return null;
+    }
+
+    /**
      * Текст сообщения пользователю.
      *
      * @return ?string
      */
     protected function getUserText() : ?string
     {
-        return null;
+        $data = $this->getUserData();
+        if (empty($data)) {
+            return null;
+        }
+
+        $text = Yii::$app->view->render('@app/mail/table', [
+            'data' => $data
+        ]);
+
+        return Yii::$app->view->render('@app/mail/user', [
+            'content' => $text
+        ]);
     }
 
     /**
@@ -205,7 +231,7 @@ abstract class AbstractForm extends Model
      *
      * @return UploadedFile[]|StoreFile[]|null
      */
-    protected function getUserFiles()
+    protected function getUserFiles() : ?array
     {
         return null;
     }
@@ -214,7 +240,6 @@ abstract class AbstractForm extends Model
      * Сообщение пользователю.
      *
      * @return ?MessageInterface
-     * @noinspection DuplicatedCode
      */
     protected function getUserMessage() : ?MessageInterface
     {

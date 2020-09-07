@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.08.20 23:54:38
+ * @version 16.08.20 08:57:18
  */
 
 declare(strict_types = 1);
@@ -103,7 +103,7 @@ class NavBar extends Widget
             Html::addCssClass($this->options, ['navbar-expand-md', 'navbar-light', 'bg-light']);
         }
 
-        Html::addCssClass($this->options, ['widget' => 'navbar', 'dicr-admin-navbar']);
+        Html::addCssClass($this->options, ['widget' => 'navbar', 'dicr-site-admin-navbar']);
 
         if (! isset($this->innerContainerOptions['class'])) {
             Html::addCssClass($this->innerContainerOptions, 'container');
@@ -175,13 +175,10 @@ class NavBar extends Widget
     /**
      * @inheritDoc
      * @throws Exception
-     * @throws Exception
      */
     public function run()
     {
         $content = ob_get_clean();
-
-        NavBarAsset::register($this->view);
 
         ob_start();
 

@@ -1,16 +1,16 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 13.07.20 02:11:47
+ * @version 16.08.20 02:24:35
  */
 
 declare(strict_types = 1);
 namespace dicr\site\order;
 
-use dicr\helper\Html;
 use Yii;
+
 use function array_merge;
 
 /**
@@ -45,7 +45,7 @@ abstract class PayMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public static function classes()
+    public static function classes(): array
     {
         return (array)(Yii::$app->params['order']['pay']['classes'] ?? []);
     }
@@ -53,7 +53,7 @@ abstract class PayMethod extends AbstractMethod
     /**
      * Способ оплаты в кредит
      */
-    public static function isCredit()
+    public static function isCredit(): bool
     {
         return false;
     }
@@ -61,11 +61,11 @@ abstract class PayMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public function toText()
+    public function toText(): array
     {
-        return array_merge([
-            Html::esc(Yii::t('dicr/site', 'Способ оплаты')) => static::name()
-        ], parent::toText());
+        return array_merge(parent::toText(), [
+            Yii::t('dicr/site', 'Способ оплаты') => static::name()
+        ]);
     }
 }
 

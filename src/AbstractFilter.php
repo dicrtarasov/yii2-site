@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 02:22:18
+ * @version 07.08.20 02:01:37
  */
 
 declare(strict_types = 1);
@@ -33,7 +33,7 @@ abstract class AbstractFilter extends Model
      *
      * @return ActiveQuery
      */
-    abstract public function createQuery() : ActiveQuery;
+    abstract public function createQuery(): ActiveQuery;
 
     /** @var ActiveQuery */
     protected $_query;
@@ -43,7 +43,7 @@ abstract class AbstractFilter extends Model
      *
      * @return ActiveQuery
      */
-    public function getQuery() : ActiveQuery
+    public function getQuery(): ActiveQuery
     {
         if (! isset($this->_query)) {
             $this->_query = $this->createQuery();
@@ -62,7 +62,7 @@ abstract class AbstractFilter extends Model
      * @param ActiveQuery $query
      * @return $this
      */
-    public function setQuery(ActiveQuery $query) : self
+    public function setQuery(ActiveQuery $query): self
     {
         $this->_query = $query;
         return $this;
@@ -73,11 +73,13 @@ abstract class AbstractFilter extends Model
      *
      * @param array $config
      * @return Sort
+     * @throws InvalidConfigException
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function createSort(array $config = []) : Sort
+    public function createSort(array $config = []): Sort
     {
-        return new Sort($config);
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return Yii::createObject($config + ['class' => Sort::class]);
     }
 
     /** @var Sort|false */
@@ -87,8 +89,9 @@ abstract class AbstractFilter extends Model
      * Сортировка.
      *
      * @return ?Sort
+     * @throws InvalidConfigException
      */
-    public function getSort() : ?Sort
+    public function getSort(): ?Sort
     {
         if (! isset($this->_sort)) {
             $this->_sort = $this->createSort();
@@ -104,18 +107,16 @@ abstract class AbstractFilter extends Model
      * @return $this
      * @throws InvalidConfigException
      */
-    public function setSort($sort) : self
+    public function setSort($sort): self
     {
         if (is_array($sort)) {
-            /** @noinspection CallableParameterUseCaseInTypeContextInspection */
-            $sort = Yii::createObject(array_merge([
-                'class' => Sort::class
-            ], $sort));
+            $sort = $this->createSort($sort);
         } elseif (! ($sort instanceof Sort) && $sort !== false) {
             throw new InvalidConfigException('sort');
         }
 
         $this->_sort = $sort;
+
         return $this;
     }
 
@@ -124,11 +125,13 @@ abstract class AbstractFilter extends Model
      *
      * @param array $config
      * @return Pagination
+     * @throws InvalidConfigException
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function createPagination(array $config = []) : Pagination
+    public function createPagination(array $config = []): Pagination
     {
-        return new Pagination($config);
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return Yii::createObject($config + ['class' => Pagination::class]);
     }
 
     /** @var Pagination|false */
@@ -138,8 +141,9 @@ abstract class AbstractFilter extends Model
      * Пагинация.
      *
      * @return ?Pagination
+     * @throws InvalidConfigException
      */
-    public function getPagination() : ?Pagination
+    public function getPagination(): ?Pagination
     {
         if (! isset($this->_pagination)) {
             $this->_pagination = $this->createPagination();
@@ -155,18 +159,16 @@ abstract class AbstractFilter extends Model
      * @return $this
      * @throws InvalidConfigException
      */
-    public function setPagination($pagination) : self
+    public function setPagination($pagination): self
     {
         if (is_array($pagination)) {
-            /** @noinspection CallableParameterUseCaseInTypeContextInspection */
-            $pagination = Yii::createObject([
-                    'class' => Pagination::class
-                ] + $pagination);
+            $pagination = $this->createPagination($pagination);
         } elseif ((! $pagination instanceof Pagination) && $pagination !== false) {
             throw new InvalidConfigException('pagination');
         }
 
         $this->_pagination = $pagination;
+
         return $this;
     }
 
@@ -175,14 +177,17 @@ abstract class AbstractFilter extends Model
      *
      * @param array $config
      * @return ActiveDataProvider
+     * @throws InvalidConfigException
      */
-    public function createProvider(array $config = []) : ActiveDataProvider
+    public function createProvider(array $config = []): ActiveDataProvider
     {
-        return new ActiveDataProvider([
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return Yii::createObject($config + [
+                'class' => ActiveDataProvider::class,
                 'query' => $this->query,
                 'sort' => $this->sort ?: false,
                 'pagination' => $this->pagination ?: false
-            ] + $config);
+            ]);
     }
 
     /** @var ActiveDataProvider */
@@ -192,8 +197,9 @@ abstract class AbstractFilter extends Model
      * Возвращает провайдер данных.
      *
      * @return ActiveDataProvider
+     * @throws InvalidConfigException
      */
-    public function getProvider() : ActiveDataProvider
+    public function getProvider(): ActiveDataProvider
     {
         if (! isset($this->_provider)) {
             $this->_provider = $this->createProvider();
@@ -205,25 +211,20 @@ abstract class AbstractFilter extends Model
     /**
      * Устанавливает провайдер.
      *
-     * @param ActiveDataProvider|array|false $provider
+     * @param ActiveDataProvider|array $provider
      * @return $this
      * @throws InvalidConfigException
      */
-    public function setProvider($provider) : self
+    public function setProvider($provider): self
     {
         if (is_array($provider)) {
-            /** @noinspection CallableParameterUseCaseInTypeContextInspection */
-            $provider = Yii::createObject([
-                    'class' => ActiveDataProvider::class,
-                    'query' => $this->query,
-                    'sort' => $this->sort ?: false,
-                    'pagination' => $this->pagination ?: false
-                ] + $provider);
-        } elseif ($provider !== false && (! $provider instanceof ActiveDataProvider)) {
+            $provider = $this->createProvider($provider);
+        } elseif (! $provider instanceof ActiveDataProvider) {
             throw new InvalidConfigException('provider');
         }
 
         $this->_provider = $provider;
+
         return $this;
     }
 
@@ -232,10 +233,11 @@ abstract class AbstractFilter extends Model
      *
      * @return $this
      */
-    public function refresh() : self
+    public function refresh(): self
     {
         $this->_query = null;
         $this->_provider = null;
+
         return $this;
     }
 
@@ -244,7 +246,7 @@ abstract class AbstractFilter extends Model
      *
      * @return array
      */
-    public function params() : array
+    public function params(): array
     {
         return Url::filterQuery($this->attributes);
     }

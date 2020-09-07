@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 13.07.20 02:09:26
+ * @version 16.08.20 02:28:12
  */
 
 /** @noinspection SpellCheckingInspection */
@@ -14,5 +14,6 @@ return [
     'Способ оплаты' => 'Спосіб оплати',
     'Дата оплаты' => 'Дата оплати',
     'Срок рассрочки, мес' => 'Термін розстрочки, міс',
-    'Способ доставки' => 'Спосіб доставки'
+    'Способ доставки' => 'Спосіб доставки',
+    'мес' => 'міс'
 ];

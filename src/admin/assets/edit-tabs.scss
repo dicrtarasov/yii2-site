@@ -1,11 +1,13 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 04.07.20 05:57:32
+// @version 16.08.20 08:50:49
+
+@import "./mix";
 
 .tab-content {
-    padding: 1rem;
     background-color: #fff;
-    border: 1px solid hsl(210, 14%, 89%);
-    border-top: 0 none;
+    padding: 1rem;
+    border: solid $color-border;
+    border-width: 0 1px 1px;
 }

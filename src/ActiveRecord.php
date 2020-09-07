@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 00:00:51
+ * @version 12.08.20 15:26:00
  */
 
 declare(strict_types = 1);
@@ -26,9 +26,9 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
      */
     public function behaviors()
     {
-        return array_merge(parent::behaviors(), [
-            'upsert' => UpsertBehavior::class
-        ]);
+        return parent::behaviors() + [
+                'upsert' => UpsertBehavior::class
+            ];
     }
 
     /**
@@ -52,6 +52,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     public static function updateAll($attributes, $condition = '', $params = [])
     {
         $ret = parent::updateAll($attributes, $condition, $params);
+
         if ($ret) {
             static::invalidateClassCache();
         }
@@ -65,6 +66,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     public static function updateAllCounters($counters, $condition = '', $params = [])
     {
         $ret = parent::updateAllCounters($counters, $condition, $params);
+
         if ($ret) {
             static::invalidateClassCache();
         }
@@ -78,6 +80,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     public static function deleteAll($condition = null, $params = [])
     {
         $ret = parent::deleteAll($condition, $params);
+
         if ($ret) {
             static::invalidateClassCache();
         }
@@ -86,9 +89,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     }
 
     /**
-     * Статический метод для очистки кэша.
-     *
-     * Использует invalidateModelCache
+     * Аннулировать кэш модели.
      */
     public static function invalidateClassCache() : void
     {
@@ -119,7 +120,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
      * @return static[]
      * @throws InvalidConfigException
      */
-    public static function loadAll(array $currentModels, array $data, ?string $formName = null)
+    public static function loadAll(array $currentModels, array $data, ?string $formName = null): array
     {
         if (empty($currentModels)) {
             $currentModels = [];

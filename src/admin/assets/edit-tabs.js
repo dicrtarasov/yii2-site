@@ -2,7 +2,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.07.20 02:42:53
+ * @version 16.08.20 08:58:03
  */
 
 (function (window, $) {
@@ -47,7 +47,7 @@
      *
      * @returns {jQuery}
      */
-    $.fn.dicrAdminEditTabs = function () {
+    $.fn.dicrSiteAdminEditTabs = function () {
         return this.each(function () {
             $(this).data('widget', new DicrAdminEditTabs(this));
         });

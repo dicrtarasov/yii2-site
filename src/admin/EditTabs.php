@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.08.20 23:53:27
+ * @version 16.08.20 08:58:19
  */
 
 declare(strict_types = 1);
@@ -11,6 +11,7 @@ namespace dicr\site\admin;
 
 use dicr\helper\Html;
 use yii\bootstrap4\Nav;
+
 use function is_string;
 use function ob_get_clean;
 use function ob_implicit_flush;
@@ -53,7 +54,7 @@ class EditTabs extends Nav
 
         parent::init();
 
-        Html::addCssClass($this->options, ['nav-tabs', 'dicr-admin-edit-tabs']);
+        Html::addCssClass($this->options, ['nav-tabs', 'dicr-site-admin-edit-tabs']);
 
         ob_start();
         ob_implicit_flush(0);
@@ -66,8 +67,7 @@ class EditTabs extends Nav
     {
         $content = trim(ob_get_clean());
 
-        EditTabsAsset::register($this->view);
-        $this->registerPlugin('dicrAdminEditTabs');
+        $this->registerPlugin('dicrSiteAdminEditTabs');
 
         // вкладки навигации
         ob_start();

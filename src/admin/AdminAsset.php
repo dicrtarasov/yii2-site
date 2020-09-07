@@ -1,19 +1,19 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:52:55
+ * @version 16.08.20 08:54:53
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
-use dicr\asset\FontAwesomeAsset;
-use yii\bootstrap4\BootstrapAsset;
-use yii\bootstrap4\BootstrapPluginAsset;
+use dicr\site\SiteAsset;
+use dicr\widgets\ToastsAsset;
+use yii\grid\GridViewAsset;
 use yii\web\AssetBundle;
-use yii\web\JqueryAsset;
+use yii\widgets\ActiveFormAsset;
 
 /**
  * Ресурсы админки.
@@ -21,18 +21,29 @@ use yii\web\JqueryAsset;
 class AdminAsset extends AssetBundle
 {
     /** @inheritDoc */
-    public $sourcePath = __DIR__ . '/assets/admin';
+    public $sourcePath = __DIR__ . '/assets';
 
     /** @inheritDoc */
     public $css = [
-        'style.css'
+        'admin.scss',
+        'control-panel.scss',
+        'edit-form.scss',
+        'edit-tabs.scss',
+        'grid-view.scss',
+        'link-pager.scss',
+        'navbar.scss'
+    ];
+
+    /** @inheritDoc */
+    public $js = [
+        'edit-tabs.js'
     ];
 
     /** @inheritDoc */
     public $depends = [
-        JqueryAsset::class,
-        BootstrapAsset::class,
-        BootstrapPluginAsset::class,
-        FontAwesomeAsset::class
+        SiteAsset::class,
+        ToastsAsset::class,
+        ActiveFormAsset::class,
+        GridViewAsset::class
     ];
 }

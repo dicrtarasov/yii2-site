@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 18:59:14
+ * @version 16.08.20 08:57:03
  */
 
 declare(strict_types = 1);
@@ -35,16 +35,6 @@ class LinkPager extends \yii\bootstrap4\LinkPager
     {
         parent::init();
 
-        Html::addCssClass($this->options, 'dicr-admin-link-pager');
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function run()
-    {
-        LinkPagerAsset::register($this->view);
-
-        return parent::run();
+        Html::addCssClass($this->options, 'dicr-site-admin-link-pager');
     }
 }

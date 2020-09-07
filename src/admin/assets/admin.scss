@@ -1,0 +1,87 @@
+// @copyright 2019-2020 Dicr http://dicr.org
+// @author Igor A Tarasov <develop@dicr.org>
+// @license proprietary
+// @version 21.08.20 04:03:48
+
+@import "./mix";
+
+body {
+    color: $color-default;
+    font-family: sans-serif;
+    @include gradient(bottom);
+}
+
+header {
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+        position: sticky;
+        top: 0;
+        z-index: 101;
+    }
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+/** Таблицы *******************************************/
+.table {
+    thead {
+        background: $color-blue;
+        color: #fff;
+
+        a {
+            color: inherit;
+
+            .table thead a:hover {
+                color: inherit;
+            }
+        }
+    }
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    display: inline;
+    position: relative;
+    top: 1px;
+    font-style: normal;
+    line-height: 1;
+    padding-left: 1px;
+}
+
+a.asc:after {
+    content: "\21D1";
+}
+
+a.desc:after {
+    content: "\21D3";
+}
+
+/*** Элементы формы *************************************************/
+.form-control {
+    color: $color-default;
+
+    &:focus {
+        color: #000;
+    }
+
+    &::placeholder {
+        color: $color-muted;
+    }
+}

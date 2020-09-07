@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.08.20 23:52:27
+ * @version 20.08.20 18:15:46
  */
 
 declare(strict_types = 1);
@@ -22,6 +22,7 @@ use yii\base\UnknownPropertyException;
 use yii\bootstrap4\ActiveField;
 use yii\bootstrap4\ActiveForm;
 use yii\db\ActiveRecord;
+
 use function array_merge;
 use function date;
 
@@ -52,13 +53,13 @@ class EditForm extends ActiveForm
      */
     public function init()
     {
-        Html::addCssClass($this->options, 'dicr-admin-edit-form');
+        parent::init();
 
         if (! isset($this->options['enctype'])) {
             $this->options['enctype'] = 'multipart/form-data';
         }
 
-        parent::init();
+        Html::addCssClass($this->options, 'dicr-site-admin-edit-form');
     }
 
     /**
@@ -66,16 +67,10 @@ class EditForm extends ActiveForm
      */
     public function run()
     {
-        EditFormAsset::register($this->view);
-
         $this->view->registerJs("
-            $('#{$this->options['id']}').on('afterValidate', function (event, messages, errorAttributes) {
-                if (messages) {
-                    $.each(messages, function(field, messages) {
-                        if (messages && messages[0]) {
-                            window.dicr.widgets.toasts.error(messages[0]);
-                        }
-                    });
+            $('#{$this->options['id']}').on('afterValidateAttribute', function (event, attribute, messages) {
+                if (messages && messages.length > 0) {
+                    window.dicr.widgets.toasts.error(messages[0]);
                 }
             });
         ");
@@ -91,7 +86,7 @@ class EditForm extends ActiveForm
      * @param array $options для form-group (для самого input использовать inputOptions)
      * @return ActiveField
      */
-    public function fieldStatic(Model $model, string $attribute, array $options = []) : ActiveField
+    public function fieldStatic(Model $model, string $attribute, array $options = []): ActiveField
     {
         $options['options'] = $options['options'] ?? [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
@@ -112,7 +107,7 @@ class EditForm extends ActiveForm
      * @return ?ActiveField
      * @throws UnknownPropertyException
      */
-    public function fieldId(ActiveRecord $model, array $options = []) : ?ActiveField
+    public function fieldId(ActiveRecord $model, array $options = []): ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -158,7 +153,7 @@ class EditForm extends ActiveForm
      * @throws UnknownPropertyException
      * @throws InvalidConfigException
      */
-    public function fieldCreated(ActiveRecord $model, array $options = []) : ?ActiveField
+    public function fieldCreated(ActiveRecord $model, array $options = []): ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -185,7 +180,7 @@ class EditForm extends ActiveForm
      * @throws InvalidConfigException
      * @throws UnknownPropertyException
      */
-    public function fieldUpdated(ActiveRecord $model, array $options = []) : ?ActiveField
+    public function fieldUpdated(ActiveRecord $model, array $options = []): ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -210,7 +205,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldEnabled(Model $model, array $options = []) : ActiveField
+    public function fieldEnabled(Model $model, array $options = []): ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, 'enabled', $options)->checkbox();
@@ -223,7 +218,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldDisabled(Model $model, array $options = []) : ActiveField
+    public function fieldDisabled(Model $model, array $options = []): ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, 'disabled', $options)->checkbox([
@@ -240,7 +235,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldHtml(Model $model, string $attribute, string $html, array $options = []) : ActiveField
+    public function fieldHtml(Model $model, string $attribute, string $html, array $options = []): ActiveField
     {
         if (! isset($options['parts']['{input}'])) {
             $options['parts']['{input}'] = $html;
@@ -260,7 +255,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ?ActiveField
      */
-    public function fieldUrl(ActiveRecord $model, array $options = []) : ?ActiveField
+    public function fieldUrl(ActiveRecord $model, array $options = []): ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -290,7 +285,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldText(Model $model, string $attribute, array $options = []) : ActiveField
+    public function fieldText(Model $model, string $attribute, array $options = []): ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)->widget(RedactorWidget::class);
@@ -306,7 +301,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
+    public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []): ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)->widget(FileInputWidget::class, [
@@ -327,7 +322,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
+    public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []): ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)->widget(FileInputWidget::class, [

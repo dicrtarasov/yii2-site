@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 31.07.20 08:16:57
+ * @version 16.08.20 02:26:25
  */
 
 declare(strict_types = 1);
@@ -15,6 +15,7 @@ use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\bootstrap4\ActiveForm;
+
 use function array_combine;
 use function array_filter;
 use function array_merge;
@@ -27,9 +28,8 @@ use function strtolower;
  * @property CheckoutInterface|null $checkout форма оформления заказа
  * @property OrderInterface|null $order оформленный заказ
  * @property float $sum сумма товаров
- * @property-read float $minSum минимальная приемлемая сумма товаров
- * @property-read float $maxSum максимально приемлемая для метода сумма товаров (-1 - нет ограничений, 0 - метод не
- *     приемлем)
+ * @property-read int $minSum минимальная допустимая сумма товаров
+ * @property-read ?int $maxSum максимально приемлемая сумма товаров (null - нет лимита)
  * @property-read bool $isAvailable метод приемлем для заданной суммы и товаров
  * @property float $tax комиссия метода оплаты или доставки
  * @property-read array $config конфиг объекта для сохранения в JSON
@@ -42,14 +42,14 @@ abstract class AbstractMethod extends Model
      *
      * @return string
      */
-    abstract public static function name();
+    abstract public static function name(): string;
 
     /**
      * Иконка метода.
      *
      * @return string URL картинки
      */
-    public static function icon()
+    public static function icon(): string
     {
         return '';
     }
@@ -88,9 +88,9 @@ abstract class AbstractMethod extends Model
     /**
      * Конвертирует название класса в id, пригодный для html-аттрибутов.
      *
-     * @return string
+     * @return string значение для class или id
      */
-    public static function id()
+    public static function id(): string
     {
         return strtolower(str_replace('\\', '-', static::class));
     }
@@ -101,7 +101,7 @@ abstract class AbstractMethod extends Model
      * @return string
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getClass()
+    public function getClass(): string
     {
         return static::class;
     }
@@ -114,7 +114,7 @@ abstract class AbstractMethod extends Model
      *
      * @return float
      */
-    public function getSum()
+    public function getSum(): float
     {
         if (! isset($this->_sum)) {
             if (! empty($this->checkout)) {
@@ -131,23 +131,26 @@ abstract class AbstractMethod extends Model
      * Установить сумму.
      *
      * @param float $sum
+     * @return $this
      */
-    public function setSum(float $sum)
+    public function setSum(float $sum): self
     {
         if ($sum < 0) {
             throw new InvalidArgumentException('sum');
         }
 
         $this->_sum = $sum;
+
+        return $this;
     }
 
     /**
      * Минимально допустимая сумма товаров для данного метода.
      *
-     * @return float
+     * @return int
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getMinSum()
+    public function getMinSum(): int
     {
         return 0;
     }
@@ -155,12 +158,12 @@ abstract class AbstractMethod extends Model
     /**
      * Максимально допустимая сумма для метода.
      *
-     * @return float (1 - не ограничена, 0 - метод не применим)
+     * @return ?int (null - не ограничено)
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getMaxSum()
+    public function getMaxSum(): ?int
     {
-        return - 1;
+        return null;
     }
 
     /**
@@ -168,12 +171,13 @@ abstract class AbstractMethod extends Model
      *
      * @return bool
      */
-    public function getIsAvailable()
+    public function getIsAvailable(): bool
     {
         $sum = $this->sum;
         $minSum = $this->minSum;
         $maxSum = $this->maxSum;
-        return ($sum >= $minSum) && ($maxSum < 0 || $sum <= $maxSum);
+
+        return ($sum >= $minSum) && ($maxSum === null || $sum <= $maxSum);
     }
 
     /** @var float */
@@ -184,7 +188,7 @@ abstract class AbstractMethod extends Model
      *
      * @return float
      */
-    public function getTax()
+    public function getTax(): float
     {
         return $this->_tax;
     }
@@ -193,23 +197,27 @@ abstract class AbstractMethod extends Model
      * Установить комиссию.
      *
      * @param float $tax
+     * @return $this
      */
-    public function setTax(float $tax)
+    public function setTax(float $tax): self
     {
         if ($tax < 0) {
             throw new InvalidArgumentException('tax');
         }
 
         $this->tax = 0;
+
+        return $this;
     }
 
-    /** @var CheckoutInterface|null */
+    /** @var ?CheckoutInterface */
     private $_checkout;
 
     /**
      * Форма оформления заказа.
      *
-     * @return CheckoutInterface|null
+     * @return ?CheckoutInterface
+     * Не устанавливаем жесткий тип return, потому что переопределяется в реализации.
      */
     public function getCheckout()
     {
@@ -219,20 +227,24 @@ abstract class AbstractMethod extends Model
     /**
      * Установить форму оформления заказа.
      *
-     * @param CheckoutInterface|null $checkout
+     * @param ?CheckoutInterface $checkout
+     * @return $this
      */
-    public function setCheckout(CheckoutInterface $checkout = null)
+    public function setCheckout(?CheckoutInterface $checkout): self
     {
         $this->_checkout = $checkout;
+
+        return $this;
     }
 
-    /** @var OrderInterface|null */
+    /** @var ?OrderInterface */
     private $_order;
 
     /**
      * Оформленный заказ.
      *
-     * @return OrderInterface|null
+     * @return ?OrderInterface
+     * Не устанавливаем жесткий тип return, потому что переопределяется в реализации.
      */
     public function getOrder()
     {
@@ -242,9 +254,9 @@ abstract class AbstractMethod extends Model
     /**
      * Установить заказ.
      *
-     * @param OrderInterface|null $order
+     * @param ?OrderInterface $order
      */
-    public function setOrder(OrderInterface $order = null)
+    public function setOrder(?OrderInterface $order)
     {
         $this->_order = $order;
     }
@@ -254,14 +266,14 @@ abstract class AbstractMethod extends Model
      *
      * @return string[]
      */
-    abstract public static function classes();
+    abstract public static function classes(): array;
 
     /**
      * Список экземпляров методов.
      *
      * @return static[] экземпляры моделей, индексированные по class.
      */
-    public static function list()
+    public static function list(): array
     {
         $list = [];
 
@@ -278,7 +290,7 @@ abstract class AbstractMethod extends Model
      *
      * @return string[]
      */
-    public static function names()
+    public static function names(): array
     {
         $list = [];
 
@@ -299,7 +311,7 @@ abstract class AbstractMethod extends Model
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function render(ActiveForm $form, array $options = [])
+    public function render(ActiveForm $form, array $options = []): string
     {
         return '';
     }
@@ -310,7 +322,7 @@ abstract class AbstractMethod extends Model
      * @return bool результат обработки
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function process()
+    public function process(): bool
     {
         return true;
     }
@@ -319,10 +331,10 @@ abstract class AbstractMethod extends Model
      * Создает экземпляр метода из конфига
      *
      * @param array $config
-     * @return static|null
+     * @return ?static
      * @noinspection PhpIncompatibleReturnTypeInspection
      */
-    public static function create(array $config)
+    public static function create(array $config): ?self
     {
         if (! empty($config)) {
             try {
@@ -340,11 +352,11 @@ abstract class AbstractMethod extends Model
      *
      * @return array
      */
-    public function getConfig()
+    public function getConfig(): array
     {
         return array_merge([
             'class' => static::class
-        ], array_filter($this->attributes, static function($val) {
+        ], array_filter($this->attributes, static function ($val) {
             return $val !== null && $val !== '';
         }));
     }
@@ -354,7 +366,7 @@ abstract class AbstractMethod extends Model
      *
      * @return string[]
      */
-    public function toText()
+    public function toText(): array
     {
         $data = [];
 
@@ -364,12 +376,13 @@ abstract class AbstractMethod extends Model
         }
 
         foreach ($attributes as $name => $val) {
-            $data[Html::esc($this->getAttributeLabel($name))] = Html::esc((string)$val);
+            $val = (string)$val;
+            if ($val !== '') {
+                $data[Html::esc($this->getAttributeLabel($name))] = Html::esc($val);
+            }
         }
 
-        return array_filter($data, static function($val) {
-            return $val !== null && $val !== '';
-        });
+        return $data;
     }
 
     /**

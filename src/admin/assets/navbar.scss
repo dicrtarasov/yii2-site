@@ -1,0 +1,78 @@
+// @copyright 2019-2020 Dicr http://dicr.org
+// @author Igor A Tarasov <develop@dicr.org>
+// @license proprietary
+// @version 21.08.20 04:03:26
+
+@import "./mix";
+
+.dicr-site-admin-navbar {
+    border-color: $color-border;
+    @include gradient(bottom);
+    @include shadow;
+
+    > .container {
+        justify-content: flex-start;
+
+        .navbar-toggler {
+            margin-right: 1rem;
+            order: 0;
+        }
+
+        .navbar-brand {
+            padding: 0;
+            order: 1;
+        }
+
+        .navbar-collapse {
+            order: 2;
+
+            @media (max-width: 767px) {
+                padding-top: 1rem;
+                order: 3;
+            }
+
+            .navbar-nav {
+                .dropdown {
+                    .dropdown-toggle {
+                        color: $color-dark;
+
+                        @media (max-width: 767px) {
+                            padding-top: 0.7rem;
+                            padding-bottom: 0.7rem;
+                        }
+                    }
+
+                    &.show {
+                        .dropdown-toggle {
+                            @media (min-width: 768px) {
+                                background: $color-shadow;
+                                box-shadow: inset 0 3px 9px $color-shadow;
+                            }
+                        }
+                    }
+
+                    .dropdown-menu {
+                        @include shadow;
+
+                        .dropdown-item {
+                            @media (max-width: 767px) {
+                                padding-top: 0.5rem;
+                                padding-bottom: 0.5rem;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        .dicr-site-admin-control-panel {
+            order: 3;
+            margin-left: auto;
+
+            @media (max-width: 767px) {
+                order: 2;
+            }
+        }
+    }
+}

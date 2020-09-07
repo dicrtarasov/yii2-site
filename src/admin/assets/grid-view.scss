@@ -1,0 +1,32 @@
+// @copyright 2019-2020 Dicr http://dicr.org
+// @author Igor A Tarasov <develop@dicr.org>
+// @license proprietary
+// @version 16.08.20 08:50:54
+
+@import "./mix";
+
+.dicr-site-admin-grid-view {
+    .table-responsive {
+        margin-bottom: 0.5rem;
+    }
+
+    .table {
+        background-color: #fff;
+        border: 1px solid $color-border;
+        margin-bottom: 0;
+
+        thead {
+            color: #fff;
+            background: $color-blue;
+
+            a {
+                color: inherit;
+            }
+        }
+
+        tfoot {
+            font-weight: bold;
+            background-color: $color-light;
+        }
+    }
+}

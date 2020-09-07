@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7244f4e552a534fb1042c4e6f0c7bd35",
+    "content-hash": "fdd5fc554405add6c315797849ea848a",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -143,29 +143,35 @@
         },
         {
             "name": "dicr/yii2-asset",
-            "version": "1.6.0",
+            "version": "1.7.8",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-asset.git",
-                "reference": "849301df738052ff78c9793d3eb938fb455791b9"
+                "reference": "6177e54f69a0beac31695d6405e459bfbc5daf36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=849301df738052ff78c9793d3eb938fb455791b9",
-                "reference": "849301df738052ff78c9793d3eb938fb455791b9",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=6177e54f69a0beac31695d6405e459bfbc5daf36",
+                "reference": "6177e54f69a0beac31695d6405e459bfbc5daf36",
                 "shasum": ""
             },
             "require": {
-                "php": "~7.2",
+                "php": "~7.4",
+                "scssphp/scssphp": "~1.1",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
-                "roave/security-advisories": "dev-master"
+                "phpunit/phpunit": "~9.3"
             },
             "type": "yii2-extension",
             "autoload": {
                 "psr-4": {
                     "dicr\\asset\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "dicr\\tests\\": "tests/"
                 }
             },
             "license": [
@@ -190,34 +196,36 @@
                 "source": "https://gitlab.com/dicr/yii2-asset.git",
                 "issues": "https://gitlab.com/api/v4/projects/10744876/issues"
             },
-            "time": "2020-07-26T11:27:39+05:00"
+            "time": "2020-08-20T22:45:52+05:00"
         },
         {
             "name": "dicr/yii2-file",
-            "version": "4.1.2",
+            "version": "4.2.6",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-file.git",
-                "reference": "fd7f9b92e998345260f6ea6aace3659738a2bc4d"
+                "reference": "59beec2f9d876715a957f99bfd2e57687f748c6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=fd7f9b92e998345260f6ea6aace3659738a2bc4d",
-                "reference": "fd7f9b92e998345260f6ea6aace3659738a2bc4d",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=59beec2f9d876715a957f99bfd2e57687f748c6a",
+                "reference": "59beec2f9d876715a957f99bfd2e57687f748c6a",
                 "shasum": ""
             },
             "require": {
-                "dicr/yii2-asset": "~1.6",
+                "dicr/yii2-asset": "~1.7",
                 "ext-fileinfo": "*",
                 "ext-ftp": "*",
+                "ext-iconv": "*",
                 "ext-imagick": "*",
                 "ext-mbstring": "*",
-                "php": "~7.3",
+                "php": "~7.2",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
-                "league/flysystem": "~1.0",
-                "phpunit/phpunit": "~9.2",
+                "ext-ssh2": "*",
+                "league/flysystem": "~1.1",
+                "phpunit/phpunit": "~9.3",
                 "roave/security-advisories": "dev-master",
                 "yiisoft/yii2-bootstrap4": "~2.0",
                 "yiisoft/yii2-debug": "~2.1"
@@ -259,39 +267,39 @@
             "homepage": "https://gitlab.com/dicr/yii2-file",
             "keywords": [
                 "dicr",
-                "filestore",
-                "php",
+                "file",
+                "store",
                 "yii2"
             ],
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-file.git",
                 "issues": "https://gitlab.com/api/v4/projects/9710563/issues"
             },
-            "time": "2020-08-05T23:19:49+05:00"
+            "time": "2020-08-18T01:12:28+05:00"
         },
         {
             "name": "dicr/yii2-helper",
-            "version": "3.3.5",
+            "version": "3.5.3",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-helper.git",
-                "reference": "bba26f2426a626c3486edbf3c113dd78abd45126"
+                "reference": "b02ef51fcc3c3b77fe265aa60b2f2be95badb577"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=bba26f2426a626c3486edbf3c113dd78abd45126",
-                "reference": "bba26f2426a626c3486edbf3c113dd78abd45126",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=b02ef51fcc3c3b77fe265aa60b2f2be95badb577",
+                "reference": "b02ef51fcc3c3b77fe265aa60b2f2be95badb577",
                 "shasum": ""
             },
             "require": {
                 "ext-intl": "*",
                 "ext-mbstring": "*",
-                "php": "~7.4",
+                "php": "~7.2",
                 "yiisoft/yii2": "~2.0",
                 "yiisoft/yii2-bootstrap4": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~9.2",
+                "phpunit/phpunit": "~9.3",
                 "roave/security-advisories": "dev-master"
             },
             "type": "yii2-extension",
@@ -324,28 +332,26 @@
             "keywords": [
                 "dicr",
                 "helper",
-                "php",
-                "utilities",
                 "yii2"
             ],
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-helper.git",
                 "issues": "https://gitlab.com/api/v4/projects/9713190/issues"
             },
-            "time": "2020-08-06T04:42:24+05:00"
+            "time": "2020-08-29T04:01:53+05:00"
         },
         {
             "name": "dicr/yii2-validate",
-            "version": "2.0.17",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-validate.git",
-                "reference": "7c6bf5c932c7a656d4d7cfeb555bc60e5b8f73f1"
+                "reference": "1246b0aa213985fad22d4541c617e46fbf693ca1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=7c6bf5c932c7a656d4d7cfeb555bc60e5b8f73f1",
-                "reference": "7c6bf5c932c7a656d4d7cfeb555bc60e5b8f73f1",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=1246b0aa213985fad22d4541c617e46fbf693ca1",
+                "reference": "1246b0aa213985fad22d4541c617e46fbf693ca1",
                 "shasum": ""
             },
             "require": {
@@ -353,8 +359,7 @@
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~9.2",
-                "roave/security-advisories": "dev-master"
+                "phpunit/phpunit": "~9.3"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -378,10 +383,10 @@
                     "role": "developer"
                 }
             ],
-            "description": "Validation components for Yii2",
+            "description": "Компоненты валидации for Yii2",
             "homepage": "https://gitlab.com/dicr/yii2-validate",
             "keywords": [
-                "php",
+                "dicr",
                 "validate",
                 "yii2"
             ],
@@ -389,25 +394,26 @@
                 "source": "https://gitlab.com/dicr/yii2-validate.git",
                 "issues": "https://gitlab.com/api/v4/projects/9711109/issues"
             },
-            "time": "2020-08-02T21:53:22+05:00"
+            "time": "2020-09-01T22:43:36+05:00"
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "1.7.4",
+            "version": "1.8.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "e7e4adc8eac387eda0220432d4f44ebe55a76a0d"
+                "reference": "68adb51bc5abeda0f9d9a76135041d4a55ac99ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=e7e4adc8eac387eda0220432d4f44ebe55a76a0d",
-                "reference": "e7e4adc8eac387eda0220432d4f44ebe55a76a0d",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=68adb51bc5abeda0f9d9a76135041d4a55ac99ca",
+                "reference": "68adb51bc5abeda0f9d9a76135041d4a55ac99ca",
                 "shasum": ""
             },
             "require": {
-                "dicr/yii2-asset": "~1.5",
-                "php": "~7.4",
+                "dicr/yii2-asset": "~1.7",
+                "dicr/yii2-helper": "~3.4",
+                "php": "~7.2",
                 "yiisoft/yii2": "~2.0",
                 "yiisoft/yii2-bootstrap4": "~2.0"
             },
@@ -415,6 +421,9 @@
                 "roave/security-advisories": "dev-master"
             },
             "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "dicr\\widgets\\Bootstrap"
+            },
             "autoload": {
                 "psr-4": {
                     "dicr\\widgets\\": "src/"
@@ -435,7 +444,6 @@
             "homepage": "https://gitlab.com/dicr/yii2-widgets",
             "keywords": [
                 "dicr",
-                "php",
                 "widgets",
                 "yii2"
             ],
@@ -443,7 +451,7 @@
                 "source": "https://gitlab.com/dicr/yii2-widgets.git",
                 "issues": "https://gitlab.com/api/v4/projects/12653694/issues"
             },
-            "time": "2020-08-02T03:01:04+05:00"
+            "time": "2020-08-22T15:33:17+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -497,10 +505,10 @@
         },
         {
             "name": "npm-asset/bootstrap",
-            "version": "4.5.1",
+            "version": "4.5.2",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.5.1.tgz"
+                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-4.5.2.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -508,17 +516,79 @@
             ]
         },
         {
-            "name": "yiisoft/yii2",
-            "version": "2.0.36",
+            "name": "scssphp/scssphp",
+            "version": "1.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "a557111ea6c27794b98c98b76ff3f127eb55f309"
+                "url": "https://github.com/scssphp/scssphp.git",
+                "reference": "ce970268a912dabbfaa0eff65dbc5e4a2a6cb757"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/a557111ea6c27794b98c98b76ff3f127eb55f309",
-                "reference": "a557111ea6c27794b98c98b76ff3f127eb55f309",
+                "url": "https://api.github.com/repos/scssphp/scssphp/zipball/ce970268a912dabbfaa0eff65dbc5e4a2a6cb757",
+                "reference": "ce970268a912dabbfaa0eff65dbc5e4a2a6cb757",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.3",
+                "sass/sass-spec": "2020.08.10",
+                "squizlabs/php_codesniffer": "~3.5",
+                "twbs/bootstrap": "~4.3",
+                "zurb/foundation": "~6.5"
+            },
+            "bin": [
+                "bin/pscss"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ScssPhp\\ScssPhp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anthon Pang",
+                    "email": "apang@softwaredevelopment.ca",
+                    "homepage": "https://github.com/robocoder"
+                },
+                {
+                    "name": "Cédric Morin",
+                    "email": "cedric@yterium.com",
+                    "homepage": "https://github.com/Cerdic"
+                }
+            ],
+            "description": "scssphp is a compiler for SCSS written in PHP.",
+            "homepage": "http://scssphp.github.io/scssphp/",
+            "keywords": [
+                "css",
+                "less",
+                "sass",
+                "scss",
+                "stylesheet"
+            ],
+            "time": "2020-08-26T20:47:29+00:00"
+        },
+        {
+            "name": "yiisoft/yii2",
+            "version": "2.0.37",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-framework.git",
+                "reference": "e8094d1aa9e807fbea970bc1360ab836ffb1b738"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/e8094d1aa9e807fbea970bc1360ab836ffb1b738",
+                "reference": "e8094d1aa9e807fbea970bc1360ab836ffb1b738",
                 "shasum": ""
             },
             "require": {
@@ -619,7 +689,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-07T21:45:32+00:00"
+            "time": "2020-08-07T20:11:56+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap4",
@@ -767,12 +837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "2ef1995958f6434d5d408d7baa6612c7d239cc54"
+                "reference": "dbda10aea96678b6742e8f0109c1c7ac003a0f69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/2ef1995958f6434d5d408d7baa6612c7d239cc54",
-                "reference": "2ef1995958f6434d5d408d7baa6612c7d239cc54",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/dbda10aea96678b6742e8f0109c1c7ac003a0f69",
+                "reference": "dbda10aea96678b6742e8f0109c1c7ac003a0f69",
                 "shasum": ""
             },
             "conflict": {
@@ -788,6 +858,7 @@
                 "bagisto/bagisto": "<0.1.5",
                 "barrelstrength/sprout-base-email": "<1.2.7",
                 "barrelstrength/sprout-forms": "<3.9",
+                "baserproject/basercms": ">=4,<=4.3.6",
                 "bolt/bolt": "<3.7.1",
                 "brightlocal/phpwhois": "<=4.2.5",
                 "buddypress/buddypress": "<5.1.2",
@@ -847,8 +918,8 @@
                 "gregwar/rst": "<1.0.3",
                 "guzzlehttp/guzzle": ">=4-rc.2,<4.2.4|>=5,<5.3.1|>=6,<6.2.1",
                 "illuminate/auth": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.10",
-                "illuminate/cookie": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30",
-                "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29",
+                "illuminate/cookie": ">=4,<=4.0.11|>=4.1,<=4.1.99999|>=4.2,<=4.2.99999|>=5,<=5.0.99999|>=5.1,<=5.1.99999|>=5.2,<=5.2.99999|>=5.3,<=5.3.99999|>=5.4,<=5.4.99999|>=5.5,<=5.5.49|>=5.6,<=5.6.99999|>=5.7,<=5.7.99999|>=5.8,<=5.8.99999|>=6,<6.18.31|>=7,<7.22.4",
+                "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29|>=5.5,<=5.5.44|>=6,<6.18.34|>=7,<7.23.2",
                 "illuminate/encryption": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.40|>=5.6,<5.6.15",
                 "illuminate/view": ">=7,<7.1.2",
                 "ivankristianto/phpwhois": "<=4.3",
@@ -859,7 +930,7 @@
                 "kitodo/presentation": "<3.1.2",
                 "kreait/firebase-php": ">=3.2,<3.8.1",
                 "la-haute-societe/tcpdf": "<6.2.22",
-                "laravel/framework": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.42|>=5.6,<5.6.30|>=7,<7.1.2",
+                "laravel/framework": ">=4,<4.0.99|>=4.1,<=4.1.99999|>=4.2,<=4.2.99999|>=5,<=5.0.99999|>=5.1,<=5.1.99999|>=5.2,<=5.2.99999|>=5.3,<=5.3.99999|>=5.4,<=5.4.99999|>=5.5,<=5.5.49|>=5.6,<=5.6.99999|>=5.7,<=5.7.99999|>=5.8,<=5.8.99999|>=6,<6.18.34|>=7,<7.23.2",
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
                 "league/commonmark": "<0.18.3",
                 "librenms/librenms": "<1.53",
@@ -880,6 +951,7 @@
                 "onelogin/php-saml": "<2.10.4",
                 "oneup/uploader-bundle": "<1.9.3|>=2,<2.1.5",
                 "openid/php-openid": "<2.3",
+                "openmage/magento-lts": "<19.4.6|>=20,<20.0.2",
                 "oro/crm": ">=1.7,<1.7.4",
                 "oro/platform": ">=1.7,<1.7.4",
                 "padraic/humbug_get_contents": "<1.1.2",
@@ -941,7 +1013,7 @@
                 "sylius/admin-bundle": ">=1,<1.0.17|>=1.1,<1.1.9|>=1.2,<1.2.2",
                 "sylius/grid": ">=1,<1.1.19|>=1.2,<1.2.18|>=1.3,<1.3.13|>=1.4,<1.4.5|>=1.5,<1.5.1",
                 "sylius/grid-bundle": ">=1,<1.1.19|>=1.2,<1.2.18|>=1.3,<1.3.13|>=1.4,<1.4.5|>=1.5,<1.5.1",
-                "sylius/resource-bundle": "<1.3.13|>=1.4,<1.4.6|>=1.5,<1.5.1|>=1.6,<1.6.3",
+                "sylius/resource-bundle": "<1.3.14|>=1.4,<1.4.7|>=1.5,<1.5.2|>=1.6,<1.6.4",
                 "sylius/sylius": "<1.3.16|>=1.4,<1.4.12|>=1.5,<1.5.9|>=1.6,<1.6.5",
                 "symbiote/silverstripe-multivaluefield": ">=3,<3.0.99",
                 "symbiote/silverstripe-versionedfiles": "<=2.0.3",
@@ -1054,7 +1126,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-05T22:02:01+00:00"
+            "time": "2020-08-28T21:02:31+00:00"
         }
     ],
     "aliases": [],
@@ -1065,7 +1137,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.4",
+        "php": "~7.2",
         "ext-intl": "*",
         "ext-mbstring": "*"
     },
