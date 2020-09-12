@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.09.20 00:54:12
+ * @version 13.09.20 01:51:11
  */
 
 declare(strict_types = 1);
@@ -304,12 +304,12 @@ abstract class AbstractForm extends Model
         }
 
         $managerMessage = $this->getManagerMessage();
-        if (! empty($managerMessage) && ! $managerMessage->send()) {
+        if ($managerMessage !== null && ! $managerMessage->send()) {
             throw new ServerErrorHttpException('Ошибка отправки сообщения менеджеру');
         }
 
         $userMessage = $this->getUserMessage();
-        if (! empty($userMessage) && ! $userMessage->send()) {
+        if ($userMessage !== null && ! $userMessage->send()) {
             throw new ServerErrorHttpException('Ошибка отправки сообщения пользователю');
         }
 

@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 03:17:21
+ * @version 13.09.20 01:51:53
  */
 
 declare(strict_types = 1);
@@ -52,10 +52,43 @@ abstract class ShipMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public function toText(): array
+    public function toText() : array
     {
         return array_merge([
             Yii::t('dicr/site', 'Способ доставки') => static::name()
         ], parent::toText());
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * Сохранить параметры этого метода как выбранного метода оплаты.
+     */
+    public function saveSelected() : void
+    {
+        Yii::$app->session->set(__CLASS__, $this->config);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * Восстанавливает сохраненный выбранный метод оплаты.
+     *
+     * @return ?self
+     */
+    public static function restoreSelected(bool $clean = false) : ?self
+    {
+        $config = Yii::$app->session->get(__CLASS__);
+        if ($config === null) {
+            return null;
+        }
+
+        $method = static::create($config);
+
+        if ($clean) {
+            Yii::$app->session->remove(__CLASS__);
+        }
+
+        return $method;
     }
 }
