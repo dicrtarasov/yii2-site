@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 21.09.20 19:20:51
+ * @version 21.09.20 19:50:11
  */
 
 declare(strict_types = 1);
@@ -31,6 +31,14 @@ class Formatter extends \yii\i18n\Formatter
 
     /** @inheritDoc */
     public $thousandSeparator = ' ';
+
+    /** @inheritDoc */
+    public $numberFormatterSymbols = [
+        NumberFormatter::CURRENCY_SYMBOL => '₽'
+    ];
+
+    /** @inheritDoc */
+    public $currencyCode = 'RUB';
 
     /** @inheritDoc */
     public $numberFormatterOptions = [
