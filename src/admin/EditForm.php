@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 20.08.20 18:15:46
+ * @version 21.09.20 19:00:14
  */
 
 declare(strict_types = 1);
@@ -51,7 +51,7 @@ class EditForm extends ActiveForm
     /**
      * @inheritDoc
      */
-    public function init()
+    public function init() : void
     {
         parent::init();
 
@@ -65,7 +65,7 @@ class EditForm extends ActiveForm
     /**
      * @inheritDoc
      */
-    public function run()
+    public function run() : string
     {
         $this->view->registerJs("
             $('#{$this->options['id']}').on('afterValidateAttribute', function (event, attribute, messages) {
@@ -86,20 +86,19 @@ class EditForm extends ActiveForm
      * @param array $options для form-group (для самого input использовать inputOptions)
      * @return ActiveField
      */
-    public function fieldStatic(Model $model, string $attribute, array $options = []): ActiveField
+    public function fieldStatic(Model $model, string $attribute, array $options = []) : ActiveField
     {
         $options['options'] = $options['options'] ?? [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
 
-        // баг в bootstrap4 (staticControl не берет inputOptions, сука).
-        $inputOptions = ArrayHelper::remove($options, 'inputOptions', []);
-
         /** @noinspection PhpPossiblePolymorphicInvocationInspection */
-        return $this->field($model, $attribute, $options)->staticControl($inputOptions);
+        return $this->field($model, $attribute, $options)
+            // баг в bootstrap4 (staticControl не берет inputOptions, сука).
+            ->staticControl(ArrayHelper::remove($options, 'inputOptions', []));
     }
 
     /**
-     * Поле ID
+     * Поле ID.
      *
      * @param ActiveRecord $model
      * @param array $options
@@ -107,7 +106,7 @@ class EditForm extends ActiveForm
      * @return ?ActiveField
      * @throws UnknownPropertyException
      */
-    public function fieldId(ActiveRecord $model, array $options = []): ?ActiveField
+    public function fieldId(ActiveRecord $model, array $options = []) : ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -125,16 +124,16 @@ class EditForm extends ActiveForm
         }
 
         if (! empty($url)) {
+            if (! $model->canGetProperty('id')) {
+                throw new UnknownPropertyException('id');
+            }
+
             $url = Url::to($url, true);
 
             $options['inputOptions'] = array_merge([
                 'target' => '_blank',
                 'title' => 'Страница: ' . $url
             ], $options['inputOptions'] ?? []);
-
-            if (! $model->canGetProperty('id')) {
-                throw new UnknownPropertyException('id');
-            }
 
             $html = Html::a(Html::encode($model->{'id'}), $url, $options['inputOptions']);
 
@@ -153,7 +152,7 @@ class EditForm extends ActiveForm
      * @throws UnknownPropertyException
      * @throws InvalidConfigException
      */
-    public function fieldCreated(ActiveRecord $model, array $options = []): ?ActiveField
+    public function fieldCreated(ActiveRecord $model, array $options = []) : ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -180,7 +179,7 @@ class EditForm extends ActiveForm
      * @throws InvalidConfigException
      * @throws UnknownPropertyException
      */
-    public function fieldUpdated(ActiveRecord $model, array $options = []): ?ActiveField
+    public function fieldUpdated(ActiveRecord $model, array $options = []) : ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -205,7 +204,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldEnabled(Model $model, array $options = []): ActiveField
+    public function fieldEnabled(Model $model, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, 'enabled', $options)->checkbox();
@@ -218,7 +217,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldDisabled(Model $model, array $options = []): ActiveField
+    public function fieldDisabled(Model $model, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, 'disabled', $options)->checkbox([
@@ -235,7 +234,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldHtml(Model $model, string $attribute, string $html, array $options = []): ActiveField
+    public function fieldHtml(Model $model, string $attribute, string $html, array $options = []) : ActiveField
     {
         if (! isset($options['parts']['{input}'])) {
             $options['parts']['{input}'] = $html;
@@ -255,7 +254,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ?ActiveField
      */
-    public function fieldUrl(ActiveRecord $model, array $options = []): ?ActiveField
+    public function fieldUrl(ActiveRecord $model, array $options = []) : ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -271,7 +270,9 @@ class EditForm extends ActiveForm
         /** @noinspection PhpUndefinedFieldInspection */
         $url = $model->url;
 
-        $html = Html::a(Html::encode(Url::to($url, true)), $url, $options['inputOptions']);
+        $html = Html::a(
+            Html::encode(Url::to($url, true)), $url, $options['inputOptions']
+        );
 
         return $this->fieldHtml($model, 'url', $html, $options);
     }
@@ -285,10 +286,11 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldText(Model $model, string $attribute, array $options = []): ActiveField
+    public function fieldText(Model $model, string $attribute, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->field($model, $attribute, $options)->widget(RedactorWidget::class);
+        return $this->field($model, $attribute, $options)
+            ->widget(RedactorWidget::class);
     }
 
     /**
@@ -301,15 +303,16 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []): ActiveField
+    public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->field($model, $attribute, $options)->widget(FileInputWidget::class, [
-            'layout' => 'images',
-            'limit' => $limit,
-            'accept' => 'image/*',
-            'removeExt' => true
-        ]);
+        return $this->field($model, $attribute, $options)
+            ->widget(FileInputWidget::class, [
+                'layout' => 'images',
+                'limit' => $limit,
+                'accept' => 'image/*',
+                'removeExt' => true
+            ]);
     }
 
     /**
@@ -322,13 +325,14 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []): ActiveField
+    public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
     {
         /** @noinspection PhpIncompatibleReturnTypeInspection */
-        return $this->field($model, $attribute, $options)->widget(FileInputWidget::class, [
-            'layout' => 'files',
-            'limit' => $limit,
-            'removeExt' => true
-        ]);
+        return $this->field($model, $attribute, $options)
+            ->widget(FileInputWidget::class, [
+                'layout' => 'files',
+                'limit' => $limit,
+                'removeExt' => true
+            ]);
     }
 }
