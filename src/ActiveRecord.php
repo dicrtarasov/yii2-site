@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.20 15:26:00
+ * @version 08.09.20 03:02:27
  */
 
 declare(strict_types = 1);
@@ -61,7 +61,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public static function updateAllCounters($counters, $condition = '', $params = [])
     {
@@ -75,7 +75,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public static function deleteAll($condition = null, $params = [])
     {

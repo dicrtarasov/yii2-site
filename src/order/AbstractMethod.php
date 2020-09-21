@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 02:26:25
+ * @version 13.09.20 01:47:55
  */
 
 declare(strict_types = 1);
@@ -392,4 +392,17 @@ abstract class AbstractMethod extends Model
     {
         return static::name();
     }
+
+    /**
+     * Сохранить параметры метода как выбранного
+     */
+    abstract public function saveSelected() : void;
+
+    /**
+     * Восстановить параметры сохраненного выбранного метода.
+     *
+     * @param bool $clean удалить сохраненные параметры
+     * @return ?static (переопределяется в наследуемом)
+     */
+    abstract public static function restoreSelected(bool $clean = false);
 }

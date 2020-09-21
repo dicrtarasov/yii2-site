@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.20 15:25:50
+ * @version 08.09.20 03:23:22
  */
 
 declare(strict_types = 1);
@@ -14,10 +14,10 @@ use Yii;
 use yii\base\Behavior;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
+use yii\db\Exception;
 use yii\db\Transaction;
 
 use function array_slice;
-use function call_user_func;
 
 /**
  * Добавляет ActiveRecord метод upsert.
@@ -35,7 +35,7 @@ class UpsertBehavior extends Behavior
      */
     public function attach($owner)
     {
-        if (! is_a($owner, ActiveRecord::class)) {
+        if (! $owner instanceof ActiveRecord) {
             throw new InvalidConfigException('owner должен быть типа ActiveRecord');
         }
 
@@ -49,13 +49,12 @@ class UpsertBehavior extends Behavior
      * @param ?array $attributes
      * @return bool
      * @throws Throwable
-     * @noinspection ParameterDefaultValueIsNotNullInspection
      */
-    public function upsert($runValidation = true, $attributes = null): bool
+    public function upsert(bool $runValidation = true, ?array $attributes = null) : bool
     {
         if ($runValidation) {
             // reset isNewRecord to pass "unique" attribute validator because of upsert
-            $this->owner->setIsNewRecord(false);
+            $this->owner->isNewRecord = false;
 
             if (! $this->owner->validate($attributes)) {
                 Yii::warning('Model not inserted due to validation error.', __METHOD__);
@@ -69,7 +68,7 @@ class UpsertBehavior extends Behavior
         }
 
         /** @var Transaction $transaction */
-        $transaction = call_user_func([$this->owner, 'getDb'])->beginTransaction();
+        $transaction = $this->owner::getDb()->beginTransaction();
         try {
             $result = $this->upsertInternal($attributes);
             if ($result !== false) {
@@ -90,8 +89,9 @@ class UpsertBehavior extends Behavior
      *
      * @param ?array $attributes
      * @return bool
+     * @throws Exception
      */
-    protected function upsertInternal($attributes = null): bool
+    protected function upsertInternal(?array $attributes = null) : bool
     {
         if (! $this->owner->beforeSave(true)) {
             return false;
@@ -99,8 +99,8 @@ class UpsertBehavior extends Behavior
 
         // attributes for INSERT
         $insertValues = $this->owner->getAttributes($attributes);
-        $db = call_user_func([$this->owner, 'getDb']);
-        $tableName = call_user_func([$this->owner, 'tableName']);
+        $db = $this->owner::getDb();
+        $tableName = $this->owner::tableName();
 
         // attributes for UPDATE exclude primaryKey
         $updateValues = array_slice($insertValues, 0);
@@ -109,7 +109,10 @@ class UpsertBehavior extends Behavior
         }
 
         // process update/insert
-        if ($db->createCommand()->upsert($tableName, $insertValues, $updateValues ?: false)->execute() === false) {
+        $cmd = $db->createCommand()
+            ->upsert($tableName, $insertValues, $updateValues ?: false);
+
+        if ($cmd->execute() === false) {
             return false;
         }
 

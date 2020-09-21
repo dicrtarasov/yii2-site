@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 02:28:28
+ * @version 13.09.20 01:50:23
  */
 
 declare(strict_types = 1);
@@ -239,38 +239,6 @@ abstract class CreditMethod extends PayMethod
 
         // добавляем проверку по сроку
         return parent::getIsAvailable() && ($maxTerm === null || $maxTerm > 0);
-    }
-
-    /**
-     * Сохраняет кредит в сессии.
-     *
-     * @return $this
-     */
-    public function saveCredit(): self
-    {
-        Yii::$app->session->set(__CLASS__, $this->config);
-
-        return $this;
-    }
-
-    /**
-     * Возвращает сохраненные параметры кредита.
-     *
-     * @return ?static
-     */
-    public static function loadCredit(): ?self
-    {
-        $config = Yii::$app->session->get(__CLASS__);
-
-        return ! empty($config) ? static::create($config) : null;
-    }
-
-    /**
-     * Удаляет сохраненный кредит.
-     */
-    public static function cleanCredit(): void
-    {
-        Yii::$app->session->remove(__CLASS__);
     }
 
     /**
