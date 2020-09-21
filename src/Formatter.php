@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 21.09.20 19:50:11
+ * @version 21.09.20 19:57:14
  */
 
 declare(strict_types = 1);
@@ -33,19 +33,19 @@ class Formatter extends \yii\i18n\Formatter
     public $thousandSeparator = ' ';
 
     /** @inheritDoc */
+    public $numberFormatterOptions = [
+        NumberFormatter::GROUPING_USED => true,
+        NumberFormatter::MIN_FRACTION_DIGITS => 0,
+        NumberFormatter::MAX_FRACTION_DIGITS => 3
+    ];
+
+    /** @inheritDoc */
     public $numberFormatterSymbols = [
         NumberFormatter::CURRENCY_SYMBOL => '₽'
     ];
 
     /** @inheritDoc */
     public $currencyCode = 'RUB';
-
-    /** @inheritDoc */
-    public $numberFormatterOptions = [
-        NumberFormatter::GROUPING_USED => true,
-        NumberFormatter::MIN_FRACTION_DIGITS => 0,
-        NumberFormatter::MAX_FRACTION_DIGITS => 3
-    ];
 
     /** @var ?int код страны для PhoneFormatter */
     public $phoneCountry;
@@ -75,11 +75,11 @@ class Formatter extends \yii\i18n\Formatter
         }
 
         $precision = (float)$value - (int)$value > 0 ? 2 : 0;
-        $value = round($value, $precision);
+        $value = round((float)$value, $precision);
 
-        return $value === null || $value === '' ? $this->nullDisplay :
-            number_format((float)$value, 0, '.', ' ') . ' ' .
-            ($this->numberFormatterOptions[NumberFormatter::CURRENCY_SYMBOL] ?? '');
+        return ($value === null || $value === '') ? $this->nullDisplay :
+            number_format($value, $precision, '.', ' ') . ' ' .
+            ($this->numberFormatterSymbols[NumberFormatter::CURRENCY_SYMBOL] ?? '');
     }
 
     /**
