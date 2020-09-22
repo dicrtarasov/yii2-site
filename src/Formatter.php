@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 21.09.20 19:57:14
+ * @version 22.09.20 12:28:09
  */
 
 declare(strict_types = 1);
@@ -92,8 +92,8 @@ class Formatter extends \yii\i18n\Formatter
     public function asPhone($value, array $options = []) : string
     {
         $phoneValidator = new PhoneValidator([
-                'phoneCountry' => $this->phoneCountry,
-                'phoneRegion' => $this->phoneRegion
+                'country' => $this->phoneCountry,
+                'region' => $this->phoneRegion
             ] + $options);
 
         return $phoneValidator->formatValueSilent($value);
