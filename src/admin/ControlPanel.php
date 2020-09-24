@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 27.08.20 18:34:09
+ * @version 25.09.20 01:14:11
  */
 
 declare(strict_types = 1);
@@ -40,6 +40,8 @@ class ControlPanel extends Widget
     public function init()
     {
         parent::init();
+
+        $this->buttons = empty($this->buttons) ? [] : (array)$this->buttons;
 
         Html::addCssClass($this->options, 'dicr-site-admin-control-panel');
     }

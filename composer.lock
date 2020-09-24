@@ -11,7 +11,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -32,7 +32,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -143,21 +143,21 @@
         },
         {
             "name": "dicr/yii2-asset",
-            "version": "1.7.9",
+            "version": "1.7.11",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-asset.git",
-                "reference": "d105724381f90249b2e24f85ba4bd81e8c81cfb4"
+                "reference": "d40ced189ba0e115bb583e407ec5a09a7d55883f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=d105724381f90249b2e24f85ba4bd81e8c81cfb4",
-                "reference": "d105724381f90249b2e24f85ba4bd81e8c81cfb4",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=d40ced189ba0e115bb583e407ec5a09a7d55883f",
+                "reference": "d40ced189ba0e115bb583e407ec5a09a7d55883f",
                 "shasum": ""
             },
             "require": {
                 "php": "~7.4",
-                "scssphp/scssphp": "~1.1",
+                "scssphp/scssphp": "~1.2",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
@@ -196,20 +196,20 @@
                 "source": "https://gitlab.com/dicr/yii2-asset.git",
                 "issues": "https://gitlab.com/api/v4/projects/10744876/issues"
             },
-            "time": "2020-09-09T03:19:09+05:00"
+            "time": "2020-09-22T00:23:04+03:00"
         },
         {
             "name": "dicr/yii2-file",
-            "version": "5.0.3",
+            "version": "5.0.8",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-file.git",
-                "reference": "4b340e5418caaf10fb2d0f6f750c8d70936f76aa"
+                "reference": "2251265954db1e160aa732d41914e9a3cbac512b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=4b340e5418caaf10fb2d0f6f750c8d70936f76aa",
-                "reference": "4b340e5418caaf10fb2d0f6f750c8d70936f76aa",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=2251265954db1e160aa732d41914e9a3cbac512b",
+                "reference": "2251265954db1e160aa732d41914e9a3cbac512b",
                 "shasum": ""
             },
             "require": {
@@ -275,7 +275,7 @@
                 "source": "https://gitlab.com/dicr/yii2-file.git",
                 "issues": "https://gitlab.com/api/v4/projects/9710563/issues"
             },
-            "time": "2020-09-14T16:41:49+05:00"
+            "time": "2020-09-25T00:54:08+03:00"
         },
         {
             "name": "dicr/yii2-helper",
@@ -398,16 +398,16 @@
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "1.8.12",
+            "version": "1.8.16",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "7af4f57b4ef425bbeedfe56f0e0d4a3ec6c50327"
+                "reference": "0dc1c7161b503cddfd5b66b3f4d3869c57d052fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=7af4f57b4ef425bbeedfe56f0e0d4a3ec6c50327",
-                "reference": "7af4f57b4ef425bbeedfe56f0e0d4a3ec6c50327",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=0dc1c7161b503cddfd5b66b3f4d3869c57d052fd",
+                "reference": "0dc1c7161b503cddfd5b66b3f4d3869c57d052fd",
                 "shasum": ""
             },
             "require": {
@@ -451,7 +451,7 @@
                 "source": "https://gitlab.com/dicr/yii2-widgets.git",
                 "issues": "https://gitlab.com/api/v4/projects/12653694/issues"
             },
-            "time": "2020-09-14T21:10:05+05:00"
+            "time": "2020-09-23T17:44:11+03:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -837,12 +837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "81cb95735a719403eddb77fc78e21362b56d9ea9"
+                "reference": "0749ceaf15c136d085b722a5bb88141398a54142"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/81cb95735a719403eddb77fc78e21362b56d9ea9",
-                "reference": "81cb95735a719403eddb77fc78e21362b56d9ea9",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0749ceaf15c136d085b722a5bb88141398a54142",
+                "reference": "0749ceaf15c136d085b722a5bb88141398a54142",
                 "shasum": ""
             },
             "conflict": {
@@ -872,7 +872,7 @@
                 "composer/composer": "<=1-alpha.11",
                 "contao-components/mediaelement": ">=2.14.2,<2.21.1",
                 "contao/core": ">=2,<3.5.39",
-                "contao/core-bundle": ">=4,<4.4.46|>=4.5,<4.8.6",
+                "contao/core-bundle": ">=4,<4.4.52|>=4.5,<4.9.6|= 4.10.0",
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "datadog/dd-trace": ">=0.30,<0.30.2",
                 "david-garcia/phpwhois": "<=4.3.1",
@@ -936,6 +936,7 @@
                 "laravel/socialite": ">=1,<1.0.99|>=2,<2.0.10",
                 "league/commonmark": "<0.18.3",
                 "librenms/librenms": "<1.53",
+                "livewire/livewire": ">2.2.4,<2.2.6",
                 "magento/community-edition": ">=2,<2.2.10|>=2.3,<2.3.3",
                 "magento/magento1ce": "<1.9.4.3",
                 "magento/magento1ee": ">=1,<1.14.4.3",
@@ -987,6 +988,8 @@
                 "scheb/two-factor-bundle": ">=0,<3.26|>=4,<4.11",
                 "sensiolabs/connect": "<4.2.3",
                 "serluck/phpwhois": "<=4.2.6",
+                "shopware/core": "<=6.3.1",
+                "shopware/platform": "<=6.3.1",
                 "shopware/shopware": "<5.3.7",
                 "silverstripe/admin": ">=1.0.3,<1.0.4|>=1.1,<1.1.1",
                 "silverstripe/assets": ">=1,<1.4.7|>=1.5,<1.5.2",
@@ -1131,7 +1134,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-18T13:01:53+00:00"
+            "time": "2020-09-24T17:02:11+00:00"
         }
     ],
     "aliases": [],
