@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 08.09.20 03:23:22
+ * @version 28.09.20 02:35:35
  */
 
 declare(strict_types = 1);
@@ -33,7 +33,7 @@ class UpsertBehavior extends Behavior
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function attach($owner)
+    public function attach($owner) : void
     {
         if (! $owner instanceof ActiveRecord) {
             throw new InvalidConfigException('owner должен быть типа ActiveRecord');

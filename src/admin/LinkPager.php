@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 08:57:03
+ * @version 28.09.20 02:34:45
  */
 
 declare(strict_types = 1);
@@ -31,7 +31,7 @@ class LinkPager extends \yii\bootstrap4\LinkPager
     /**
      * @inheritDoc
      */
-    public function init()
+    public function init() : void
     {
         parent::init();
 

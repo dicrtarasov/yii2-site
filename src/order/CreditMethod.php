@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 13.09.20 01:50:23
+ * @version 28.09.20 02:32:54
  */
 
 declare(strict_types = 1);
@@ -36,7 +36,7 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public function init()
+    public function init() : void
     {
         parent::init();
 
@@ -48,7 +48,7 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public function attributeLabels()
+    public function attributeLabels() : array
     {
         return array_merge(parent::attributeLabels(), [
             'term' => Yii::t('dicr/site', 'Срок рассрочки, мес')
@@ -58,7 +58,7 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public function rules()
+    public function rules() : array
     {
         return array_merge(parent::rules(), [
             ['term', 'required'],
@@ -70,7 +70,7 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public function extraFields()
+    public function extraFields() : array
     {
         $extraFields = ['minTerm', 'maxTerm', 'gracePeriod', 'downPayment', 'monthlyCharge'];
 
@@ -83,7 +83,7 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public static function isCredit(): bool
+    public static function isCredit() : bool
     {
         return true;
     }
@@ -91,9 +91,9 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public static function classes(): array
+    public static function classes() : array
     {
-        return array_filter(parent::classes(), static function (string $class) {
+        return array_filter(parent::classes(), static function (string $class) : bool {
             /** @var PayMethod $class */
             return $class::isCredit();
         });
@@ -104,7 +104,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return string
      */
-    public static function bank(): string
+    public static function bank() : string
     {
         return '';
     }
@@ -114,7 +114,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return string
      */
-    public static function image(): string
+    public static function image() : string
     {
         return static::icon();
     }
@@ -124,7 +124,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return string html
      */
-    public static function conditions(): string
+    public static function conditions() : string
     {
         return '';
     }
@@ -134,7 +134,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return string html
      */
-    public static function desc(): string
+    public static function desc() : string
     {
         return '';
     }
@@ -147,7 +147,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return ?int
      */
-    public function getTermLimit(): ?int
+    public function getTermLimit() : ?int
     {
         return $this->_termLimit;
     }
@@ -157,7 +157,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @param ?int $limit
      */
-    public function setTermLimit(?int $limit)
+    public function setTermLimit(?int $limit) : void
     {
         if ($limit !== null && $limit < 0) {
             throw new InvalidArgumentException('limit');
@@ -172,7 +172,7 @@ abstract class CreditMethod extends PayMethod
      * @return int
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getMinTerm(): int
+    public function getMinTerm() : int
     {
         return 1;
     }
@@ -182,7 +182,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return ?int (null - не задан)
      */
-    public function getMaxTerm(): ?int
+    public function getMaxTerm() : ?int
     {
         return $this->termLimit;
     }
@@ -192,7 +192,7 @@ abstract class CreditMethod extends PayMethod
      *
      * @return int
      */
-    public static function termStep(): int
+    public static function termStep() : int
     {
         return 1;
     }
@@ -203,7 +203,7 @@ abstract class CreditMethod extends PayMethod
      * @return float
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getDownPayment(): float
+    public function getDownPayment() : float
     {
         return 0;
     }
@@ -214,7 +214,7 @@ abstract class CreditMethod extends PayMethod
      * @return int
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getGracePeriod(): int
+    public function getGracePeriod() : int
     {
         return 0;
     }
@@ -225,7 +225,7 @@ abstract class CreditMethod extends PayMethod
      * @return float
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getMonthlyCharge(): ?float
+    public function getMonthlyCharge() : ?float
     {
         return 0;
     }
@@ -233,7 +233,7 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public function getIsAvailable(): bool
+    public function getIsAvailable() : bool
     {
         $maxTerm = $this->maxTerm;
 
@@ -244,7 +244,7 @@ abstract class CreditMethod extends PayMethod
     /**
      * @inheritDoc
      */
-    public function toText(): array
+    public function toText() : array
     {
         $text = parent::toText();
 
@@ -259,9 +259,8 @@ abstract class CreditMethod extends PayMethod
 
     /**
      * @inheritDoc
-     * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return static::name() . ', ' . $this->term . ' ' . Yii::t('dicr/site', 'мес') . '.';
     }

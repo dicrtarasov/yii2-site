@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 08.09.20 03:02:27
+ * @version 28.09.20 02:31:24
  */
 
 declare(strict_types = 1);
@@ -24,7 +24,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     /**
      * @inheritDoc
      */
-    public function behaviors()
+    public function behaviors() : array
     {
         return parent::behaviors() + [
                 'upsert' => UpsertBehavior::class
@@ -34,7 +34,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     /**
      * @inheritDoc
      */
-    public function afterSave($insert, $changedAttributes)
+    public function afterSave($insert, $changedAttributes) : void
     {
         parent::afterSave($insert, $changedAttributes);
 
@@ -49,7 +49,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     /**
      * @inheritDoc
      */
-    public static function updateAll($attributes, $condition = '', $params = [])
+    public static function updateAll($attributes, $condition = '', $params = []) : int
     {
         $ret = parent::updateAll($attributes, $condition, $params);
 
@@ -63,7 +63,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     /**
      * @inheritDoc
      */
-    public static function updateAllCounters($counters, $condition = '', $params = [])
+    public static function updateAllCounters($counters, $condition = '', $params = []) : int
     {
         $ret = parent::updateAllCounters($counters, $condition, $params);
 
@@ -77,7 +77,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     /**
      * @inheritDoc
      */
-    public static function deleteAll($condition = null, $params = [])
+    public static function deleteAll($condition = null, $params = []) : int
     {
         $ret = parent::deleteAll($condition, $params);
 

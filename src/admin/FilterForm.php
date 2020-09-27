@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.08.20 23:54:06
+ * @version 28.09.20 02:33:37
  */
 
 declare(strict_types = 1);
@@ -26,7 +26,7 @@ class FilterForm extends ActiveForm
     /**
      * @inheritDoc
      */
-    public function init()
+    public function init() : void
     {
         if (empty($this->action)) {
             $this->action = ['/' . Yii::$app->requestedRoute];
@@ -48,11 +48,13 @@ class FilterForm extends ActiveForm
     /**
      * @inheritDoc
      */
-    public function run()
+    public function run() : string
     {
-        $this->view->registerJs("$('#{$this->options['id']}').on('change', ':input', function() {
+        $this->view->registerJs(
+            "$('#{$this->options['id']}').on('change', ':input', function() {
                 $(this).closest('form').submit()
-            })");
+            })"
+        );
 
         return parent::run();
     }

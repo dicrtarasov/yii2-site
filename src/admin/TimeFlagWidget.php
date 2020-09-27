@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 10.07.20 19:04:38
+ * @version 28.09.20 02:36:31
  */
 
 declare(strict_types = 1);
@@ -13,6 +13,7 @@ use dicr\helper\Html;
 use dicr\widgets\InputWidget;
 use Yii;
 use yii\base\InvalidConfigException;
+
 use function date;
 
 /**
@@ -27,7 +28,7 @@ class TimeFlagWidget extends InputWidget
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function run()
+    public function run() : string
     {
         $this->options['labelOptions'] = [
             'class' => 'control-label',

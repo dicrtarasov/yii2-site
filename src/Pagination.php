@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.08.20 00:09:04
+ * @version 28.09.20 02:36:31
  */
 
 declare(strict_types = 1);
@@ -70,7 +70,7 @@ class Pagination extends \yii\data\Pagination
         return array_filter([
             $this->pageParam => $this->isPageDefault ? null : $this->page + 1,
             $this->pageSizeParam => $this->isPageSizeDefault ? null : $this->pageSize
-        ], static function($val) {
+        ], static function ($val) : bool {
             return $val !== null && $val !== '';
         });
     }

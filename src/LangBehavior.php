@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 08.09.20 03:16:59
+ * @version 28.09.20 02:34:34
  */
 
 declare(strict_types = 1);
@@ -92,7 +92,7 @@ class LangBehavior extends Behavior
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init() : void
     {
         parent::init();
 
@@ -113,7 +113,7 @@ class LangBehavior extends Behavior
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function attach($owner)
+    public function attach($owner) : void
     {
         if (! $owner instanceof ActiveRecord) {
             throw new InvalidConfigException('owner должен быть типа ActiveRecord');

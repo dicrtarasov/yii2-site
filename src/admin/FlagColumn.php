@@ -1,9 +1,9 @@
 <?php
-/**
+/*
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.20 09:54:50
+ * @version 28.09.20 02:33:55
  */
 
 declare(strict_types = 1);
@@ -30,7 +30,7 @@ class FlagColumn extends DataColumn
     /**
      * @inheritDoc
      */
-    protected function renderDataCellContent($model, $key, $index)
+    protected function renderDataCellContent($model, $key, $index) : string
     {
         if ($this->content === null) {
             return Html::tag('i', '', [

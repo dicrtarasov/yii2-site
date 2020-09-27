@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.09.20 01:14:11
+ * @version 28.09.20 02:31:24
  */
 
 declare(strict_types = 1);
@@ -37,7 +37,7 @@ class ControlPanel extends Widget
     /**
      * @inheritDoc
      */
-    public function init()
+    public function init() : void
     {
         parent::init();
 

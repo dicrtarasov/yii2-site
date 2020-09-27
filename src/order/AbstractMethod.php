@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 13.09.20 01:47:55
+ * @version 28.09.20 02:36:31
  */
 
 declare(strict_types = 1);
@@ -57,7 +57,7 @@ abstract class AbstractMethod extends Model
     /**
      * @inheritDoc
      */
-    public function attributes()
+    public function attributes() : array
     {
         return array_merge(parent::attributes(), ['tax']);
     }
@@ -65,7 +65,7 @@ abstract class AbstractMethod extends Model
     /**
      * @inheritDoc
      */
-    public function attributeLabels()
+    public function attributeLabels() : array
     {
         return array_merge(parent::attributeLabels(), [
             'tax' => Yii::t('dicr/site', 'Комиссия')
@@ -75,7 +75,7 @@ abstract class AbstractMethod extends Model
     /**
      * @inheritDoc
      */
-    public function extraFields()
+    public function extraFields() : array
     {
         $extraFields = ['minSum', 'maxSum'];
 
@@ -131,17 +131,14 @@ abstract class AbstractMethod extends Model
      * Установить сумму.
      *
      * @param float $sum
-     * @return $this
      */
-    public function setSum(float $sum): self
+    public function setSum(float $sum) : void
     {
         if ($sum < 0) {
             throw new InvalidArgumentException('sum');
         }
 
         $this->_sum = $sum;
-
-        return $this;
     }
 
     /**
@@ -197,17 +194,14 @@ abstract class AbstractMethod extends Model
      * Установить комиссию.
      *
      * @param float $tax
-     * @return $this
      */
-    public function setTax(float $tax): self
+    public function setTax(float $tax) : void
     {
         if ($tax < 0) {
             throw new InvalidArgumentException('tax');
         }
 
         $this->tax = 0;
-
-        return $this;
     }
 
     /** @var ?CheckoutInterface */
@@ -216,8 +210,9 @@ abstract class AbstractMethod extends Model
     /**
      * Форма оформления заказа.
      *
-     * @return ?CheckoutInterface
-     * Не устанавливаем жесткий тип return, потому что переопределяется в реализации.
+     * @return ?CheckoutInterface Не устанавливаем жесткий тип return, потому что переопределяется в реализации.
+     * @noinspection PhpMissingReturnTypeInspection
+     * @noinspection ReturnTypeCanBeDeclaredInspection
      */
     public function getCheckout()
     {
@@ -243,8 +238,9 @@ abstract class AbstractMethod extends Model
     /**
      * Оформленный заказ.
      *
-     * @return ?OrderInterface
-     * Не устанавливаем жесткий тип return, потому что переопределяется в реализации.
+     * @return ?OrderInterface Не устанавливаем жесткий тип return, потому что переопределяется в реализации.
+     * @noinspection PhpMissingReturnTypeInspection
+     * @noinspection ReturnTypeCanBeDeclaredInspection
      */
     public function getOrder()
     {
@@ -256,7 +252,7 @@ abstract class AbstractMethod extends Model
      *
      * @param ?OrderInterface $order
      */
-    public function setOrder(?OrderInterface $order)
+    public function setOrder(?OrderInterface $order) : void
     {
         $this->_order = $order;
     }
@@ -356,7 +352,7 @@ abstract class AbstractMethod extends Model
     {
         return array_merge([
             'class' => static::class
-        ], array_filter($this->attributes, static function ($val) {
+        ], array_filter($this->attributes, static function ($val) : bool {
             return $val !== null && $val !== '';
         }));
     }
@@ -388,7 +384,7 @@ abstract class AbstractMethod extends Model
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString() : string
     {
         return static::name();
     }
@@ -403,6 +399,8 @@ abstract class AbstractMethod extends Model
      *
      * @param bool $clean удалить сохраненные параметры
      * @return ?static (переопределяется в наследуемом)
+     * @noinspection PhpMissingReturnTypeInspection
+     * @noinspection ReturnTypeCanBeDeclaredInspection
      */
     abstract public static function restoreSelected(bool $clean = false);
 }

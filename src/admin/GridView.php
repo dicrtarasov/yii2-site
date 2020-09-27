@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.09.20 02:42:31
+ * @version 28.09.20 02:34:27
  */
 
 declare(strict_types = 1);
@@ -46,7 +46,7 @@ class GridView extends \yii\grid\GridView
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init() : void
     {
         if (empty($this->pager['class'])) {
             $this->pager['class'] = LinkPager::class;
@@ -54,7 +54,7 @@ class GridView extends \yii\grid\GridView
 
         $this->_origRowOptions = $this->rowOptions ?: [];
 
-        $this->rowOptions = function ($model, $key, $index, $grid) {
+        $this->rowOptions = function ($model, $key, $index, $grid) : array {
             return $this->getRowOptions($model, $key, $index, $grid);
         };
 
@@ -72,7 +72,7 @@ class GridView extends \yii\grid\GridView
      * @param self $grid
      * @return array
      */
-    protected function getRowOptions($model, $key, int $index, self $grid)
+    protected function getRowOptions($model, $key, int $index, self $grid) : array
     {
         // оригинальные опции
         $options = $this->_origRowOptions;

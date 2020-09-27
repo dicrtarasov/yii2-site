@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 08:58:19
+ * @version 28.09.20 02:33:06
  */
 
 declare(strict_types = 1);
@@ -47,7 +47,7 @@ class EditTabs extends Nav
     /**
      * @inheritDoc
      */
-    public function init()
+    public function init() : void
     {
         // корректируем элементы
         $this->adjustItems();
@@ -63,7 +63,7 @@ class EditTabs extends Nav
     /**
      * @inheritDoc
      */
-    public function run()
+    public function run() : string
     {
         $content = trim(ob_get_clean());
 
