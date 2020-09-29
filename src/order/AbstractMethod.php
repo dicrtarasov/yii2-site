@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:36:31
+ * @version 30.09.20 01:43:41
  */
 
 declare(strict_types = 1);
@@ -315,12 +315,12 @@ abstract class AbstractMethod extends Model
     /**
      * Обработка способа оплаты или доставки.
      *
-     * @return bool результат обработки
+     * @return mixed результат обработки
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function process(): bool
+    public function process()
     {
-        return true;
+        return null;
     }
 
     /**
