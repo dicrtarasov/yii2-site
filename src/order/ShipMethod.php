@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 13.09.20 01:51:53
+ * @version 02.10.20 20:37:43
  */
 
 declare(strict_types = 1);
@@ -23,7 +23,17 @@ abstract class ShipMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public static function classes(): array
+    public function attributeLabels() : array
+    {
+        return [
+            'address' => Yii::t('app', 'Адрес')
+        ];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function classes() : array
     {
         return (array)(Yii::$app->params['order']['ship']['classes'] ?? []);
     }
