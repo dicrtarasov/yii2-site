@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.10.20 00:01:09
+ * @version 07.10.20 00:01:36
  */
 
 declare(strict_types = 1);
@@ -108,6 +108,7 @@ class Formatter extends \yii\i18n\Formatter
      *
      * @param string $date
      * @return string
+     * @noinspection PhpMethodMayBeStaticInspection
      */
     public function asFullDate(string $date) : string
     {
