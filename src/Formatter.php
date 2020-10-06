@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 22.09.20 12:28:09
+ * @version 07.10.20 00:01:09
  */
 
 declare(strict_types = 1);
@@ -13,7 +13,11 @@ use dicr\validate\PhoneValidator;
 use NumberFormatter;
 use Yii;
 
+use function date;
+use function idate;
 use function number_format;
+use function sprintf;
+use function strtotime;
 
 /**
  * Форматер
@@ -97,5 +101,44 @@ class Formatter extends \yii\i18n\Formatter
             ] + $options);
 
         return $phoneValidator->formatValueSilent($value);
+    }
+
+    /**
+     * Форматирует как длинную дату "25 января 2004"
+     *
+     * @param string $date
+     * @return string
+     */
+    public function asFullDate(string $date) : string
+    {
+        static $monthes = [
+            'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа',
+            'сентября', 'октября', 'ноября', 'декабря'
+        ];
+
+        $time = strtotime($date);
+        if (empty($time)) {
+            return '';
+        }
+
+        return sprintf('%d %s %d',
+            date('d', $time),
+            $monthes[idate('m', $time) - 1],
+            date('Y', $time)
+        );
+    }
+
+    /**
+     * Форматирует как длинную дату "25 января 2004"
+     *
+     * @param string $date
+     * @return string
+     */
+    public static function fullDate(string $date) : string
+    {
+        /** @var self $formatter */
+        $formatter = Yii::$app->formatter;
+
+        return $formatter->asFullDate($date);
     }
 }
