@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:31:24
+ * @version 08.10.20 19:01:16
  */
 
 declare(strict_types = 1);
@@ -29,6 +29,22 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
         return parent::behaviors() + [
                 'upsert' => UpsertBehavior::class
             ];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function load($data, $formName = null) : bool
+    {
+        $ret = parent::load($data, $formName);
+
+        // если имеется FileAttributeBehavior, загружаем файлы
+        /** @noinspection PhpUndefinedMethodInspection */
+        if ($this->hasMethod('loadFileAttributes') && $this->loadFileAttributes($formName)) {
+            $ret = true;
+        }
+
+        return $ret;
     }
 
     /**
@@ -120,7 +136,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
      * @return static[]
      * @throws InvalidConfigException
      */
-    public static function loadAll(array $currentModels, array $data, ?string $formName = null): array
+    public static function loadAll(array $currentModels, array $data, ?string $formName = null) : array
     {
         if (empty($currentModels)) {
             $currentModels = [];
