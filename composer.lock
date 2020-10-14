@@ -32,7 +32,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -143,25 +143,25 @@
         },
         {
             "name": "dicr/yii2-asset",
-            "version": "1.7.11",
+            "version": "1.7.12",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-asset.git",
-                "reference": "d40ced189ba0e115bb583e407ec5a09a7d55883f"
+                "reference": "068644af4966bf05628b407ef7d6ec99de7d0601"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=d40ced189ba0e115bb583e407ec5a09a7d55883f",
-                "reference": "d40ced189ba0e115bb583e407ec5a09a7d55883f",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=068644af4966bf05628b407ef7d6ec99de7d0601",
+                "reference": "068644af4966bf05628b407ef7d6ec99de7d0601",
                 "shasum": ""
             },
             "require": {
-                "php": "~7.4",
+                "php": "~7.2",
                 "scssphp/scssphp": "~1.2",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~9.3"
+                "phpunit/phpunit": "~9.4"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -196,20 +196,20 @@
                 "source": "https://gitlab.com/dicr/yii2-asset.git",
                 "issues": "https://gitlab.com/api/v4/projects/10744876/issues"
             },
-            "time": "2020-09-22T00:23:04+03:00"
+            "time": "2020-10-14T08:14:19+00:00"
         },
         {
             "name": "dicr/yii2-file",
-            "version": "5.0.8",
+            "version": "5.0.13",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-file.git",
-                "reference": "2251265954db1e160aa732d41914e9a3cbac512b"
+                "reference": "3f766015a99d9776065bd4b49c16c91d483882c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=2251265954db1e160aa732d41914e9a3cbac512b",
-                "reference": "2251265954db1e160aa732d41914e9a3cbac512b",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=3f766015a99d9776065bd4b49c16c91d483882c4",
+                "reference": "3f766015a99d9776065bd4b49c16c91d483882c4",
                 "shasum": ""
             },
             "require": {
@@ -219,13 +219,13 @@
                 "ext-iconv": "*",
                 "ext-imagick": "*",
                 "ext-mbstring": "*",
-                "php": "~7.4",
+                "php": "~7.2",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
                 "ext-ssh2": "*",
                 "league/flysystem": "~1.1",
-                "phpunit/phpunit": "~9.3",
+                "phpunit/phpunit": "~9.4",
                 "roave/security-advisories": "dev-master",
                 "yiisoft/yii2-bootstrap4": "~2.0",
                 "yiisoft/yii2-debug": "~2.1"
@@ -275,20 +275,20 @@
                 "source": "https://gitlab.com/dicr/yii2-file.git",
                 "issues": "https://gitlab.com/api/v4/projects/9710563/issues"
             },
-            "time": "2020-09-25T00:54:08+03:00"
+            "time": "2020-10-14T11:16:44+03:00"
         },
         {
             "name": "dicr/yii2-helper",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-helper.git",
-                "reference": "38be1bb6fc5fe31efa3dd714f3aebb2872109d64"
+                "reference": "4d038a8bdaee2536a195871d393fe31ecfc6ceb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=38be1bb6fc5fe31efa3dd714f3aebb2872109d64",
-                "reference": "38be1bb6fc5fe31efa3dd714f3aebb2872109d64",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=4d038a8bdaee2536a195871d393fe31ecfc6ceb4",
+                "reference": "4d038a8bdaee2536a195871d393fe31ecfc6ceb4",
                 "shasum": ""
             },
             "require": {
@@ -299,7 +299,7 @@
                 "yiisoft/yii2-bootstrap4": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~9.3",
+                "phpunit/phpunit": "~9.4",
                 "roave/security-advisories": "dev-master"
             },
             "type": "yii2-extension",
@@ -338,20 +338,20 @@
                 "source": "https://gitlab.com/dicr/yii2-helper.git",
                 "issues": "https://gitlab.com/api/v4/projects/9713190/issues"
             },
-            "time": "2020-09-15T10:03:31+05:00"
+            "time": "2020-10-13T14:19:03+03:00"
         },
         {
             "name": "dicr/yii2-validate",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-validate.git",
-                "reference": "f11cb904d90119059f444b2b890567a8b72d58d9"
+                "reference": "faab72bb297f0afd6e180945f77d99ec891820a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=f11cb904d90119059f444b2b890567a8b72d58d9",
-                "reference": "f11cb904d90119059f444b2b890567a8b72d58d9",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=faab72bb297f0afd6e180945f77d99ec891820a4",
+                "reference": "faab72bb297f0afd6e180945f77d99ec891820a4",
                 "shasum": ""
             },
             "require": {
@@ -359,7 +359,7 @@
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~9.3"
+                "phpunit/phpunit": "~9.4"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -394,7 +394,7 @@
                 "source": "https://gitlab.com/dicr/yii2-validate.git",
                 "issues": "https://gitlab.com/api/v4/projects/9711109/issues"
             },
-            "time": "2020-09-11T00:06:14+05:00"
+            "time": "2020-10-08T06:39:51+03:00"
         },
         {
             "name": "dicr/yii2-widgets",
@@ -837,12 +837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "0749ceaf15c136d085b722a5bb88141398a54142"
+                "reference": "ba5d234b3a1559321b816b64aafc2ce6728799ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0749ceaf15c136d085b722a5bb88141398a54142",
-                "reference": "0749ceaf15c136d085b722a5bb88141398a54142",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/ba5d234b3a1559321b816b64aafc2ce6728799ff",
+                "reference": "ba5d234b3a1559321b816b64aafc2ce6728799ff",
                 "shasum": ""
             },
             "conflict": {
@@ -902,7 +902,7 @@
                 "ezsystems/ezplatform-kernel": ">=1,<1.0.2.1",
                 "ezsystems/ezplatform-user": ">=1,<1.0.1",
                 "ezsystems/ezpublish-kernel": ">=5.3,<5.3.12.1|>=5.4,<5.4.14.2|>=6,<6.7.9.1|>=6.8,<6.13.6.3|>=7,<7.2.4.1|>=7.3,<7.3.2.1|>=7.5,<7.5.7.1",
-                "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.6|>=5.4,<5.4.14.1|>=2011,<2017.12.7.2|>=2018.6,<2018.6.1.4|>=2018.9,<2018.9.1.3|>=2019.3,<2019.3.4.2",
+                "ezsystems/ezpublish-legacy": ">=5.3,<5.3.12.6|>=5.4,<5.4.14.2|>=2011,<2017.12.7.3|>=2018.6,<2018.6.1.4|>=2018.9,<2018.9.1.3|>=2019.3,<2019.3.5.1",
                 "ezsystems/platform-ui-assets-bundle": ">=4.2,<4.2.3",
                 "ezsystems/repository-forms": ">=2.3,<2.3.2.1",
                 "ezyang/htmlpurifier": "<4.1.1",
@@ -945,6 +945,8 @@
                 "mittwald/typo3_forum": "<1.2.1",
                 "monolog/monolog": ">=1.8,<1.12",
                 "namshi/jose": "<2.2",
+                "nette/application": ">=2,<2.0.19|>=2.1,<2.1.13|>=2.2,<2.2.10|>=2.3,<2.3.14|>=2.4,<2.4.16|>=3,<3.0.6",
+                "nette/nette": ">=2,<2.0.19|>=2.1,<2.1.13",
                 "nystudio107/craft-seomatic": "<3.3",
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
                 "october/backend": ">=1.0.319,<1.0.467",
@@ -980,6 +982,7 @@
                 "privatebin/privatebin": "<1.2.2|>=1.3,<1.3.2",
                 "propel/propel": ">=2-alpha.1,<=2-alpha.7",
                 "propel/propel1": ">=1,<=1.7.1",
+                "pterodactyl/panel": "<0.7.19|>=1-rc.0,<=1-rc.6",
                 "pusher/pusher-php-server": "<2.2.1",
                 "rainlab/debugbar-plugin": "<3.1",
                 "robrichards/xmlseclibs": "<3.0.4",
@@ -1065,6 +1068,7 @@
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.10|>=3.1,<3.1.7|>=3.2,<3.2.7|>=3.3,<3.3.5",
                 "typo3/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4",
                 "typo3/phar-stream-wrapper": ">=1,<2.1.1|>=3,<3.1.1",
+                "typo3fluid/fluid": ">=2,<2.0.5|>=2.1,<2.1.4|>=2.2,<2.2.1|>=2.3,<2.3.5|>=2.4,<2.4.1|>=2.5,<2.5.5|>=2.6,<2.6.1",
                 "ua-parser/uap-php": "<3.8",
                 "usmanhalalit/pixie": "<1.0.3|>=2,<2.0.2",
                 "verot/class.upload.php": "<=1.0.3|>=2,<=2.0.4",
@@ -1134,7 +1138,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-24T17:02:11+00:00"
+            "time": "2020-10-08T21:02:27+00:00"
         }
     ],
     "aliases": [],
