@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:35:25
+ * @version 30.10.20 21:38:42
  */
 
 declare(strict_types = 1);
@@ -52,6 +52,8 @@ abstract class PayMethod extends AbstractMethod
 
     /**
      * Способ оплаты в кредит
+     *
+     * @return bool
      */
     public static function isCredit() : bool
     {
