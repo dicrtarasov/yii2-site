@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:32:54
+ * @version 03.11.20 19:22:00
  */
 
 declare(strict_types = 1);
@@ -235,10 +235,17 @@ abstract class CreditMethod extends PayMethod
      */
     public function getIsAvailable() : bool
     {
+        // проверяем доступность по сумме
+        if (! parent::getIsAvailable()) {
+            return false;
+        }
+
+        // проверяем доступность по сроку
+        $minTerm = $this->minTerm;
         $maxTerm = $this->maxTerm;
 
         // добавляем проверку по сроку
-        return parent::getIsAvailable() && ($maxTerm === null || $maxTerm > 0);
+        return $minTerm > 0 && ($maxTerm === null || $maxTerm >= $minTerm);
     }
 
     /**
