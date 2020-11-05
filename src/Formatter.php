@@ -3,12 +3,13 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.10.20 00:01:36
+ * @version 05.11.20 15:13:07
  */
 
 declare(strict_types = 1);
 namespace dicr\site;
 
+use dicr\helper\Html;
 use dicr\validate\PhoneValidator;
 use NumberFormatter;
 use Yii;
@@ -18,6 +19,7 @@ use function idate;
 use function number_format;
 use function sprintf;
 use function strtotime;
+use function substr;
 
 /**
  * Форматер
@@ -65,6 +67,28 @@ class Formatter extends \yii\i18n\Formatter
         parent::init();
 
         $this->defaultTimeZone = Yii::$app->timeZone;
+    }
+
+    /**
+     * Форматирует как текстовую строку (удаляя html-теги и экранируя) с ограничением длины.
+     *
+     * @param mixed $value
+     * @param int $limit
+     * @return string
+     */
+    public function asString($value, $limit = 0) : string
+    {
+        if ($value === null) {
+            return $this->nullDisplay;
+        }
+
+        $value = Html::toText((string)$value);
+
+        if ($limit > 0 && mb_strlen($value) > $limit) {
+            $value = substr($value, 0, $limit) . '...';
+        }
+
+        return Html::encode($value);
     }
 
     /**
