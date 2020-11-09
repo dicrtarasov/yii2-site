@@ -34,7 +34,6 @@
       <path value="$PROJECT_DIR$/vendor/dicr/yii2-helper" />
       <path value="$PROJECT_DIR$/vendor/dicr/yii2-widgets" />
       <path value="$PROJECT_DIR$/vendor/scssphp/scssphp" />
-      <path value="$PROJECT_DIR$/vendor/dicr/yii2-json" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
