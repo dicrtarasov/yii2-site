@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.11.20 04:04:02
+ * @version 25.11.20 04:27:48
  */
 
 declare(strict_types = 1);
@@ -23,7 +23,6 @@ use yii\bootstrap4\ActiveField;
 use yii\bootstrap4\ActiveForm;
 use yii\db\ActiveRecord;
 
-use function array_merge;
 use function date;
 
 /**
@@ -105,7 +104,6 @@ class EditForm extends ActiveForm
      * @param array $options
      * - string|bool $url - добавить URL к ID
      * @return ?ActiveField
-     * @throws UnknownPropertyException
      */
     public function fieldId(ActiveRecord $model, array $options = []) : ?ActiveField
     {
@@ -113,32 +111,35 @@ class EditForm extends ActiveForm
             return null;
         }
 
-        $url = ArrayHelper::remove($options, 'url', true);
-        if ($url === true) {
-            if ($model->canGetProperty('href')) {
-                $url = $model->{'href'};
-            } elseif ($model->canGetProperty('url')) {
-                $url = $model->{'url'};
-            } else {
-                $url = null;
-            }
-        }
-
-        if (! empty($url)) {
-            if (! $model->canGetProperty('id')) {
-                throw new UnknownPropertyException('id');
+        if (! isset($options['inputOptions']['value'])) {
+            $url = ArrayHelper::remove($options, 'url', true);
+            if ($url === true) {
+                if ($model->canGetProperty('href')) {
+                    $url = $model->{'href'};
+                } elseif ($model->canGetProperty('url')) {
+                    $url = $model->{'url'};
+                } else {
+                    $url = null;
+                }
             }
 
-            $url = Url::to($url, true);
+            if (! empty($url)) {
+                $url = Url::to($url, true);
 
-            $options['inputOptions'] = array_merge([
-                'target' => '_blank',
-                'title' => 'Страница: ' . $url
-            ], $options['inputOptions'] ?? []);
+                if (! isset($options['inputOptions']['target'])) {
+                    $options['inputOptions']['target'] = '_blank';
+                }
 
-            $html = Html::a(Html::encode($model->{'id'}), $url, $options['inputOptions']);
+                if (! isset($options['inputOptions']['title'])) {
+                    $options['inputOptions']['title'] = 'Страница: ' . $url;
+                }
 
-            return $this->fieldHtml($model, 'id', $html, $options);
+                $options['inputOptions']['value'] = Html::a(
+                    Html::encode($model->{'id'}), $url, $options['inputOptions']
+                );
+
+                return $this->fieldHtml($model, 'id', $options);
+            }
         }
 
         return $this->fieldStatic($model, 'id', $options);
@@ -247,18 +248,25 @@ class EditForm extends ActiveForm
      *
      * @param Model $model
      * @param string $attribute
-     * @param string $html
      * @param array $options
      * @return ActiveField
      */
-    public function fieldHtml(Model $model, string $attribute, string $html, array $options = []) : ActiveField
+    public function fieldHtml(Model $model, string $attribute, array $options = []) : ActiveField
     {
-        if (! isset($options['parts']['{input}'])) {
-            $options['parts']['{input}'] = $html;
-        }
+        $attr = Html::getAttributeName($attribute);
 
         $options['options'] = $options['options'] ?? [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
+
+        // формируем элемент ввода из html
+        if (! isset($options['parts']['{input}'])) {
+            // если html не задан в value, то берем значение аттрибута модели
+            if (! isset($options['inputOptions']['value'])) {
+                $options['inputOptions']['value'] = $model->{$attr};
+            }
+
+            $options['parts']['{input}'] = $options['inputOptions']['value'];
+        }
 
         return $this->field($model, $attribute, $options);
     }
@@ -283,14 +291,15 @@ class EditForm extends ActiveForm
             $options['inputOptions']['target'] = '_blank';
         }
 
-        /** @noinspection PhpUndefinedFieldInspection */
-        $url = $model->url;
+        if (! isset($options['inputOptions']['value'])) {
+            $url = $model->{'url'};
 
-        $html = Html::a(
-            Html::encode(Url::to($url, true)), $url, $options['inputOptions']
-        );
+            $options['inputOptions']['value'] = Html::a(
+                Html::encode(Url::to($url, true)), $url, $options['inputOptions']
+            );
+        }
 
-        return $this->fieldHtml($model, 'url', $html, $options);
+        return $this->fieldHtml($model, 'url', $options);
     }
 
     /**
