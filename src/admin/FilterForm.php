@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.11.20 03:05:54
+ * @version 25.11.20 04:08:34
  */
 
 declare(strict_types = 1);
@@ -14,6 +14,8 @@ use Yii;
 use yii\base\Model;
 use yii\bootstrap4\ActiveField;
 use yii\bootstrap4\ActiveForm;
+
+use function mb_strtolower;
 
 /**
  * Форма фильтра данных.
@@ -66,14 +68,20 @@ class FilterForm extends ActiveForm
     public function field($model, $attribute, $options = []) : ActiveField
     {
         $attrName = Html::getAttributeName($attribute);
-        $prompt = '- ' . mb_strtolower($model->getAttributeLabel($attrName)) . ' -';
 
-        return parent::field($model, $attribute, array_merge([
-            'inputOptions' => [
-                'placeholder' => $model->getAttributeLabel($attribute),
-                'prompt' => $prompt
-            ]
-        ], $options))->input('search'); // по-умолчанию форматируем в тип search
+        // добавляем prompt для select
+        if (! isset($options['inputOptions']['prompt'])) {
+            $options['inputOptions']['prompt'] = '- ' . mb_strtolower($model->getAttributeLabel($attrName)) . ' -';
+        }
+
+        // добавляем placeholder
+        if (! isset($options['inputOptions']['placeholder'])) {
+            $options['inputOptions']['placeholder'] = $model->getAttributeLabel($attrName);
+        }
+
+        // по-умолчанию форматируем в тип search
+        return parent::field($model, $attribute, $options)
+            ->input('search');
     }
 
     /**
@@ -86,10 +94,10 @@ class FilterForm extends ActiveForm
      */
     public function fieldBoolean(Model $model, string $attribute, array $options = []) : ActiveField
     {
-        return $this->field($model, $attribute)->dropdownList([
+        return $this->field($model, $attribute, $options)->dropdownList([
             0 => 'нет',
             1 => 'да'
-        ], $options);
+        ]);
     }
 
     /**
@@ -113,9 +121,9 @@ class FilterForm extends ActiveForm
      */
     public function fieldDisabled(Model $model, array $options = []) : ActiveField
     {
-        return $this->field($model, 'disabled')->dropdownList([
+        return $this->field($model, 'disabled', $options)->dropdownList([
             0 => 'включено',
             1 => 'отключено'
-        ], $options);
+        ]);
     }
 }

@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.11.20 03:05:54
+ * @version 25.11.20 04:04:02
  */
 
 declare(strict_types = 1);
@@ -91,9 +91,11 @@ class EditForm extends ActiveForm
         $options['options'] = $options['options'] ?? [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
 
+        // баг в bootstrap4 (staticControl не берет inputOptions, сука).
+        $inputOptions = ArrayHelper::remove($options, 'inputOptions', []);
+
         return $this->field($model, $attribute, $options)
-            // баг в bootstrap4 (staticControl не берет inputOptions, сука).
-            ->staticControl(ArrayHelper::remove($options, 'inputOptions', []));
+            ->staticControl($inputOptions);
     }
 
     /**
@@ -176,7 +178,6 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ?ActiveField
      * @throws InvalidConfigException
-     * @throws UnknownPropertyException
      */
     public function fieldUpdated(ActiveRecord $model, array $options = []) : ?ActiveField
     {
@@ -185,12 +186,8 @@ class EditForm extends ActiveForm
         }
 
         if (! isset($options['inputOptions']['value'])) {
-            if (! $model->canGetProperty('updated')) {
-                throw new UnknownPropertyException('updated');
-            }
-
-            $options['inputOptions']['value'] = ! empty($model->{'updated'}) ?
-                Yii::$app->formatter->asDate($model->{'updated'}, 'php:d.m.Y H:i:s') : null;
+            $options['inputOptions']['value'] = empty($model->{'updated'}) ? null :
+                Yii::$app->formatter->asDate($model->{'updated'}, 'php:d.m.Y H:i:s');
         }
 
         return $this->fieldStatic($model, 'updated', $options);
@@ -217,9 +214,32 @@ class EditForm extends ActiveForm
      */
     public function fieldDisabled(Model $model, array $options = []) : ActiveField
     {
-        return $this->field($model, 'disabled', $options)->checkbox([
-            'value' => $model->{'disabled'} ?: date('Y-m-d H:i:s')
-        ]);
+        if (! isset($options['inputOptions']['value'])) {
+            $options['inputOptions']['value'] = $model->{'disabled'} ?: date('Y-m-d H:i:s');
+        }
+
+        return $this->field($model, 'disabled', $options)->checkbox();
+    }
+
+    /**
+     * Поле для редактирования datetime-local
+     *
+     * @param Model $model
+     * @param string $attribute
+     * @param array $options
+     * @return ActiveField
+     * @throws InvalidConfigException
+     */
+    public function fieldDateTime(Model $model, string $attribute, array $options = []) : ActiveField
+    {
+        $attr = Html::getAttributeName($attribute);
+
+        if (! isset($options['inputOptions']['value'])) {
+            $options['inputOptions']['value'] = empty($model->{$attr}) ? '' :
+                Yii::$app->formatter->asDatetime($model->{$attr}, 'php:Y-m-d\TH:i:s');
+        }
+
+        return $this->field($model, $attribute, $options)->input('datetime-local');
     }
 
     /**
