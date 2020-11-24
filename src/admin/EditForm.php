@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 21.09.20 19:00:14
+ * @version 25.11.20 03:05:54
  */
 
 declare(strict_types = 1);
@@ -91,7 +91,6 @@ class EditForm extends ActiveForm
         $options['options'] = $options['options'] ?? [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
 
-        /** @noinspection PhpPossiblePolymorphicInvocationInspection */
         return $this->field($model, $attribute, $options)
             // баг в bootstrap4 (staticControl не берет inputOptions, сука).
             ->staticControl(ArrayHelper::remove($options, 'inputOptions', []));
@@ -206,7 +205,6 @@ class EditForm extends ActiveForm
      */
     public function fieldEnabled(Model $model, array $options = []) : ActiveField
     {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, 'enabled', $options)->checkbox();
     }
 
@@ -219,7 +217,6 @@ class EditForm extends ActiveForm
      */
     public function fieldDisabled(Model $model, array $options = []) : ActiveField
     {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, 'disabled', $options)->checkbox([
             'value' => $model->{'disabled'} ?: date('Y-m-d H:i:s')
         ]);
@@ -243,7 +240,6 @@ class EditForm extends ActiveForm
         $options['options'] = $options['options'] ?? [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
 
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options);
     }
 
@@ -288,7 +284,6 @@ class EditForm extends ActiveForm
      */
     public function fieldText(Model $model, string $attribute, array $options = []) : ActiveField
     {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)
             ->widget(RedactorWidget::class);
     }
@@ -305,7 +300,6 @@ class EditForm extends ActiveForm
      */
     public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
     {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)
             ->widget(FileInputWidget::class, [
                 'layout' => 'images',
@@ -327,7 +321,6 @@ class EditForm extends ActiveForm
      */
     public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
     {
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->field($model, $attribute, $options)
             ->widget(FileInputWidget::class, [
                 'layout' => 'files',

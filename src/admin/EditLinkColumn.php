@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:32:54
+ * @version 25.11.20 03:03:26
  */
 
 declare(strict_types = 1);
@@ -29,7 +29,7 @@ class EditLinkColumn extends DataColumn
             /** @noinspection PhpPossiblePolymorphicInvocationInspection */
             return Html::a($this->grid->formatter->format($value, $this->format),
                 ['edit', 'id' => $model->id],
-                ['data-pjax' => false]
+                ['data-pjax' => 0]
             );
         }
 

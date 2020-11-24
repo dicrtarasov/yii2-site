@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:33:37
+ * @version 25.11.20 03:05:54
  */
 
 declare(strict_types = 1);
@@ -68,7 +68,6 @@ class FilterForm extends ActiveForm
         $attrName = Html::getAttributeName($attribute);
         $prompt = '- ' . mb_strtolower($model->getAttributeLabel($attrName)) . ' -';
 
-        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return parent::field($model, $attribute, array_merge([
             'inputOptions' => [
                 'placeholder' => $model->getAttributeLabel($attribute),
