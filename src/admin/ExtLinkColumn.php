@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.10.20 18:32:01
+ * @version 25.11.20 05:54:27
  */
 
 declare(strict_types = 1);
@@ -11,6 +11,8 @@ namespace dicr\site\admin;
 
 use dicr\helper\Html;
 use yii\grid\DataColumn;
+
+use function is_array;
 
 /**
  * Колона GridView для внешних ссылок.
@@ -31,7 +33,7 @@ class ExtLinkColumn extends DataColumn
      */
     public function init() : void
     {
-        if (empty($this->format)) {
+        if (! is_array($this->format)) {
             $this->format = [];
         }
 
