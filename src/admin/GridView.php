@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:34:27
+ * @version 02.12.20 02:56:59
  */
 
 declare(strict_types = 1);
@@ -114,5 +114,15 @@ class GridView extends \yii\grid\GridView
         }
 
         return $options;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function run() : string
+    {
+        AdminAsset::register($this->view);
+
+        return parent::run();
     }
 }

@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:34:45
+ * @version 02.12.20 02:57:43
  */
 
 declare(strict_types = 1);
@@ -36,5 +36,15 @@ class LinkPager extends \yii\bootstrap4\LinkPager
         parent::init();
 
         Html::addCssClass($this->options, 'dicr-site-admin-link-pager');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function run() : string
+    {
+        AdminAsset::register($this->view);
+
+        return parent::run();
     }
 }

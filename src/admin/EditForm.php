@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.11.20 04:27:48
+ * @version 02.12.20 02:54:41
  */
 
 declare(strict_types = 1);
@@ -66,6 +66,8 @@ class EditForm extends ActiveForm
      */
     public function run() : string
     {
+        AdminAsset::register($this->view);
+
         $this->view->registerJs("
             $('#{$this->options['id']}').on('afterValidateAttribute', function (event, attribute, messages) {
                 if (messages && messages.length > 0) {

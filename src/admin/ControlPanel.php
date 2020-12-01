@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:31:24
+ * @version 02.12.20 02:54:57
  */
 
 declare(strict_types = 1);
@@ -98,6 +98,8 @@ class ControlPanel extends Widget
      */
     public function run()
     {
+        AdminAsset::register($this->view);
+
         $buttons = $this->createButtons();
         if (empty($buttons)) {
             return '';

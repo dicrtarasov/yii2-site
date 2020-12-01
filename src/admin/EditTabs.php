@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:33:06
+ * @version 02.12.20 02:58:31
  */
 
 declare(strict_types = 1);
@@ -15,6 +15,7 @@ use yii\bootstrap4\Nav;
 use function is_string;
 use function ob_get_clean;
 use function ob_implicit_flush;
+use function trim;
 
 /**
  * Табы редактора.
@@ -66,6 +67,8 @@ class EditTabs extends Nav
     public function run() : string
     {
         $content = trim(ob_get_clean());
+
+        AdminAsset::register($this->view);
 
         $this->registerPlugin('dicrSiteAdminEditTabs');
 

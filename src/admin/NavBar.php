@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:34:53
+ * @version 02.12.20 03:01:00
  */
 
 declare(strict_types = 1);
@@ -15,6 +15,8 @@ use dicr\widgets\Widget;
 use Exception;
 use Yii;
 use yii\bootstrap4\Nav;
+
+use function ob_get_clean;
 
 /**
  * Навигационная панель.
@@ -180,8 +182,9 @@ class NavBar extends Widget
     {
         $content = ob_get_clean();
 
-        ob_start();
+        AdminAsset::register($this->view);
 
+        ob_start();
         $navTag = ArrayHelper::remove($this->options, 'tag', 'nav');
 
         // начало вывода компонента

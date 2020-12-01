@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.11.20 04:08:34
+ * @version 02.12.20 02:59:06
  */
 
 declare(strict_types = 1);
@@ -44,7 +44,7 @@ class FilterForm extends ActiveForm
 
         parent::init();
 
-        Html::addCssClass($this->options, 'dicr-admin-filter-form');
+        Html::addCssClass($this->options, 'dicr-site-admin-filter-form');
     }
 
     /**

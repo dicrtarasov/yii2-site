@@ -1,7 +1,7 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 09.10.20 18:34:41
+// @version 02.12.20 02:50:57
 
 @import "./mix";
 
@@ -98,4 +98,14 @@ a.desc:after {
         margin: 0 0.2em;
         opacity: 0.5;
     }
+}
+
+.break-all {
+    word-break: break-all;
+    overflow-wrap: initial;
+}
+
+.break-word {
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
