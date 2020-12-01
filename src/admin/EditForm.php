@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.12.20 02:54:41
+ * @version 02.12.20 03:07:34
  */
 
 declare(strict_types = 1);
@@ -76,7 +76,7 @@ class EditForm extends ActiveForm
             });
         ");
 
-        return parent::run();
+        return (string)parent::run();
     }
 
     /**

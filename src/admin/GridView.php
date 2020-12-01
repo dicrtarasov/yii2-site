@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.12.20 02:56:59
+ * @version 02.12.20 03:08:10
  */
 
 declare(strict_types = 1);
@@ -123,6 +123,6 @@ class GridView extends \yii\grid\GridView
     {
         AdminAsset::register($this->view);
 
-        return parent::run();
+        return (string)parent::run();
     }
 }
