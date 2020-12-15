@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 15.12.20 19:17:50
+ * @version 15.12.20 23:40:49
  */
 
 declare(strict_types = 1);
@@ -123,8 +123,13 @@ class EditTabs extends Nav
             }
 
             // проверяем активность
-            if (! empty($item[$i]['active'])) {
+            if (! empty($item['active'])) {
                 $hasActive = true;
+            }
+
+            // исправление BS4
+            if (! empty($item['items'])) {
+                $item['linkOptions']['data-bs-toggle'] = 'dropdown';
             }
         }
 
