@@ -1,7 +1,7 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 15.12.20 22:54:43
+// @version 15.12.20 23:37:12
 
 @import "./mix";
 
@@ -53,6 +53,16 @@ h3 {
             }
         }
     }
+
+    > :not(:last-child) > :last-child > * {
+        border-bottom-color: inherit;
+    }
+
+    tr:last-child {
+        > * {
+            border-bottom: none;
+        }
+    }
 }
 
 a {
@@ -99,6 +109,13 @@ a {
     }
 }
 
+.custom-checkbox {
+    .custom-control-input {
+        margin-right: 0.2rem;
+        vertical-align: middle;
+    }
+}
+
 // внешняя ссылка
 .ext-link {
     &:after {
@@ -136,17 +153,5 @@ a {
         font-size: 1.5rem;
         line-height: 1;
         color: #777;
-    }
-}
-
-.table {
-    > :not(:last-child) > :last-child > * {
-        border-bottom-color: inherit;
-    }
-
-    tr:last-child {
-        > * {
-            border-bottom: none;
-        }
     }
 }
