@@ -147,25 +147,25 @@
         },
         {
             "name": "dicr/yii2-asset",
-            "version": "1.7.12",
+            "version": "1.7.13",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-asset.git",
-                "reference": "068644af4966bf05628b407ef7d6ec99de7d0601"
+                "reference": "b1d8a85deb7d19ea7410b7e73b208fcacd048cc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=068644af4966bf05628b407ef7d6ec99de7d0601",
-                "reference": "068644af4966bf05628b407ef7d6ec99de7d0601",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=b1d8a85deb7d19ea7410b7e73b208fcacd048cc3",
+                "reference": "b1d8a85deb7d19ea7410b7e73b208fcacd048cc3",
                 "shasum": ""
             },
             "require": {
-                "php": "~7.2",
-                "scssphp/scssphp": "~1.2",
+                "php": "~7.3",
+                "scssphp/scssphp": "~1.4",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~9.4"
+                "phpunit/phpunit": "~9.5"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -200,20 +200,20 @@
                 "source": "https://gitlab.com/dicr/yii2-asset.git",
                 "issues": "https://gitlab.com/api/v4/projects/10744876/issues"
             },
-            "time": "2020-10-14T08:14:19+00:00"
+            "time": "2020-12-15T18:07:43+05:00"
         },
         {
             "name": "dicr/yii2-file",
-            "version": "5.0.15",
+            "version": "5.0.17",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-file.git",
-                "reference": "94bb0b8f38dda0e8830560551f2ebb369df14a4e"
+                "reference": "a59e0ca260ae4c42e51d68f74883590395a33d1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=94bb0b8f38dda0e8830560551f2ebb369df14a4e",
-                "reference": "94bb0b8f38dda0e8830560551f2ebb369df14a4e",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=a59e0ca260ae4c42e51d68f74883590395a33d1f",
+                "reference": "a59e0ca260ae4c42e51d68f74883590395a33d1f",
                 "shasum": ""
             },
             "require": {
@@ -229,7 +229,7 @@
             "require-dev": {
                 "ext-ssh2": "*",
                 "league/flysystem": "~1.1",
-                "phpunit/phpunit": "~9.4",
+                "phpunit/phpunit": "~9.5",
                 "roave/security-advisories": "dev-master",
                 "yiisoft/yii2-bootstrap4": "~2.0",
                 "yiisoft/yii2-debug": "~2.1"
@@ -279,20 +279,20 @@
                 "source": "https://gitlab.com/dicr/yii2-file.git",
                 "issues": "https://gitlab.com/api/v4/projects/9710563/issues"
             },
-            "time": "2020-11-19T20:10:17+03:00"
+            "time": "2020-12-12T02:18:02+05:00"
         },
         {
             "name": "dicr/yii2-helper",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-helper.git",
-                "reference": "59bfbe9ca851e40656778312953da221aba5462c"
+                "reference": "2c6a75259add1494fb73095c47c5d5fb687acdc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=59bfbe9ca851e40656778312953da221aba5462c",
-                "reference": "59bfbe9ca851e40656778312953da221aba5462c",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=2c6a75259add1494fb73095c47c5d5fb687acdc4",
+                "reference": "2c6a75259add1494fb73095c47c5d5fb687acdc4",
                 "shasum": ""
             },
             "require": {
@@ -303,7 +303,7 @@
                 "yiisoft/yii2-bootstrap4": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~9.4",
+                "phpunit/phpunit": "~9.5",
                 "roave/security-advisories": "dev-master"
             },
             "type": "yii2-extension",
@@ -342,7 +342,7 @@
                 "source": "https://gitlab.com/dicr/yii2-helper.git",
                 "issues": "https://gitlab.com/api/v4/projects/9713190/issues"
             },
-            "time": "2020-11-20T15:29:28+05:00"
+            "time": "2020-12-14T23:57:55+05:00"
         },
         {
             "name": "dicr/yii2-validate",
@@ -402,16 +402,16 @@
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "2.0.0",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "cb60371aaead6c1bdaaf2f6b68d34c3f805ed395"
+                "reference": "aa1dc63185795330a2478dc16dd8188be0764197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=cb60371aaead6c1bdaaf2f6b68d34c3f805ed395",
-                "reference": "cb60371aaead6c1bdaaf2f6b68d34c3f805ed395",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=aa1dc63185795330a2478dc16dd8188be0764197",
+                "reference": "aa1dc63185795330a2478dc16dd8188be0764197",
                 "shasum": ""
             },
             "require": {
@@ -455,7 +455,7 @@
                 "source": "https://gitlab.com/dicr/yii2-widgets.git",
                 "issues": "https://gitlab.com/api/v4/projects/12653694/issues"
             },
-            "time": "2020-11-23T02:12:53+05:00"
+            "time": "2020-12-15T19:04:54+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",

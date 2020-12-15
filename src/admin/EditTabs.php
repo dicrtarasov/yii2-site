@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.12.20 02:58:31
+ * @version 15.12.20 19:17:50
  */
 
 declare(strict_types = 1);
@@ -14,7 +14,6 @@ use yii\bootstrap4\Nav;
 
 use function is_string;
 use function ob_get_clean;
-use function ob_implicit_flush;
 use function trim;
 
 /**
@@ -58,7 +57,6 @@ class EditTabs extends Nav
         Html::addCssClass($this->options, ['nav-tabs', 'dicr-site-admin-edit-tabs']);
 
         ob_start();
-        ob_implicit_flush(0);
     }
 
     /**
@@ -116,9 +114,11 @@ class EditTabs extends Nav
                     'linkOptions' => [
                         'data' => [
                             'toggle' => 'tab',
-                            'target' => '#' . $i
+                            'bs-toggle' => 'tab',
+                            'target' => '#' . $i,
+                            'bs-target' => '#' . $i
                         ]
-                    ],
+                    ]
                 ];
             }
 
@@ -146,7 +146,6 @@ class EditTabs extends Nav
     {
         Html::addCssClass($options, 'tab-content');
         ob_start();
-        ob_implicit_flush(0);
         echo Html::beginTag('div', $options);
     }
 
@@ -174,7 +173,6 @@ class EditTabs extends Nav
         }
 
         ob_start();
-        ob_implicit_flush(0);
         echo Html::beginTag('div', $options);
     }
 

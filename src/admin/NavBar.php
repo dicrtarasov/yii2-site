@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.12.20 03:01:00
+ * @version 15.12.20 19:15:05
  */
 
 declare(strict_types = 1);
@@ -167,7 +167,9 @@ class NavBar extends Widget
             'type' => 'button',
             'data' => [
                 'toggle' => 'collapse',
+                'bs-toggle' => 'collapse',
                 'target' => '#' . $this->collapseOptions['id'],
+                'bs-target' => '#' . $this->collapseOptions['id'],
             ],
             'aria-controls' => $this->collapseOptions['id'],
             'aria-expanded' => 'false',
