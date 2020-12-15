@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 15.12.20 19:15:05
+ * @version 15.12.20 19:33:45
  */
 
 declare(strict_types = 1);
@@ -209,6 +209,15 @@ class NavBar extends Widget
 
         // выводим навигацию
         if (! empty($this->nav['items'])) {
+            // fix for BS5
+            foreach ($this->nav['items'] as $i => &$item) {
+                if (! empty($item['items'])) {
+                    $item['linkOptions']['data-bs-toggle'] = 'dropdown';
+                }
+            }
+
+            unset($item);
+
             echo Nav::widget($this->nav);
         }
 
