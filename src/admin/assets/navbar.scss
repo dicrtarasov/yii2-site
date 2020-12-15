@@ -1,7 +1,7 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 15.12.20 19:33:27
+// @version 15.12.20 20:46:37
 
 @import "./mix";
 
@@ -66,11 +66,13 @@
         }
 
         .dicr-site-admin-control-panel {
+            flex: 0 0 auto;
             order: 3;
-            margin-left: auto;
+            margin: 0 0 0 1rem;
 
             @media (max-width: 767px) {
                 order: 2;
+                margin-left: auto;
             }
         }
     }
