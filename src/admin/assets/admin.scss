@@ -1,7 +1,7 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 15.12.20 20:42:34
+// @version 15.12.20 22:54:43
 
 @import "./mix";
 
@@ -55,25 +55,38 @@ h3 {
     }
 }
 
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    display: inline;
-    position: relative;
-    top: 1px;
-    font-style: normal;
-    line-height: 1;
-    padding-left: 1px;
+a {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    /* add sorting icons to gridview sort links */
+    &.asc, &.desc {
+        &:after {
+            display: inline-block;
+            font-style: normal;
+            line-height: 1;
+            margin: 0 0 1px 1px;
+            vertical-align: middle;
+        }
+    }
+
+    &.asc:after {
+        content: "\21D1";
+    }
+
+    &.desc:after {
+        content: "\21D3";
+    }
 }
 
-a.asc:after {
-    content: "\21D1";
+/** Элементы формы *************************************************/
+.form-group {
+    margin-bottom: 1rem;
 }
 
-a.desc:after {
-    content: "\21D3";
-}
-
-/*** Элементы формы *************************************************/
 .form-control {
     color: $color-default;
 
@@ -112,10 +125,10 @@ a.desc:after {
 
 .close {
     background: #fff;
-    border: none;
-    padding: 0.6rem;
-    margin: 0;
     font-size: 0;
+    border: none;
+    padding: 0 0.25rem;
+    margin: 0;
 
     &:before {
         display: block;
@@ -123,5 +136,17 @@ a.desc:after {
         font-size: 1.5rem;
         line-height: 1;
         color: #777;
+    }
+}
+
+.table {
+    > :not(:last-child) > :last-child > * {
+        border-bottom-color: inherit;
+    }
+
+    tr:last-child {
+        > * {
+            border-bottom: none;
+        }
     }
 }
