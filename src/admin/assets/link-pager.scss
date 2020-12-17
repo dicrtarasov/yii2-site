@@ -1,15 +1,23 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 16.08.20 08:50:59
+// @version 17.12.20 22:54:02
 
 @import "./mix";
 
 .dicr-site-admin-link-pager {
-    .page-item {
-        &.disabled {
+    .pagination {
+        .page-item {
             .page-link {
-                color: $color-muted;
+                > * {
+                    line-height: inherit;
+                }
+            }
+
+            &.disabled {
+                .page-link {
+                    color: $color-muted;
+                }
             }
         }
     }
