@@ -1,7 +1,7 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 17.12.20 09:13:48
+// @version 17.12.20 23:09:41
 
 @import "./mix";
 
@@ -107,7 +107,7 @@ a {
 
 .custom-checkbox {
     .custom-control-input {
-        margin-right: 0.2rem;
-        vertical-align: middle;
+        margin: 0 0.2rem 0 0;
+        vertical-align: baseline;
     }
 }
