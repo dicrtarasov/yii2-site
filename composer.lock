@@ -197,8 +197,7 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-asset.git",
-                "issues": "https://gitlab.com/api/v4/projects/10744876/issues"
+                "source": "https://gitlab.com/dicr/yii2-asset.git"
             },
             "time": "2020-12-15T18:07:43+05:00"
         },
@@ -276,8 +275,7 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-file.git",
-                "issues": "https://gitlab.com/api/v4/projects/9710563/issues"
+                "source": "https://gitlab.com/dicr/yii2-file.git"
             },
             "time": "2020-12-12T02:18:02+05:00"
         },
@@ -339,8 +337,7 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-helper.git",
-                "issues": "https://gitlab.com/api/v4/projects/9713190/issues"
+                "source": "https://gitlab.com/dicr/yii2-helper.git"
             },
             "time": "2020-12-14T23:57:55+05:00"
         },
@@ -395,23 +392,22 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-validate.git",
-                "issues": "https://gitlab.com/api/v4/projects/9711109/issues"
+                "source": "https://gitlab.com/dicr/yii2-validate.git"
             },
             "time": "2020-12-03T20:18:18+05:00"
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "2.0.3",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "aa1dc63185795330a2478dc16dd8188be0764197"
+                "reference": "858d1927cc08d40b41bae9f7907e236c9d7cbf9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=aa1dc63185795330a2478dc16dd8188be0764197",
-                "reference": "aa1dc63185795330a2478dc16dd8188be0764197",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=858d1927cc08d40b41bae9f7907e236c9d7cbf9c",
+                "reference": "858d1927cc08d40b41bae9f7907e236c9d7cbf9c",
                 "shasum": ""
             },
             "require": {
@@ -452,10 +448,9 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-widgets.git",
-                "issues": "https://gitlab.com/api/v4/projects/12653694/issues"
+                "source": "https://gitlab.com/dicr/yii2-widgets.git"
             },
-            "time": "2020-12-15T19:04:54+05:00"
+            "time": "2020-12-15T22:54:27+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",
