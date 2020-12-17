@@ -3,7 +3,7 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.12.20 03:07:34
+ * @version 17.12.20 15:07:05
  */
 
 declare(strict_types = 1);
@@ -243,6 +243,27 @@ class EditForm extends ActiveForm
         }
 
         return $this->field($model, $attribute, $options)->input('datetime-local');
+    }
+
+    /**
+     * Редактирование даты.
+     *
+     * @param Model $model
+     * @param string $attribute
+     * @param array $options
+     * @return ActiveField
+     * @throws InvalidConfigException
+     */
+    public function fieldDate(Model $model, string $attribute, array $options = []) : ActiveField
+    {
+        $attr = Html::getAttributeName($attribute);
+
+        if (! isset($options['inputOptions']['value'])) {
+            $options['inputOptions']['value'] = empty($model->{$attr}) ? '' :
+                Yii::$app->formatter->asDate($model->{$attr}, 'php:Y-m-d');
+        }
+
+        return $this->field($model, $attribute, $options)->input('date');
     }
 
     /**
