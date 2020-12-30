@@ -1,10 +1,16 @@
 // @copyright 2019-2020 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 25.12.20 03:17:45
+// @version 31.12.20 00:42:47
 
 html {
-    width: 100vw;
+    width: 100%; // чтобы учитывать ширину элемента прокрутки
+    max-width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
 
     @media (min-width: 320px) {
         font-size: 14px;
@@ -34,18 +40,21 @@ html {
         font-size: 16px;
     }
 
-    > body {
+    body {
         display: flex;
         flex-flow: column nowrap;
         align-items: stretch;
+
+        width: 100%;
+        height: auto;
         min-height: 100vh;
-        width: 100vw;
-        max-width: 100vw;
         overflow-x: hidden;
-        overflow-y: auto;
+
         font-size: 1rem;
         line-height: 1.4;
         color: #333;
+        padding: 0;
+        margin: 0;
 
         > header {
             flex: 0 0 auto;
