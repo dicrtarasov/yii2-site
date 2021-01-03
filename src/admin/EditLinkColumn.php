@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.11.20 03:03:26
+ * @version 03.01.21 11:00:19
  */
 
 declare(strict_types = 1);
@@ -21,14 +21,13 @@ class EditLinkColumn extends DataColumn
     /**
      * @inheritDoc
      */
-    protected function renderDataCellContent($model, $key, $index) : string
+    protected function renderDataCellContent($model, $key, $index): string
     {
         if (($this->content === null) && ($model instanceof Model) && $model->canGetProperty('id')) {
             $value = $this->getDataCellValue($model, $key, $index);
 
-            /** @noinspection PhpPossiblePolymorphicInvocationInspection */
             return Html::a($this->grid->formatter->format($value, $this->format),
-                ['edit', 'id' => $model->id],
+                ['edit', 'id' => $model->{'id'}],
                 ['data-pjax' => 0]
             );
         }
