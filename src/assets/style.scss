@@ -1,7 +1,7 @@
 // @copyright 2019-2021 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 03.01.21 09:18:10
+// @version 03.01.21 13:31:11
 
 html {
     width: 100%; // чтобы учитывать ширину элемента прокрутки
@@ -49,6 +49,8 @@ html {
         height: auto;
         min-height: 100vh;
         overflow-x: hidden;
+
+        position: relative;
 
         font-size: 1rem;
         line-height: 1.4;
