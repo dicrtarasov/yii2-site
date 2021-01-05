@@ -1,7 +1,7 @@
 // @copyright 2019-2021 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 03.01.21 13:31:11
+// @version 05.01.21 14:15:59
 
 html {
     width: 100%; // чтобы учитывать ширину элемента прокрутки
@@ -13,11 +13,11 @@ html {
     margin: 0;
 
     @media (min-width: 320px) {
-        font-size: 12px;
+        font-size: 13px;
     }
 
     @media (min-width: 360px) {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     @media (min-width: 576px) {
