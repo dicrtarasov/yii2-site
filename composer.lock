@@ -279,16 +279,16 @@
         },
         {
             "name": "dicr/yii2-helper",
-            "version": "4.0.13",
+            "version": "4.0.13.1",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-helper.git",
-                "reference": "099ff402b2095de910a3bf4bf9a4e74e23efb7d2"
+                "reference": "5dc7e5f11b1f6abc0c6ec6204b782cd234483f44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=099ff402b2095de910a3bf4bf9a4e74e23efb7d2",
-                "reference": "099ff402b2095de910a3bf4bf9a4e74e23efb7d2",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=5dc7e5f11b1f6abc0c6ec6204b782cd234483f44",
+                "reference": "5dc7e5f11b1f6abc0c6ec6204b782cd234483f44",
                 "shasum": ""
             },
             "require": {
@@ -337,7 +337,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-helper.git"
             },
-            "time": "2020-12-26T07:30:40+05:00"
+            "time": "2021-01-05T19:27:36+05:00"
         },
         {
             "name": "dicr/yii2-validate",
@@ -396,16 +396,16 @@
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "3.0.0",
+            "version": "3.0.0.1",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "8945aa2ea6883da0eed7de72caee69dfa8108cff"
+                "reference": "0fb880ccacf37b938f224b12e9e59211c7bf82c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=8945aa2ea6883da0eed7de72caee69dfa8108cff",
-                "reference": "8945aa2ea6883da0eed7de72caee69dfa8108cff",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=0fb880ccacf37b938f224b12e9e59211c7bf82c6",
+                "reference": "0fb880ccacf37b938f224b12e9e59211c7bf82c6",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-widgets.git"
             },
-            "time": "2021-01-05T12:59:33+05:00"
+            "time": "2021-01-05T13:39:15+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",
