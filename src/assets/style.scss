@@ -1,7 +1,7 @@
 // @copyright 2019-2021 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 05.01.21 14:15:59
+// @version 05.01.21 17:38:27
 
 html {
     width: 100%; // чтобы учитывать ширину элемента прокрутки
@@ -46,9 +46,10 @@ html {
         align-items: stretch;
 
         width: 100%;
+        max-width: 100vw;
         height: auto;
         min-height: 100vh;
-        overflow-x: hidden;
+        // overflow-x: hidden; ломает sticky
 
         position: relative;
 
