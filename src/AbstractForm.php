@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 13.09.20 01:51:11
+ * @version 06.01.21 04:26:52
  */
 
 declare(strict_types = 1);
@@ -293,11 +293,12 @@ abstract class AbstractForm extends Model
     /**
      * Обработка формы.
      *
-     * @return bool
+     * @return mixed
      * @throws ValidateException
      * @throws ServerErrorHttpException
+     * @noinspection PhpMissingReturnTypeInspection
      */
-    public function process() : bool
+    public function process()
     {
         if (! $this->validate()) {
             throw new ValidateException($this);
