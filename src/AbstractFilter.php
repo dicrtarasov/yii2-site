@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 03.01.21 10:59:25
+ * @version 06.01.21 17:43:02
  */
 
 declare(strict_types = 1);
@@ -225,6 +225,9 @@ abstract class AbstractFilter extends Model
         }
 
         $this->_provider = $provider;
+        $this->_query = $provider->query;
+        $this->_sort = $provider->sort;
+        $this->_pagination = $provider->pagination;
 
         return $this;
     }

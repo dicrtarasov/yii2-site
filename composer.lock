@@ -50,7 +50,7 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "git@github.com:bestiejs/punycode.js.git",
+                "url": "https://github.com/bestiejs/punycode.js.git",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "dist": {
@@ -396,16 +396,16 @@
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "3.0.0.1",
+            "version": "3.0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "0fb880ccacf37b938f224b12e9e59211c7bf82c6"
+                "reference": "201db81ace371b62c51b04139b3e3bcd91c2320f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=0fb880ccacf37b938f224b12e9e59211c7bf82c6",
-                "reference": "0fb880ccacf37b938f224b12e9e59211c7bf82c6",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=201db81ace371b62c51b04139b3e3bcd91c2320f",
+                "reference": "201db81ace371b62c51b04139b3e3bcd91c2320f",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-widgets.git"
             },
-            "time": "2021-01-05T13:39:15+05:00"
+            "time": "2021-01-06T09:11:52+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",
