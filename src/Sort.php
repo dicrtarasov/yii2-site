@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.01.21 05:07:24
+ * @version 06.01.21 05:08:21
  */
 
 declare(strict_types = 1);
@@ -67,7 +67,7 @@ class Sort extends \yii\data\Sort
      */
     public function getIsDefault(): bool
     {
-        return $this->sort === null;
+        return $this->getSort(true) === null;
     }
 
     /**
@@ -77,7 +77,7 @@ class Sort extends \yii\data\Sort
      */
     public function params(): array
     {
-        $sort = $this->sort;
+        $sort = $this->getSort(true);
 
         return $sort === null ? [] : [
             $this->sortParam => $sort
