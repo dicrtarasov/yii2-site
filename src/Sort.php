@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.01.21 05:08:21
+ * @version 06.01.21 05:21:51
  */
 
 declare(strict_types = 1);
@@ -38,7 +38,7 @@ class Sort extends \yii\data\Sort
         }
 
         $currentSort = array_key_first($current);
-        if ($current[$currentSort] ?? SORT_ASC === SORT_DESC) {
+        if (($current[$currentSort] ?? SORT_ASC) === SORT_DESC) {
             $currentSort = '-' . $currentSort;
         }
 
@@ -47,7 +47,7 @@ class Sort extends \yii\data\Sort
 
             if (count($default) === 1) {
                 $defaultSort = array_key_first($default);
-                if ($default[$defaultSort] ?? SORT_ASC === SORT_DESC) {
+                if (($default[$defaultSort] ?? SORT_ASC) === SORT_DESC) {
                     $defaultSort = '-' . $defaultSort;
                 }
 
