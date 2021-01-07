@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 17.12.20 15:07:05
+ * @version 07.01.21 19:17:22
  */
 
 declare(strict_types = 1);
@@ -217,11 +217,9 @@ class EditForm extends ActiveForm
      */
     public function fieldDisabled(Model $model, array $options = []) : ActiveField
     {
-        if (! isset($options['inputOptions']['value'])) {
-            $options['inputOptions']['value'] = $model->{'disabled'} ?: date('Y-m-d H:i:s');
-        }
-
-        return $this->field($model, 'disabled', $options)->checkbox();
+        return $this->field($model, 'disabled', $options)->checkbox([
+            'value' => $model->{'disabled'} ?: date('Y-m-d H:i:s')
+        ]);
     }
 
     /**
