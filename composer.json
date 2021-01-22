@@ -27,7 +27,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": "~7.3",
+        "php": "~7.4 || ~8.0.1",
         "ext-intl": "*",
         "ext-mbstring": "*",
         "yiisoft/yii2": "~2.0",
@@ -43,11 +43,11 @@
         "roave/security-advisories": "dev-master"
     },
     "repositories": [
+        {"type": "composer", "url": "https://asset-packagist.org"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-asset.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-file.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-helper.git"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-validate.git"},
-        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-widgets.git"},
-        {"type": "composer", "url": "https://asset-packagist.org"}
+        {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-widgets.git"}
     ]
 }

@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 30.09.20 01:43:41
+ * @version 22.01.21 16:31:02
  */
 
 declare(strict_types = 1);
@@ -57,7 +57,7 @@ abstract class AbstractMethod extends Model
     /**
      * @inheritDoc
      */
-    public function attributes() : array
+    public function attributes(): array
     {
         return array_merge(parent::attributes(), ['tax']);
     }
@@ -65,7 +65,7 @@ abstract class AbstractMethod extends Model
     /**
      * @inheritDoc
      */
-    public function attributeLabels() : array
+    public function attributeLabels(): array
     {
         return array_merge(parent::attributeLabels(), [
             'tax' => Yii::t('dicr/site', 'Комиссия')
@@ -75,7 +75,7 @@ abstract class AbstractMethod extends Model
     /**
      * @inheritDoc
      */
-    public function extraFields() : array
+    public function extraFields(): array
     {
         $extraFields = ['minSum', 'maxSum'];
 
@@ -132,7 +132,7 @@ abstract class AbstractMethod extends Model
      *
      * @param float $sum
      */
-    public function setSum(float $sum) : void
+    public function setSum(float $sum): void
     {
         if ($sum < 0) {
             throw new InvalidArgumentException('sum');
@@ -195,7 +195,7 @@ abstract class AbstractMethod extends Model
      *
      * @param float $tax
      */
-    public function setTax(float $tax) : void
+    public function setTax(float $tax): void
     {
         if ($tax < 0) {
             throw new InvalidArgumentException('tax');
@@ -252,7 +252,7 @@ abstract class AbstractMethod extends Model
      *
      * @param ?OrderInterface $order
      */
-    public function setOrder(?OrderInterface $order) : void
+    public function setOrder(?OrderInterface $order): void
     {
         $this->_order = $order;
     }
@@ -350,11 +350,10 @@ abstract class AbstractMethod extends Model
      */
     public function getConfig(): array
     {
-        return array_merge([
-            'class' => static::class
-        ], array_filter($this->attributes, static function ($val) : bool {
-            return $val !== null && $val !== '';
-        }));
+        return array_merge(
+            ['class' => static::class],
+            array_filter($this->attributes, static fn($val): bool => $val !== null && $val !== '')
+        );
     }
 
     /**
@@ -384,7 +383,7 @@ abstract class AbstractMethod extends Model
     /**
      * @return string
      */
-    public function __toString() : string
+    public function __toString(): string
     {
         return static::name();
     }
@@ -392,7 +391,7 @@ abstract class AbstractMethod extends Model
     /**
      * Сохранить параметры метода как выбранного
      */
-    abstract public function saveSelected() : void;
+    abstract public function saveSelected(): void;
 
     /**
      * Восстановить параметры сохраненного выбранного метода.

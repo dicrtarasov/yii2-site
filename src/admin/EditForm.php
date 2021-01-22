@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.01.21 19:17:22
+ * @version 22.01.21 16:32:41
  */
 
 declare(strict_types = 1);
@@ -89,7 +89,7 @@ class EditForm extends ActiveForm
      */
     public function fieldStatic(Model $model, string $attribute, array $options = []) : ActiveField
     {
-        $options['options'] = $options['options'] ?? [];
+        $options['options'] ??= [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
 
         // баг в bootstrap4 (staticControl не берет inputOptions, сука).
@@ -276,7 +276,7 @@ class EditForm extends ActiveForm
     {
         $attr = Html::getAttributeName($attribute);
 
-        $options['options'] = $options['options'] ?? [];
+        $options['options'] ??= [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
 
         // формируем элемент ввода из html
@@ -305,7 +305,7 @@ class EditForm extends ActiveForm
             return null;
         }
 
-        $options['inputOptions'] = $options['inputOptions'] ?? [];
+        $options['inputOptions'] ??= [];
         Html::addCssClass($options['inputOptions'], 'form-control-plaintext');
 
         if (! isset($options['inputOptions']['target'])) {

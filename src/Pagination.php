@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:36:31
+ * @version 22.01.21 16:32:41
  */
 
 declare(strict_types = 1);
@@ -70,8 +70,6 @@ class Pagination extends \yii\data\Pagination
         return array_filter([
             $this->pageParam => $this->isPageDefault ? null : $this->page + 1,
             $this->pageSizeParam => $this->isPageSizeDefault ? null : $this->pageSize
-        ], static function ($val) : bool {
-            return $val !== null && $val !== '';
-        });
+        ], static fn($val): bool => $val !== null && $val !== '');
     }
 }

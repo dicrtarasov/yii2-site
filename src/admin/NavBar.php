@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 15.12.20 19:33:45
+ * @version 22.01.21 16:32:41
  */
 
 declare(strict_types = 1);
@@ -127,7 +127,7 @@ class NavBar extends Widget
         ]);
 
         if ($this->nav !== false) {
-            $this->nav['options'] = $this->nav['options'] ?? [];
+            $this->nav['options'] ??= [];
             Html::addCssClass($this->nav['options'], 'navbar-nav');
         }
 

@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.12.20 03:08:10
+ * @version 22.01.21 16:31:22
  */
 
 declare(strict_types = 1);
@@ -46,7 +46,7 @@ class GridView extends \yii\grid\GridView
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function init() : void
+    public function init(): void
     {
         if (empty($this->pager['class'])) {
             $this->pager['class'] = LinkPager::class;
@@ -54,9 +54,9 @@ class GridView extends \yii\grid\GridView
 
         $this->_origRowOptions = $this->rowOptions ?: [];
 
-        $this->rowOptions = function ($model, $key, $index, $grid) : array {
-            return $this->getRowOptions($model, $key, $index, $grid);
-        };
+        $this->rowOptions = fn($model, $key, $index, $grid): array => $this->getRowOptions(
+            $model, $key, $index, $grid
+        );
 
         parent::init();
 
@@ -72,7 +72,7 @@ class GridView extends \yii\grid\GridView
      * @param self $grid
      * @return array
      */
-    protected function getRowOptions($model, $key, int $index, self $grid) : array
+    protected function getRowOptions($model, $key, int $index, self $grid): array
     {
         // оригинальные опции
         $options = $this->_origRowOptions;
@@ -119,7 +119,7 @@ class GridView extends \yii\grid\GridView
     /**
      * @inheritDoc
      */
-    public function run() : string
+    public function run(): string
     {
         AdminAsset::register($this->view);
 
