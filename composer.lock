@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46712b77d00d407cc053630251ec9361",
+    "content-hash": "68ca65a6c789b2bd0a2183858fdb8d74",
     "packages": [
         {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -32,7 +32,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -203,16 +203,16 @@
         },
         {
             "name": "dicr/yii2-file",
-            "version": "5.0.21",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-file.git",
-                "reference": "60d9d8cd82833c0ea897efbf7d1ea305258a63b0"
+                "reference": "b27d73cae651fc688b4b203bc0e593becae8cdd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=60d9d8cd82833c0ea897efbf7d1ea305258a63b0",
-                "reference": "60d9d8cd82833c0ea897efbf7d1ea305258a63b0",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=b27d73cae651fc688b4b203bc0e593becae8cdd6",
+                "reference": "b27d73cae651fc688b4b203bc0e593becae8cdd6",
                 "shasum": ""
             },
             "require": {
@@ -273,7 +273,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-file.git"
             },
-            "time": "2021-01-22T11:13:59+00:00"
+            "time": "2021-01-27T19:27:04+05:00"
         },
         {
             "name": "dicr/yii2-helper",
@@ -339,16 +339,16 @@
         },
         {
             "name": "dicr/yii2-validate",
-            "version": "2.3.3",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-validate.git",
-                "reference": "4a77402034f1da8475373f44a814413caa92b15f"
+                "reference": "f55d28d644099ec13c5bf8228607c3781b51bc00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=4a77402034f1da8475373f44a814413caa92b15f",
-                "reference": "4a77402034f1da8475373f44a814413caa92b15f",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=f55d28d644099ec13c5bf8228607c3781b51bc00",
+                "reference": "f55d28d644099ec13c5bf8228607c3781b51bc00",
                 "shasum": ""
             },
             "require": {
@@ -390,7 +390,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-validate.git"
             },
-            "time": "2021-01-22T09:50:18+05:00"
+            "time": "2021-01-23T03:20:37+05:00"
         },
         {
             "name": "dicr/yii2-widgets",

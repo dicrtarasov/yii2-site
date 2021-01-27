@@ -3,13 +3,13 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.01.21 04:26:52
+ * @version 27.01.21 19:53:40
  */
 
 declare(strict_types = 1);
 namespace dicr\site;
 
-use dicr\file\StoreFile;
+use dicr\file\File;
 use dicr\helper\Html;
 use dicr\validate\ValidateException;
 use RuntimeException;
@@ -30,14 +30,14 @@ use function gettype;
  * @property-read ?string $managerSubject
  * @property-read ?string[] $managerData
  * @property-read ?string $managerText
- * @property-read UploadedFile[]|StoreFile[]|null $managerFiles
+ * @property-read File[]|null $managerFiles
  * @property-read ?MessageInterface $managerMessage
  *
  * @property-read array|string|null $userEmail
  * @property-read ?string $userSubject
  * @property-read ?string[] $userData
  * @property-read ?string $userText
- * @property-read UploadedFile[]|StoreFile[]|null $userFiles
+ * @property-read File[]|null $userFiles
  * @property-read ?MessageInterface $userMessage
  */
 abstract class AbstractForm extends Model
@@ -112,7 +112,7 @@ abstract class AbstractForm extends Model
     /**
      * Файлы в сообщение менеджеру.
      *
-     * @return UploadedFile[]|StoreFile[]|null
+     * @return File[]|null
      */
     protected function getManagerFiles() : ?array
     {
@@ -162,7 +162,7 @@ abstract class AbstractForm extends Model
                     $message->attach($file->tempName, [
                         'fileName' => $file->name
                     ]);
-                } elseif ($file instanceof StoreFile) {
+                } elseif ($file instanceof File) {
                     $message->attach($file->absolutePath, [
                         'fileName' => $file->name
                     ]);
@@ -229,7 +229,7 @@ abstract class AbstractForm extends Model
     /**
      * Файлы для сообщения пользователю.
      *
-     * @return UploadedFile[]|StoreFile[]|null
+     * @return File[]|null
      */
     protected function getUserFiles() : ?array
     {
@@ -279,7 +279,7 @@ abstract class AbstractForm extends Model
                     $message->attach($file->tempName, [
                         'fileName' => $file->name
                     ]);
-                } elseif ($file instanceof StoreFile) {
+                } elseif ($file instanceof File) {
                     $message->attach($file->absolutePath, [
                         'fileName' => $file->name
                     ]);
