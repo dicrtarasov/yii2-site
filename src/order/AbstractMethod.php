@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 22.01.21 16:31:02
+ * @version 20.02.21 02:21:10
  */
 
 declare(strict_types = 1);
@@ -11,10 +11,11 @@ namespace dicr\site\order;
 
 use dicr\helper\Html;
 use Yii;
+use yii\base\Exception;
 use yii\base\InvalidArgumentException;
-use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\bootstrap4\ActiveForm;
+use yii\helpers\Json;
 
 use function array_combine;
 use function array_filter;
@@ -328,14 +329,27 @@ abstract class AbstractMethod extends Model
      *
      * @param array $config
      * @return ?static
-     * @noinspection PhpIncompatibleReturnTypeInspection
      */
     public static function create(array $config): ?self
     {
         if (! empty($config)) {
             try {
-                return Yii::createObject($config);
-            } catch (InvalidConfigException $ex) {
+                // выделяем класс
+                $class = (string)($config['class'] ?? '');
+                if ($class === '') {
+                    throw new Exception('Некорректный конфиг: ' . Json::encode($config));
+                }
+
+                /** @var self $method создаем объект отдельно от свойств */
+                $method = Yii::createObject([
+                    'class' => $class
+                ]);
+
+                // свойства устанавливаем через аттрибуты, чтобы отсеять ненайденные
+                $method->setAttributes($config, false);
+
+                return $method;
+            } catch (Exception $ex) {
                 Yii::error((string)$ex, __METHOD__);
             }
         }
