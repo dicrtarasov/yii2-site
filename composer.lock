@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68ca65a6c789b2bd0a2183858fdb8d74",
+    "content-hash": "a20da9f0224c271601404ffa87a64583",
     "packages": [
         {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -277,16 +277,16 @@
         },
         {
             "name": "dicr/yii2-helper",
-            "version": "4.0.14",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-helper.git",
-                "reference": "f75c02925344b08e4709c1dc90cc35cd0d743911"
+                "reference": "edb40d4c7abe58708b40b6bd84171c1ed51742f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=f75c02925344b08e4709c1dc90cc35cd0d743911",
-                "reference": "f75c02925344b08e4709c1dc90cc35cd0d743911",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=edb40d4c7abe58708b40b6bd84171c1ed51742f7",
+                "reference": "edb40d4c7abe58708b40b6bd84171c1ed51742f7",
                 "shasum": ""
             },
             "require": {
@@ -335,7 +335,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-helper.git"
             },
-            "time": "2021-01-22T16:19:53+05:00"
+            "time": "2021-02-23T11:52:27+05:00"
         },
         {
             "name": "dicr/yii2-validate",
@@ -394,21 +394,21 @@
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "3.0.9",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "d25c4d3f5be90efc7838507b1a1751580aa956f8"
+                "reference": "167a4f876ecfe66a88c0f34fe813f659d987c97b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=d25c4d3f5be90efc7838507b1a1751580aa956f8",
-                "reference": "d25c4d3f5be90efc7838507b1a1751580aa956f8",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=167a4f876ecfe66a88c0f34fe813f659d987c97b",
+                "reference": "167a4f876ecfe66a88c0f34fe813f659d987c97b",
                 "shasum": ""
             },
             "require": {
                 "dicr/yii2-asset": "~1.7",
-                "dicr/yii2-helper": "~4.0",
+                "dicr/yii2-helper": "~4.2",
                 "php": "~7.4 || ~8.0.1",
                 "yiisoft/yii2": "~2.0",
                 "yiisoft/yii2-bootstrap4": "~2.0"
@@ -446,7 +446,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-widgets.git"
             },
-            "time": "2021-02-12T21:19:03+05:00"
+            "time": "2021-03-03T12:15:37+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -886,12 +886,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "640ff0b5dcacc0958534c8c0255b90697f3eb2a8"
+                "reference": "a6bfc5a1416f0dde1f53b7737b2cf983352737b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/640ff0b5dcacc0958534c8c0255b90697f3eb2a8",
-                "reference": "640ff0b5dcacc0958534c8c0255b90697f3eb2a8",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/a6bfc5a1416f0dde1f53b7737b2cf983352737b8",
+                "reference": "a6bfc5a1416f0dde1f53b7737b2cf983352737b8",
                 "shasum": ""
             },
             "conflict": {
@@ -1033,7 +1033,7 @@
                 "phpunit/phpunit": ">=4.8.19,<4.8.28|>=5.0.10,<5.6.3",
                 "phpwhois/phpwhois": "<=4.2.5",
                 "phpxmlrpc/extras": "<0.6.1",
-                "pimcore/pimcore": "<6.3",
+                "pimcore/pimcore": "<6.8.8",
                 "pocketmine/pocketmine-mp": "<3.15.4",
                 "prestashop/autoupgrade": ">=4,<4.10.1",
                 "prestashop/contactform": ">1.0.1,<4.3",
@@ -1073,7 +1073,7 @@
                 "simplesamlphp/simplesamlphp-module-infocard": "<1.0.1",
                 "simplito/elliptic-php": "<1.0.6",
                 "slim/slim": "<2.6",
-                "smarty/smarty": "<3.1.33",
+                "smarty/smarty": "<3.1.39",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
                 "spoonity/tcpdf": "<6.2.22",
@@ -1205,7 +1205,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-18T21:02:27+00:00"
+            "time": "2021-02-26T20:02:39+00:00"
         }
     ],
     "aliases": [],
