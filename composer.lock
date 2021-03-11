@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a20da9f0224c271601404ffa87a64583",
+    "content-hash": "0cac043cdd8558ad0fda3ab6ec586af6",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -32,7 +32,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -147,16 +147,16 @@
         },
         {
             "name": "dicr/yii2-asset",
-            "version": "1.7.16",
+            "version": "1.7.17",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-asset.git",
-                "reference": "036031cff4155a086ef320f686c799f32c1c6b57"
+                "reference": "5ebd4dd3743967406c9bcf4f7c83be16b3c1e349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=036031cff4155a086ef320f686c799f32c1c6b57",
-                "reference": "036031cff4155a086ef320f686c799f32c1c6b57",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-asset/repository/archive.zip?sha=5ebd4dd3743967406c9bcf4f7c83be16b3c1e349",
+                "reference": "5ebd4dd3743967406c9bcf4f7c83be16b3c1e349",
                 "shasum": ""
             },
             "require": {
@@ -165,7 +165,8 @@
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~9.5"
+                "phpunit/phpunit": "~9.5",
+                "roave/security-advisories": "dev-master"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -199,7 +200,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-asset.git"
             },
-            "time": "2021-01-22T15:58:37+05:00"
+            "time": "2021-03-08T17:14:09+05:00"
         },
         {
             "name": "dicr/yii2-file",
@@ -277,16 +278,16 @@
         },
         {
             "name": "dicr/yii2-helper",
-            "version": "4.2.0",
+            "version": "4.4",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-helper.git",
-                "reference": "edb40d4c7abe58708b40b6bd84171c1ed51742f7"
+                "reference": "687d452dc4641a64bddd7e6713f71780307a1fa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=edb40d4c7abe58708b40b6bd84171c1ed51742f7",
-                "reference": "edb40d4c7abe58708b40b6bd84171c1ed51742f7",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-helper/repository/archive.zip?sha=687d452dc4641a64bddd7e6713f71780307a1fa6",
+                "reference": "687d452dc4641a64bddd7e6713f71780307a1fa6",
                 "shasum": ""
             },
             "require": {
@@ -335,7 +336,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-helper.git"
             },
-            "time": "2021-02-23T11:52:27+05:00"
+            "time": "2021-03-11T18:54:44+05:00"
         },
         {
             "name": "dicr/yii2-validate",
@@ -394,16 +395,16 @@
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "4.0.0",
+            "version": "4.1.3",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "167a4f876ecfe66a88c0f34fe813f659d987c97b"
+                "reference": "89eb2a15e7f0b10abcd5c94f77ca7f6071985c45"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=167a4f876ecfe66a88c0f34fe813f659d987c97b",
-                "reference": "167a4f876ecfe66a88c0f34fe813f659d987c97b",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=89eb2a15e7f0b10abcd5c94f77ca7f6071985c45",
+                "reference": "89eb2a15e7f0b10abcd5c94f77ca7f6071985c45",
                 "shasum": ""
             },
             "require": {
@@ -446,7 +447,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-widgets.git"
             },
-            "time": "2021-03-03T12:15:37+05:00"
+            "time": "2021-03-08T20:38:16+05:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -583,16 +584,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.40",
+            "version": "2.0.41.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "debb520c1d72a2c97c09d70a2a2a4f600ef3958e"
+                "reference": "2ad0894a2ccbd3912b33de4419ad1ae3df0595c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/debb520c1d72a2c97c09d70a2a2a4f600ef3958e",
-                "reference": "debb520c1d72a2c97c09d70a2a2a4f600ef3958e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2ad0894a2ccbd3912b33de4419ad1ae3df0595c4",
+                "reference": "2ad0894a2ccbd3912b33de4419ad1ae3df0595c4",
                 "shasum": ""
             },
             "require": {
@@ -700,7 +701,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-23T15:44:43+00:00"
+            "time": "2021-03-04T15:45:04+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap4",
@@ -886,12 +887,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "a6bfc5a1416f0dde1f53b7737b2cf983352737b8"
+                "reference": "635360789eae558cd66e17c9454a58cb2334e80a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/a6bfc5a1416f0dde1f53b7737b2cf983352737b8",
-                "reference": "a6bfc5a1416f0dde1f53b7737b2cf983352737b8",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/635360789eae558cd66e17c9454a58cb2334e80a",
+                "reference": "635360789eae558cd66e17c9454a58cb2334e80a",
                 "shasum": ""
             },
             "conflict": {
@@ -957,6 +958,7 @@
                 "ezsystems/platform-ui-assets-bundle": ">=4.2,<4.2.3",
                 "ezsystems/repository-forms": ">=2.3,<2.3.2.1",
                 "ezyang/htmlpurifier": "<4.1.1",
+                "facade/ignition": "<=2.5.1,>=2.0|<=1.16.13",
                 "firebase/php-jwt": "<2",
                 "flarum/sticky": ">=0.1-beta.14,<=0.1-beta.15",
                 "flarum/tags": "<=0.1-beta.13",
@@ -981,6 +983,7 @@
                 "illuminate/view": ">=7,<7.1.2",
                 "ivankristianto/phpwhois": "<=4.3",
                 "james-heinrich/getid3": "<1.9.9",
+                "joomla/archive": "<1.1.10",
                 "joomla/session": "<1.3.1",
                 "jsmitty12/phpwhois": "<5.1",
                 "kazist/phpwhois": "<=4.2.6",
@@ -1006,7 +1009,7 @@
                 "nette/nette": ">=2,<2.0.19|>=2.1,<2.1.13",
                 "nystudio107/craft-seomatic": "<3.3",
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
-                "october/backend": ">=1.0.319,<1.0.470",
+                "october/backend": "<1.1.2",
                 "october/cms": "= 1.0.469|>=1.0.319,<1.0.469",
                 "october/october": ">=1.0.319,<1.0.466",
                 "october/rain": "<1.0.472|>=1.1,<1.1.2",
@@ -1205,7 +1208,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-26T20:02:39+00:00"
+            "time": "2021-03-10T22:02:36+00:00"
         }
     ],
     "aliases": [],

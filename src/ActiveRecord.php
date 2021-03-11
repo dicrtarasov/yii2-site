@@ -3,13 +3,12 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 06.02.21 19:32:03
+ * @version 11.03.21 20:20:45
  */
 
 declare(strict_types = 1);
 namespace dicr\site;
 
-use Throwable;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\caching\TagDependency;
@@ -161,7 +160,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
      * @param bool $runValidation
      * @param ?array $attributes
      * @return bool
-     * @throws Throwable
+     * @throws Exception
      */
     public function upsert(bool $runValidation = true, ?array $attributes = null): bool
     {
@@ -191,7 +190,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
             }
 
             return $result;
-        } catch (Throwable $e) {
+        } catch (Exception $e) {
             $transaction->rollBack();
             throw $e;
         }
