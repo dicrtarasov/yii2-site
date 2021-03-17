@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 17.03.21 05:48:02
+ * @version 17.03.21 13:39:41
  */
 
 declare(strict_types = 1);
@@ -130,7 +130,7 @@ class Formatter extends \yii\i18n\Formatter
     /**
      * Форматирует телефон.
      *
-     * @param $value
+     * @param string|int|null $value
      * @param array $options
      * @return string
      */
