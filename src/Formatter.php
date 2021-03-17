@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 17.03.21 05:47:38
+ * @version 17.03.21 05:48:02
  */
 
 declare(strict_types = 1);
@@ -54,7 +54,7 @@ class Formatter extends \yii\i18n\Formatter
     public $currencyCode = 'RUB';
 
     /** @var ?int код страны для PhoneFormatter */
-    public $phoneCountry;
+    public $phoneCountry = 7;
 
     /** @var ?int код региона для PhoneFormatter */
     public $phoneRegion;
