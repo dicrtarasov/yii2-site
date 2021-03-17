@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.11.20 15:13:07
+ * @version 17.03.21 05:47:38
  */
 
 declare(strict_types = 1);
@@ -113,11 +113,11 @@ class Formatter extends \yii\i18n\Formatter
     /**
      * Форматирует телефон.
      *
-     * @param mixed $value
+     * @param int|string|null $value
      * @param array $options
      * @return string
      */
-    public function asPhone($value, array $options = []) : string
+    public function asPhone($value, array $options = []): string
     {
         $phoneValidator = new PhoneValidator([
                 'country' => $this->phoneCountry,
@@ -128,13 +128,28 @@ class Formatter extends \yii\i18n\Formatter
     }
 
     /**
+     * Форматирует телефон.
+     *
+     * @param $value
+     * @param array $options
+     * @return string
+     */
+    public static function phone($value, array $options = []): string
+    {
+        /** @var self $self */
+        $self = Yii::$app->formatter;
+
+        return $self->asPhone($value, $options);
+    }
+
+    /**
      * Форматирует как длинную дату "25 января 2004"
      *
      * @param string $date
      * @return string
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function asFullDate(string $date) : string
+    public function asFullDate(string $date): string
     {
         static $monthes = [
             'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа',
