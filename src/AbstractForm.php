@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 27.01.21 19:53:40
+ * @version 17.03.21 07:20:21
  */
 
 declare(strict_types = 1);
@@ -23,6 +23,12 @@ use function gettype;
 
 /**
  * Базовая абстрактная форма.
+ *
+ * Используемые шаблоны сообщений.
+ * - layout @app/mail/layouts/html
+ * - manager @app/mail/manager
+ * - user @app/mail/user
+ * - table @app/mail/table
  *
  * @property-read array|string|null $fromEmail адрес отправителя
  *
@@ -67,7 +73,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getManagerSubject() : ?string
+    protected function getManagerSubject(): ?string
     {
         return null;
     }
@@ -77,7 +83,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string[]
      */
-    protected function getManagerData() : ?array
+    protected function getManagerData(): ?array
     {
         $data = [];
 
@@ -93,19 +99,15 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getManagerText() : ?string
+    protected function getManagerText(): ?string
     {
         $data = $this->getManagerData();
         if (empty($data)) {
             return null;
         }
 
-        $text = Yii::$app->view->render('@app/mail/table', [
+        return Yii::$app->view->render('@app/mail/table', [
             'data' => $data
-        ]);
-
-        return Yii::$app->view->render('@app/mail/manager', [
-            'content' => $text
         ]);
     }
 
@@ -114,7 +116,7 @@ abstract class AbstractForm extends Model
      *
      * @return File[]|null
      */
-    protected function getManagerFiles() : ?array
+    protected function getManagerFiles(): ?array
     {
         return null;
     }
@@ -124,7 +126,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?MessageInterface
      */
-    protected function getManagerMessage() : ?MessageInterface
+    protected function getManagerMessage(): ?MessageInterface
     {
         $to = $this->getManagerEmail();
         if (empty($to)) {
@@ -142,7 +144,10 @@ abstract class AbstractForm extends Model
             return null;
         }
 
-        $message = Yii::$app->mailer->compose()
+        $message = Yii::$app->mailer
+            ->compose('manager', [
+                'content' => $text ?: ''
+            ])
             ->setTo($to)
             ->setSubject($subject)
             ->setCharset(Yii::$app->charset);
@@ -150,10 +155,6 @@ abstract class AbstractForm extends Model
         $from = $this->getFromEmail();
         if (! empty($from)) {
             $message->setFrom($from);
-        }
-
-        if (! empty($text)) {
-            $message->setHtmlBody($text);
         }
 
         if (! empty($files)) {
@@ -190,7 +191,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getUserSubject() : ?string
+    protected function getUserSubject(): ?string
     {
         return null;
     }
@@ -200,7 +201,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?array
      */
-    protected function getUserData() : ?array
+    protected function getUserData(): ?array
     {
         return null;
     }
@@ -210,19 +211,15 @@ abstract class AbstractForm extends Model
      *
      * @return ?string
      */
-    protected function getUserText() : ?string
+    protected function getUserText(): ?string
     {
         $data = $this->getUserData();
         if (empty($data)) {
             return null;
         }
 
-        $text = Yii::$app->view->render('@app/mail/table', [
+        return Yii::$app->view->render('@app/mail/table', [
             'data' => $data
-        ]);
-
-        return Yii::$app->view->render('@app/mail/user', [
-            'content' => $text
         ]);
     }
 
@@ -231,7 +228,7 @@ abstract class AbstractForm extends Model
      *
      * @return File[]|null
      */
-    protected function getUserFiles() : ?array
+    protected function getUserFiles(): ?array
     {
         return null;
     }
@@ -241,7 +238,7 @@ abstract class AbstractForm extends Model
      *
      * @return ?MessageInterface
      */
-    protected function getUserMessage() : ?MessageInterface
+    protected function getUserMessage(): ?MessageInterface
     {
         $to = $this->getUserEmail();
         if (empty($to)) {
@@ -259,7 +256,10 @@ abstract class AbstractForm extends Model
             return null;
         }
 
-        $message = Yii::$app->mailer->compose()
+        $message = Yii::$app->mailer
+            ->compose('user', [
+                'content' => $text ?? ''
+            ])
             ->setTo($to)
             ->setSubject($subject)
             ->setCharset(Yii::$app->charset);
