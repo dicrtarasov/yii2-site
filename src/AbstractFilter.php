@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 18.03.21 22:49:16
+ * @version 18.03.21 22:56:34
  */
 
 declare(strict_types = 1);
@@ -260,7 +260,8 @@ abstract class AbstractFilter extends Model
 
     /**
      * @return array
-     * @deprecated use #params
+     * @deprecated use getParams
+     * @see #getParams
      */
     public function params(): array
     {
