@@ -35,7 +35,7 @@
 
         "dicr/yii2-asset": "~1.7",
         "dicr/yii2-file": "~6.0",
-        "dicr/yii2-helper": "~4.4",
+        "dicr/yii2-helper": "~4.5",
         "dicr/yii2-validate": "~2.3",
         "dicr/yii2-widgets": "~4.1"
     },
