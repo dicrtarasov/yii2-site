@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 17.03.21 07:20:21
+ * @version 27.03.21 21:53:26
  */
 
 declare(strict_types = 1);
@@ -114,7 +114,7 @@ abstract class AbstractForm extends Model
     /**
      * Файлы в сообщение менеджеру.
      *
-     * @return File[]|null
+     * @return File[]|UploadedFile[]|null
      */
     protected function getManagerFiles(): ?array
     {
@@ -145,9 +145,7 @@ abstract class AbstractForm extends Model
         }
 
         $message = Yii::$app->mailer
-            ->compose('manager', [
-                'content' => $text ?: ''
-            ])
+            ->compose('manager', ['content' => $text ?? ''])
             ->setTo($to)
             ->setSubject($subject)
             ->setCharset(Yii::$app->charset);
@@ -226,7 +224,7 @@ abstract class AbstractForm extends Model
     /**
      * Файлы для сообщения пользователю.
      *
-     * @return File[]|null
+     * @return File[]|UploadedFile[]|null
      */
     protected function getUserFiles(): ?array
     {
@@ -257,9 +255,7 @@ abstract class AbstractForm extends Model
         }
 
         $message = Yii::$app->mailer
-            ->compose('user', [
-                'content' => $text ?? ''
-            ])
+            ->compose('user', ['content' => $text ?? ''])
             ->setTo($to)
             ->setSubject($subject)
             ->setCharset(Yii::$app->charset);
@@ -267,10 +263,6 @@ abstract class AbstractForm extends Model
         $from = $this->getFromEmail();
         if (! empty($from)) {
             $message->setFrom($from);
-        }
-
-        if (! empty($text)) {
-            $message->setHtmlBody($text);
         }
 
         if (! empty($files)) {
