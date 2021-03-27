@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 27.03.21 21:53:26
+ * @version 27.03.21 22:22:46
  */
 
 declare(strict_types = 1);
@@ -14,6 +14,7 @@ use dicr\helper\Html;
 use dicr\validate\ValidateException;
 use RuntimeException;
 use Yii;
+use yii\base\Exception;
 use yii\base\Model;
 use yii\mail\MessageInterface;
 use yii\web\ServerErrorHttpException;
@@ -51,11 +52,11 @@ abstract class AbstractForm extends Model
     /**
      * Поле от кого.
      *
-     * @return array|string|null
+     * @return string|null
      */
-    protected function getFromEmail()
+    protected function getFromEmail(): ?string
     {
-        return Yii::$app->params['email']['from'] ?? null;
+        return null;
     }
 
     /**
@@ -65,7 +66,7 @@ abstract class AbstractForm extends Model
      */
     protected function getManagerEmail()
     {
-        return Yii::$app->params['email']['manager'] ?? null;
+        return null;
     }
 
     /**
@@ -86,12 +87,11 @@ abstract class AbstractForm extends Model
     protected function getManagerData(): ?array
     {
         $data = [];
-
         foreach ($this->attributes as $attribute => $value) {
             $data[Html::esc($this->getAttributeLabel($attribute))] = Html::esc($value);
         }
 
-        return $data;
+        return $data ?: null;
     }
 
     /**
@@ -102,11 +102,8 @@ abstract class AbstractForm extends Model
     protected function getManagerText(): ?string
     {
         $data = $this->getManagerData();
-        if (empty($data)) {
-            return null;
-        }
 
-        return Yii::$app->view->render('@app/mail/table', [
+        return empty($data) ? null : Yii::$app->view->render('@app/mail/table', [
             'data' => $data
         ]);
     }
@@ -123,16 +120,13 @@ abstract class AbstractForm extends Model
 
     /**
      * Сообщение менеджеру.
+     * Для отправки необходимо наличие subject и (text или files).
+     * По-умолчанию адрес назначения можно настроить в Mailer::messageConfig
      *
      * @return ?MessageInterface
      */
     protected function getManagerMessage(): ?MessageInterface
     {
-        $to = $this->getManagerEmail();
-        if (empty($to)) {
-            return null;
-        }
-
         $subject = $this->getManagerSubject();
         if (empty($subject)) {
             return null;
@@ -146,13 +140,16 @@ abstract class AbstractForm extends Model
 
         $message = Yii::$app->mailer
             ->compose('manager', ['content' => $text ?? ''])
-            ->setTo($to)
-            ->setSubject($subject)
-            ->setCharset(Yii::$app->charset);
+            ->setSubject($subject);
 
         $from = $this->getFromEmail();
         if (! empty($from)) {
             $message->setFrom($from);
+        }
+
+        $to = $this->getManagerEmail();
+        if (! empty($to)) {
+            $message->setTo($to);
         }
 
         if (! empty($files)) {
@@ -212,11 +209,8 @@ abstract class AbstractForm extends Model
     protected function getUserText(): ?string
     {
         $data = $this->getUserData();
-        if (empty($data)) {
-            return null;
-        }
 
-        return Yii::$app->view->render('@app/mail/table', [
+        return empty($data) ? null : Yii::$app->view->render('@app/mail/table', [
             'data' => $data
         ]);
     }
@@ -233,6 +227,7 @@ abstract class AbstractForm extends Model
 
     /**
      * Сообщение пользователю.
+     * Для отправки необходимо to, subject и (text или files)
      *
      * @return ?MessageInterface
      */
@@ -257,8 +252,7 @@ abstract class AbstractForm extends Model
         $message = Yii::$app->mailer
             ->compose('user', ['content' => $text ?? ''])
             ->setTo($to)
-            ->setSubject($subject)
-            ->setCharset(Yii::$app->charset);
+            ->setSubject($subject);
 
         $from = $this->getFromEmail();
         if (! empty($from)) {
@@ -286,8 +280,7 @@ abstract class AbstractForm extends Model
      * Обработка формы.
      *
      * @return mixed
-     * @throws ValidateException
-     * @throws ServerErrorHttpException
+     * @throws Exception
      * @noinspection PhpMissingReturnTypeInspection
      */
     public function process()
