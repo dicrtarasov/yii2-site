@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 18.03.21 22:56:34
+ * @version 27.03.21 22:02:41
  */
 
 declare(strict_types = 1);
@@ -247,11 +247,9 @@ abstract class AbstractFilter extends Model
     }
 
     /**
-     * Параметры фильтра.
-     *
      * @return array
      */
-    public function getParams(): array
+    public function params(): array
     {
         $params = $this->getAttributes($this->safeAttributes());
 
@@ -259,12 +257,13 @@ abstract class AbstractFilter extends Model
     }
 
     /**
+     * Параметры фильтра.
+     *
      * @return array
-     * @deprecated use getParams
-     * @see #getParams
+     * @see params()
      */
-    public function params(): array
+    public function getParams(): array
     {
-        return $this->getParams();
+        return $this->params();
     }
 }
