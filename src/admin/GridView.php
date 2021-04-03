@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 22.01.21 16:31:22
+ * @version 04.04.21 02:29:26
  */
 
 declare(strict_types = 1);
@@ -24,7 +24,7 @@ class GridView extends \yii\grid\GridView
 {
     /** @inheritDoc */
     public $tableOptions = [
-        'class' => 'table table-sm table-striped'
+        'class' => 'table table-striped'
     ];
 
     /** @inheritDoc */
