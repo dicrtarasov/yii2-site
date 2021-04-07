@@ -5,9 +5,11 @@
     "homepage": "https://gitlab.com/dicr/yii2-site",
     "description": "Компоненты сайта для Yii2",
     "keywords": ["dicr", "yii2", "site"],
+
     "support": {
         "source": "https://gitlab.com/dicr/yii2-site.git"
     },
+
     "authors": [
         {
             "name": "Igor Tarasov",
@@ -16,14 +18,17 @@
             "role": "developer"
         }
     ],
+
     "autoload": {
         "psr-4": {
             "dicr\\site\\": "src/"
         }
     },
+
     "extra": {
         "bootstrap": "dicr\\site\\Bootstrap"
     },
+
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
@@ -39,9 +44,11 @@
         "dicr/yii2-validate": "~2.3",
         "dicr/yii2-widgets": "~4.1"
     },
+
     "require-dev": {
         "roave/security-advisories": "dev-latest"
     },
+
     "repositories": [
         {"type": "composer", "url": "https://asset-packagist.org"},
         {"type": "gitlab", "url": "https://gitlab.com/dicr/yii2-asset.git"},
