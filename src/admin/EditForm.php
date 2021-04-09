@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 22.01.21 16:32:41
+ * @version 09.04.21 09:36:28
  */
 
 declare(strict_types = 1);
@@ -50,7 +50,7 @@ class EditForm extends ActiveForm
     /**
      * @inheritDoc
      */
-    public function init() : void
+    public function init(): void
     {
         parent::init();
 
@@ -64,7 +64,7 @@ class EditForm extends ActiveForm
     /**
      * @inheritDoc
      */
-    public function run() : string
+    public function run(): string
     {
         AdminAsset::register($this->view);
 
@@ -76,7 +76,7 @@ class EditForm extends ActiveForm
             });
         ");
 
-        return (string)parent::run();
+        return parent::run();
     }
 
     /**
@@ -87,7 +87,7 @@ class EditForm extends ActiveForm
      * @param array $options для form-group (для самого input использовать inputOptions)
      * @return ActiveField
      */
-    public function fieldStatic(Model $model, string $attribute, array $options = []) : ActiveField
+    public function fieldStatic(Model $model, string $attribute, array $options = []): ActiveField
     {
         $options['options'] ??= [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
@@ -107,7 +107,7 @@ class EditForm extends ActiveForm
      * - string|bool $url - добавить URL к ID
      * @return ?ActiveField
      */
-    public function fieldId(ActiveRecord $model, array $options = []) : ?ActiveField
+    public function fieldId(ActiveRecord $model, array $options = []): ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -156,7 +156,7 @@ class EditForm extends ActiveForm
      * @throws UnknownPropertyException
      * @throws InvalidConfigException
      */
-    public function fieldCreated(ActiveRecord $model, array $options = []) : ?ActiveField
+    public function fieldCreated(ActiveRecord $model, array $options = []): ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -182,7 +182,7 @@ class EditForm extends ActiveForm
      * @return ?ActiveField
      * @throws InvalidConfigException
      */
-    public function fieldUpdated(ActiveRecord $model, array $options = []) : ?ActiveField
+    public function fieldUpdated(ActiveRecord $model, array $options = []): ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -203,7 +203,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldEnabled(Model $model, array $options = []) : ActiveField
+    public function fieldEnabled(Model $model, array $options = []): ActiveField
     {
         return $this->field($model, 'enabled', $options)->checkbox();
     }
@@ -215,7 +215,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldDisabled(Model $model, array $options = []) : ActiveField
+    public function fieldDisabled(Model $model, array $options = []): ActiveField
     {
         return $this->field($model, 'disabled', $options)->checkbox([
             'value' => $model->{'disabled'} ?: date('Y-m-d H:i:s')
@@ -231,7 +231,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws InvalidConfigException
      */
-    public function fieldDateTime(Model $model, string $attribute, array $options = []) : ActiveField
+    public function fieldDateTime(Model $model, string $attribute, array $options = []): ActiveField
     {
         $attr = Html::getAttributeName($attribute);
 
@@ -252,7 +252,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws InvalidConfigException
      */
-    public function fieldDate(Model $model, string $attribute, array $options = []) : ActiveField
+    public function fieldDate(Model $model, string $attribute, array $options = []): ActiveField
     {
         $attr = Html::getAttributeName($attribute);
 
@@ -272,7 +272,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldHtml(Model $model, string $attribute, array $options = []) : ActiveField
+    public function fieldHtml(Model $model, string $attribute, array $options = []): ActiveField
     {
         $attr = Html::getAttributeName($attribute);
 
@@ -299,7 +299,7 @@ class EditForm extends ActiveForm
      * @param array $options
      * @return ?ActiveField
      */
-    public function fieldUrl(ActiveRecord $model, array $options = []) : ?ActiveField
+    public function fieldUrl(ActiveRecord $model, array $options = []): ?ActiveField
     {
         if ($model->isNewRecord) {
             return null;
@@ -332,7 +332,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldText(Model $model, string $attribute, array $options = []) : ActiveField
+    public function fieldText(Model $model, string $attribute, array $options = []): ActiveField
     {
         return $this->field($model, $attribute, $options)
             ->widget(RedactorWidget::class);
@@ -348,7 +348,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
+    public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []): ActiveField
     {
         return $this->field($model, $attribute, $options)
             ->widget(FileInputWidget::class, [
@@ -369,7 +369,7 @@ class EditForm extends ActiveForm
      * @return ActiveField
      * @throws Exception
      */
-    public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []) : ActiveField
+    public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []): ActiveField
     {
         return $this->field($model, $attribute, $options)
             ->widget(FileInputWidget::class, [

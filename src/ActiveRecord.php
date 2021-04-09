@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.03.21 20:20:45
+ * @version 09.04.21 09:38:55
  */
 
 declare(strict_types = 1);
@@ -221,12 +221,9 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
         }
 
         // process update/insert
-        $cmd = $db->createCommand()
-            ->upsert($tableName, $insertValues, $updateValues ?: false);
-
-        if ($cmd->execute() === false) {
-            return false;
-        }
+        $db->createCommand()
+            ->upsert($tableName, $insertValues, $updateValues ?: false)
+            ->execute();
 
         // reset isNewRecord after save
         $this->isNewRecord = false;

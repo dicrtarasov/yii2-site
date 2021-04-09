@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.12.20 03:08:17
+ * @version 09.04.21 09:36:44
  */
 
 declare(strict_types = 1);
@@ -45,6 +45,6 @@ class LinkPager extends \yii\bootstrap4\LinkPager
     {
         AdminAsset::register($this->view);
 
-        return (string)parent::run();
+        return parent::run();
     }
 }

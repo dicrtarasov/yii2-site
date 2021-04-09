@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 22.01.21 16:32:41
+ * @version 09.04.21 09:47:13
  */
 
 declare(strict_types = 1);
@@ -14,8 +14,10 @@ use dicr\helper\Html;
 use dicr\widgets\Widget;
 use Exception;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\bootstrap4\Nav;
 
+use function is_array;
 use function ob_get_clean;
 
 /**
@@ -23,7 +25,7 @@ use function ob_get_clean;
  */
 class NavBar extends Widget
 {
-    /** @var array опции навигации \yii\bootstrap4\Nav */
+    /** @var array|false опции навигации \yii\bootstrap4\Nav */
     public $nav = [];
 
     /** @var string дополнительный HTML-контент */
@@ -96,8 +98,9 @@ class NavBar extends Widget
 
     /**
      * @inheritDoc
+     * @throws InvalidConfigException
      */
-    public function init() : void
+    public function init(): void
     {
         parent::init();
 
@@ -126,9 +129,14 @@ class NavBar extends Widget
             'widget' => 'navbar-collapse'
         ]);
 
-        if ($this->nav !== false) {
-            $this->nav['options'] ??= [];
-            Html::addCssClass($this->nav['options'], 'navbar-nav');
+        if (is_array($this->nav)) {
+            /** @noinspection OffsetOperationsInspection */
+            $options = (array)($this->nav['options'] ?? []);
+            Html::addCssClass($options, 'navbar-nav');
+            /** @noinspection OffsetOperationsInspection */
+            $this->nav['options'] = $options;
+        } elseif ($this->nav !== false) {
+            throw new InvalidConfigException('nav');
         }
 
         ob_start();
@@ -139,7 +147,7 @@ class NavBar extends Widget
      *
      * @return string
      */
-    protected function renderBrand() : string
+    protected function renderBrand(): string
     {
         $brand = '';
 
@@ -161,7 +169,7 @@ class NavBar extends Widget
      *
      * @return string the rendering toggle button.
      */
-    protected function renderToggleButton() : string
+    protected function renderToggleButton(): string
     {
         return Html::button($this->togglerContent, ArrayHelper::merge($this->togglerOptions, [
             'type' => 'button',
@@ -208,9 +216,11 @@ class NavBar extends Widget
         echo Html::beginTag($collapseTag, $this->collapseOptions);
 
         // выводим навигацию
-        if (! empty($this->nav['items'])) {
+        /** @noinspection OffsetOperationsInspection */
+        if ($this->nav !== false && ! empty($this->nav['items'])) {
             // fix for BS5
-            foreach ($this->nav['items'] as $i => &$item) {
+            /** @noinspection OffsetOperationsInspection */
+            foreach ($this->nav['items'] as &$item) {
                 if (! empty($item['items'])) {
                     $item['linkOptions']['data-bs-toggle'] = 'dropdown';
                 }

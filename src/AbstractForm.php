@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 27.03.21 22:22:46
+ * @version 09.04.21 09:35:58
  */
 
 declare(strict_types = 1);
@@ -281,7 +281,7 @@ abstract class AbstractForm extends Model
      *
      * @return mixed
      * @throws Exception
-     * @noinspection PhpMissingReturnTypeInspection
+     * @noinspection PhpReturnDocTypeMismatchInspection
      */
     public function process()
     {

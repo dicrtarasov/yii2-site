@@ -1,11 +1,12 @@
-// @copyright 2019-2020 Dicr http://dicr.org
+// @copyright 2019-2021 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 15.12.20 20:46:37
+// @version 09.04.21 09:33:59
 
 @import "./mix";
 
 .dicr-site-admin-navbar {
+    padding: 0;
     border-color: $color-border;
     @include gradient(bottom);
     @include shadow;
@@ -13,13 +14,20 @@
     > .container {
         justify-content: flex-start;
 
+        @media (max-width: 767px) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
         .navbar-toggler {
-            margin-right: 1rem;
             order: 0;
+            padding: 0.25rem 0.5rem;
+            margin: 0.5rem 1rem 0.5rem 0;
         }
 
         .navbar-brand {
-            padding: 0;
+            padding: 0.5rem;
+            margin: 0 1rem 0 -0.5rem;
             order: 1;
         }
 
@@ -27,26 +35,27 @@
             order: 2;
 
             @media (max-width: 767px) {
-                padding-top: 1rem;
+                padding: 0.5rem 0;
                 order: 3;
             }
 
             .navbar-nav {
-                .dropdown {
-                    .dropdown-toggle {
-                        color: $color-dark;
+                .nav-item {
+                    &.dropdown {
+                        .dropdown-toggle {
+                            color: $color-dark;
 
-                        @media (max-width: 767px) {
-                            padding-top: 0.7rem;
-                            padding-bottom: 0.7rem;
+                            @media (max-width: 767px) {
+                                padding-top: 0.7rem;
+                                padding-bottom: 0.7rem;
+                            }
                         }
-                    }
 
-                    &.show .dropdown-toggle,
-                    .dropdown-toggle.show {
-                        @media (min-width: 768px) {
-                            background: $color-shadow;
-                            box-shadow: inset 0 3px 9px $color-shadow;
+                        &.show .dropdown-toggle, .dropdown-toggle.show {
+                            @media (min-width: 768px) {
+                                background: $color-shadow;
+                                box-shadow: inset 0 3px 9px $color-shadow;
+                            }
                         }
                     }
 
@@ -58,7 +67,6 @@
                                 padding-top: 0.5rem;
                                 padding-bottom: 0.5rem;
                             }
-
                         }
                     }
                 }

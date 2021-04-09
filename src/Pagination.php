@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 22.01.21 16:32:41
+ * @version 09.04.21 09:36:57
  */
 
 declare(strict_types = 1);
@@ -47,7 +47,7 @@ class Pagination extends \yii\data\Pagination
      */
     public function getIsPageSizeDefault() : bool
     {
-        return empty($this->pageSize) || (int)$this->pageSize === (int)$this->defaultPageSize;
+        return empty($this->pageSize) || $this->pageSize === $this->defaultPageSize;
     }
 
     /**
