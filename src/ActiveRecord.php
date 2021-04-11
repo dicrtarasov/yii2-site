@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.04.21 09:38:55
+ * @version 12.04.21 01:58:25
  */
 
 declare(strict_types = 1);
@@ -50,7 +50,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
         // insert вызывает только afterSave(true)
         // update вызывает updateAll
         // delete вызывает deleteAll
-        if ($insert && ! empty($changedAttributes)) {
+        if ($insert) {
             static::invalidateClassCache();
         }
     }
