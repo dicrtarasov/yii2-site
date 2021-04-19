@@ -1,7 +1,7 @@
 // @copyright 2019-2021 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 09.04.21 09:33:59
+// @version 19.04.21 19:36:04
 
 @import "./mix";
 
@@ -43,7 +43,7 @@
                 .nav-item {
                     &.dropdown {
                         .dropdown-toggle {
-                            color: $color-dark;
+                            color: hsl(0, 0%, 55%);
 
                             @media (max-width: 767px) {
                                 padding-top: 0.7rem;
