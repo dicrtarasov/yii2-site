@@ -1,10 +1,10 @@
 {
     "name": "dicr/yii2-site",
     "type": "yii2-extension",
-    "license": "MIT",
-    "homepage": "https://gitlab.com/dicr/yii2-site",
+    "license": "GPL-3.0-or-later",
     "description": "Компоненты сайта для Yii2",
     "keywords": ["dicr", "yii2", "site"],
+    "homepage": "https://gitlab.com/dicr/yii2-site",
 
     "support": {
         "source": "https://gitlab.com/dicr/yii2-site.git"
@@ -39,7 +39,7 @@
         "yiisoft/yii2": "~2.0",
         "yiisoft/yii2-bootstrap4": "~2.0",
 
-        "dicr/yii2-asset": "~1.7",
+        "dicr/yii2-asset": "~1.8",
         "dicr/yii2-file": "~6.0",
         "dicr/yii2-helper": "~4.5",
         "dicr/yii2-validate": "~2.3",

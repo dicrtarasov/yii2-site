@@ -3,9 +3,10 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.04.21 09:35:58
+ * @version 14.05.21 04:14:27
  */
 
+/** @noinspection SpellCheckingInspection */
 declare(strict_types = 1);
 
 return [

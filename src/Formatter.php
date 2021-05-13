@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 17.03.21 13:39:41
+ * @version 14.05.21 04:14:50
  */
 
 declare(strict_types = 1);
@@ -76,7 +76,7 @@ class Formatter extends \yii\i18n\Formatter
      * @param int $limit
      * @return string
      */
-    public function asString($value, $limit = 0) : string
+    public function asString($value, int $limit = 0): string
     {
         if ($value === null) {
             return $this->nullDisplay;
