@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 14.05.21 04:14:50
+ * @version 11.07.21 14:33:38
  */
 
 declare(strict_types = 1);
@@ -102,7 +102,7 @@ class Formatter extends \yii\i18n\Formatter
             return parent::asCurrency($value, $currency, $options, $textOptions);
         }
 
-        $precision = (float)$value - (int)$value > 0 ? 2 : 0;
+        $precision = (float)$value - (int)$value !== 0 ? 2 : 0;
         $value = round((float)$value, $precision);
 
         return ($value === null || $value === '') ? $this->nullDisplay :
