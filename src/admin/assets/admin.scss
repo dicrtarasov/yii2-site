@@ -1,7 +1,7 @@
 // @copyright 2019-2021 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 07.04.21 16:04:39
+// @version 11.07.21 19:12:53
 
 @import "./mix";
 
@@ -62,33 +62,6 @@ h3 {
         > * {
             border-bottom: none;
         }
-    }
-}
-
-a {
-    text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
-    }
-
-    /* add sorting icons to gridview sort links */
-    &.asc, &.desc {
-        &:after {
-            display: inline-block;
-            font-style: normal;
-            line-height: 1;
-            margin: 0 0 1px 1px;
-            vertical-align: middle;
-        }
-    }
-
-    &.asc:after {
-        content: "\21D1";
-    }
-
-    &.desc:after {
-        content: "\21D3";
     }
 }
 

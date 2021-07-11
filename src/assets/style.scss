@@ -1,7 +1,7 @@
 // @copyright 2019-2021 Dicr http://dicr.org
 // @author Igor A Tarasov <develop@dicr.org>
 // @license proprietary
-// @version 11.01.21 00:01:52
+// @version 11.07.21 19:12:43
 
 html {
     width: 100%; // чтобы учитывать ширину элемента прокрутки
@@ -85,6 +85,25 @@ a {
     &:hover {
         text-decoration: underline;
     }
+
+    /* add sorting icons to gridview sort links */
+    &.asc, &.desc {
+        &:after {
+            display: inline-block;
+            font-style: normal;
+            line-height: 1;
+            margin: 0 0 1px 1px;
+            vertical-align: middle;
+        }
+    }
+
+    &.asc:after {
+        content: "\21D1";
+    }
+
+    &.desc:after {
+        content: "\21D3";
+    }
 }
 
 // ** для совместимости с bootstrap 4
@@ -151,4 +170,3 @@ a {
     word-break: break-word;
     overflow-wrap: break-word;
 }
-
