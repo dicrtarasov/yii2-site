@@ -11,7 +11,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -32,7 +32,7 @@
             "version": "3.5.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
+                "url": "git@github.com:jquery/jquery-dist.git",
                 "reference": "4c0e4becb8263bb5b3e6dadc448d8e7305ef8215"
             },
             "dist": {
@@ -198,7 +198,8 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-asset.git"
+                "source": "https://gitlab.com/dicr/yii2-asset.git",
+                "issues": "https://gitlab.com/api/v4/projects/10744876/issues"
             },
             "time": "2021-05-26T17:15:40+05:00"
         },
@@ -272,7 +273,8 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-file.git"
+                "source": "https://gitlab.com/dicr/yii2-file.git",
+                "issues": "https://gitlab.com/api/v4/projects/9710563/issues"
             },
             "time": "2021-05-22T21:56:05+05:00"
         },
@@ -334,22 +336,23 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-helper.git"
+                "source": "https://gitlab.com/dicr/yii2-helper.git",
+                "issues": "https://gitlab.com/api/v4/projects/9713190/issues"
             },
             "time": "2021-05-14T03:48:39+05:00"
         },
         {
             "name": "dicr/yii2-validate",
-            "version": "2.3.8",
+            "version": "2.3.10",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-validate.git",
-                "reference": "c941452836fea76923593611e035ed60bb1b8b4d"
+                "reference": "a0738ccda93ed25e978c3c5701c89f0af2f624df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=c941452836fea76923593611e035ed60bb1b8b4d",
-                "reference": "c941452836fea76923593611e035ed60bb1b8b4d",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-validate/repository/archive.zip?sha=a0738ccda93ed25e978c3c5701c89f0af2f624df",
+                "reference": "a0738ccda93ed25e978c3c5701c89f0af2f624df",
                 "shasum": ""
             },
             "require": {
@@ -378,7 +381,7 @@
                 {
                     "name": "Igor Tarasov",
                     "email": "develop@dicr.org",
-                    "homepage": "http://dicr.org",
+                    "homepage": "https://dicr.org",
                     "role": "developer"
                 }
             ],
@@ -390,9 +393,10 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-validate.git"
+                "source": "https://gitlab.com/dicr/yii2-validate.git",
+                "issues": "https://gitlab.com/api/v4/projects/9711109/issues"
             },
-            "time": "2021-05-17T11:52:58+05:00"
+            "time": "2021-07-31T02:57:56+05:00"
         },
         {
             "name": "dicr/yii2-widgets",
@@ -446,7 +450,8 @@
                 "yii2"
             ],
             "support": {
-                "source": "https://gitlab.com/dicr/yii2-widgets.git"
+                "source": "https://gitlab.com/dicr/yii2-widgets.git",
+                "issues": "https://gitlab.com/api/v4/projects/12653694/issues"
             },
             "time": "2021-03-14T00:38:18+05:00"
         },
@@ -894,12 +899,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "64e01b7b1a368f90949e3b42d5a89da6feee53d3"
+                "reference": "52a126190a36bc9236846f5d42e10bff9ff60d72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/64e01b7b1a368f90949e3b42d5a89da6feee53d3",
-                "reference": "64e01b7b1a368f90949e3b42d5a89da6feee53d3",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/52a126190a36bc9236846f5d42e10bff9ff60d72",
+                "reference": "52a126190a36bc9236846f5d42e10bff9ff60d72",
                 "shasum": ""
             },
             "conflict": {
@@ -1022,6 +1027,7 @@
                 "lexik/jwt-authentication-bundle": "<2.10.7|>=2.11,<2.11.3",
                 "librenms/librenms": "<21.1",
                 "livewire/livewire": ">2.2.4,<2.2.6",
+                "localizationteam/l10nmgr": "<7.4|>=8,<8.7|>=9,<9.2",
                 "magento/community-edition": ">=2,<2.2.10|>=2.3,<2.3.3",
                 "magento/magento1ce": "<1.9.4.3",
                 "magento/magento1ee": ">=1,<1.14.4.3",
@@ -1039,6 +1045,7 @@
                 "neos/swiftmailer": ">=4.1,<4.1.99|>=5.4,<5.4.5",
                 "nette/application": ">=2,<2.0.19|>=2.1,<2.1.13|>=2.2,<2.2.10|>=2.3,<2.3.14|>=2.4,<2.4.16|>=3,<3.0.6",
                 "nette/nette": ">=2,<2.0.19|>=2.1,<2.1.13",
+                "nilsteampassnet/teampass": "<=2.1.27.36",
                 "nukeviet/nukeviet": "<4.3.4",
                 "nystudio107/craft-seomatic": "<3.3",
                 "nzo/url-encryptor-bundle": ">=4,<4.3.2|>=5,<5.0.1",
@@ -1176,7 +1183,7 @@
                 "twig/twig": "<1.38|>=2,<2.7",
                 "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.32|>=8,<8.7.38|>=9,<9.5.28|>=10,<10.4.18|>=11,<11.3.1",
                 "typo3/cms-backend": ">=7,<=7.6.50|>=8,<=8.7.39|>=9,<=9.5.24|>=10,<=10.4.13|>=11,<=11.1",
-                "typo3/cms-core": ">=6.2,<=6.2.56|>=7,<=7.6.50|>=8,<8.7.41|>=9,<9.5.28|>=10,<10.4.18|>=11,<11.3.1",
+                "typo3/cms-core": ">=6.2,<=6.2.56|>=7,<7.6.52|>=8,<8.7.41|>=9,<9.5.28|>=10,<10.4.18|>=11,<11.3.1",
                 "typo3/cms-form": ">=8,<=8.7.39|>=9,<=9.5.24|>=10,<=10.4.13|>=11,<=11.1",
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.12|>=3.1,<3.1.10|>=3.2,<3.2.13|>=3.3,<3.3.13|>=4,<4.0.6",
                 "typo3/neos": ">=1.1,<1.1.3|>=1.2,<1.2.13|>=2,<2.0.4|>=2.3,<2.3.99|>=3,<3.0.20|>=3.1,<3.1.18|>=3.2,<3.2.14|>=3.3,<3.3.23|>=4,<4.0.17|>=4.1,<4.1.16|>=4.2,<4.2.12|>=4.3,<4.3.3",
@@ -1264,7 +1271,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-22T20:03:32+00:00"
+            "time": "2021-07-26T22:02:34+00:00"
         }
     ],
     "aliases": [],

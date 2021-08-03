@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.07.21 02:16:30
+ * @version 03.08.21 19:28:40
  */
 
 declare(strict_types = 1);
@@ -111,11 +111,11 @@ class Sort extends \yii\data\Sort
             }
 
             if (empty($this->_sort)) {
-                $this->_sort = false;
+                $this->_sort = $this->defaultSort ?: false;
             }
         }
 
-        return empty($this->_sort) || ($emptyIfDefault && $this->_sort === $this->defaultSort) ? null : $this->_sort;
+        return $emptyIfDefault && $this->_sort === $this->defaultSort ? null : $this->_sort;
     }
 
     /**
@@ -142,7 +142,7 @@ class Sort extends \yii\data\Sort
      */
     public function getIsDefault(): bool
     {
-        return $this->sort === $this->defaultSort;
+        return empty($this->sort) || $this->sort === $this->defaultSort;
     }
 
     /**
