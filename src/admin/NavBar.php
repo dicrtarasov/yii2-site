@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.04.21 09:47:13
+ * @version 12.08.21 22:26:36
  */
 
 declare(strict_types = 1);
@@ -15,7 +15,7 @@ use dicr\widgets\Widget;
 use Exception;
 use Yii;
 use yii\base\InvalidConfigException;
-use yii\bootstrap4\Nav;
+use yii\bootstrap5\Nav;
 
 use function is_array;
 use function ob_get_clean;
@@ -25,7 +25,7 @@ use function ob_get_clean;
  */
 class NavBar extends Widget
 {
-    /** @var array|false опции навигации \yii\bootstrap4\Nav */
+    /** @var array|false опции навигации \yii\bootstrap\Nav */
     public $nav = [];
 
     /** @var string дополнительный HTML-контент */

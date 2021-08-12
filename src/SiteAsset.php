@@ -1,17 +1,17 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 08:59:25
+ * @version 12.08.21 22:25:31
  */
 
 declare(strict_types = 1);
 namespace dicr\site;
 
 use dicr\asset\FontAwesomeAsset;
-use yii\bootstrap4\BootstrapAsset;
-use yii\bootstrap4\BootstrapPluginAsset;
+use yii\bootstrap5\BootstrapAsset;
+use yii\bootstrap5\BootstrapPluginAsset;
 use yii\web\AssetBundle;
 use yii\web\JqueryAsset;
 

@@ -1,16 +1,16 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 15.12.20 23:40:49
+ * @version 12.08.21 22:26:08
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
 use dicr\helper\Html;
-use yii\bootstrap4\Nav;
+use yii\bootstrap5\Nav;
 
 use function is_string;
 use function ob_get_clean;
@@ -19,7 +19,7 @@ use function trim;
 /**
  * Табы редактора.
  *
- * Расширяет класс \yii\bootstrap4\Nav, добавляя возможность указывать элементы в виде:
+ * Расширяет класс \yii\bootstrap\Nav, добавляя возможность указывать элементы в виде:
  * target => label
  *
  * Также добавляет tab-content в конце, поэтому можно использовать через begin/end

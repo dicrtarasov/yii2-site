@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.04.21 09:36:44
+ * @version 12.08.21 22:26:24
  */
 
 declare(strict_types = 1);
@@ -14,7 +14,7 @@ use dicr\helper\Html;
 /**
  * LinkPager
  */
-class LinkPager extends \yii\bootstrap4\LinkPager
+class LinkPager extends \yii\bootstrap5\LinkPager
 {
     /** @inheritDoc */
     public $firstPageLabel = '<i class="fas fa-angle-double-left"></i>';

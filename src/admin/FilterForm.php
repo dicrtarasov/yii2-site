@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.04.21 09:36:36
+ * @version 12.08.21 22:26:17
  */
 
 declare(strict_types = 1);
@@ -12,8 +12,8 @@ namespace dicr\site\admin;
 use dicr\helper\Html;
 use Yii;
 use yii\base\Model;
-use yii\bootstrap4\ActiveField;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap5\ActiveField;
+use yii\bootstrap5\ActiveForm;
 
 use function mb_strtolower;
 
@@ -28,7 +28,7 @@ class FilterForm extends ActiveForm
     /**
      * @inheritDoc
      */
-    public function init() : void
+    public function init(): void
     {
         if (empty($this->action)) {
             $this->action = ['/' . Yii::$app->requestedRoute];
@@ -50,7 +50,7 @@ class FilterForm extends ActiveForm
     /**
      * @inheritDoc
      */
-    public function run() : string
+    public function run(): string
     {
         $this->view->registerJs(
             "$('#{$this->options['id']}').on('change', ':input', function() {
@@ -65,7 +65,7 @@ class FilterForm extends ActiveForm
      * @inheritDoc
      * @return ActiveField
      */
-    public function field($model, $attribute, $options = []) : ActiveField
+    public function field($model, $attribute, $options = []): ActiveField
     {
         $attrName = Html::getAttributeName($attribute);
 
@@ -92,7 +92,7 @@ class FilterForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldBoolean(Model $model, string $attribute, array $options = []) : ActiveField
+    public function fieldBoolean(Model $model, string $attribute, array $options = []): ActiveField
     {
         return $this->field($model, $attribute, $options)->dropdownList([
             0 => 'нет',
@@ -107,7 +107,7 @@ class FilterForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldEnabled(Model $model, array $options = []) : ActiveField
+    public function fieldEnabled(Model $model, array $options = []): ActiveField
     {
         return $this->fieldBoolean($model, 'enabled', $options);
     }
@@ -119,7 +119,7 @@ class FilterForm extends ActiveForm
      * @param array $options
      * @return ActiveField
      */
-    public function fieldDisabled(Model $model, array $options = []) : ActiveField
+    public function fieldDisabled(Model $model, array $options = []): ActiveField
     {
         return $this->field($model, 'disabled', $options)->dropdownList([
             0 => 'включено',

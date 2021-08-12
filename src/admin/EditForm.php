@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.04.21 09:36:28
+ * @version 12.08.21 22:25:44
  */
 
 declare(strict_types = 1);
@@ -19,8 +19,8 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\base\UnknownPropertyException;
-use yii\bootstrap4\ActiveField;
-use yii\bootstrap4\ActiveForm;
+use yii\bootstrap5\ActiveField;
+use yii\bootstrap5\ActiveForm;
 use yii\db\ActiveRecord;
 
 use function date;

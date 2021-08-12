@@ -16,9 +16,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/dicr/yii2-validate" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dicr/yii2-widgets" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/ezyang/htmlpurifier" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/npm-asset/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-bootstrap4" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-composer" />
     </content>
     <orderEntry type="inheritedJdk" />
