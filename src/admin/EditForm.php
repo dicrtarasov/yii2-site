@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.21 22:25:44
+ * @version 12.08.21 23:29:28
  */
 
 declare(strict_types = 1);
@@ -92,7 +92,7 @@ class EditForm extends ActiveForm
         $options['options'] ??= [];
         Html::addCssClass($options['options'], ['form-group', 'form-group-static', 'row']);
 
-        // баг в bootstrap4 (staticControl не берет inputOptions, сука).
+        // баг в bootstrap (staticControl не берет inputOptions, сука).
         $inputOptions = ArrayHelper::remove($options, 'inputOptions', []);
 
         return $this->field($model, $attribute, $options)
