@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 11.07.21 14:33:38
+ * @version 12.08.21 20:41:00
  */
 
 declare(strict_types = 1);
@@ -40,7 +40,7 @@ class Formatter extends \yii\i18n\Formatter
 
     /** @inheritDoc */
     public $numberFormatterOptions = [
-        NumberFormatter::GROUPING_USED => true,
+        NumberFormatter::GROUPING_USED => 1,
         NumberFormatter::MIN_FRACTION_DIGITS => 0,
         NumberFormatter::MAX_FRACTION_DIGITS => 3
     ];
