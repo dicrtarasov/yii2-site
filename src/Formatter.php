@@ -3,7 +3,7 @@
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.21 20:41:00
+ * @version 14.08.21 00:00:30
  */
 
 declare(strict_types = 1);
@@ -16,7 +16,6 @@ use Yii;
 
 use function date;
 use function idate;
-use function number_format;
 use function sprintf;
 use function strtotime;
 use function substr;
@@ -34,6 +33,9 @@ class Formatter extends \yii\i18n\Formatter
 
     /** @inheritDoc */
     public $decimalSeparator = '.';
+
+    /** @inheritDoc */
+    public $currencyDecimalSeparator = '.';
 
     /** @inheritDoc */
     public $thousandSeparator = ' ';
@@ -62,7 +64,7 @@ class Formatter extends \yii\i18n\Formatter
     /**
      * @inheritDoc
      */
-    public function init() : void
+    public function init(): void
     {
         parent::init();
 
@@ -96,18 +98,17 @@ class Formatter extends \yii\i18n\Formatter
      *
      * Fix currency decimal separator and symbol formatting bug on INTL_ICU_VERSION 52.1 (up to 56.1)
      */
-    public function asCurrency($value, $currency = null, $options = [], $textOptions = []) : string
+    public function asCurrency($value, $currency = null, $options = [], $textOptions = []): string
     {
-        if (! empty($currency) || ! empty($options) || ! empty($textOptions)) {
-            return parent::asCurrency($value, $currency, $options, $textOptions);
+        if ($value === null || $value === '') {
+            return $this->nullDisplay;
         }
 
-        $precision = (float)$value - (int)$value !== 0 ? 2 : 0;
-        $value = round((float)$value, $precision);
+        if (! isset($options[NumberFormatter::MAX_FRACTION_DIGITS])) {
+            $options[NumberFormatter::MAX_FRACTION_DIGITS] = (float)$value - (int)$value === 0 ? 0 : 2;
+        }
 
-        return ($value === null || $value === '') ? $this->nullDisplay :
-            number_format($value, $precision, '.', ' ') . ' ' .
-            ($this->numberFormatterSymbols[NumberFormatter::CURRENCY_SYMBOL] ?? '');
+        return parent::asCurrency($value, $currency, $options, $textOptions);
     }
 
     /**
@@ -174,7 +175,7 @@ class Formatter extends \yii\i18n\Formatter
      * @param string $date
      * @return string
      */
-    public static function fullDate(string $date) : string
+    public static function fullDate(string $date): string
     {
         /** @var self $formatter */
         $formatter = Yii::$app->formatter;
