@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:34:34
+ * @version 05.01.22 00:08:16
  */
 
 declare(strict_types = 1);
@@ -17,8 +17,6 @@ use yii\base\InvalidConfigException;
 use yii\db\ActiveQuery;
 
 use function call_user_func;
-use function is_array;
-use function is_string;
 
 /**
  * Связь объекта с описаниями на разных языках.
@@ -73,34 +71,34 @@ class LangBehavior extends Behavior
      * @var string класс языковой модели с данными языка для связи с родительским объектом.
      * Должен быть подклассом ActiveRecord.
      */
-    public $relationClass;
+    public string $relationClass;
 
     /**
      * @var array описание связи hasMany языковой модели с родительской, например ['brand_id' => 'id']
      */
-    public $relationLink;
+    public array $relationLink;
 
     /**
      * @var string поле со значением языка в языковой модели для индексации связей ActiveQuery::indexBy
      */
-    public $langAttribute = 'lang';
+    public string $langAttribute = 'lang';
 
     /** @var ?string обратная связь ActiveQuery::inverseOf */
-    public $inverseOf;
+    public ?string $inverseOf = null;
 
     /**
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function init() : void
+    public function init(): void
     {
         parent::init();
 
-        if (! is_string($this->relationClass) || ! is_a($this->relationClass, ActiveRecord::class, true)) {
+        if (! isset($this->relationClass) || ! is_a($this->relationClass, ActiveRecord::class, true)) {
             throw new InvalidConfigException('relationClass должен быть экземпляром ActiveRecord');
         }
 
-        if (empty($this->relationLink) || ! is_array($this->relationLink)) {
+        if (empty($this->relationLink)) {
             throw new InvalidConfigException('relationLink должен быть массивом с описанием связи hasMany');
         }
 
@@ -113,7 +111,7 @@ class LangBehavior extends Behavior
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function attach($owner) : void
+    public function attach($owner): void
     {
         if (! $owner instanceof ActiveRecord) {
             throw new InvalidConfigException('owner должен быть типа ActiveRecord');
@@ -124,11 +122,8 @@ class LangBehavior extends Behavior
 
     /**
      * Возвращает код текущего языка.
-     *
-     * @param ?string $lang
-     * @return string
      */
-    public static function currentLanguage(?string $lang = null) : string
+    public static function currentLanguage(?string $lang = null): string
     {
         if (! isset($lang)) {
             $lang = Locale::getPrimaryLanguage(Yii::$app->language);
@@ -144,10 +139,8 @@ class LangBehavior extends Behavior
 
     /**
      * Возвращает связь с языковыми описаниями.
-     *
-     * @return ActiveQuery
      */
-    public function getLangs() : ActiveQuery
+    public function getLangs(): ActiveQuery
     {
         $link = $this->owner->hasMany($this->relationClass, $this->relationLink)
             ->indexBy($this->langAttribute);
@@ -165,7 +158,7 @@ class LangBehavior extends Behavior
      * @param ActiveRecord[] $langs
      * @return string[] errors
      */
-    public function setLangs(array $langs) : array
+    public function setLangs(array $langs): array
     {
         /** @var ActiveRecord[] $langs */
         $langs = ArrayHelper::index($langs, $this->langAttribute);
@@ -219,9 +212,8 @@ class LangBehavior extends Behavior
      * Возвращает связь модели с языковой моделью для текущего языка.
      *
      * @param ?string $lang код языка, если не задан, то берется текущий из $app->language
-     * @return ActiveQuery
      */
-    public function getLang(?string $lang = null) : ActiveQuery
+    public function getLang(?string $lang = null): ActiveQuery
     {
         // баг в yii - не добавляется имя таблицы или алиас к полю onCondition,
         $fullName = sprintf('%s.[[%s]]', call_user_func([$this->relationClass, 'tableName']), $this->langAttribute);
@@ -239,11 +231,8 @@ class LangBehavior extends Behavior
 
     /**
      * Устанавливает языковую модель для текущего языка.
-     *
-     * @param ActiveRecord $lang
-     * @return bool
      */
-    public function setLang(ActiveRecord $lang) : bool
+    public function setLang(ActiveRecord $lang): bool
     {
         // код текущего языка
         $langCode = static::currentLanguage();

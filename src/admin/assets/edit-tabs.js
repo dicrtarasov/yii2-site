@@ -1,11 +1,11 @@
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 08:58:03
+ * @version 04.01.22 23:25:12
  */
 
-(function (window, $) {
+((window, $) => {
     'use strict';
 
     /**

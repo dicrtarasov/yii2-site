@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.04.21 09:35:58
+ * @version 04.01.22 22:56:50
  */
 
 declare(strict_types = 1);
@@ -64,7 +64,7 @@ abstract class AbstractForm extends Model
      *
      * @return array|string|null
      */
-    protected function getManagerEmail()
+    protected function getManagerEmail(): array|string|null
     {
         return null;
     }
@@ -112,6 +112,7 @@ abstract class AbstractForm extends Model
      * Файлы в сообщение менеджеру.
      *
      * @return File[]|UploadedFile[]|null
+     * @noinspection PhpDocSignatureInspection
      */
     protected function getManagerFiles(): ?array
     {
@@ -176,7 +177,7 @@ abstract class AbstractForm extends Model
      *
      * @return array|string|null
      */
-    protected function getUserEmail()
+    protected function getUserEmail(): array|string|null
     {
         return null;
     }
@@ -219,6 +220,7 @@ abstract class AbstractForm extends Model
      * Файлы для сообщения пользователю.
      *
      * @return File[]|UploadedFile[]|null
+     * @noinspection PhpDocSignatureInspection
      */
     protected function getUserFiles(): ?array
     {
@@ -279,11 +281,11 @@ abstract class AbstractForm extends Model
     /**
      * Обработка формы.
      *
-     * @return mixed
+     * @return mixed overrides by implementation
      * @throws Exception
-     * @noinspection PhpReturnDocTypeMismatchInspection
+     * @noinspection PhpMixedReturnTypeCanBeReducedInspection
      */
-    public function process()
+    public function process(): mixed
     {
         if (! $this->validate()) {
             throw new ValidateException($this);

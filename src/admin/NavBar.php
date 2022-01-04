@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.21 22:26:36
+ * @version 05.01.22 00:18:58
  */
 
 declare(strict_types = 1);
@@ -13,11 +13,9 @@ use dicr\helper\ArrayHelper;
 use dicr\helper\Html;
 use dicr\widgets\Widget;
 use Exception;
-use Yii;
 use yii\base\InvalidConfigException;
 use yii\bootstrap5\Nav;
 
-use function is_array;
 use function ob_get_clean;
 
 /**
@@ -25,76 +23,76 @@ use function ob_get_clean;
  */
 class NavBar extends Widget
 {
-    /** @var array|false опции навигации \yii\bootstrap\Nav */
-    public $nav = [];
+    /** @var ?array опции навигации \yii\bootstrap\Nav */
+    public ?array $nav = null;
 
-    /** @var string дополнительный HTML-контент */
-    public $content;
+    /** @var ?string дополнительный HTML-контент */
+    public ?string $content = null;
 
-    /** @var array опции панели \app\modules\admin\widgets\ControlPanel */
-    public $controlPanel = [];
+    /** @var ?array опции панели \app\modules\admin\widgets\ControlPanel */
+    public ?array $controlPanel = null;
 
     /**
      * @var array the HTML attributes for the container tag. The following special options are recognized:
      *
      * - tag: string, defaults to "div", the name of the container tag.
      *
-     * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see \yii\helpers\BaseHtml::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $collapseOptions = [];
+    public array $collapseOptions = [];
 
     /**
-     * @var string|bool the text of the brand or false if it's not used. Note that this is not HTML-encoded.
+     * @var ?string the text of the brand or false if it's not used. Note that this is not HTML-encoded.
      * @see https://getbootstrap.com/docs/4.2/components/navbar/
      */
-    public $brandLabel = false;
+    public ?string $brandLabel = null;
 
     /**
-     * @var string|bool src of the brand image or false if it's not used. Note that this param will override
+     * @var ?string src of the brand image or false if it's not used. Note that this param will override
      *     `$this->brandLabel` param.
      * @see https://getbootstrap.com/docs/4.2/components/navbar/
      * @since 2.0.8
      */
-    public $brandImage = false;
+    public ?string $brandImage = null;
 
     /**
-     * @var array|string|bool $url the URL for the brand's hyperlink tag. This parameter will be processed by
+     * @var array|string|null $url the URL for the brand's hyperlink tag. This parameter will be processed by
      *     [[\dicr\helper\Url::to()]] and will be used for the "href" attribute of the brand link. Default value is
      *     false that means
      * [[\yii\web\Application::homeUrl]] will be used.
      * You may set it to `null` if you want to have no link at all.
      */
-    public $brandUrl = false;
+    public string|array|null $brandUrl = null;
 
     /**
      * @var array the HTML attributes of the brand link.
      * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $brandOptions = [];
+    public array $brandOptions = [];
 
     /**
      * @var string the toggle button content. Defaults to bootstrap 4 default `<span
      *     class="navbar-toggler-icon"></span>`
      */
-    public $togglerContent = '<span class="navbar-toggler-icon"></span>';
+    public string $togglerContent = '<span class="navbar-toggler-icon"></span>';
 
     /**
      * @var array the HTML attributes of the navbar toggler button.
      * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $togglerOptions = [];
+    public array $togglerOptions = [];
 
     /**
      * @var bool whether the navbar content should be included in an inner div container which by default
      * adds left and right padding. Set this to false for a 100% width navbar.
      */
-    public $renderInnerContainer = true;
+    public bool $renderInnerContainer = true;
 
     /**
      * @var array the HTML attributes of the inner container.
      * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $innerContainerOptions = [];
+    public array $innerContainerOptions = [];
 
     /**
      * @inheritDoc
@@ -129,14 +127,10 @@ class NavBar extends Widget
             'widget' => 'navbar-collapse'
         ]);
 
-        if (is_array($this->nav)) {
-            /** @noinspection OffsetOperationsInspection */
+        if (isset($this->nav)) {
             $options = (array)($this->nav['options'] ?? []);
             Html::addCssClass($options, 'navbar-nav');
-            /** @noinspection OffsetOperationsInspection */
             $this->nav['options'] = $options;
-        } elseif ($this->nav !== false) {
-            throw new InvalidConfigException('nav');
         }
 
         ob_start();
@@ -144,20 +138,17 @@ class NavBar extends Widget
 
     /**
      * Рендерит бренд.
-     *
-     * @return string
      */
     protected function renderBrand(): string
     {
         $brand = '';
 
-        if ($this->brandLabel !== false) {
+        if (isset($this->brandLabel)) {
             Html::addCssClass($this->brandOptions, ['widget' => 'navbar-brand']);
             if ($this->brandUrl === null) {
                 $brand = Html::tag('span', $this->brandLabel, $this->brandOptions);
             } else {
-                $brand = Html::a($this->brandLabel, $this->brandUrl === false ? Yii::$app->homeUrl : $this->brandUrl,
-                    $this->brandOptions);
+                $brand = Html::a($this->brandLabel, $this->brandUrl, $this->brandOptions);
             }
         }
 
@@ -166,8 +157,6 @@ class NavBar extends Widget
 
     /**
      * Renders collapsible toggle button.
-     *
-     * @return string the rendering toggle button.
      */
     protected function renderToggleButton(): string
     {
@@ -188,7 +177,7 @@ class NavBar extends Widget
      * @inheritDoc
      * @throws Exception
      */
-    public function run()
+    public function run(): string
     {
         $content = ob_get_clean();
 
@@ -216,11 +205,9 @@ class NavBar extends Widget
         echo Html::beginTag($collapseTag, $this->collapseOptions);
 
         // выводим навигацию
-        /** @noinspection OffsetOperationsInspection */
-        if ($this->nav !== false && ! empty($this->nav['items'])) {
+        if (! empty($this->nav['items'])) {
             // fix for BS5
-            /** @noinspection OffsetOperationsInspection */
-            foreach ($this->nav['items'] as &$item) {
+            foreach ((array)$this->nav['items'] as &$item) {
                 if (! empty($item['items'])) {
                     $item['linkOptions']['data-bs-toggle'] = 'dropdown';
                 }
@@ -238,9 +225,7 @@ class NavBar extends Widget
         echo Html::endTag($collapseTag);
 
         // дополнительный контент
-        if (! empty($this->content)) {
-            echo $this->content;
-        }
+        echo $this->content;
 
         // выводим control-panel
         if (! empty($this->controlPanel)) {

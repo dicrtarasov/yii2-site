@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 25.11.20 05:54:27
+ * @version 05.01.22 00:24:08
  */
 
 declare(strict_types = 1);
@@ -20,18 +20,18 @@ use function is_array;
 class ExtLinkColumn extends DataColumn
 {
     /** Значения стиля word-break */
-    public $wordBreak = 'break-all';
+    public string $wordBreak = 'break-all';
 
-    /** Атрибут data-pjax */
-    public $dataPjax = 0;
+    /** @var ?string атрибут data-pjax */
+    public ?string $dataPjax = '0';
 
-    /** Аттрибут target */
-    public $target = '_blank';
+    /** @var ?string аттрибут target */
+    public ?string $target = '_blank';
 
     /**
      * {@inheritDoc}
      */
-    public function init() : void
+    public function init(): void
     {
         if (! is_array($this->format)) {
             $this->format = [];

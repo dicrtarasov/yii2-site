@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 14.08.21 00:00:30
+ * @version 05.01.22 00:00:36
  */
 
 declare(strict_types = 1);
@@ -56,10 +56,10 @@ class Formatter extends \yii\i18n\Formatter
     public $currencyCode = 'RUB';
 
     /** @var ?int код страны для PhoneFormatter */
-    public $phoneCountry = 7;
+    public ?int $phoneCountry = 7;
 
     /** @var ?int код региона для PhoneFormatter */
-    public $phoneRegion;
+    public ?int $phoneRegion;
 
     /**
      * @inheritDoc
@@ -73,12 +73,8 @@ class Formatter extends \yii\i18n\Formatter
 
     /**
      * Форматирует как текстовую строку (удаляя html-теги и экранируя) с ограничением длины.
-     *
-     * @param mixed $value
-     * @param int $limit
-     * @return string
      */
-    public function asString($value, int $limit = 0): string
+    public function asString(mixed $value, int $limit = 0): string
     {
         if ($value === null) {
             return $this->nullDisplay;
@@ -98,7 +94,7 @@ class Formatter extends \yii\i18n\Formatter
      *
      * Fix currency decimal separator and symbol formatting bug on INTL_ICU_VERSION 52.1 (up to 56.1)
      */
-    public function asCurrency($value, $currency = null, $options = [], $textOptions = []): string
+    public function asCurrency(mixed $value, ?string $currency = null, $options = [], $textOptions = []): string
     {
         if ($value === null || $value === '') {
             return $this->nullDisplay;
@@ -113,12 +109,8 @@ class Formatter extends \yii\i18n\Formatter
 
     /**
      * Форматирует телефон.
-     *
-     * @param int|string|null $value
-     * @param array $options
-     * @return string
      */
-    public function asPhone($value, array $options = []): string
+    public function asPhone(mixed $value, array $options = []): string
     {
         $phoneValidator = new PhoneValidator([
                 'country' => $this->phoneCountry,
@@ -130,12 +122,8 @@ class Formatter extends \yii\i18n\Formatter
 
     /**
      * Форматирует телефон.
-     *
-     * @param string|int|null $value
-     * @param array $options
-     * @return string
      */
-    public static function phone($value, array $options = []): string
+    public static function phone(mixed $value, array $options = []): string
     {
         /** @var self $self */
         $self = Yii::$app->formatter;
@@ -146,8 +134,6 @@ class Formatter extends \yii\i18n\Formatter
     /**
      * Форматирует как длинную дату "25 января 2004"
      *
-     * @param string $date
-     * @return string
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function asFullDate(string $date): string
@@ -171,9 +157,6 @@ class Formatter extends \yii\i18n\Formatter
 
     /**
      * Форматирует как длинную дату "25 января 2004"
-     *
-     * @param string $date
-     * @return string
      */
     public static function fullDate(string $date): string
     {

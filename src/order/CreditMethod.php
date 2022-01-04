@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 03.11.20 19:22:00
+ * @version 05.01.22 00:24:08
  */
 
 declare(strict_types = 1);
@@ -31,7 +31,7 @@ use function array_merge;
 abstract class CreditMethod extends PayMethod
 {
     /** @var int срок кредитования, мес */
-    public $term;
+    public int $term;
 
     /**
      * @inheritDoc
@@ -139,13 +139,10 @@ abstract class CreditMethod extends PayMethod
         return '';
     }
 
-    /** @var ?int */
-    private $_termLimit;
+    private ?int $_termLimit = null;
 
     /**
      * Ограничение срока рассрочки (например брендом товара).
-     *
-     * @return ?int
      */
     public function getTermLimit() : ?int
     {
@@ -155,21 +152,22 @@ abstract class CreditMethod extends PayMethod
     /**
      * Устанавливает ограничение
      *
-     * @param ?int $limit
+     * @return $this
      */
-    public function setTermLimit(?int $limit) : void
+    public function setTermLimit(?int $limit): static
     {
         if ($limit !== null && $limit < 0) {
             throw new InvalidArgumentException('limit');
         }
 
         $this->_termLimit = $limit;
+
+        return $this;
     }
 
     /**
      * Минимальный срок кредита, мес.
      *
-     * @return int
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function getMinTerm() : int
@@ -189,8 +187,6 @@ abstract class CreditMethod extends PayMethod
 
     /**
      * Шаг месяцев.
-     *
-     * @return int
      */
     public static function termStep() : int
     {
@@ -200,7 +196,6 @@ abstract class CreditMethod extends PayMethod
     /**
      * Первый взнос.
      *
-     * @return float
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function getDownPayment() : float
@@ -211,7 +206,6 @@ abstract class CreditMethod extends PayMethod
     /**
      * Льготный период, мес.
      *
-     * @return int
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function getGracePeriod() : int
@@ -222,10 +216,9 @@ abstract class CreditMethod extends PayMethod
     /**
      * Возвращает сумму ежемесячного платежа, грн
      *
-     * @return float
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function getMonthlyCharge() : ?float
+    public function getMonthlyCharge(): float
     {
         return 0;
     }
@@ -264,9 +257,6 @@ abstract class CreditMethod extends PayMethod
         return $text;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function __toString() : string
     {
         return static::name() . ', ' . $this->term . ' ' . Yii::t('dicr/site', 'мес') . '.';

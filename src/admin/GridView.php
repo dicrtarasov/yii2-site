@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 07.04.21 16:19:15
+ * @version 05.01.22 00:04:38
  */
 
 declare(strict_types = 1);
@@ -30,17 +30,16 @@ class GridView extends \yii\grid\GridView
     /** @inheritDoc */
     public $layout = '{summary}<div class="table-responsive">{items}</div>{pager}';
 
-    /** @var string аттрибут обозначающий отключенную запись */
-    public $disabledAttr = 'disabled';
+    /** @var ?string аттрибут обозначающий отключенную запись */
+    public ?string $disabledAttr = 'disabled';
 
-    /** @var string аттрибут обозначающий включенную запись */
-    public $enabledAttr = 'enabled';
+    /** @var ?string аттрибут обозначающий включенную запись */
+    public ?string $enabledAttr = 'enabled';
 
-    /** @var string атрибут для выделения */
-    public $featuredAttr;
+    /** @var ?string атрибут для выделения */
+    public ?string $featuredAttr = null;
 
-    /** @var array */
-    private $_origRowOptions;
+    private array $_origRowOptions;
 
     /**
      * @inheritDoc
@@ -65,14 +64,8 @@ class GridView extends \yii\grid\GridView
 
     /**
      * Возвращает опции строки.
-     *
-     * @param Model|array $model
-     * @param mixed $key
-     * @param int $index
-     * @param self $grid
-     * @return array
      */
-    protected function getRowOptions($model, $key, int $index, self $grid): array
+    protected function getRowOptions(Model|array $model, mixed $key, int $index, self $grid): array
     {
         // оригинальные опции
         $options = $this->_origRowOptions;

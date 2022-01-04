@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.12.20 02:54:57
+ * @version 05.01.22 00:24:08
  */
 
 declare(strict_types = 1);
@@ -19,29 +19,27 @@ use function array_merge;
  */
 class ControlPanel extends Widget
 {
-    /** @var array url для кнопки создания */
-    public $create;
+    /** @var array|string|null url для кнопки создания */
+    public array|string|null $create = null;
 
-    /** @var array url для кнопки удаления */
-    public $remove;
+    /** @var array|string|null url для кнопки удаления */
+    public array|string|null $remove = null;
 
-    /** @var array опции кнопки сохранить (form) */
-    public $submit;
+    /** @var array|null опции кнопки сохранить (form) */
+    public ?array $submit = null;
 
-    /** @var array url кнопки скачивания, ex. Url::current([export => 1]) */
-    public $download;
+    /** @var array|string|null url кнопки скачивания, ex. Url::current([export => 1]) */
+    public string|array|null $download = null;
 
     /** @var string[] дополнительные кнопки */
-    public $buttons;
+    public array $buttons = [];
 
     /**
      * @inheritDoc
      */
-    public function init() : void
+    public function init(): void
     {
         parent::init();
-
-        $this->buttons = empty($this->buttons) ? [] : (array)$this->buttons;
 
         Html::addCssClass($this->options, 'dicr-site-admin-control-panel');
     }
@@ -96,7 +94,7 @@ class ControlPanel extends Widget
     /**
      * @inheritDoc
      */
-    public function run()
+    public function run(): string
     {
         AdminAsset::register($this->view);
 

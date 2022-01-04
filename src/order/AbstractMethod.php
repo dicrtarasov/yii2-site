@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.21 22:26:44
+ * @version 04.01.22 23:22:25
  */
 
 declare(strict_types = 1);
@@ -107,8 +107,8 @@ abstract class AbstractMethod extends Model
         return static::class;
     }
 
-    /** @var float */
-    private $_sum;
+    /** @var float|null сумма платежа */
+    private ?float $_sum = null;
 
     /**
      * Сумма товаров.
@@ -131,21 +131,22 @@ abstract class AbstractMethod extends Model
     /**
      * Установить сумму.
      *
-     * @param float $sum
+     * @return $this
      */
-    public function setSum(float $sum): void
+    public function setSum(float $sum): self
     {
         if ($sum < 0) {
             throw new InvalidArgumentException('sum');
         }
 
         $this->_sum = $sum;
+
+        return $this;
     }
 
     /**
      * Минимально допустимая сумма товаров для данного метода.
      *
-     * @return int
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function getMinSum(): int
@@ -156,7 +157,6 @@ abstract class AbstractMethod extends Model
     /**
      * Максимально допустимая сумма для метода.
      *
-     * @return ?int (null - не ограничено)
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function getMaxSum(): ?int
@@ -166,8 +166,6 @@ abstract class AbstractMethod extends Model
 
     /**
      * Метод приемлем для заданных товаров и суммы.
-     *
-     * @return bool
      */
     public function getIsAvailable(): bool
     {
@@ -178,8 +176,8 @@ abstract class AbstractMethod extends Model
         return ($sum >= $minSum) && ($maxSum === null || $sum <= $maxSum);
     }
 
-    /** @var float */
-    private $_tax = 0;
+    /** @var float комиссия */
+    private float $_tax = 0;
 
     /**
      * Комиссия метода доставки или оплаты.
@@ -194,19 +192,20 @@ abstract class AbstractMethod extends Model
     /**
      * Установить комиссию.
      *
-     * @param float $tax
+     * @return $this
      */
-    public function setTax(float $tax): void
+    public function setTax(float $tax): static
     {
         if ($tax < 0) {
             throw new InvalidArgumentException('tax');
         }
 
-        $this->tax = 0;
+        $this->tax = $tax;
+
+        return $this;
     }
 
-    /** @var ?CheckoutInterface */
-    private $_checkout;
+    private ?CheckoutInterface $_checkout = null;
 
     /**
      * Форма оформления заказа.
@@ -223,18 +222,16 @@ abstract class AbstractMethod extends Model
     /**
      * Установить форму оформления заказа.
      *
-     * @param ?CheckoutInterface $checkout
      * @return $this
      */
-    public function setCheckout(?CheckoutInterface $checkout): self
+    public function setCheckout(?CheckoutInterface $checkout): static
     {
         $this->_checkout = $checkout;
 
         return $this;
     }
 
-    /** @var ?OrderInterface */
-    private $_order;
+    private ?OrderInterface $_order;
 
     /**
      * Оформленный заказ.
@@ -250,12 +247,12 @@ abstract class AbstractMethod extends Model
 
     /**
      * Установить заказ.
-     *
-     * @param ?OrderInterface $order
      */
-    public function setOrder(?OrderInterface $order): void
+    public function setOrder(?OrderInterface $order): static
     {
         $this->_order = $order;
+
+        return $this;
     }
 
     /**
@@ -302,9 +299,6 @@ abstract class AbstractMethod extends Model
     /**
      * Рендерит параметры метода оплаты.
      *
-     * @param ActiveForm $form форма
-     * @param array $options опции тега
-     * @return string HTML
      * @noinspection PhpUnusedParameterInspection
      * @noinspection PhpMethodMayBeStaticInspection
      */
@@ -316,21 +310,17 @@ abstract class AbstractMethod extends Model
     /**
      * Обработка способа оплаты или доставки.
      *
-     * @return mixed результат обработки
      * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function process()
+    public function process(): mixed
     {
         return null;
     }
 
     /**
      * Создает экземпляр метода из конфига
-     *
-     * @param array $config
-     * @return ?static
      */
-    public static function create(array $config): ?self
+    public static function create(array $config): ?static
     {
         if (! empty($config)) {
             try {
@@ -359,8 +349,6 @@ abstract class AbstractMethod extends Model
 
     /**
      * Данные для хранения в JSON.
-     *
-     * @return array
      */
     public function getConfig(): array
     {
@@ -394,18 +382,17 @@ abstract class AbstractMethod extends Model
         return $data;
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return static::name();
     }
 
     /**
-     * Сохранить параметры метода как выбранного
+     * Сохранить параметры метода как выбранного.
+     *
+     * @return $this
      */
-    abstract public function saveSelected(): void;
+    abstract public function saveSelected(): static;
 
     /**
      * Восстановить параметры сохраненного выбранного метода.
@@ -415,5 +402,5 @@ abstract class AbstractMethod extends Model
      * @noinspection PhpMissingReturnTypeInspection
      * @noinspection ReturnTypeCanBeDeclaredInspection
      */
-    abstract public static function restoreSelected(bool $clean = false);
+    abstract public static function restoreSelected(bool $clean = false): ?static;
 }

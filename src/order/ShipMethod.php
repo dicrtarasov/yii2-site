@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 02.10.20 20:37:43
+ * @version 04.01.22 23:25:12
  */
 
 declare(strict_types = 1);
@@ -23,7 +23,7 @@ abstract class ShipMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public function attributeLabels() : array
+    public function attributeLabels(): array
     {
         return [
             'address' => Yii::t('app', 'Адрес')
@@ -33,7 +33,7 @@ abstract class ShipMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public static function classes() : array
+    public static function classes(): array
     {
         return (array)(Yii::$app->params['order']['ship']['classes'] ?? []);
     }
@@ -62,7 +62,7 @@ abstract class ShipMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public function toText() : array
+    public function toText(): array
     {
         return array_merge([
             Yii::t('dicr/site', 'Способ доставки') => static::name()
@@ -74,9 +74,11 @@ abstract class ShipMethod extends AbstractMethod
      *
      * Сохранить параметры этого метода как выбранного метода оплаты.
      */
-    public function saveSelected() : void
+    public function saveSelected(): static
     {
         Yii::$app->session->set(__CLASS__, $this->config);
+
+        return $this;
     }
 
     /**
@@ -86,7 +88,7 @@ abstract class ShipMethod extends AbstractMethod
      *
      * @return ?self
      */
-    public static function restoreSelected(bool $clean = false) : ?self
+    public static function restoreSelected(bool $clean = false): ?static
     {
         $config = Yii::$app->session->get(__CLASS__);
         if ($config === null) {

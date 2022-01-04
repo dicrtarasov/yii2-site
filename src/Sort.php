@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 03.08.21 19:28:40
+ * @version 05.01.22 00:22:08
  */
 
 declare(strict_types = 1);
@@ -29,8 +29,7 @@ use const SORT_DESC;
  */
 class Sort extends \yii\data\Sort
 {
-    /** @var string|false */
-    private $_defaultSort;
+    private string|false $_defaultSort;
 
     /**
      * Сортировка по-умолчанию.
@@ -41,10 +40,12 @@ class Sort extends \yii\data\Sort
      */
     public function getDefaultSort(): ?string
     {
-        if ($this->_defaultSort === null) {
+        if (! isset($this->_defaultSort)) {
             $defaultOrder = $this->defaultOrder;
+
             if (! empty($defaultOrder)) {
                 $defaultSort = array_key_first($defaultOrder);
+
                 if ($defaultOrder[$defaultSort] === SORT_DESC) {
                     $defaultSort = '-' . $defaultSort;
                 }
@@ -52,7 +53,7 @@ class Sort extends \yii\data\Sort
                 $this->_defaultSort = $defaultSort;
             }
 
-            if ($this->_defaultSort === null) {
+            if (! isset($this->_defaultSort)) {
                 $this->_defaultSort = false;
             }
         }
@@ -66,7 +67,7 @@ class Sort extends \yii\data\Sort
      * @param string $sort название сортировки (для по-убыванию начинается с "-")
      * @return $this
      */
-    public function setDefaultSort(string $sort): Sort
+    public function setDefaultSort(string $sort): static
     {
         $this->_defaultSort = $sort;
 
@@ -84,8 +85,7 @@ class Sort extends \yii\data\Sort
         return $this;
     }
 
-    /** @var string|false */
-    private $_sort;
+    private string|false $_sort;
 
     /**
      * Возвращает текущее значение параметра сортировки.
@@ -95,7 +95,7 @@ class Sort extends \yii\data\Sort
      */
     public function getSort(bool $emptyIfDefault = false): ?string
     {
-        if ($this->_sort === null) {
+        if (! isset($this->_sort)) {
             if (! empty($this->sortParam)) {
                 $params = $this->params;
                 if ($params === null) {
@@ -121,10 +121,9 @@ class Sort extends \yii\data\Sort
     /**
      * Устанавливает текущую сортировку.
      *
-     * @param ?string $sort
      * @return $this
      */
-    public function setSort(?string $sort): Sort
+    public function setSort(?string $sort): static
     {
         $this->_sort = $sort ?? false;
 
@@ -137,8 +136,6 @@ class Sort extends \yii\data\Sort
 
     /**
      * Является ли текущая сортировка сортировкой по-умолчанию.
-     *
-     * @return bool
      */
     public function getIsDefault(): bool
     {
@@ -147,8 +144,6 @@ class Sort extends \yii\data\Sort
 
     /**
      * Параметры для запроса.
-     *
-     * @return array
      */
     public function params(): array
     {

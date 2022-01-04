@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 30.10.20 21:38:42
+ * @version 04.01.22 23:24:20
  */
 
 declare(strict_types = 1);
@@ -18,13 +18,13 @@ use function array_merge;
  */
 abstract class PayMethod extends AbstractMethod
 {
-    /** @var string дата оплаты заказа */
-    public $payDate;
+    /** @var string|null дата оплаты заказа */
+    public ?string $payDate = null;
 
     /**
      * @inheritDoc
      */
-    public function attributeLabels() : array
+    public function attributeLabels(): array
     {
         return array_merge(parent::attributeLabels(), [
             'payDate' => Yii::t('dicr/site', 'Дата оплаты')
@@ -34,7 +34,7 @@ abstract class PayMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public function rules() : array
+    public function rules(): array
     {
         return array_merge(parent::rules(), [
             ['payDate', 'default'],
@@ -45,7 +45,7 @@ abstract class PayMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public static function classes() : array
+    public static function classes(): array
     {
         return (array)(Yii::$app->params['order']['pay']['classes'] ?? []);
     }
@@ -55,7 +55,7 @@ abstract class PayMethod extends AbstractMethod
      *
      * @return bool
      */
-    public static function isCredit() : bool
+    public static function isCredit(): bool
     {
         return false;
     }
@@ -63,7 +63,7 @@ abstract class PayMethod extends AbstractMethod
     /**
      * @inheritDoc
      */
-    public function toText() : array
+    public function toText(): array
     {
         return array_merge(parent::toText(), [
             Yii::t('dicr/site', 'Способ оплаты') => static::name()
@@ -75,9 +75,11 @@ abstract class PayMethod extends AbstractMethod
      *
      * Сохранить параметры этого метода как выбранного метода оплаты.
      */
-    public function saveSelected() : void
+    public function saveSelected(): static
     {
         Yii::$app->session->set(__CLASS__, $this->config);
+
+        return $this;
     }
 
     /**
@@ -85,9 +87,9 @@ abstract class PayMethod extends AbstractMethod
      *
      * Восстанавливает сохраненный выбранный метод оплаты.
      *
-     * @return ?self
+     * @return ?static
      */
-    public static function restoreSelected(bool $clean = false) : ?self
+    public static function restoreSelected(bool $clean = false): ?static
     {
         $config = Yii::$app->session->get(__CLASS__);
         if ($config === null) {
@@ -103,4 +105,3 @@ abstract class PayMethod extends AbstractMethod
         return $method;
     }
 }
-

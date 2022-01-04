@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 28.09.20 02:36:31
+ * @version 05.01.22 00:24:08
  */
 
 declare(strict_types = 1);
@@ -21,14 +21,14 @@ use function date;
  */
 class TimeFlagWidget extends InputWidget
 {
-    /** @var string datetime формат */
-    public $format;
+    /** @var ?string datetime формат */
+    public ?string $format = null;
 
     /**
      * @inheritDoc
      * @throws InvalidConfigException
      */
-    public function run() : string
+    public function run(): string
     {
         $this->options['labelOptions'] = [
             'class' => 'control-label',
