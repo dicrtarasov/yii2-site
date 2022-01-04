@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84f157f13bbf74031c9e1de4575d2bbd",
+    "content-hash": "30acd19209378f7d960af8e9e4420f30",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -162,7 +162,7 @@
         },
         {
             "name": "dicr/yii2-asset",
-            "version": "2.1.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-asset.git",
@@ -220,26 +220,26 @@
         },
         {
             "name": "dicr/yii2-file",
-            "version": "7.0.4",
+            "version": "8.0.0",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-file.git",
-                "reference": "7be380b45b7968c1c6169727ec4fe779586c8203"
+                "reference": "592f7017a731603e3e09acdb839b69ec98d70f29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=7be380b45b7968c1c6169727ec4fe779586c8203",
-                "reference": "7be380b45b7968c1c6169727ec4fe779586c8203",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-file/repository/archive.zip?sha=592f7017a731603e3e09acdb839b69ec98d70f29",
+                "reference": "592f7017a731603e3e09acdb839b69ec98d70f29",
                 "shasum": ""
             },
             "require": {
-                "dicr/yii2-asset": "~2.0",
+                "dicr/yii2-asset": "~3.0",
                 "ext-fileinfo": "*",
                 "ext-ftp": "*",
                 "ext-iconv": "*",
                 "ext-imagick": "*",
                 "ext-mbstring": "*",
-                "php": "~7.4 || ~8.0",
+                "php": "~8.0",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
@@ -290,7 +290,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-file.git"
             },
-            "time": "2021-08-16T14:09:38+05:00"
+            "time": "2022-01-05T01:46:47+03:00"
         },
         {
             "name": "dicr/yii2-helper",
@@ -415,20 +415,20 @@
         },
         {
             "name": "dicr/yii2-widgets",
-            "version": "6.0.1",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-widgets.git",
-                "reference": "9488cfd836b1bdebd386eac8d504a60f9fb6acc3"
+                "reference": "7a13b23629f307770d70bc7900ea8e598e164fec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=9488cfd836b1bdebd386eac8d504a60f9fb6acc3",
-                "reference": "9488cfd836b1bdebd386eac8d504a60f9fb6acc3",
+                "url": "https://gitlab.com/api/v4/projects/dicr%2Fyii2-widgets/repository/archive.zip?sha=7a13b23629f307770d70bc7900ea8e598e164fec",
+                "reference": "7a13b23629f307770d70bc7900ea8e598e164fec",
                 "shasum": ""
             },
             "require": {
-                "dicr/yii2-asset": "~2.1",
+                "dicr/yii2-asset": "~3.0",
                 "dicr/yii2-helper": "~6.0",
                 "php": "~8.0",
                 "yiisoft/yii2": "~2.0",
@@ -470,7 +470,7 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-widgets.git"
             },
-            "time": "2022-01-04T19:34:57+03:00"
+            "time": "2022-01-05T01:48:36+03:00"
         },
         {
             "name": "ezyang/htmlpurifier",
