@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 05:07:14
+ * @version 05.01.22 22:51:56
  */
 
 declare(strict_types = 1);
@@ -55,10 +55,10 @@ class Formatter extends \yii\i18n\Formatter
     /** @inheritDoc */
     public $currencyCode = 'RUB';
 
-    /** @var ?int код страны для PhoneFormatter */
+    /** код страны для PhoneFormatter */
     public ?int $phoneCountry = 7;
 
-    /** @var ?int код региона для PhoneFormatter */
+    /** код региона для PhoneFormatter */
     public ?int $phoneRegion;
 
     /**
@@ -125,7 +125,7 @@ class Formatter extends \yii\i18n\Formatter
      */
     public static function phone(mixed $value, array $options = []): string
     {
-        /** @var self $self */
+        /** @var static $self */
         $self = Yii::$app->formatter;
 
         return $self->asPhone($value, $options);
@@ -133,10 +133,8 @@ class Formatter extends \yii\i18n\Formatter
 
     /**
      * Форматирует как длинную дату "25 января 2004"
-     *
-     * @noinspection PhpMethodMayBeStaticInspection
      */
-    public function asFullDate(string $date): string
+    public static function asFullDate(string $date): string
     {
         static $monthes = [
             'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа',
@@ -160,9 +158,6 @@ class Formatter extends \yii\i18n\Formatter
      */
     public static function fullDate(string $date): string
     {
-        /** @var self $formatter */
-        $formatter = Yii::$app->formatter;
-
-        return $formatter->asFullDate($date);
+        return static::asFullDate($date);
     }
 }

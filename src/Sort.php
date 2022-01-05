@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 00:22:08
+ * @version 05.01.22 22:51:16
  */
 
 declare(strict_types = 1);
@@ -65,7 +65,6 @@ class Sort extends \yii\data\Sort
      * Устанавливает сортировку по-умолчанию.
      *
      * @param string $sort название сортировки (для по-убыванию начинается с "-")
-     * @return $this
      */
     public function setDefaultSort(string $sort): static
     {
@@ -120,8 +119,6 @@ class Sort extends \yii\data\Sort
 
     /**
      * Устанавливает текущую сортировку.
-     *
-     * @return $this
      */
     public function setSort(?string $sort): static
     {

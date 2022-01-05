@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.04.21 01:58:25
+ * @version 05.01.22 22:48:06
  */
 
 declare(strict_types = 1);
@@ -123,9 +123,7 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
      *
      * Модели из $current, ключ которых отсутствует в данных формы не возвращаются.
      *
-     * @param array $currentModels
      * @param array $data табулярные данные, например из $_POST
-     * @param ?string $formName
      * @return static[]
      * @throws InvalidConfigException
      */
@@ -157,9 +155,6 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     /**
      * Upsert (INSERT on duplicate keys UPDATE)
      *
-     * @param bool $runValidation
-     * @param ?array $attributes
-     * @return bool
      * @throws Exception
      */
     public function upsert(bool $runValidation = true, ?array $attributes = null): bool
@@ -199,8 +194,6 @@ abstract class ActiveRecord extends \yii\db\ActiveRecord
     /**
      * Insert or update record.
      *
-     * @param ?array $attributes
-     * @return bool
      * @throws Exception
      */
     protected function upsertInternal(?array $attributes = null): bool

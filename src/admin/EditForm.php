@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.21 23:29:28
+ * @version 05.01.22 21:06:35
  */
 
 declare(strict_types = 1);
@@ -82,10 +82,7 @@ class EditForm extends ActiveForm
     /**
      * Статическое поле
      *
-     * @param Model $model
-     * @param string $attribute
      * @param array $options для form-group (для самого input использовать inputOptions)
-     * @return ActiveField
      */
     public function fieldStatic(Model $model, string $attribute, array $options = []): ActiveField
     {
@@ -102,10 +99,8 @@ class EditForm extends ActiveForm
     /**
      * Поле ID.
      *
-     * @param ActiveRecord $model
      * @param array $options
      * - string|bool $url - добавить URL к ID
-     * @return ?ActiveField
      */
     public function fieldId(ActiveRecord $model, array $options = []): ?ActiveField
     {
@@ -150,9 +145,6 @@ class EditForm extends ActiveForm
     /**
      * Поле Created
      *
-     * @param ActiveRecord $model
-     * @param array $options
-     * @return ?ActiveField
      * @throws UnknownPropertyException
      * @throws InvalidConfigException
      */
@@ -177,9 +169,6 @@ class EditForm extends ActiveForm
     /**
      * Поле Updated
      *
-     * @param ActiveRecord $model
-     * @param array $options
-     * @return ?ActiveField
      * @throws InvalidConfigException
      */
     public function fieldUpdated(ActiveRecord $model, array $options = []): ?ActiveField
@@ -198,10 +187,6 @@ class EditForm extends ActiveForm
 
     /**
      * Поле Enabled.
-     *
-     * @param Model $model
-     * @param array $options
-     * @return ActiveField
      */
     public function fieldEnabled(Model $model, array $options = []): ActiveField
     {
@@ -210,10 +195,6 @@ class EditForm extends ActiveForm
 
     /**
      * Поле Disabled
-     *
-     * @param Model $model
-     * @param array $options
-     * @return ActiveField
      */
     public function fieldDisabled(Model $model, array $options = []): ActiveField
     {
@@ -223,12 +204,8 @@ class EditForm extends ActiveForm
     }
 
     /**
-     * Поле для редактирования datetime-local
+     * Поле для редактирования datetime-local.
      *
-     * @param Model $model
-     * @param string $attribute
-     * @param array $options
-     * @return ActiveField
      * @throws InvalidConfigException
      */
     public function fieldDateTime(Model $model, string $attribute, array $options = []): ActiveField
@@ -246,10 +223,6 @@ class EditForm extends ActiveForm
     /**
      * Редактирование даты.
      *
-     * @param Model $model
-     * @param string $attribute
-     * @param array $options
-     * @return ActiveField
      * @throws InvalidConfigException
      */
     public function fieldDate(Model $model, string $attribute, array $options = []): ActiveField
@@ -266,11 +239,6 @@ class EditForm extends ActiveForm
 
     /**
      * Поле с Html-контентом.
-     *
-     * @param Model $model
-     * @param string $attribute
-     * @param array $options
-     * @return ActiveField
      */
     public function fieldHtml(Model $model, string $attribute, array $options = []): ActiveField
     {
@@ -294,10 +262,6 @@ class EditForm extends ActiveForm
 
     /**
      * Поле URL.
-     *
-     * @param ActiveRecord $model
-     * @param array $options
-     * @return ?ActiveField
      */
     public function fieldUrl(ActiveRecord $model, array $options = []): ?ActiveField
     {
@@ -326,10 +290,6 @@ class EditForm extends ActiveForm
     /**
      * Редактор текста.
      *
-     * @param Model $model
-     * @param string $attribute
-     * @param array $options field options
-     * @return ActiveField
      * @throws Exception
      */
     public function fieldText(Model $model, string $attribute, array $options = []): ActiveField
@@ -341,11 +301,6 @@ class EditForm extends ActiveForm
     /**
      * Поле ввода картинок.
      *
-     * @param Model $model
-     * @param string $attribute
-     * @param int $limit
-     * @param array $options
-     * @return ActiveField
      * @throws Exception
      */
     public function fieldImages(Model $model, string $attribute, int $limit = 0, array $options = []): ActiveField
@@ -362,11 +317,6 @@ class EditForm extends ActiveForm
     /**
      * Поле ввода файлов.
      *
-     * @param Model $model
-     * @param string $attribute
-     * @param int $limit
-     * @param array $options
-     * @return ActiveField
      * @throws Exception
      */
     public function fieldFiles(Model $model, string $attribute, int $limit = 0, array $options = []): ActiveField

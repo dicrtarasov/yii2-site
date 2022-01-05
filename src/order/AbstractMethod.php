@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.01.22 23:22:25
+ * @version 05.01.22 22:54:44
  */
 
 declare(strict_types = 1);
@@ -40,8 +40,6 @@ abstract class AbstractMethod extends Model
 {
     /**
      * Текстовое название метода.
-     *
-     * @return string
      */
     abstract public static function name(): string;
 
@@ -99,7 +97,6 @@ abstract class AbstractMethod extends Model
     /**
      * Класс метода.
      *
-     * @return string
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function getClass(): string
@@ -112,8 +109,6 @@ abstract class AbstractMethod extends Model
 
     /**
      * Сумма товаров.
-     *
-     * @return float
      */
     public function getSum(): float
     {
@@ -130,10 +125,8 @@ abstract class AbstractMethod extends Model
 
     /**
      * Установить сумму.
-     *
-     * @return $this
      */
-    public function setSum(float $sum): self
+    public function setSum(float $sum): static
     {
         if ($sum < 0) {
             throw new InvalidArgumentException('sum');
@@ -173,16 +166,14 @@ abstract class AbstractMethod extends Model
         $minSum = $this->minSum;
         $maxSum = $this->maxSum;
 
-        return ($sum >= $minSum) && ($maxSum === null || $sum <= $maxSum);
+        return $sum >= $minSum && ($maxSum === null || $sum <= $maxSum);
     }
 
-    /** @var float комиссия */
+    /** комиссия */
     private float $_tax = 0;
 
     /**
      * Комиссия метода доставки или оплаты.
-     *
-     * @return float
      */
     public function getTax(): float
     {
@@ -191,8 +182,6 @@ abstract class AbstractMethod extends Model
 
     /**
      * Установить комиссию.
-     *
-     * @return $this
      */
     public function setTax(float $tax): static
     {
@@ -221,8 +210,6 @@ abstract class AbstractMethod extends Model
 
     /**
      * Установить форму оформления заказа.
-     *
-     * @return $this
      */
     public function setCheckout(?CheckoutInterface $checkout): static
     {
@@ -272,7 +259,7 @@ abstract class AbstractMethod extends Model
         $list = [];
 
         foreach (static::classes() as $class) {
-            /** @var self $class */
+            /** @var static $class */
             $list[(string)$class] = $class::instance();
         }
 
@@ -330,7 +317,7 @@ abstract class AbstractMethod extends Model
                     throw new Exception('Некорректный конфиг: ' . Json::encode($config));
                 }
 
-                /** @var self $method создаем объект отдельно от свойств */
+                /** @var static $method создаем объект отдельно от свойств */
                 $method = Yii::createObject([
                     'class' => $class
                 ]);
@@ -389,8 +376,6 @@ abstract class AbstractMethod extends Model
 
     /**
      * Сохранить параметры метода как выбранного.
-     *
-     * @return $this
      */
     abstract public function saveSelected(): static;
 

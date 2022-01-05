@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 03:51:07
+ * @version 05.01.22 22:46:10
  */
 
 declare(strict_types = 1);
@@ -53,10 +53,8 @@ abstract class AbstractFilter extends Model
 
     /**
      * Устанавливает запрос.
-     *
-     * @return $this
      */
-    public function setQuery(ActiveQuery $query): self
+    public function setQuery(ActiveQuery $query): static
     {
         $this->_query = $query;
 
@@ -94,16 +92,12 @@ abstract class AbstractFilter extends Model
     /**
      * Устанавливает сортировку.
      *
-     * @param Sort|array|false $sort
-     * @return $this
      * @throws InvalidConfigException
      */
-    public function setSort(Sort|array|false $sort): self
+    public function setSort(Sort|array|false $sort): static
     {
         if (is_array($sort)) {
             $sort = $this->createSort($sort);
-        } elseif (! ($sort instanceof Sort) && $sort !== false) {
-            throw new InvalidConfigException('sort');
         }
 
         $this->_sort = $sort;
@@ -142,15 +136,12 @@ abstract class AbstractFilter extends Model
     /**
      * Устанавливает пагинацию.
      *
-     * @return $this
      * @throws InvalidConfigException
      */
-    public function setPagination(Pagination|array|false $pagination): self
+    public function setPagination(Pagination|array|false $pagination): static
     {
         if (is_array($pagination)) {
             $pagination = $this->createPagination($pagination);
-        } elseif ((! $pagination instanceof Pagination) && $pagination !== false) {
-            throw new InvalidConfigException('pagination');
         }
 
         $this->_pagination = $pagination;
@@ -193,10 +184,9 @@ abstract class AbstractFilter extends Model
     /**
      * Устанавливает провайдер.
      *
-     * @return $this
      * @throws InvalidConfigException
      */
-    public function setProvider(ActiveDataProvider|array $provider): self
+    public function setProvider(ActiveDataProvider|array $provider): static
     {
         if (is_array($provider)) {
             $provider = $this->createProvider($provider);
@@ -214,10 +204,8 @@ abstract class AbstractFilter extends Model
 
     /**
      * Сбрасывает запрос и провайдер для последующего создания новых.
-     *
-     * @return $this
      */
-    public function refresh(): self
+    public function refresh(): static
     {
         $this->_query = null;
         $this->_provider = null;
@@ -227,8 +215,6 @@ abstract class AbstractFilter extends Model
 
     /**
      * Параметры фильтра.
-     *
-     * @return array
      */
     public function params(): array
     {

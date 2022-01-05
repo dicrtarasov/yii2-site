@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2020 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 16.08.20 04:12:19
+ * @version 05.01.22 22:43:18
  */
 
 declare(strict_types = 1);
@@ -16,8 +16,6 @@ interface OrderInterface
 {
     /**
      * Сумма товаров.
-     *
-     * @return float
      */
     public function getSum(): float;
 }

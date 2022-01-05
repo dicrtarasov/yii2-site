@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.21 22:26:08
+ * @version 05.01.22 22:54:44
  */
 
 declare(strict_types = 1);
@@ -47,7 +47,7 @@ class EditTabs extends Nav
     /**
      * @inheritDoc
      */
-    public function init() : void
+    public function init(): void
     {
         // корректируем элементы
         $this->adjustItems();
@@ -62,7 +62,7 @@ class EditTabs extends Nav
     /**
      * @inheritDoc
      */
-    public function run() : string
+    public function run(): string
     {
         $content = trim(ob_get_clean());
 
@@ -84,9 +84,9 @@ class EditTabs extends Nav
         ob_start();
         echo $html; // ссылки табов
 
-        self::beginTabContent();
+        static::beginTabContent();
         echo $content;  // содержимое табов
-        self::endTabContent();
+        static::endTabContent();
 
         return ob_get_clean();
     }
@@ -95,7 +95,7 @@ class EditTabs extends Nav
      * Просматривает элементы и конвертирует короткий формат:
      * tab_id => label в формат Nav
      */
-    protected function adjustItems() : void
+    protected function adjustItems(): void
     {
         if (empty($this->items)) {
             return;
@@ -144,10 +144,8 @@ class EditTabs extends Nav
 
     /**
      * Начало tab-content
-     *
-     * @param array $options
      */
-    public static function beginTabContent(array $options = []) : void
+    public static function beginTabContent(array $options = []): void
     {
         Html::addCssClass($options, 'tab-content');
         ob_start();
@@ -157,19 +155,15 @@ class EditTabs extends Nav
     /**
      * Закрывающий тег tab-content
      */
-    public static function endTabContent() : void
+    public static function endTabContent(): void
     {
         echo ob_get_clean() . Html::endTag('div');
     }
 
     /**
      * Открывающий тег tab-pane
-     *
-     * @param string $id
-     * @param bool $active
-     * @param array $options
      */
-    public static function beginTab(string $id, bool $active = false, array $options = []) : void
+    public static function beginTab(string $id, bool $active = false, array $options = []): void
     {
         $options['id'] = $id;
         Html::addCssClass($options, 'tab-pane');
@@ -184,7 +178,7 @@ class EditTabs extends Nav
     /**
      * Закрывающий тег tab-pane
      */
-    public static function endTab() : void
+    public static function endTab(): void
     {
         echo ob_get_clean() . Html::endTag('div');
     }

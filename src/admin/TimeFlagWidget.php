@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 00:24:08
+ * @version 05.01.22 22:40:13
  */
 
 declare(strict_types = 1);
@@ -21,7 +21,7 @@ use function date;
  */
 class TimeFlagWidget extends InputWidget
 {
-    /** @var ?string datetime формат */
+    /** datetime формат */
     public ?string $format = null;
 
     /**

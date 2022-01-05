@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 00:24:08
+ * @version 05.01.22 22:43:03
  */
 
 declare(strict_types = 1);
@@ -30,7 +30,7 @@ use function array_merge;
  */
 abstract class CreditMethod extends PayMethod
 {
-    /** @var int срок кредитования, мес */
+    /** срок кредитования, мес */
     public int $term;
 
     /**
@@ -101,8 +101,6 @@ abstract class CreditMethod extends PayMethod
 
     /**
      * Название банка.
-     *
-     * @return string
      */
     public static function bank() : string
     {
@@ -111,8 +109,6 @@ abstract class CreditMethod extends PayMethod
 
     /**
      * Картинка.
-     *
-     * @return string
      */
     public static function image() : string
     {
@@ -121,8 +117,6 @@ abstract class CreditMethod extends PayMethod
 
     /**
      * Краткие условия кредита.
-     *
-     * @return string html
      */
     public static function conditions() : string
     {
@@ -131,8 +125,6 @@ abstract class CreditMethod extends PayMethod
 
     /**
      * Описание кредита.
-     *
-     * @return string html
      */
     public static function desc() : string
     {
@@ -151,8 +143,6 @@ abstract class CreditMethod extends PayMethod
 
     /**
      * Устанавливает ограничение
-     *
-     * @return $this
      */
     public function setTermLimit(?int $limit): static
     {

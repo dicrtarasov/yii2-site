@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.01.22 23:25:12
+ * @version 05.01.22 22:44:10
  */
 
 declare(strict_types = 1);
@@ -40,8 +40,6 @@ abstract class ShipMethod extends AbstractMethod
 
     /**
      * Метод доставляет товары (не самовывоз).
-     *
-     * @return bool
      */
     public static function isDelivery(): bool
     {
@@ -51,7 +49,6 @@ abstract class ShipMethod extends AbstractMethod
     /**
      * Адрес доставки в читабельной форме.
      *
-     * @return string
      * @noinspection PhpMethodMayBeStaticInspection
      */
     public function getAddress(): string
@@ -85,8 +82,6 @@ abstract class ShipMethod extends AbstractMethod
      * {@inheritDoc}
      *
      * Восстанавливает сохраненный выбранный метод оплаты.
-     *
-     * @return ?self
      */
     public static function restoreSelected(bool $clean = false): ?static
     {

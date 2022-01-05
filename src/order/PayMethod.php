@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.01.22 23:24:20
+ * @version 05.01.22 22:43:40
  */
 
 declare(strict_types = 1);
@@ -18,7 +18,7 @@ use function array_merge;
  */
 abstract class PayMethod extends AbstractMethod
 {
-    /** @var string|null дата оплаты заказа */
+    /** дата оплаты заказа */
     public ?string $payDate = null;
 
     /**
@@ -52,8 +52,6 @@ abstract class PayMethod extends AbstractMethod
 
     /**
      * Способ оплаты в кредит
-     *
-     * @return bool
      */
     public static function isCredit(): bool
     {
@@ -86,8 +84,6 @@ abstract class PayMethod extends AbstractMethod
      * {@inheritDoc}
      *
      * Восстанавливает сохраненный выбранный метод оплаты.
-     *
-     * @return ?static
      */
     public static function restoreSelected(bool $clean = false): ?static
     {

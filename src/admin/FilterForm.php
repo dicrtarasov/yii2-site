@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 12.08.21 22:26:17
+ * @version 05.01.22 22:54:44
  */
 
 declare(strict_types = 1);
@@ -63,7 +63,6 @@ class FilterForm extends ActiveForm
 
     /**
      * @inheritDoc
-     * @return ActiveField
      */
     public function field($model, $attribute, $options = []): ActiveField
     {
@@ -86,15 +85,10 @@ class FilterForm extends ActiveForm
 
     /**
      * Булево поле фильтра
-     *
-     * @param Model $model
-     * @param string $attribute
-     * @param array $options
-     * @return ActiveField
      */
     public function fieldBoolean(Model $model, string $attribute, array $options = []): ActiveField
     {
-        return $this->field($model, $attribute, $options)->dropdownList([
+        return $this->field($model, $attribute, $options)->dropDownList([
             0 => 'нет',
             1 => 'да'
         ]);
@@ -102,10 +96,6 @@ class FilterForm extends ActiveForm
 
     /**
      * Поле Enabled
-     *
-     * @param Model $model
-     * @param array $options
-     * @return ActiveField
      */
     public function fieldEnabled(Model $model, array $options = []): ActiveField
     {
@@ -114,14 +104,10 @@ class FilterForm extends ActiveForm
 
     /**
      * Поле фильтра по disabled.
-     *
-     * @param Model $model
-     * @param array $options
-     * @return ActiveField
      */
     public function fieldDisabled(Model $model, array $options = []): ActiveField
     {
-        return $this->field($model, 'disabled', $options)->dropdownList([
+        return $this->field($model, 'disabled', $options)->dropDownList([
             0 => 'включено',
             1 => 'отключено'
         ]);

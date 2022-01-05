@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 00:18:58
+ * @version 05.01.22 22:55:36
  */
 
 declare(strict_types = 1);
@@ -23,17 +23,17 @@ use function ob_get_clean;
  */
 class NavBar extends Widget
 {
-    /** @var ?array опции навигации \yii\bootstrap\Nav */
+    /** опции навигации \yii\bootstrap\Nav */
     public ?array $nav = null;
 
-    /** @var ?string дополнительный HTML-контент */
+    /** дополнительный HTML-контент */
     public ?string $content = null;
 
-    /** @var ?array опции панели \app\modules\admin\widgets\ControlPanel */
+    /** опции панели \app\modules\admin\widgets\ControlPanel */
     public ?array $controlPanel = null;
 
     /**
-     * @var array the HTML attributes for the container tag. The following special options are recognized:
+     * The HTML attributes for the container tag. The following special options are recognized:
      *
      * - tag: string, defaults to "div", the name of the container tag.
      *
@@ -42,13 +42,14 @@ class NavBar extends Widget
     public array $collapseOptions = [];
 
     /**
-     * @var ?string the text of the brand or false if it's not used. Note that this is not HTML-encoded.
+     * the text of the brand or false if it's not used. Note that this is not HTML-encoded.
+     *
      * @see https://getbootstrap.com/docs/4.2/components/navbar/
      */
     public ?string $brandLabel = null;
 
     /**
-     * @var ?string src of the brand image or false if it's not used. Note that this param will override
+     * src of the brand image or false if it's not used. Note that this param will override
      *     `$this->brandLabel` param.
      * @see https://getbootstrap.com/docs/4.2/components/navbar/
      * @since 2.0.8
@@ -56,7 +57,7 @@ class NavBar extends Widget
     public ?string $brandImage = null;
 
     /**
-     * @var array|string|null $url the URL for the brand's hyperlink tag. This parameter will be processed by
+     * $url the URL for the brand's hyperlink tag. This parameter will be processed by
      *     [[\dicr\helper\Url::to()]] and will be used for the "href" attribute of the brand link. Default value is
      *     false that means
      * [[\yii\web\Application::homeUrl]] will be used.
@@ -65,31 +66,31 @@ class NavBar extends Widget
     public string|array|null $brandUrl = null;
 
     /**
-     * @var array the HTML attributes of the brand link.
+     * the HTML attributes of the brand link.
      * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public array $brandOptions = [];
 
     /**
-     * @var string the toggle button content. Defaults to bootstrap 4 default `<span
+     * the toggle button content. Defaults to bootstrap 4 default `<span
      *     class="navbar-toggler-icon"></span>`
      */
     public string $togglerContent = '<span class="navbar-toggler-icon"></span>';
 
     /**
-     * @var array the HTML attributes of the navbar toggler button.
+     * The HTML attributes of the navbar toggler button.
      * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public array $togglerOptions = [];
 
     /**
-     * @var bool whether the navbar content should be included in an inner div container which by default
+     * whether the navbar content should be included in an inner div container which by default
      * adds left and right padding. Set this to false for a 100% width navbar.
      */
     public bool $renderInnerContainer = true;
 
     /**
-     * @var array the HTML attributes of the inner container.
+     * the HTML attributes of the inner container.
      * @see \dicr\helper\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public array $innerContainerOptions = [];

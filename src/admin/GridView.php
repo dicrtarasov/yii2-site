@@ -3,12 +3,13 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 00:04:38
+ * @version 05.01.22 21:03:56
  */
 
 declare(strict_types = 1);
 namespace dicr\site\admin;
 
+use Closure;
 use dicr\helper\Html;
 use yii\base\Arrayable;
 use yii\base\InvalidConfigException;
@@ -30,16 +31,16 @@ class GridView extends \yii\grid\GridView
     /** @inheritDoc */
     public $layout = '{summary}<div class="table-responsive">{items}</div>{pager}';
 
-    /** @var ?string аттрибут обозначающий отключенную запись */
+    /** аттрибут обозначающий отключенную запись */
     public ?string $disabledAttr = 'disabled';
 
-    /** @var ?string аттрибут обозначающий включенную запись */
+    /** аттрибут обозначающий включенную запись */
     public ?string $enabledAttr = 'enabled';
 
-    /** @var ?string атрибут для выделения */
+    /** атрибут для выделения */
     public ?string $featuredAttr = null;
 
-    private array $_origRowOptions;
+    private Closure|array $_origRowOptions;
 
     /**
      * @inheritDoc

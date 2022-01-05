@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.01.22 22:56:50
+ * @version 05.01.22 22:47:11
  */
 
 declare(strict_types = 1);
@@ -51,8 +51,6 @@ abstract class AbstractForm extends Model
 {
     /**
      * Поле от кого.
-     *
-     * @return string|null
      */
     protected function getFromEmail(): ?string
     {
@@ -61,8 +59,6 @@ abstract class AbstractForm extends Model
 
     /**
      * E-Mail менеджера.
-     *
-     * @return array|string|null
      */
     protected function getManagerEmail(): array|string|null
     {
@@ -71,8 +67,6 @@ abstract class AbstractForm extends Model
 
     /**
      * Тема сообщения менеджеру.
-     *
-     * @return ?string
      */
     protected function getManagerSubject(): ?string
     {
@@ -82,7 +76,7 @@ abstract class AbstractForm extends Model
     /**
      * Данные сообщения менеджеру.
      *
-     * @return ?string[]
+     * @return string[]|null
      */
     protected function getManagerData(): ?array
     {
@@ -96,8 +90,6 @@ abstract class AbstractForm extends Model
 
     /**
      * Возвращает текст сообщения менеджеру
-     *
-     * @return ?string
      */
     protected function getManagerText(): ?string
     {
@@ -123,8 +115,6 @@ abstract class AbstractForm extends Model
      * Сообщение менеджеру.
      * Для отправки необходимо наличие subject и (text или files).
      * По-умолчанию адрес назначения можно настроить в Mailer::messageConfig
-     *
-     * @return ?MessageInterface
      */
     protected function getManagerMessage(): ?MessageInterface
     {
@@ -174,8 +164,6 @@ abstract class AbstractForm extends Model
 
     /**
      * E-Mail пользователя.
-     *
-     * @return array|string|null
      */
     protected function getUserEmail(): array|string|null
     {
@@ -184,8 +172,6 @@ abstract class AbstractForm extends Model
 
     /**
      * Заголовок сообщения пользователю.
-     *
-     * @return ?string
      */
     protected function getUserSubject(): ?string
     {
@@ -194,8 +180,6 @@ abstract class AbstractForm extends Model
 
     /**
      * Данные для сообщения пользователю.
-     *
-     * @return ?array
      */
     protected function getUserData(): ?array
     {
@@ -204,8 +188,6 @@ abstract class AbstractForm extends Model
 
     /**
      * Текст сообщения пользователю.
-     *
-     * @return ?string
      */
     protected function getUserText(): ?string
     {
@@ -230,8 +212,6 @@ abstract class AbstractForm extends Model
     /**
      * Сообщение пользователю.
      * Для отправки необходимо to, subject и (text или files)
-     *
-     * @return ?MessageInterface
      */
     protected function getUserMessage(): ?MessageInterface
     {
@@ -281,7 +261,6 @@ abstract class AbstractForm extends Model
     /**
      * Обработка формы.
      *
-     * @return mixed overrides by implementation
      * @throws Exception
      * @noinspection PhpMixedReturnTypeCanBeReducedInspection
      */

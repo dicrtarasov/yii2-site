@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 00:24:08
+ * @version 05.01.22 21:05:06
  */
 
 declare(strict_types = 1);
@@ -19,16 +19,16 @@ use function array_merge;
  */
 class ControlPanel extends Widget
 {
-    /** @var array|string|null url для кнопки создания */
+    /** url для кнопки создания */
     public array|string|null $create = null;
 
-    /** @var array|string|null url для кнопки удаления */
+    /** url для кнопки удаления */
     public array|string|null $remove = null;
 
-    /** @var array|null опции кнопки сохранить (form) */
+    /** опции кнопки сохранить (form) */
     public ?array $submit = null;
 
-    /** @var array|string|null url кнопки скачивания, ex. Url::current([export => 1]) */
+    /** url кнопки скачивания, ex. Url::current([export => 1]) */
     public string|array|null $download = null;
 
     /** @var string[] дополнительные кнопки */

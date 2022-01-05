@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 00:08:16
+ * @version 05.01.22 22:50:24
  */
 
 declare(strict_types = 1);
@@ -68,22 +68,18 @@ use function call_user_func;
 class LangBehavior extends Behavior
 {
     /**
-     * @var string класс языковой модели с данными языка для связи с родительским объектом.
+     * класс языковой модели с данными языка для связи с родительским объектом.
      * Должен быть подклассом ActiveRecord.
      */
     public string $relationClass;
 
-    /**
-     * @var array описание связи hasMany языковой модели с родительской, например ['brand_id' => 'id']
-     */
+    /** описание связи hasMany языковой модели с родительской, например ['brand_id' => 'id'] */
     public array $relationLink;
 
-    /**
-     * @var string поле со значением языка в языковой модели для индексации связей ActiveQuery::indexBy
-     */
+    /** поле со значением языка в языковой модели для индексации связей ActiveQuery::indexBy */
     public string $langAttribute = 'lang';
 
-    /** @var ?string обратная связь ActiveQuery::inverseOf */
+    /** обратная связь ActiveQuery::inverseOf */
     public ?string $inverseOf = null;
 
     /**

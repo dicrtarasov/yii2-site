@@ -1,9 +1,9 @@
 <?php
 /*
- * @copyright 2019-2021 Dicr http://dicr.org
+ * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 09.04.21 09:36:57
+ * @version 05.01.22 22:50:40
  */
 
 declare(strict_types = 1);
@@ -32,8 +32,6 @@ class Pagination extends \yii\data\Pagination
 
     /**
      * Является ли текущая страница страницей по-умолчанию.
-     *
-     * @return bool
      */
     public function getIsPageDefault() : bool
     {
@@ -42,8 +40,6 @@ class Pagination extends \yii\data\Pagination
 
     /**
      * Проверяет является ли текущий размер страницы размером по-умолчанию.
-     *
-     * @return bool
      */
     public function getIsPageSizeDefault() : bool
     {
@@ -52,8 +48,6 @@ class Pagination extends \yii\data\Pagination
 
     /**
      * Является ли страница и размер страницы по-умолчанию.
-     *
-     * @return bool
      */
     public function getIsDefault() : bool
     {
@@ -62,8 +56,6 @@ class Pagination extends \yii\data\Pagination
 
     /**
      * Возвращает параметры запроса.
-     *
-     * @return array
      */
     public function params() : array
     {
