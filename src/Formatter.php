@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 00:00:36
+ * @version 05.01.22 05:07:14
  */
 
 declare(strict_types = 1);
@@ -94,7 +94,7 @@ class Formatter extends \yii\i18n\Formatter
      *
      * Fix currency decimal separator and symbol formatting bug on INTL_ICU_VERSION 52.1 (up to 56.1)
      */
-    public function asCurrency(mixed $value, ?string $currency = null, $options = [], $textOptions = []): string
+    public function asCurrency($value, $currency = null, $options = [], $textOptions = []): string
     {
         if ($value === null || $value === '') {
             return $this->nullDisplay;
