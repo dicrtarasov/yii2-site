@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 04.01.22 23:15:05
+ * @version 05.01.22 03:35:33
  */
 
 declare(strict_types = 1);
@@ -14,14 +14,14 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use yii\db\QueryInterface;
+use yii\db\ActiveQuery;
 
 use function is_array;
 
 /**
  * Базовый фильтр.
  *
- * @property QueryInterface $query SQL-запрос
+ * @property ActiveQuery $query SQL-запрос
  * @property ?Sort $sort
  * @property ?Pagination $pagination
  * @property ActiveDataProvider $provider
@@ -29,17 +29,17 @@ use function is_array;
  */
 abstract class AbstractFilter extends Model
 {
-    protected ?QueryInterface $_query = null;
+    protected ?ActiveQuery $_query = null;
 
     /**
      * Создает новый запрос из параметров фильтра.
      */
-    abstract public function createQuery(): QueryInterface;
+    abstract public function createQuery(): ActiveQuery;
 
     /**
      * Возвращает запрос.
      */
-    public function getQuery(): QueryInterface
+    public function getQuery(): ActiveQuery
     {
         if (! isset($this->_query)) {
             $this->_query = $this->createQuery();
@@ -57,7 +57,7 @@ abstract class AbstractFilter extends Model
      *
      * @return $this
      */
-    public function setQuery(QueryInterface $query): self
+    public function setQuery(ActiveQuery $query): self
     {
         $this->_query = $query;
 
