@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 03:35:33
+ * @version 05.01.22 03:51:07
  */
 
 declare(strict_types = 1);
@@ -25,7 +25,6 @@ use function is_array;
  * @property ?Sort $sort
  * @property ?Pagination $pagination
  * @property ActiveDataProvider $provider
- * @property-read array $params параметры запроса
  */
 abstract class AbstractFilter extends Model
 {
@@ -236,15 +235,5 @@ abstract class AbstractFilter extends Model
         $params = $this->getAttributes($this->safeAttributes());
 
         return Url::normalizeQuery(Url::filterQuery($params));
-    }
-
-    /**
-     * Параметры фильтра.
-     *
-     * @see params()
-     */
-    public function getParams(): array
-    {
-        return $this->params();
     }
 }
