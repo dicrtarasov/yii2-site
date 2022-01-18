@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 21:03:56
+ * @version 19.01.22 02:26:22
  */
 
 declare(strict_types = 1);
@@ -66,7 +66,7 @@ class GridView extends \yii\grid\GridView
     /**
      * Возвращает опции строки.
      */
-    protected function getRowOptions(Model|array $model, mixed $key, int $index, self $grid): array
+    protected function getRowOptions(mixed $model, mixed $key, int $index, self $grid): array
     {
         // оригинальные опции
         $options = $this->_origRowOptions;
