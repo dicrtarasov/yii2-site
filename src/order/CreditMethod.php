@@ -3,7 +3,7 @@
  * @copyright 2019-2022 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 05.01.22 22:43:03
+ * @version 19.01.22 01:42:07
  */
 
 declare(strict_types = 1);
@@ -31,7 +31,7 @@ use function array_merge;
 abstract class CreditMethod extends PayMethod
 {
     /** срок кредитования, мес */
-    public int $term;
+    public string|int|null $term = null;
 
     /**
      * @inheritDoc
